@@ -1,0 +1,242 @@
+<ion-content  class="padding-none">
+  <ion-grid  class="ion-padding for-app">
+    <ion-row color="primary" justify-content-center class="padding-none">
+      <ion-col size-md="10" size-lg="9" size-xs="12" class="padding-none">
+        <ion-row color="primary" justify-content-center>
+          <ion-col size-md="3" size-lg="2" size-xs="4" class="FTH " (click)="flight()" [ngClass]="[isAfterF?'FTHActive':'!FTHActive']">
+            <p>
+              <span class="material-icons">flight</span> Flight
+            </p>
+          </ion-col>
+          <ion-col size-md="3" size-lg="2" size-xs="4" class="FTH " (click)="train()" [ngClass]="[ isAfterT?'FTHActive':'!FTHActive']">
+            <p>
+              <span class="material-icons">train</span>Trains
+            </p>
+          </ion-col>
+          <ion-col size-md="3" size-lg="2" size-xs="4" class=" FTH " (click)="hotel()" [ngClass]="[ isAfterH?'FTHActive':'!FTHActive']">
+            <p>
+              <span class="material-icons">local_hotel</span> Hotels
+            </p>
+          </ion-col>
+        </ion-row>
+
+        <ion-card class="SB" *ngIf="flight_comp">
+          <form [formGroup]="flightData"  (ngSubmit)="checkFlight()">
+            <ion-row color="primary" justify-content-center class="ion-padding">
+              <ion-col size-md="12" size-lg="12" size-xs="12">
+                <ion-radio-group formControlName="flighttype">
+                  <ion-radio value="1" (click)="show==0?show=0:show=0"></ion-radio>
+                  <ion-label>One way</ion-label>
+                  <ion-radio value="2" (click)="show==1?show=1:show=1"></ion-radio>
+                  <ion-label>Round Trip</ion-label>
+                  <ion-radio value="3" (click)="show==1?show=1:show=1"></ion-radio>
+                  <ion-label>Multi Trip</ion-label>
+                </ion-radio-group>
+              </ion-col>
+            </ion-row>
+
+            <ion-row color="primary" justify-content-center  >
+              <ion-col size-md="6" size-lg="6" size-xs="12">
+                <ion-item>
+                  <ion-label position="floating">Select Departure City</ion-label>
+                  <ion-input formControlName="D_airport"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col size-md="6" size-lg="6" size-xs="12">
+                <ion-item>
+                  <ion-label position="floating">Select Arrival City</ion-label>
+                  <ion-input formControlName="A_airport"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row color="primary" justify-content-center  >
+              <ion-col size-md="6" size-lg="6" size-xs="12">
+                <ion-item>
+                  <ion-label position="floating">Select Departure Date</ion-label>
+                  <ion-datetime formControlName="D_date" min="min"  pickerFormat="YYYY-MM-DD" displayFormat="YYYY-MM-DD"></ion-datetime>
+                </ion-item>
+              </ion-col>
+              <ion-col size-md="6" size-lg="6" size-xs="12" *ngIf="show">
+                <ion-item >
+                  <ion-label position="floating">Select Arrival Date</ion-label>
+                  <ion-datetime formControlName="A_date" min="max" pickerFormat="YYYY-MM-DD" displayFormat="YYYY-MM-DD"></ion-datetime>
+                </ion-item>
+                
+                  <input matInput  type="date">
+                  <input matInput   type="date">
+                  
+                
+              </ion-col>
+            </ion-row>
+
+            <ion-row color="primary" justify-content-center  >
+              <ion-col size-md="6" size-lg="6" size-xs="12">
+                <ion-item>
+                  <ion-label position="floating">Select Preferred Class</ion-label>
+                  <ion-input formControlName="PClass"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col size-md="6" size-lg="6" size-xs="12">
+                <ion-item>
+                  <ion-label position="floating">Select Preferred Flight</ion-label>
+                  <ion-input formControlName="PFlight"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row color="primary" justify-content-center  >
+              <ion-col size-md="4" size-lg="4" size-xs="4">
+                <ion-item>
+                  <ion-label>Adults</ion-label>
+                  <ion-select formControlName="Adults">
+                    <ion-select-option value="1">1</ion-select-option>
+                    <ion-select-option value="2">2</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-col>
+              <ion-col size-md="4" size-lg="4" size-xs="4">
+                <ion-item>
+                  <ion-label>Childs</ion-label>
+                  <ion-select formControlName="Childs">
+                    <ion-select-option value="0">0</ion-select-option>
+                    <ion-select-option value="1">1</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-col>
+              <ion-col size-md="4" size-lg="4" size-xs="4">
+                <ion-item>
+                  <ion-label>Infants</ion-label>
+                  <ion-select formControlName="Infants">
+                    <ion-select-option value="0">0</ion-select-option>
+                    <ion-select-option value="1">1</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row color="primary" justify-content-center class="ion-padding">
+              <ion-col size-md="7" size-lg="6" size-xs="12">
+                <button class="submit-btn" type="submit"><span class="material-icons">search</span> Search
+                  Flights</button>
+              </ion-col>
+            </ion-row>
+          </form>
+        </ion-card>
+
+
+
+
+
+        <ion-card class="SB" *ngIf="train_comp">
+          <form>
+            <ion-row color="primary" justify-content-center class="ion-padding">
+              <ion-col size-md="12" size-lg="12" size-xs="12">
+                <ion-radio-group>
+                  <ion-radio value="1" (click)="show==0?show=0:show=0"></ion-radio>
+                  <ion-label>One way</ion-label>
+                  <ion-radio value="2" (click)="show==1?show=1:show=1"></ion-radio>
+                  <ion-label>Round Trip</ion-label>
+                  <ion-radio value="3" (click)="show==1?show=1:show=1"></ion-radio>
+                  <ion-label>Multi Trip</ion-label>
+                </ion-radio-group>
+              </ion-col>
+            </ion-row>
+
+            <ion-row color="primary" justify-content-center  >
+              <ion-col size-md="6" size-lg="6" size-xs="12">
+                <ion-item>
+                  <ion-label position="floating">Select Departure City</ion-label>
+                  <ion-input></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col size-md="6" size-lg="6" size-xs="12">
+                <ion-item>
+                  <ion-label position="floating">Select Arrival City</ion-label>
+                  <ion-input></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row color="primary" justify-content-center  >
+              <ion-col size-md="6" size-lg="6" size-xs="12">
+                <ion-item>
+                  <ion-label position="floating">Select Departure Date</ion-label>
+                  <ion-datetime></ion-datetime>
+                </ion-item>
+              </ion-col>
+              <ion-col size-md="6" size-lg="6" size-xs="12">
+                
+              </ion-col>
+            </ion-row>
+
+            <ion-row color="primary" justify-content-center class="ion-padding">
+              <ion-col size-md="7" size-lg="6" size-xs="12">
+                <button class="submit-btn" type="submit"><span class="material-icons">search</span> Search
+                  Train</button>
+              </ion-col>
+            </ion-row>
+          </form>
+        </ion-card>
+
+
+
+
+        <ion-card class="SB" *ngIf="hotel_comp">
+          <form>
+            <ion-row color="primary" justify-content-center class="ion-padding">
+              <ion-col size-md="12" size-lg="12" size-xs="12">
+                <ion-radio-group>
+                  <ion-radio value="1" (click)="show==0?show=0:show=0"></ion-radio>
+                  <ion-label>One way</ion-label>
+                  <ion-radio value="2" (click)="show==1?show=1:show=1"></ion-radio>
+                  <ion-label>Round Trip</ion-label>
+                  <ion-radio value="3" (click)="show==1?show=1:show=1"></ion-radio>
+                  <ion-label>Multi Trip</ion-label>
+                </ion-radio-group>
+              </ion-col>
+            </ion-row>
+
+            <ion-row color="primary" justify-content-center  >
+              <ion-col size-md="6" size-lg="6" size-xs="12">
+                <ion-item>
+                  <ion-label position="floating">Select Departure City</ion-label>
+                  <ion-input></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col size-md="6" size-lg="6" size-xs="12">
+                <ion-item>
+                  <ion-label position="floating">Select Arrival City</ion-label>
+                  <ion-input></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row color="primary" justify-content-center  >
+              <ion-col size-md="6" size-lg="6" size-xs="12">
+                <ion-item>
+                  <ion-label position="floating">Select Departure Date</ion-label>
+                  <ion-datetime></ion-datetime>
+                </ion-item>
+              </ion-col>
+              <ion-col size-md="6" size-lg="6" size-xs="12">
+                <ion-item *ngIf="show">
+                  <ion-label position="floating">Select Arrival Date</ion-label>
+                  <ion-datetime></ion-datetime>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+            <ion-row color="primary" justify-content-center class="ion-padding">
+              <ion-col size-md="7" size-lg="6" size-xs="12">
+                <button class="submit-btn" type="submit"><span class="material-icons">search</span> Search
+                  Hotel</button>
+              </ion-col>
+            </ion-row>
+          </form>
+        </ion-card>
+
+
+      </ion-col>
+    </ion-row> 
+  </ion-grid>
+</ion-content>

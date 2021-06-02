@@ -1,0 +1,118 @@
+<ion-app class="for-web">
+  <ion-content > 
+    <ion-header> 
+      <ion-toolbar > 
+        <ion-row color="primary" justify-content-center class="ion-padding">
+          <ion-col class="top-head" size-md="5" size-lg="5" size-xs="12"> 
+            <ion-title >  
+              KAFILA TOUR AND TRAVELS
+            </ion-title> 
+          </ion-col>
+          <ion-col class="top-head" size-md="1" size-lg="1" size-xs="4"> 
+              
+            About Us
+            
+          </ion-col>
+          <ion-col class="top-head"  size-md="1" size-lg="1" size-xs="4"> 
+            
+            Contact Us
+            
+          </ion-col>
+          <ion-col class="top-head"  size-md="2" size-lg="1" size-xs="4"> 
+            
+            Payment Upload
+            
+          </ion-col>
+          <ion-col class="top-head"  size-md="2" size-lg="2" size-xs="6"> 
+                
+            Create New Account  
+            
+          </ion-col>
+          <ion-col align-self-center size-md="1" size-lg="1" size-xs="6"> 
+                
+            <ion-button  (click)="sidePanel()" href="/home">Login</ion-button>  
+            
+          </ion-col>
+
+    </ion-row> 
+  </ion-toolbar>  
+</ion-header>  
+  <ion-slides   [options]="slideOpts">
+      <ion-slide>   
+        <img src="../assets/1.jpg">     
+      </ion-slide>
+      <ion-slide>
+        <img src="../assets/3.jpg">      
+      </ion-slide>
+      <ion-slide>
+        <img src="../assets/7.jpg">      
+      </ion-slide>
+    </ion-slides> 
+
+        <ion-footer>
+    <ion-toolbar>
+        <ion-title>Footer</ion-title>
+        
+    </ion-toolbar>
+</ion-footer>
+    </ion-content>
+
+</ion-app>
+  
+ 
+
+
+
+<ion-app class="for-app">
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content">
+      <ion-content>
+        <ion-list id="inbox-list">
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+            <ion-item routerDirection="root" [routerLink]="[p.url]" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+    <ion-content id="main-content"> 
+      <ion-header> 
+        <ion-toolbar > 
+          <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons> 
+          <ion-row color="primary" justify-content-center class="ion-padding">
+            <ion-col class="top-head" size-md="12" size-lg="12" size-xs="12">
+              
+               
+                KAFILA TOUR AND TRAVELS
+              
+            </ion-col>      
+            
+          </ion-row> 
+        </ion-toolbar>  
+      </ion-header>  
+      <ion-slides   [options]="slideOpts">
+        <ion-slide>   
+          <img src="../assets/1.jpg">     
+        </ion-slide>
+        <ion-slide>
+          <img src="../assets/3.jpg">      
+        </ion-slide>
+        <ion-slide>
+          <img src="../assets/7.jpg">      
+        </ion-slide>
+      </ion-slides>
+        <ion-footer>
+    <ion-toolbar>
+        <ion-title>Footer</ion-title>
+        
+    </ion-toolbar>
+</ion-footer> 
+    </ion-content> 
+  </ion-split-pane>
+</ion-app>
+

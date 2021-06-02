@@ -1,0 +1,35 @@
+[
+    {"title": "Flight",  "icon": "Airplane","subMenu" :
+        [
+            {"title": "Search", "url": "fsearch", "icon": "search" },
+            {"title": "Booking History", "url": "fbookinghistory", "icon": "" },
+            {"title": "Cancellation History", "url": "fcancellationhistory", "icon": "trash" },
+            {"title": "Refund History", "url": "frefundhistory", "icon": "" },
+            {"title": "Transactions", "url": "ftransactions", "icon": "" },
+            {"title": "Payment History", "url": "fpaymenthistory", "icon": "" }
+        ]
+    },
+    {"title": "Train",  "icon": "train","subMenu" :
+        [
+            {"title": "Search", "url": "tsearch", "icon": "search" },
+            {"title": "Booking History", "url": "tbookinghistory", "icon": "" },
+            {"title": "Cancellation History", "url": "tcancellationhistory", "icon": "trash" },
+            {"title": "Refund History", "url": "trefundhistory", "icon": "" },
+            {"title": "Transactions", "url": "ttransactions", "icon": "" },
+            {"title": "Payment History", "url": "tpaymenthistory", "icon": "" }
+        ]
+    },
+    {"title": "Hotel",  "icon": "home","subMenu" :
+        [
+            {"title": "Search", "url": "hsearch", "icon": "search" },
+            {"title": "Booking History", "url": "hbookinghistory", "icon": "" },
+            {"title": "Cancellation History", "url": "hcancellationhistory", "icon": "trash" },
+            {"title": "Refund History", "url": "hrefundhistory", "icon": "" },
+            {"title": "Transactions", "url": "htransactions", "icon": "" },
+            {"title": "Payment History", "url": "hpaymenthistory", "icon": "" }
+        ]
+    }
+]
+
+      
+      
