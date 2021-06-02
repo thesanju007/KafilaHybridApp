@@ -20,10 +20,7 @@ export class HomePage implements OnInit {
     this.tService.getTestData("../../../assets/sideMenu.json").subscribe(result=>{
       this.Menu=result
     });
-    if (window.screen.width <768) { 
-      this.smallMenu=false
-      this.bigMenu=true
-    }
+   
   }
 
   ionViewWillEnter()
@@ -33,26 +30,16 @@ export class HomePage implements OnInit {
       this.route.navigate(['index']);
     }, 6*60*60*500);
   }
-  bigMenu=true;
-  smallMenu=false;
+  bigMenu=false;
   toggleMenu(){ 
-    if (window.screen.width >768) {
-      if(this.bigMenu==true){
-        this.smallMenu=true
-        this.bigMenu=false
-      }
-      else{
-        this.smallMenu=false
-        this.bigMenu=true
-      }
-
+   
+    if(this.bigMenu==true){        
+      this.bigMenu=false
     }
-    else if (window.screen.width <768) {
-      if(this.bigMenu==true){        
-        this.bigMenu=false
-      }
-      this.bigMenu=true
-    }
+    this.bigMenu=true
+  
+   
+    
   }
 
 

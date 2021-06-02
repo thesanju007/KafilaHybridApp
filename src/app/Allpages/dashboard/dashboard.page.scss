@@ -69,9 +69,16 @@ ion-radio {
 ion-radio-group {
   color: black;
 }
-
+ion-slides{
+  padding: 30px 0px 0px 0px;
+}
+@media only screen and (max-width: 768px) {
+  .for-app {
+    padding: 80px 0px 80px 0px;
+  }
+}
 @media only screen and (min-width: 769px) {
   .for-app {
-    padding: 80px 0px 0px 0px;
+    padding: 80px 80px 80px 40px;
   }
 }

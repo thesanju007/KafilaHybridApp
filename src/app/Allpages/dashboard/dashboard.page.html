@@ -1,7 +1,7 @@
 <ion-content  class="padding-none">
   <ion-grid  class="ion-padding for-app">
     <ion-row color="primary" justify-content-center class="padding-none">
-      <ion-col size-md="10" size-lg="9" size-xs="12" class="padding-none">
+      <ion-col size-xs="12" size-md="10" size-lg="8" size-xl="7"  class="padding-none">
         <ion-row color="primary" justify-content-center>
           <ion-col size-md="3" size-lg="2" size-xs="4" class="FTH " (click)="flight()" [ngClass]="[isAfterF?'FTHActive':'!FTHActive']">
             <p>
@@ -22,7 +22,7 @@
 
         <ion-card class="SB" *ngIf="flight_comp">
           <form [formGroup]="flightData"  (ngSubmit)="checkFlight()">
-            <ion-row color="primary" justify-content-center class="ion-padding">
+            <ion-row color="primary" justify-content-center >
               <ion-col size-md="12" size-lg="12" size-xs="12">
                 <ion-radio-group formControlName="flighttype">
                   <ion-radio value="1" (click)="show==0?show=0:show=0"></ion-radio>
@@ -238,5 +238,17 @@
 
       </ion-col>
     </ion-row> 
+    <ion-slides   [options]="slideOpts">
+      <ion-slide>   
+        <img src="../assets/1.jpg">     
+      </ion-slide>
+      <ion-slide>
+        <img src="../assets/3.jpg">      
+      </ion-slide>
+      <ion-slide>
+        <img src="../assets/7.jpg">      
+      </ion-slide>
+  </ion-slides> 
   </ion-grid>
+  
 </ion-content>
