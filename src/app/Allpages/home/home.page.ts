@@ -21,8 +21,8 @@ export class HomePage implements OnInit {
       this.Menu=result
     });
     if (window.screen.width <768) { 
-      this.smallMenu=true
-      this.bigMenu=false
+      this.smallMenu=false
+      this.bigMenu=true
     }
   }
 
@@ -33,8 +33,8 @@ export class HomePage implements OnInit {
       this.route.navigate(['index']);
     }, 6*60*60*500);
   }
-  bigMenu=true;
-  smallMenu=false;
+  bigMenu=false;
+  smallMenu=true;
   toggleMenu(){ 
     if (window.screen.width >768) {
       if(this.bigMenu==true){
