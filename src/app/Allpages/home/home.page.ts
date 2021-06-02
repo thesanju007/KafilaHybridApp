@@ -21,8 +21,8 @@ export class HomePage implements OnInit {
       this.Menu=result
     });
     if (window.screen.width <768) { 
-      this.smallMenu=false
-      this.bigMenu=true
+      this.smallMenu=true
+      this.bigMenu=false
     }
   }
 
