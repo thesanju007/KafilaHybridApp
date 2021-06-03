@@ -39,13 +39,4 @@ export class HomePage implements OnInit {
   }
 
 
-  subMenu=true
-  j:any
-  open:any
-  submn(i:any){
-    console.log(i)
-    this.open=!this.open
-
-  }
-
 }

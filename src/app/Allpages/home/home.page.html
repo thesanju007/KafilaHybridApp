@@ -15,7 +15,7 @@
             <ion-label>{{d.title}}</ion-label>
           </ion-item>
           <ion-list *ngIf="d.open" >
-            <ion-item *ngFor="let s of d.subMenu" [routerLink]="['/','home',s.url]"  >
+            <ion-item *ngFor="let s of d.subMenu" [routerLink]="['/','home',s.url]"  (click)="d.open = !d.open ">
               <ion-icon slot="start" name={{s.icon}}></ion-icon>                  
               <ion-label>{{s.title}}</ion-label>
             </ion-item>
