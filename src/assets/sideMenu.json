@@ -28,7 +28,10 @@
             {"title": "Transactions", "url": "htransactions", "icon": "" },
             {"title": "Payment History", "url": "hpaymenthistory", "icon": "" }
         ]
-    }
+    },
+    {"title": "My Account", "url": "myaccount", "icon": "person-circle" },
+    {"title": "Other", "url": "", "icon": "" }
+    
 ]
 
       

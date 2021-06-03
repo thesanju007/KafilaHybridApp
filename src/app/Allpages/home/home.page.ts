@@ -30,24 +30,22 @@ export class HomePage implements OnInit {
       this.route.navigate(['index']);
     }, 6*60*60*500);
   }
-  bigMenu=false;
+  bigMenu:any;
   toggleMenu(){ 
-   
     if(this.bigMenu==true){        
-      this.bigMenu=false
+      this.bigMenu=!this.bigMenu
     }
-    this.bigMenu=true
-  
-   
-    
+    this.bigMenu=!this.bigMenu
   }
 
 
-  isRemainderF=true
+  subMenu=true
   j:any
-  submn(d:any,i:any){
-    this.j=i
-    this.isRemainderF=!this.isRemainderF
+  open:any
+  submn(i:any){
+    console.log(i)
+    this.open=!this.open
+
   }
-  
+
 }
