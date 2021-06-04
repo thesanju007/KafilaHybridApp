@@ -67,23 +67,19 @@ ion-text{
   color: #fff;
 }
 
-.menu2{
-  --width:100px
-}
+
 
 @media only screen and (max-width: 768px) {
-  .menu2{
-    display:none
-  }
+
   .for-app{
     margin: 50px 0px 0px 0px;
   }
 
 }
-@media only screen and (max-width: 3100px) {
+@media only screen and (min-width:769px) {
   .for-app{
-    margin:30px 0px 0px 0px;
-
+    margin:55px 0px 0px 0px;
+    
   }
 }
 

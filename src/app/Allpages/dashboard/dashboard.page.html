@@ -1,7 +1,7 @@
 <ion-content  class="padding-none">
   <ion-grid  class="ion-padding for-app">
     <ion-row color="primary" justify-content-center class="padding-none">
-      <ion-col size-md="10" size-lg="9" size-xs="12" class="padding-none">
+      <ion-col size-xs="12" size-md="10" size-lg="8" size-xl="7"  class="padding-none">
         <ion-row color="primary" justify-content-center>
           <ion-col size-md="3" size-lg="2" size-xs="4" class="FTH " (click)="flight()" [ngClass]="[isAfterF?'FTHActive':'!FTHActive']">
             <p>
@@ -22,9 +22,9 @@
 
         <ion-card class="SB" *ngIf="flight_comp">
           <form [formGroup]="flightData"  (ngSubmit)="checkFlight()">
-            <ion-row color="primary" justify-content-center class="ion-padding">
+            <ion-row color="primary" justify-content-center >
               <ion-col size-md="12" size-lg="12" size-xs="12">
-                <ion-radio-group formControlName="flighttype">
+                <ion-radio-group formControlName="flighttype" value="1" >
                   <ion-radio value="1" (click)="show==0?show=0:show=0"></ion-radio>
                   <ion-label>One way</ion-label>
                   <ion-radio value="2" (click)="show==1?show=1:show=1"></ion-radio>
@@ -62,12 +62,7 @@
                   <ion-label position="floating">Select Arrival Date</ion-label>
                   <ion-datetime formControlName="A_date" min="max" pickerFormat="YYYY-MM-DD" displayFormat="YYYY-MM-DD"></ion-datetime>
                 </ion-item>
-                
-                  <input matInput  type="date">
-                  <input matInput   type="date">
-                  
-                
-              </ion-col>
+              </ion-col>              
             </ion-row>
 
             <ion-row color="primary" justify-content-center  >
@@ -89,8 +84,8 @@
               <ion-col size-md="4" size-lg="4" size-xs="4">
                 <ion-item>
                   <ion-label>Adults</ion-label>
-                  <ion-select formControlName="Adults">
-                    <ion-select-option value="1">1</ion-select-option>
+                  <ion-select formControlName="Adults" value="1" interface="action-sheet">
+                    <ion-select-option value="1" >1</ion-select-option>
                     <ion-select-option value="2">2</ion-select-option>
                   </ion-select>
                 </ion-item>
@@ -98,8 +93,8 @@
               <ion-col size-md="4" size-lg="4" size-xs="4">
                 <ion-item>
                   <ion-label>Childs</ion-label>
-                  <ion-select formControlName="Childs">
-                    <ion-select-option value="0">0</ion-select-option>
+                  <ion-select formControlName="Childs" value="0" interface="action-sheet">
+                    <ion-select-option value="0" >0</ion-select-option>
                     <ion-select-option value="1">1</ion-select-option>
                   </ion-select>
                 </ion-item>
@@ -107,8 +102,8 @@
               <ion-col size-md="4" size-lg="4" size-xs="4">
                 <ion-item>
                   <ion-label>Infants</ion-label>
-                  <ion-select formControlName="Infants">
-                    <ion-select-option value="0">0</ion-select-option>
+                  <ion-select formControlName="Infants" value="0" interface="action-sheet">
+                    <ion-select-option value="0"  >0</ion-select-option>
                     <ion-select-option value="1">1</ion-select-option>
                   </ion-select>
                 </ion-item>
@@ -238,5 +233,17 @@
 
       </ion-col>
     </ion-row> 
+    <ion-slides   [options]="slideOpts">
+      <ion-slide>   
+        <img src="../assets/1.jpg">     
+      </ion-slide>
+      <ion-slide>
+        <img src="../assets/3.jpg">      
+      </ion-slide>
+      <ion-slide>
+        <img src="../assets/7.jpg">      
+      </ion-slide>
+  </ion-slides> 
   </ion-grid>
+  
 </ion-content>

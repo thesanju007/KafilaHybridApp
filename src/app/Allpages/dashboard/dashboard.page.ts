@@ -22,7 +22,10 @@ export class DashboardPage implements OnInit {
   Today =   this.yyyy+  '-' +this.mm + '-' +this.dd; 
   min = new Date();
   max = new Date(this.min.getFullYear(), this.min.getMonth() + 6, this.min.getDate());
-
+  slideOpts = {
+    autoplay: true
+  };
+  imgList=["1.jpg","3.jpg","7.jpg"]
   
   minSelectableDate=this.Today;
   maxSelectableDate=this.Today;
