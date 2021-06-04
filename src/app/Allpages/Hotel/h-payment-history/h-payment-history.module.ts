@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { HPaymentHistoryPageRoutingModule } from './h-payment-history-routing.module';
 
 import { HPaymentHistoryPage } from './h-payment-history.page';
+//import {PaymentModule} from '../../../components/payment/payment.module';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { HPaymentHistoryPage } from './h-payment-history.page';
     FormsModule,
     IonicModule,
     HPaymentHistoryPageRoutingModule
+   
   ],
-  declarations: [HPaymentHistoryPage]
+  declarations: [HPaymentHistoryPage],
 })
 export class HPaymentHistoryPageModule {}

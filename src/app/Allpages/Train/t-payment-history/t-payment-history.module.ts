@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { TPaymentHistoryPageRoutingModule } from './t-payment-history-routing.module';
 
 import { TPaymentHistoryPage } from './t-payment-history.page';
-
+import {PaymentModule} from '../../../components/payment/payment.module';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TPaymentHistoryPageRoutingModule
+    TPaymentHistoryPageRoutingModule,
+    PaymentModule
   ],
   declarations: [TPaymentHistoryPage]
 })
