@@ -54,13 +54,13 @@
               <ion-col size-md="6" size-lg="6" size-xs="12">
                 <ion-item>
                   <ion-label position="floating">Select Departure Date</ion-label>
-                  <ion-datetime formControlName="D_date" min="min"  pickerFormat="YYYY-MM-DD" displayFormat="YYYY-MM-DD"></ion-datetime>
+                  <ion-input type="date" formControlName="D_date" [min]="todayt" [(ngModel)]="maxDate" (change)="returnDate($event.target.value)"></ion-input>
                 </ion-item>
               </ion-col>
               <ion-col size-md="6" size-lg="6" size-xs="12" *ngIf="show">
                 <ion-item >
                   <ion-label position="floating">Select Arrival Date</ion-label>
-                  <ion-datetime formControlName="A_date" min="max" pickerFormat="YYYY-MM-DD" displayFormat="YYYY-MM-DD"></ion-datetime>
+                  <ion-input type="date" formControlName="A_date" [min]="minDate"></ion-input>
                 </ion-item>
               </ion-col>              
             </ion-row>

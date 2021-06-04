@@ -6,7 +6,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage implements OnInit {
-  
+  todayt = new Date().toJSON().split('T')[0];
+  minDate=new Date().toJSON().split('T')[0];
   constructor() {}
   ngOnInit() {}
   isAfterF=true;
@@ -15,20 +16,15 @@ export class DashboardPage implements OnInit {
   flight_comp=true
   train_comp=false
   hotel_comp=false
-  today:any = new Date();
-  dd:any = String(this.today.getDate()).padStart(2, '0');
-  mm:any = String(this.today.getMonth() + 1).padStart(2, '0'); //January is 0!
-  yyyy:any = this.today.getFullYear();
-  Today =   this.yyyy+  '-' +this.mm + '-' +this.dd; 
-  min = new Date();
-  max = new Date(this.min.getFullYear(), this.min.getMonth() + 6, this.min.getDate());
+  maxDate:any;
+  returnDate(d){
+    this.minDate=d
+  }
   slideOpts = {
     autoplay: true
   };
   imgList=["1.jpg","3.jpg","7.jpg"]
   
-  minSelectableDate=this.Today;
-  maxSelectableDate=this.Today;
   quantity:any; 
   flight(){
     this.flight_comp=true
@@ -54,6 +50,7 @@ export class DashboardPage implements OnInit {
     this.isAfterF=false;
     this.isAfterT=false;
   }
+
   flightData = new FormGroup({
     flighttype: new FormControl('', [Validators.required]),
     D_airport : new FormControl('', [Validators.required]),
