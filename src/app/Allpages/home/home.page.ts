@@ -30,7 +30,11 @@ export class HomePage implements OnInit {
       this.route.navigate(['index']);
     }, 6*60*60*500);
   }
-  bigMenu:any;
+
+  bigMenu=false;
+  smallMenu=true;
+
+ 
   toggleMenu(){ 
     if(this.bigMenu==true){        
       this.bigMenu=!this.bigMenu
