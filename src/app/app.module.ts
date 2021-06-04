@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+
+//import { PaymentModule } from './components/payment/payment.module';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -15,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     IonicModule.forRoot(),
     AppRoutingModule, 
     BrowserAnimationsModule,
-    HttpClientModule,
+    HttpClientModule
+   // PaymentModule
     
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

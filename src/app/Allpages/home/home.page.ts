@@ -20,10 +20,7 @@ export class HomePage implements OnInit {
     this.tService.getTestData("../../../assets/sideMenu.json").subscribe(result=>{
       this.Menu=result
     });
-    if (window.screen.width <768) { 
-      this.smallMenu=false
-      this.bigMenu=true
-    }
+   
   }
 
   ionViewWillEnter()
@@ -33,34 +30,46 @@ export class HomePage implements OnInit {
       this.route.navigate(['index']);
     }, 6*60*60*500);
   }
+
   bigMenu=false;
   smallMenu=true;
+
+ 
   toggleMenu(){ 
-    if (window.screen.width >768) {
-      if(this.bigMenu==true){
-        this.smallMenu=true
-        this.bigMenu=false
-      }
-      else{
-        this.smallMenu=false
-        this.bigMenu=true
-      }
-
+    if(this.bigMenu==true){        
+      this.bigMenu=!this.bigMenu
     }
-    else if (window.screen.width <768) {
-      if(this.bigMenu==true){        
-        this.bigMenu=false
+    this.bigMenu=!this.bigMenu
+  }
+  Flight:any
+  Train:any
+  Hotel:any
+  toggleDetails(p) {
+    if (p.showDetails) {
+      if(this.Menu[0].title==p.title){
+        this.Menu[0].showDetails = false;
+        this.Menu[1].showDetails= true;
+        this.Menu[2].showDetails= true;
+
+
+      }else if(this.Menu[1].title==p.title){
+        this.Menu[1].showDetails= false;
+        this.Menu[0].showDetails= true;
+        this.Menu[2].showDetails= true;
       }
-      this.bigMenu=true
+      else if(this.Menu[2].title==p.title){
+        this.Menu[2].showDetails = false;
+        this.Menu[0].showDetails= true;
+        this.Menu[1].showDetails= true;
+      }
+      else
+      p.showDetails = false;
+      console.log(this.Menu[0].showDetails)  
+          
+    }
+    else {
+      p.showDetails = true;  
+      console.log(p.icon) 
     }
   }
-
-
-  isRemainderF=true
-  j:any
-  submn(d:any,i:any){
-    this.j=i
-    this.isRemainderF=!this.isRemainderF
-  }
-  
 }

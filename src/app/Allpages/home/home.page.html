@@ -1,48 +1,38 @@
 
-
-
+<app-header ></app-header>
 
 <ion-app>
-  <app-header ></app-header>
   <ion-split-pane contentId="main-content"  class=" for-app">
-    <ion-menu contentId="main-content" type="push"   *ngIf="bigMenu" auto-hide="true"  swipeEnabled="false" swipeGesture="false">
-      <ion-content >
-        <ion-list id="inbox-list" *ngFor="let d of Menu,let i = index" lines="none" >       
-          <ion-item    (click)="submn(d,i)" >    
+    <ion-menu contentId="main-content" type="push"   *ngIf="bigMenu">
+      <ion-content>
+        <ion-list id="inbox-list" *ngFor="let d of Menu,let i = index" lines="none" >
+          <ion-item  *ngIf="d.subMenu"   (click)="toggleDetails(d)"  detail="false">
             <ion-icon slot="start" name={{d.icon}}></ion-icon>              
             <ion-label>{{d.title}}</ion-label>
-            <ion-icon slot="end" [name]="isRemainderF? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
+            
+            
           </ion-item>
-          <ion-menu-toggle auto-hide="false"  [hidden]="isRemainderF" *ngFor="let s of d.subMenu">
-            <ion-item  lines="none" [routerLink]="['/','home',s.url]"  > 
-              <ion-icon slot="start" name={{s.icon}}></ion-icon>                
+
+          <ion-list *ngIf="!d.showDetails" >
+            <ion-item *ngFor="let s of d.subMenu" [routerLink]="['/','home',s.url]"  >
+              <ion-icon slot="start" name={{s.icon}}></ion-icon>                  
               <ion-label>{{s.title}}</ion-label>
             </ion-item>
-          </ion-menu-toggle>
-        </ion-list> 
-      </ion-content>
-    </ion-menu>  
+          </ion-list>
 
-    <ion-menu contentId="main-content"  type="push" lines="full" *ngIf="smallMenu" auto-hide="false" class="menu2 "  swipeEnabled="false" swipeGesture="false">
-      <ion-content >
-        <ion-list lines="none" id="inbox-list"> 
-          <ion-item [routerLink]="['/','home','dashboard']">
-            <ion-icon  slot="start" name="Airplane"></ion-icon>
+          <ion-item  *ngIf="!d.subMenu" detail="false" [routerLink]="['/','home',d.url]">
+            <ion-icon slot="start" name={{d.icon}}></ion-icon>              
+            <ion-label>{{d.title}}</ion-label>
+          </ion-item>
           
-          </ion-item>
-          <ion-item [routerLink]="['/','home','dashboard']">
-            <ion-icon  slot="start" name="train"></ion-icon>
-            
-          </ion-item>
-          <ion-item [routerLink]="['/','home','dashboard']">
-            <ion-icon  slot="start" name="home"></ion-icon>
-            
-          </ion-item>
-        </ion-list> 
+        </ion-list>
       </ion-content>
-    </ion-menu>  
-    <ion-router-outlet id="main-content"></ion-router-outlet>
+    </ion-menu>
+
+    
+  <ion-router-outlet id="main-content"></ion-router-outlet>
   </ion-split-pane>
-  <app-footer></app-footer>
+  
 </ion-app>
 
+<app-footer></app-footer>
