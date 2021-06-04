@@ -37,6 +37,35 @@ export class HomePage implements OnInit {
     }
     this.bigMenu=!this.bigMenu
   }
+  Flight:any
+  Train:any
+  Hotel:any
+  toggleDetails(p) {
+    if (p.showDetails) {
+      if(this.Menu[0].title==p.title){
+        this.Menu[0].showDetails = false;
+        this.Menu[1].showDetails= true;
+        this.Menu[2].showDetails= true;
 
 
+      }else if(this.Menu[1].title==p.title){
+        this.Menu[1].showDetails= false;
+        this.Menu[0].showDetails= true;
+        this.Menu[2].showDetails= true;
+      }
+      else if(this.Menu[2].title==p.title){
+        this.Menu[2].showDetails = false;
+        this.Menu[0].showDetails= true;
+        this.Menu[1].showDetails= true;
+      }
+      else
+      p.showDetails = false;
+      console.log(this.Menu[0].showDetails)  
+          
+    }
+    else {
+      p.showDetails = true;  
+      console.log(p.icon) 
+    }
+  }
 }

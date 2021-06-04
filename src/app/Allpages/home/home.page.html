@@ -3,23 +3,26 @@
   <ion-split-pane contentId="main-content"  class=" for-app">
     <ion-menu contentId="main-content" type="push"   *ngIf="bigMenu">
       <ion-content>
-        <ion-list id="inbox-list" *ngFor="let d of Menu" lines="none" >
-          <ion-item  *ngIf="d.subMenu"   (click)="d.open = !d.open " detail="false">
+        <ion-list id="inbox-list" *ngFor="let d of Menu,let i = index" lines="none" >
+          <ion-item  *ngIf="d.subMenu"   (click)="toggleDetails(d)"  detail="false">
             <ion-icon slot="start" name={{d.icon}}></ion-icon>              
             <ion-label>{{d.title}}</ion-label>
-            <ion-icon slot="end" name="arrow-forward" *ngIf="!d.open"></ion-icon>
-            <ion-icon slot="end" name="arrow-down" *ngIf="d.open"></ion-icon>
+            
+            
           </ion-item>
-          <ion-item  *ngIf="!d.subMenu" detail="false" [routerLink]="['/','home',d.url]">
-            <ion-icon slot="start" name={{d.icon}}></ion-icon>              
-            <ion-label>{{d.title}}</ion-label>
-          </ion-item>
-          <ion-list *ngIf="d.open" >
-            <ion-item *ngFor="let s of d.subMenu" [routerLink]="['/','home',s.url]"  (click)="d.open = !d.open ">
+
+          <ion-list *ngIf="!d.showDetails" >
+            <ion-item *ngFor="let s of d.subMenu" [routerLink]="['/','home',s.url]"  >
               <ion-icon slot="start" name={{s.icon}}></ion-icon>                  
               <ion-label>{{s.title}}</ion-label>
             </ion-item>
           </ion-list>
+
+          <ion-item  *ngIf="!d.subMenu" detail="false" [routerLink]="['/','home',d.url]">
+            <ion-icon slot="start" name={{d.icon}}></ion-icon>              
+            <ion-label>{{d.title}}</ion-label>
+          </ion-item>
+          
         </ion-list>
       </ion-content>
     </ion-menu>

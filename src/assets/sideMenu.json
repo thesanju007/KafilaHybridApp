@@ -1,5 +1,5 @@
 [
-    {"title": "Flight",  "icon": "Airplane","subMenu" :
+    {"title": "Flight",  "icon": "Airplane", "showDetails": "false","subMenu" :
         [
             {"title": "Search", "url": "dashboard", "icon": "search" },
             {"title": "Booking History", "url": "fbookinghistory", "icon": "" },
@@ -9,7 +9,7 @@
             {"title": "Payment History", "url": "fpaymenthistory", "icon": "" }
         ]
     },
-    {"title": "Train",  "icon": "train","subMenu" :
+    {"title": "Train",  "icon": "train", "showDetails": "false","subMenu" :
         [
             {"title": "Search", "url": "dashboard", "icon": "search" },
             {"title": "Booking History", "url": "tbookinghistory", "icon": "" },
@@ -19,7 +19,7 @@
             {"title": "Payment History", "url": "tpaymenthistory", "icon": "" }
         ]
     },
-    {"title": "Hotel",  "icon": "home","subMenu" :
+    {"title": "Hotel",  "icon": "home", "showDetails": "false","subMenu" :
         [
             {"title": "Search", "url": "dashboard", "icon": "search" },
             {"title": "Booking History", "url": "hbookinghistory", "icon": "" },
