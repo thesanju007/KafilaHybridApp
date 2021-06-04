@@ -59,13 +59,10 @@ export class HomePage implements OnInit {
         this.Menu[1].showDetails= true;
       }
       else
-      p.showDetails = false;
-      console.log(this.Menu[0].showDetails)  
-          
+      p.showDetails = false;    
     }
     else {
       p.showDetails = true;  
-      console.log(p.icon) 
     }
   }
 }
