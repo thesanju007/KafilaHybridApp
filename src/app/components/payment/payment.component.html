@@ -1,0 +1,64 @@
+
+  
+  <ion-grid>
+    <ion-row>
+      <ion-col size="3">
+            <ion-list>
+          <ion-item>
+            <ion-item  (click)="optionControler('wallet')">Agency Wallet</ion-item>
+          </ion-item>
+          <ion-item>
+            <ion-label (click)="optionControler('paytm')">Paytm</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label (click)="optionControler('payu')">Payu</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label (click)="optionControler('paymate')">PayMate</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label (click)="optionControler('hdfc')">Hdfc</ion-label>
+          </ion-item>
+        </ion-list>
+        
+      </ion-col>
+      <ion-col>
+       <ion-content >
+             <div *ngFor="let data of dummyList">
+              <ng-container *ngIf="data.value ==true"> 
+                <ng-container *ngIf="data.name =='wallet'"> 
+                  <ion-card color="secondary">
+                  <ion-card-header>
+                    <ion-card-subtitle>Agent Wallet</ion-card-subtitle>
+                    
+                  </ion-card-header>
+                
+                  <ion-card-content >
+                    <ion-checkbox slot="end" disabled="false" class="my-checkbox "></ion-checkbox>
+                      <ion-label margin-left="1" class="my-checkbox">Agenyc Balance</ion-label>
+                      
+                    
+                  </ion-card-content>
+                </ion-card>
+              </ng-container> 
+              </ng-container> 
+
+            </div>   
+          <!-- <tr *ngFor="let data of dummyList">
+            <ng-container *ngIf="data.value ==true"> 
+              <td>{{data.name}}</td>
+            </ng-container> 
+          </tr> -->
+        
+      </ion-content>
+      
+      </ion-col>
+     
+    </ion-row>
+  </ion-grid>
+  
+    
+  
+  
+
+
