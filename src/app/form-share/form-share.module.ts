@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatSidenavModule   } from '@angular/material/sidenav';
+import {MatSelectModule} from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatDatepickerModule} from '@angular/material/datepicker';
@@ -9,6 +11,7 @@ import { MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatRadioModule} from '@angular/material/radio';
 import { MatMenuModule} from '@angular/material/menu';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -24,7 +27,9 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
     MatProgressBarModule,
     MatDatepickerModule,
     MatIconModule,
-    FormsModule,ReactiveFormsModule
+    FormsModule,ReactiveFormsModule,
+    MatSidenavModule ,
+    MatSelectModule
   ]
 })
 export class FormShareModule { }

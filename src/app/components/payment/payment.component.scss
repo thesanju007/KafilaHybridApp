@@ -1,0 +1,49 @@
+.example-container {
+    width: 400px;
+    height: 200px;
+    margin: 12px;
+    border: 1px solid #555;
+  }
+  
+  mat-drawer-content {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .my-chkbox {
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    margin: 0;
+    vertical-align: bottom;
+    position: relative;
+    
+  }
+  .my-rb {
+    width: 25px;
+    height: 25px;
+    padding: 5px;
+    margin: 0;
+    vertical-align: bottom;
+    position: relative;
+    
+  }
+  ion-card {
+    flex-basis: 100%;
+}
+ion-content {
+    --overflow: hidden;
+ }
+ .ib{
+   
+    font-size: 18px;
+    vertical-align: bottom;
+    position: relative;
+    padding: 5px;
+    margin: 0;
+}
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+

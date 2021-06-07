@@ -1,23 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { TestService } from '../../Services/test.service'
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage implements OnInit {
+
   todayt = new Date().toJSON().split('T')[0];
   minDate:any
   arp: any
   arp_new:any
   selected_airport:any
+
+  
+  constructor() {}
+  ngOnInit() {}
+
   isAfterF=true;
   isAfterT=false;
   isAfterH=false;
   flight_comp=true
   train_comp=false
   hotel_comp=false
+
   imgList=["1.jpg","3.jpg","7.jpg"]
   quantity:any;
   constructor(private tService: TestService) {}
@@ -53,10 +59,23 @@ export class DashboardPage implements OnInit {
     this.minDate=d
   }
 
+
+  today:any = new Date();
+  dd:any = String(this.today.getDate()).padStart(2, '0');
+  mm:any = String(this.today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  yyyy:any = this.today.getFullYear();
+  Today =   this.yyyy+  '-' +this.mm + '-' +this.dd; 
+  min = new Date();
+  max = new Date(this.min.getFullYear(), this.min.getMonth() + 6, this.min.getDate());
+
   slideOpts = {
     autoplay: true
   };
   
+
+  minSelectableDate=this.Today;
+  maxSelectableDate=this.Today;
+  quantity:any; 
   flight(){
     this.flight_comp=true
     this.hotel_comp=false
@@ -83,7 +102,6 @@ export class DashboardPage implements OnInit {
     this.isAfterF=false;
     this.isAfterT=false;
   }
-
   flightData = new FormGroup({
     flighttype: new FormControl('', [Validators.required]),
     D_airport : new FormControl('', [Validators.required]),

@@ -7,80 +7,69 @@ import { TestService } from '../../../Services/test.service'
   styleUrls: ['./t-search.page.scss'],
 })
 export class TSearchPage implements OnInit {
+ 
+  constructor() {}
+  ngOnInit() {}
+  isAfterF=true;
+  isAfterT=false;
+  isAfterH=false;
+  flight_comp=true
+  train_comp=false
+  hotel_comp=false
+  today:any = new Date();
+  dd:any = String(this.today.getDate()).padStart(2, '0');
+  mm:any = String(this.today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  yyyy:any = this.today.getFullYear();
+  Today =   this.yyyy+  '-' +this.mm + '-' +this.dd; 
+  min = new Date();
+  max = new Date(this.min.getFullYear(), this.min.getMonth() + 6, this.min.getDate());
 
-  constructor(private tService: TestService) { }
-
-  ngOnInit() {
-    this.tService.getTestData("../../../assets/airport.json").subscribe(result=>{
-      this.arp=result
-    });
-  }
-   arp: any
-
-  token: any 
   
-  RoundFlight: any = false
-  F_class = [
-    "First",
-    "Bussiness",
-    "Premium First",
-    "Premium Ecomomy",
-    "Ecomomy (Coach)"
-  ]
-  F_flights = [
-    "All"
-  ]
-  isAfter: any = true;
-  ShowOne() {
-    this.RoundFlight = false
+  minSelectableDate=this.Today;
+  maxSelectableDate=this.Today;
+  quantity:any; 
+  flight(){
+    this.flight_comp=true
+    this.hotel_comp=false
+    this.train_comp=false
+    this.isAfterF=true;
+    this.isAfterT=false;
+    this.isAfterH=false;
   }
-  ShowRound() {
-    this.RoundFlight = true
+  train(){
+    this.flight_comp=false
+    this.hotel_comp=false
+    this.train_comp=true
+    this.isAfterT=true
+    this.isAfterF=false;
+    this.isAfterH=false;
+  }
+  hotel(){
+    this.flight_comp=false
+    this.hotel_comp=true
+    this.train_comp=false
+    this.isAfterH=true
+    this.isAfterF=false;
+    this.isAfterT=false;
   }
   flightData = new FormGroup({
     flighttype: new FormControl('', [Validators.required]),
-    D_airport: new FormControl('', [Validators.required, Validators.pattern('[A-Z,a-z, ]{1,20}')]),
-    A_airport: new FormControl('', [Validators.required, Validators.pattern('[A-Z,a-z, ]{1,20}')]),
-    D_date: new FormControl('', [Validators.required]),
-    A_date: new FormControl('', [Validators.required]),
-    PClass: new FormControl(''),
-    PFlight: new FormControl(''),
-    Adults: new FormControl('', [Validators.required, Validators.pattern('[0-9, ]{1}')]),
-    Childs: new FormControl('', [Validators.pattern('[0-9, ]{1}')]),
-    Infants: new FormControl('', [Validators.pattern('[0-9, ]{1}')]),
+    D_airport : new FormControl('', [Validators.required]),
+    A_airport : new FormControl('', [Validators.required]),
+    D_date    : new FormControl('', [Validators.required]),
+    A_date    : new FormControl('', [Validators.required]),
+    PClass    : new FormControl('', [Validators.required]),
+    PFlight   : new FormControl('', [Validators.required]),
+    Adults    : new FormControl('', [Validators.required]),
+    Childs    : new FormControl('', [Validators.required]),
+    Infants   : new FormControl('', [Validators.required]),
   })
-
-  minDate = new Date();
-  dateval(event: any) {
-    this.selDate = event
-  }
-  selDate: any
   checkFlight() {
-
-    let data: any = {
-      TYPE: "AIR",
-      NAME: "GET_FLIGHT",
-      STR: [
-        {
-          AUTH_TOKEN: this.token,
-          SESSION_ID: "",
-          TRIP: this.flightData.value.flighttype,
-          SECTOR: "D",
-          SRC: this.flightData.value.D_airport,
-          DES: this.flightData.value.A_airport,
-          DEP_DATE: this.flightData.value.D_date,
-          RET_DATE: this.flightData.value.A_date,
-          ADT: this.flightData.value.Adults,
-          CHD: 0,
-          INF: 0,
-          PC: "",
-          PF: "",
-          HS: "D"
-        }
-      ]
-    }
-    let js_data = JSON.stringify(data)
- 
+   
+    console.log(this.flightData.value)
   }
+   
+         
+ 
 
 }

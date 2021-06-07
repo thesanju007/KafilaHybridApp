@@ -30,7 +30,11 @@ export class HomePage implements OnInit {
       this.route.navigate(['index']);
     }, 6*60*60*500);
   }
-  bigMenu:any;
+
+  bigMenu=false;
+  smallMenu=true;
+
+ 
   toggleMenu(){ 
     if(this.bigMenu==true){        
       this.bigMenu=!this.bigMenu
@@ -59,10 +63,13 @@ export class HomePage implements OnInit {
         this.Menu[1].showDetails= true;
       }
       else
-      p.showDetails = false;    
+      p.showDetails = false;
+      console.log(this.Menu[0].showDetails)  
+          
     }
     else {
       p.showDetails = true;  
+      console.log(p.icon) 
     }
   }
 }
