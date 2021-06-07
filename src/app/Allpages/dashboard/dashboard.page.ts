@@ -7,62 +7,40 @@ import { TestService } from '../../Services/test.service'
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage implements OnInit {
-
   todayt = new Date().toJSON().split('T')[0];
   minDate:any
   arp: any
   arp_new:any
   selected_airport:any
-
-  
-
-
   isAfterF=true;
   isAfterT=false;
   isAfterH=false;
   flight_comp=true
   train_comp=false
   hotel_comp=false
-
   imgList=["1.jpg","3.jpg","7.jpg"]
   quantity:any;
+
   constructor(private tService: TestService) {}
   ngOnInit() {
     this.tService.getTestData("../../../assets/airport.json").subscribe(result=>{
       this.arp=result   
-      this.arp_new=result
+      // this.arp_new=result
     });
 
   }
 
   removeAirport(airport){
-    // this.arp_new=airport
-
-    console.log(airport)
-    this.arp.some(this.isAir)
+    this.arp_new=this.arp.filter(function(value, index, arr){ 
+      return value.code!==airport;
+  });
   }
-  isAir(element, index, array){
-    console.log(element)
-    console.log(index)
-    console.log(array)
-  }
-
-//  iseven(element, index, array) 
-// {  
-//    return (element % 2 == 0);  
-// }   
-// var arr = [ 11, 89, 23, 7, 91 ]; 
-// var value = arr.some(iseven); 
-// console.log( value );
-
   returnDate(d){
     this.minDate=d
   }
   slideOpts = {
     autoplay: true
   };
-
-  
   flight(){
     this.flight_comp=true
     this.hotel_comp=false
@@ -71,7 +49,6 @@ export class DashboardPage implements OnInit {
     this.isAfterT=false;
     this.isAfterH=false;
   }
-
   train(){
     this.flight_comp=false
     this.hotel_comp=false
@@ -80,7 +57,6 @@ export class DashboardPage implements OnInit {
     this.isAfterF=false;
     this.isAfterH=false;
   }
-
   hotel(){
     this.flight_comp=false
     this.hotel_comp=true
@@ -102,7 +78,6 @@ export class DashboardPage implements OnInit {
     Infants   : new FormControl('', [Validators.required]),
   })
   checkFlight() {
-   
     console.log(this.flightData.value)
   }
   
