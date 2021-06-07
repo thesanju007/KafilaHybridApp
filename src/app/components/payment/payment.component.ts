@@ -9,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 export class PaymentComponent implements OnInit {
 
   constructor() { }
-  PG: any [] = [{"name":"wallet","value":false},{"name":"paytm","value":false},{"name":"payu","value":false},{"name":"paymate","value":false},{"name":"hdfc","value":false}];
-  dummyList: any [] = []; 
-  
+  PG: any []=[{"name":"paytm","status":true,"item":[{"iname":"CC","active":true,"percent":true,"value":"0.5"},{"iname":"DC","active":true,"percent":true,"value":"0.5"},{"iname":"NB","active":true,"percent":true,"value":"0.5"},{"iname":"UPI","active":true,"percent":true,"value":"0.5"},{"iname":"CASH","active":true,"percent":true,"value":"0.5"}]},{"name":"payu","status":true,"item":[{"iname":"CC","active":true,"percent":true,"value":"0.5"},{"iname":"DC","active":true,"percent":true,"value":"0.5"},{"iname":"NB","active":true,"percent":true,"value":"0.5"},{"iname":"UPI","active":true,"percent":true,"value":"0.5"},{"iname":"CASH","active":false,"percent":true,"value":"0.5"}]},{"name":"paymate","status":true,"item":[{"iname":"CC","active":true,"percent":true,"value":"0.5"},{"iname":"DC","active":true,"percent":true,"value":"0.5"},{"iname":"NB","active":true,"percent":true,"value":"0.5"},{"iname":"UPI","active":true,"percent":true,"value":"0.5"},{"iname":"CASH","active":true,"percent":true,"value":"0.5"}]},{"name":"hdfc","status":true,"item":[{"iname":"CC","active":true,"percent":true,"value":"0.5"},{"iname":"DC","active":true,"percent":true,"value":"0.5"},{"iname":"NB","active":true,"percent":true,"value":"0.5"},{"iname":"UPI","active":true,"percent":true,"value":"0.5"},{"iname":"CASH","active":true,"percent":true,"value":"0.5"}]}];
+  itemArr: any[]=[];
+  pg_name="";
+  selected:string;
   ngOnInit() {}
 
 optionControler(x:string){
@@ -21,8 +22,8 @@ optionControler(x:string){
   {
     if(x==this.PG[i]["name"])
     {
-      this.PG[i]["value"]=true;
-    
+     this.pg_name=this.PG[i]["name"];
+    this.itemArr= this.PG[i]["item"].filter((e) => { return e.active == true })
     }
     else{
       this.PG[i]["value"]=false;
@@ -30,16 +31,11 @@ optionControler(x:string){
     }
 
   }
-  console.log(this.PG);
-  this.dummyList=this.PG;
-}
-doRefresh(event) {
-  console.log('Begin async operation');
+  
 
-  setTimeout(() => {
-    
-    console.log('Async operation has ended');
-    event.target.complete();
-  }, 20);
 }
+get_calculation(event) {
+  console.log(event.target.value);
+}
+
 }
