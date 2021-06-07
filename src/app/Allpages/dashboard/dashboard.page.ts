@@ -39,13 +39,13 @@ export class DashboardPage implements OnInit {
     // this.arp_new=airport
 
     console.log(airport)
-    this.arp.some(this.isAir)
+    this.arp.some( (element, index, array)=>{
+      console.log(element)
+      console.log(index)
+      console.log(array)
+    } )
   }
-  isAir(element, index, array){
-    console.log(element)
-    console.log(index)
-    console.log(array)
-  }
+
 
 //  iseven(element, index, array) 
 // {  
