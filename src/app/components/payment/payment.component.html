@@ -1,62 +1,82 @@
 
-  
-  <ion-grid>
-    <ion-row>
-      <ion-col size="3">
-            <ion-list>
-          <ion-item>
-            <ion-item  (click)="optionControler('wallet')">Agency Wallet</ion-item>
-          </ion-item>
-          <ion-item>
-            <ion-label (click)="optionControler('paytm')">Paytm</ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-label (click)="optionControler('payu')">Payu</ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-label (click)="optionControler('paymate')">PayMate</ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-label (click)="optionControler('hdfc')">Hdfc</ion-label>
-          </ion-item>
-        </ion-list>
-        
-      </ion-col>
-      <ion-col>
-       <ion-content >
-             <div *ngFor="let data of dummyList">
-              <ng-container *ngIf="data.value ==true"> 
-                <ng-container *ngIf="data.name =='wallet'"> 
-                  <ion-card color="secondary">
-                  <ion-card-header>
-                    <ion-card-subtitle>Agent Wallet</ion-card-subtitle>
-                    
-                  </ion-card-header>
-                
-                  <ion-card-content >
-                    <ion-checkbox slot="end" disabled="false" class="my-checkbox "></ion-checkbox>
-                      <ion-label margin-left="1" class="my-checkbox">Agenyc Balance</ion-label>
-                      
-                    
-                  </ion-card-content>
-                </ion-card>
-              </ng-container> 
-              </ng-container> 
 
-            </div>   
-          <!-- <tr *ngFor="let data of dummyList">
-            <ng-container *ngIf="data.value ==true"> 
-              <td>{{data.name}}</td>
-            </ng-container> 
-          </tr> -->
-        
-      </ion-content>
-      
-      </ion-col>
-     
+ 
+  <ion-grid>
+    <ion-row >
+      <ion-card color="secondary" >
+        <ion-card-header>
+          <ion-card-title>Agency Name: KAFILA HOSPITALITY AND TRAVEL PRIVATE LIMITED (18785869)</ion-card-title>
+          </ion-card-header>
+         <ion-card-content >
+          <ion-label >
+          <ion-checkbox slot="end"  class="my-chkbox"></ion-checkbox>
+             I agree to pay mention amount from my current agency balance: 50000/-</ion-label>
+          </ion-card-content>
+      </ion-card> 
     </ion-row>
-  </ion-grid>
-  
+  <ion-row>
+    <ion-col>
+      
+      <ion-list *ngFor="let data of PG" no-line>
+       <ion-item (click)="optionControler(data.name)"  > <ion-icon name="home" color="primary" size="small"> </ion-icon> {{data.name|titlecase}}</ion-item>
+       </ion-list>
+    </ion-col>
+    <ion-col>
+      <ion-content [ngSwitch]="pg_name" >
+                   
+        <ng-container *ngSwitchCase ="'payu'" > 
+          <!-- <div *ngFor="let idata of itemArr " > 
+            {{idata.iname}}            
+          </div> -->
+          <mat-radio-group aria-label="Select an option" *ngFor="let idata of itemArr">
+            <mat-radio-button value="idata.iname">
+              {{idata.iname}}    
+            </mat-radio-button>
+            
+          </mat-radio-group>
+          
+      </ng-container>
+      <ng-container *ngSwitchCase ="'paytm'"> 
+        <ion-card color="secondary">
+        <ion-card-header>
+          <ion-card-title>Paytm payment gateway</ion-card-title>
+          </ion-card-header>
+         <ion-card-content >
+          <ion-label >
+          <ion-checkbox slot="end"  class="my-chkbox"></ion-checkbox>
+             Current agenyc balance: 50000/-</ion-label>
+          </ion-card-content>
+      </ion-card> 
+    </ng-container>
+    <ng-container *ngSwitchCase ="'paymate'"> 
+      <ion-card color="secondary">
+      <ion-card-header>
+        <ion-card-title>Paymate payment gateway</ion-card-title>
+        </ion-card-header>
+       <ion-card-content >
+        <ion-label >
+        <ion-checkbox slot="end"  class="my-chkbox"></ion-checkbox>
+           Current agenyc balance: 50000/-</ion-label>
+        </ion-card-content>
+    </ion-card> 
+  </ng-container>
+  <ng-container *ngSwitchCase ="'hdfc'"> 
+    <ion-card color="secondary">
+    <ion-card-header>
+      <ion-card-title>HDFC payment gateway</ion-card-title>
+      </ion-card-header>
+     <ion-card-content >
+      <ion-label >
+      <ion-checkbox slot="end"  class="my-chkbox"></ion-checkbox>
+         Current agenyc balance: 50000/-</ion-label>
+      </ion-card-content>
+  </ion-card> 
+  </ng-container>
+      </ion-content> 
+    </ion-col>
+  </ion-row>
+  </ion-grid> 
+
     
   
   
