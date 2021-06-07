@@ -38,7 +38,7 @@ export class DashboardPage implements OnInit {
   isAir(element, index, array){
     console.log(element)
     console.log(index)
-    console.log(element)
+    console.log(array)
   }
 
 //  iseven(element, index, array) 
