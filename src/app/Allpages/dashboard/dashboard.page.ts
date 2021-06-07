@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { TestService } from '../../Services/test.service'
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
@@ -14,8 +15,7 @@ export class DashboardPage implements OnInit {
   selected_airport:any
 
   
-  constructor() {}
-  ngOnInit() {}
+
 
   isAfterF=true;
   isAfterT=false;
@@ -58,24 +58,11 @@ export class DashboardPage implements OnInit {
   returnDate(d){
     this.minDate=d
   }
-
-
-  today:any = new Date();
-  dd:any = String(this.today.getDate()).padStart(2, '0');
-  mm:any = String(this.today.getMonth() + 1).padStart(2, '0'); //January is 0!
-  yyyy:any = this.today.getFullYear();
-  Today =   this.yyyy+  '-' +this.mm + '-' +this.dd; 
-  min = new Date();
-  max = new Date(this.min.getFullYear(), this.min.getMonth() + 6, this.min.getDate());
-
   slideOpts = {
     autoplay: true
   };
-  
 
-  minSelectableDate=this.Today;
-  maxSelectableDate=this.Today;
-  quantity:any; 
+  
   flight(){
     this.flight_comp=true
     this.hotel_comp=false
