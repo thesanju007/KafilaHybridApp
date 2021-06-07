@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { TestService } from '../../Services/test.service'
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
@@ -8,8 +9,15 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class DashboardPage implements OnInit {
   todayt = new Date().toJSON().split('T')[0];
   minDate=new Date().toJSON().split('T')[0];
-  constructor() {}
-  ngOnInit() {}
+  arp: any
+  
+  constructor(private tService: TestService) {}
+  ngOnInit() {
+    this.tService.getTestData("../../../assets/airport.json").subscribe(result=>{
+      this.arp=result     
+    });
+
+  }
   isAfterF=true;
   isAfterT=false;
   isAfterH=false;
