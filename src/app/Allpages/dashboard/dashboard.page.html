@@ -39,7 +39,7 @@
               <ion-col size-md="3" size-lg="3" size-xs="12">
                 <ion-item>
                   <ion-label position="stacked" class="label">Select Departure City</ion-label>
-                  <input formControlName="D_airport" list="D_airport">
+                  <input formControlName="D_airport" list="D_airport" (change)="removeAirport($event.target.value)">
                   <datalist id="D_airport">
                     <option  *ngFor="let arpt of arp" [value]="arpt.code" >{{arpt.city}}, {{arpt.country}}</option>
                   </datalist>
@@ -50,7 +50,7 @@
                   <ion-label position="stacked" class="label">Select Arrival City</ion-label>
                   <input formControlName="A_airport" list="D_airport">
                   <datalist id="D_airport">
-                    <option  *ngFor="let arpt of arp" [value]="arpt.code" >{{arpt.city}}, {{arpt.country}}</option>
+                    <option  *ngFor="let arpt_new of arp_new" [value]="arpt_new.code" >{{arpt_new.city}}, {{arpt_new.country}}</option>
                   </datalist>
                 </ion-item>                
               </ion-col>
