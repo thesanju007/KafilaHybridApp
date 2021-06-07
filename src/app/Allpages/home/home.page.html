@@ -6,11 +6,12 @@
     <ion-menu contentId="main-content" type="push"   *ngIf="bigMenu">
       <ion-content>
         <ion-list id="inbox-list" *ngFor="let d of Menu,let i = index" lines="none" >
-          <ion-item  *ngIf="d.subMenu"   (click)="toggleDetails(d)"  detail="false">
+
+          <ion-item  *ngIf="d.subMenu"   (click)="toggleDetails(d)" >
             <ion-icon slot="start" name={{d.icon}}></ion-icon>              
             <ion-label>{{d.title}}</ion-label>
-            
-            
+            <ion-icon name="caret-down-outline" *ngIf="d.showDetails"></ion-icon>
+            <ion-icon name="caret-up-outline" *ngIf="!d.showDetails"></ion-icon>           
           </ion-item>
 
           <ion-list *ngIf="!d.showDetails" >
@@ -20,11 +21,13 @@
             </ion-item>
           </ion-list>
 
-          <ion-item  *ngIf="!d.subMenu" detail="false" [routerLink]="['/','home',d.url]">
+        
+          <ion-item  *ngIf="!d.subMenu" [routerLink]="['/','home',d.url]">
             <ion-icon slot="start" name={{d.icon}}></ion-icon>              
             <ion-label>{{d.title}}</ion-label>
-          </ion-item>
+          </ion-item>         
           
+
         </ion-list>
       </ion-content>
     </ion-menu>

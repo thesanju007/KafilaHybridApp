@@ -11,18 +11,19 @@ import { Subscription } from 'rxjs'
 export class HomePage implements OnInit {
   Menu:any;
   clickEventSubs:Subscription
+  bigMenu=false;
+  smallMenu=true;
   constructor(private route: Router,private tService: TestService) {
     this.clickEventSubs=this.tService.getClickEvent().subscribe(()=>{
       this.toggleMenu();
     })
-   }
+  }
   ngOnInit() {
     this.tService.getTestData("../../../assets/sideMenu.json").subscribe(result=>{
       this.Menu=result
     });
    
   }
-
   ionViewWillEnter()
   {
     setTimeout(() => {
@@ -30,11 +31,6 @@ export class HomePage implements OnInit {
       this.route.navigate(['index']);
     }, 6*60*60*500);
   }
-
-  bigMenu=false;
-  smallMenu=true;
-
- 
   toggleMenu(){ 
     if(this.bigMenu==true){        
       this.bigMenu=!this.bigMenu
@@ -50,8 +46,6 @@ export class HomePage implements OnInit {
         this.Menu[0].showDetails = false;
         this.Menu[1].showDetails= true;
         this.Menu[2].showDetails= true;
-
-
       }else if(this.Menu[1].title==p.title){
         this.Menu[1].showDetails= false;
         this.Menu[0].showDetails= true;
@@ -63,13 +57,10 @@ export class HomePage implements OnInit {
         this.Menu[1].showDetails= true;
       }
       else
-      p.showDetails = false;
-      console.log(this.Menu[0].showDetails)  
-          
+      p.showDetails = false;    
     }
     else {
       p.showDetails = true;  
-      console.log(p.icon) 
     }
   }
 }
