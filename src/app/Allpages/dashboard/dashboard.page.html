@@ -1,7 +1,7 @@
 <ion-content  class="padding-none">
   <ion-grid  class="ion-padding for-app">
     <ion-row color="primary" justify-content-center class="padding-none">
-      <ion-col size-xs="12" size-md="12" size-lg="12" size-xl="12"  class="padding-none">
+      <ion-col size-xs="12" size-md="10" size-lg="8" size-xl="7"  class="padding-none">
         <ion-row color="primary" justify-content-center>
           <ion-col size-md="3" size-lg="2" size-xs="4" class="FTH " (click)="flight()" [ngClass]="[isAfterF?'FTHActive':'!FTHActive']">
             <p>
@@ -36,8 +36,9 @@
             </ion-row>
 
             <ion-row color="primary" justify-content-center  >
-              <ion-col size-md="3" size-lg="3" size-xs="12">
+              <ion-col size-md="6" size-lg="6" size-xs="12">
                 <ion-item>
+
                   <ion-label position="stacked" class="label">Select Departure City</ion-label>
                   <input formControlName="D_airport" list="D_airport"  (change)="removeAirport($event.target.value)">
                   <datalist id="D_airport">
@@ -59,42 +60,43 @@
                   <ion-label position="stacked" class="label">Select Departure Date</ion-label>
                   <input formControlName="D_date" type="date"  [min]="todayt" (change)="returnDate($event.target.value)">
                 </ion-item> 
-              
+
+                  
               </ion-col>
-              <ion-col size-md="3" size-lg="3" size-xs="12" *ngIf="show">
+            </ion-row>
+
+            <ion-row color="primary" justify-content-center  >
+              <ion-col size-md="6" size-lg="6" size-xs="12">
                 <ion-item>
-                  <ion-label position="stacked" class="label">Select Departure Date</ion-label>
-                  <input formControlName="A_date" type="date" [min]="minDate" >
-                </ion-item> 
-                
+                  <ion-label position="floating">Select Departure Date</ion-label>
+                  <ion-datetime formControlName="D_date" min="min"  pickerFormat="YYYY-MM-DD" displayFormat="YYYY-MM-DD"></ion-datetime>
+                </ion-item>
+              </ion-col>
+              <ion-col size-md="6" size-lg="6" size-xs="12" *ngIf="show">
+                <ion-item >
+                  <ion-label position="floating">Select Arrival Date</ion-label>
+                  <ion-datetime formControlName="A_date" min="max" pickerFormat="YYYY-MM-DD" displayFormat="YYYY-MM-DD"></ion-datetime>
+                </ion-item>
               </ion-col>              
             </ion-row>
 
             <ion-row color="primary" justify-content-center  >
-              <ion-col size-md="11" size-lg="11" size-xs="8"> </ion-col>
-              <ion-col size-md="1" size-lg="1" size-xs="4">
-                <ion-text (click)="moreFields=!moreFields">
-                  More Fields
-                </ion-text>               
-                <ion-icon name="caret-down-outline" *ngIf="!moreFields"></ion-icon>
-                <ion-icon name="caret-up-outline" *ngIf="moreFields"></ion-icon>
+              <ion-col size-md="6" size-lg="6" size-xs="12">
+                <ion-item>
+                  <ion-label position="floating">Select Preferred Class</ion-label>
+                  <ion-input formControlName="PClass"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col size-md="6" size-lg="6" size-xs="12">
+                <ion-item>
+                  <ion-label position="floating">Select Preferred Flight</ion-label>
+                  <ion-input formControlName="PFlight"></ion-input>
+                </ion-item>
               </ion-col>
             </ion-row>
 
-            <ion-row color="primary" justify-content-center  *ngIf="moreFields">
-              <ion-col size-md="3" size-lg="3" size-xs="12">
-                <ion-item>
-                  <ion-label position="stacked" class="label">Select Preferred Class</ion-label>
-                  <input formControlName="PClass">
-                </ion-item>              
-              </ion-col>
-              <ion-col size-md="3" size-lg="3" size-xs="12">
-                <ion-item>
-                  <ion-label position="stacked" class="label">Select Preferred Flight</ion-label>
-                  <input formControlName="PFlight">
-                </ion-item>               
-              </ion-col>
-              <ion-col size-md="2" size-lg="2" size-xs="4">
+            <ion-row color="primary" justify-content-center  >
+              <ion-col size-md="4" size-lg="4" size-xs="4">
                 <ion-item>
                   <ion-label>Adults</ion-label>
                   <ion-select formControlName="Adults" value="1" interface="action-sheet">
@@ -103,7 +105,7 @@
                   </ion-select>
                 </ion-item>
               </ion-col>
-              <ion-col size-md="2" size-lg="2" size-xs="4">
+              <ion-col size-md="4" size-lg="4" size-xs="4">
                 <ion-item>
                   <ion-label>Childs</ion-label>
                   <ion-select formControlName="Childs" value="0" interface="action-sheet">
@@ -112,7 +114,7 @@
                   </ion-select>
                 </ion-item>
               </ion-col>
-              <ion-col size-md="2" size-lg="2" size-xs="4">
+              <ion-col size-md="4" size-lg="4" size-xs="4">
                 <ion-item>
                   <ion-label>Infants</ion-label>
                   <ion-select formControlName="Infants" value="0" interface="action-sheet">
@@ -123,7 +125,6 @@
               </ion-col>
             </ion-row>
 
-      
             <ion-row color="primary" justify-content-center class="ion-padding">
               <ion-col size-md="7" size-lg="6" size-xs="12">
                 <button class="submit-btn" type="submit"><span class="material-icons">search</span> Search
@@ -156,10 +157,8 @@
               <ion-col size-md="6" size-lg="6" size-xs="12">
                 <ion-item>
                   <ion-label position="floating">Select Departure City</ion-label>
-                  <ion-input ></ion-input>
-                  
+                  <ion-input></ion-input>
                 </ion-item>
-               
               </ion-col>
               <ion-col size-md="6" size-lg="6" size-xs="12">
                 <ion-item>
@@ -245,8 +244,9 @@
             </ion-row>
           </form>
         </ion-card>
-      </ion-col>
 
+
+      </ion-col>
     </ion-row> 
     <ion-slides   [options]="slideOpts">
       <ion-slide>   
