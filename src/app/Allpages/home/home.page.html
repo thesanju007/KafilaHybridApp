@@ -3,7 +3,7 @@
 
 <ion-app>
   <ion-split-pane contentId="main-content"  class=" for-app">
-    <ion-menu contentId="main-content" type="push"   *ngIf="bigMenu">
+    <ion-menu contentId="main-content" type="push"   *ngIf="bigMenu" swipeGesture="false">
       <ion-content>
         <ion-list id="inbox-list" *ngFor="let d of Menu,let i = index" lines="none" >
 

@@ -8,7 +8,7 @@ import { TestService } from '../../Services/test.service'
 })
 export class DashboardPage implements OnInit {
   todayt = new Date().toJSON().split('T')[0];
-  minDate:any
+  minDate= new Date().toJSON().split('T')[0];
   arp: any
   arp_new:any
   selected_airport:any
@@ -25,15 +25,19 @@ export class DashboardPage implements OnInit {
   ngOnInit() {
     this.tService.getTestData("../../../assets/airport.json").subscribe(result=>{
       this.arp=result   
-      // this.arp_new=result
+      this.arp_new=result    
     });
+    
 
   }
 
   removeAirport(airport){
-    this.arp_new=this.arp.filter(function(value, index, arr){ 
-      return value.code!==airport;
-  });
+    console.log(airport)
+    // this.arp_new=this.arp.filter(function(value, index, arr){ 
+    //   if(value.code==airport){       
+    //     console.log("val")
+    //   }    
+    // });
   }
   returnDate(d){
     this.minDate=d
@@ -70,15 +74,17 @@ export class DashboardPage implements OnInit {
     D_airport : new FormControl('', [Validators.required]),
     A_airport : new FormControl('', [Validators.required]),
     D_date    : new FormControl('', [Validators.required]),
-    A_date    : new FormControl('', [Validators.required]),
-    PClass    : new FormControl('', [Validators.required]),
-    PFlight   : new FormControl('', [Validators.required]),
-    Adults    : new FormControl('', [Validators.required]),
-    Childs    : new FormControl('', [Validators.required]),
-    Infants   : new FormControl('', [Validators.required]),
+    A_date    : new FormControl(''),
+    PClass    : new FormControl(''),
+    PFlight   : new FormControl(''),
+    Adults    : new FormControl(''),
+    Childs    : new FormControl(''),
+    Infants   : new FormControl(''),
   })
   checkFlight() {
     console.log(this.flightData.value)
   }
-  
+  get Error() {
+    return this.flightData.controls;
+  }
 }
