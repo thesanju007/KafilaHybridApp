@@ -2,6 +2,40 @@
   <ion-grid  class="ion-padding for-app">
     <ion-row color="primary" justify-content-center class="padding-none">
       <ion-col size-md="10" size-lg="9" size-xs="12" class="padding-none">
+        <ion-row class="row">
+            <ion-col class="icon-wrp">
+                <div class="icon-box" (click)="toggleflight()" [ngClass]="[ isSelected_F ? 'active'  : '!active']">
+                  <ion-icon name="airplane-outline" class=" header_icon"></ion-icon>
+                    <h5
+                        style="color: #5d5d5d; font-size: 15px; font-weight: 600;letter-spacing: 0.8px; margin-bottom: 3px; text-transform: uppercase;">
+                        Flight</h5>
+                </div>
+                <div class="icon-box" (click)="toggletrain()" [ngClass]="[ isSelected_T ? 'active'  : '!active']">
+                  <ion-icon name="train-outline"  class=" header_icon"></ion-icon>
+                    <h5
+                        style="color: #5d5d5d; font-size: 15px; font-weight: 600;letter-spacing: 0.8px; margin-bottom: 3px; text-transform: uppercase;">
+                        Trains</h5>
+                </div>
+                <div class="icon-box" (click)="togglehotel()" [ngClass]="[ isSelected_H ? 'active' : '!active']">
+                  <ion-icon name="home-outline" class=" header_icon"></ion-icon>
+                    <h5
+                        style="color: #5d5d5d; font-size: 15px; font-weight: 600;letter-spacing: 0.8px; margin-bottom: 3px; text-transform: uppercase;">
+                        Hotels</h5>
+                </div>
+                <div class="icon-box">
+                    <i class="fa fa-umbrella header_icon"></i>
+                    <h5
+                        style="color: #5d5d5d; font-size: 15px; font-weight: 600;letter-spacing: 0.8px; margin-bottom: 3px; text-transform: uppercase;">
+                        Package</h5>
+                </div>
+                <div class="icon-box">
+                    <i class="fa fa-user header_icon"></i>     
+                    <h5
+                        style="color: #5d5d5d; font-size: 15px; font-weight: 600;letter-spacing: 0.8px; margin-bottom: 3px; text-transform: uppercase;">
+                        Agent</h5>
+                </div>
+            </ion-col>
+        </ion-row>
 
         <ion-card class="SB" >
           <form>
@@ -9,7 +43,6 @@
               <ion-col size-md="3" size-lg="3" size-xs="1" >
                
               </ion-col>
-              
               <ion-col size-md="3" size-lg="2" size-xs="3" class="FTH " (click)="flight()" [ngClass]="[isAfterF?'FTHActive':'!FTHActive']">
                 <p>
                   <span></span> One Way

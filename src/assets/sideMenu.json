@@ -11,7 +11,7 @@
     },
     {"title": "Train",  "icon": "train", "showDetails": "false","subMenu" :
         [
-            {"title": "Search", "url": "dashboard", "icon": "search" },
+            {"title": "Search", "url": "tsearch", "icon": "search" },
             {"title": "Booking History", "url": "tbookinghistory", "icon": "" },
             {"title": "Cancellation History", "url": "tcancellationhistory", "icon": "trash" },
             {"title": "Refund History", "url": "trefundhistory", "icon": "" },
@@ -21,7 +21,7 @@
     },
     {"title": "Hotel",  "icon": "home", "showDetails": "false","subMenu" :
         [
-            {"title": "Search", "url": "dashboard", "icon": "search" },
+            {"title": "Search", "url": "hsearch", "icon": "search" },
             {"title": "Booking History", "url": "hbookinghistory", "icon": "" },
             {"title": "Cancellation History", "url": "hcancellationhistory", "icon": "trash" },
             {"title": "Refund History", "url": "hrefundhistory", "icon": "" },
