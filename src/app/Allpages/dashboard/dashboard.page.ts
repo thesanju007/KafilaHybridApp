@@ -9,6 +9,7 @@ import { TestService } from '../../Services/test.service'
 export class DashboardPage implements OnInit {
   todayt = new Date().toJSON().split('T')[0];
   minDate= new Date().toJSON().split('T')[0];
+  maxDate:any
   arp: any
   arp_new:any
   selected_airport:any
@@ -26,25 +27,28 @@ export class DashboardPage implements OnInit {
     this.tService.getTestData("../../../assets/airport.json").subscribe(result=>{
       this.arp=result   
       this.arp_new=result    
-    });
-    
+    });    
+  }
 
+  removeAirportDep(airport){
+    this.arp = this.arp_new.filter(Array => Array.code !== airport);
   }
 
   removeAirport(airport){
-    console.log(airport)
-    // this.arp_new=this.arp.filter(function(value, index, arr){ 
-    //   if(value.code==airport){       
-    //     console.log("val")
-    //   }    
-    // });
+    this.arp_new = this.arp.filter(Array => Array.code !== airport);
   }
+
   returnDate(d){
     this.minDate=d
   }
+  returnDateMax(d){
+    this.maxDate=d
+  }
+
   slideOpts = {
     autoplay: true
   };
+
   flight(){
     this.flight_comp=true
     this.hotel_comp=false
@@ -53,6 +57,7 @@ export class DashboardPage implements OnInit {
     this.isAfterT=false;
     this.isAfterH=false;
   }
+
   train(){
     this.flight_comp=false
     this.hotel_comp=false
@@ -61,6 +66,7 @@ export class DashboardPage implements OnInit {
     this.isAfterF=false;
     this.isAfterH=false;
   }
+
   hotel(){
     this.flight_comp=false
     this.hotel_comp=true
@@ -69,6 +75,7 @@ export class DashboardPage implements OnInit {
     this.isAfterF=false;
     this.isAfterT=false;
   }
+  
   flightData = new FormGroup({
     flighttype: new FormControl('', [Validators.required]),
     D_airport : new FormControl('', [Validators.required]),
@@ -81,9 +88,11 @@ export class DashboardPage implements OnInit {
     Childs    : new FormControl(''),
     Infants   : new FormControl(''),
   })
+
   checkFlight() {
     console.log(this.flightData.value)
   }
+  
   get Error() {
     return this.flightData.controls;
   }
