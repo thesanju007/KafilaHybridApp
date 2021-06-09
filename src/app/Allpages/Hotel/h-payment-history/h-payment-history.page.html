@@ -1,4 +1,13 @@
 
 <ion-content>
-  <h1>THE HOTEL PAYMENT  HISTORY WORKS</h1>
+  <div *ngIf="isLoggedIn; else loggedOut">
+    Welcome back, friend.
+  </div>
+  
+  <ng-template #loggedOut>
+    Please friend, login.
+  </ng-template>
+
+
+  <ion-text *ngIf="isLoggedIn===true ?  '%':'/-' as tt">{{isLoggedIn}}{{tt}}</ion-text>
 </ion-content>

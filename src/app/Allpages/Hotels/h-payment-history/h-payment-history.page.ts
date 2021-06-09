@@ -8,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class HPaymentHistoryPage implements OnInit {
 
   constructor() { }
-
+ 
+  show=100;
   ngOnInit() {
   }
 

@@ -1,99 +1,213 @@
-<ion-content  class="padding-none">
-  <ion-grid  class="ion-padding for-app">
+<ion-content class="padding-none">
+  <ion-grid class="ion-padding for-app">
     <ion-row color="primary" justify-content-center class="padding-none">
       <ion-col size-md="10" size-lg="9" size-xs="12" class="padding-none">
         <ion-row class="row">
-            <ion-col class="icon-wrp">
-                <div class="icon-box" (click)="toggleflight()" [ngClass]="[ isSelected_F ? 'active'  : '!active']">
-                  <ion-icon name="airplane-outline" class=" header_icon"></ion-icon>
-                    <h5
-                        style="color: #5d5d5d; font-size: 15px; font-weight: 600;letter-spacing: 0.8px; margin-bottom: 3px; text-transform: uppercase;">
-                        Flight</h5>
-                </div>
-                <div class="icon-box" (click)="toggletrain()" [ngClass]="[ isSelected_T ? 'active'  : '!active']">
-                  <ion-icon name="train-outline"  class=" header_icon"></ion-icon>
-                    <h5
-                        style="color: #5d5d5d; font-size: 15px; font-weight: 600;letter-spacing: 0.8px; margin-bottom: 3px; text-transform: uppercase;">
-                        Trains</h5>
-                </div>
-                <div class="icon-box" (click)="togglehotel()" [ngClass]="[ isSelected_H ? 'active' : '!active']">
-                  <ion-icon name="home-outline" class=" header_icon"></ion-icon>
-                    <h5
-                        style="color: #5d5d5d; font-size: 15px; font-weight: 600;letter-spacing: 0.8px; margin-bottom: 3px; text-transform: uppercase;">
-                        Hotels</h5>
-                </div>
-                <div class="icon-box">
-                    <i class="fa fa-umbrella header_icon"></i>
-                    <h5
-                        style="color: #5d5d5d; font-size: 15px; font-weight: 600;letter-spacing: 0.8px; margin-bottom: 3px; text-transform: uppercase;">
-                        Package</h5>
-                </div>
-                <div class="icon-box">
-                    <i class="fa fa-user header_icon"></i>     
-                    <h5
-                        style="color: #5d5d5d; font-size: 15px; font-weight: 600;letter-spacing: 0.8px; margin-bottom: 3px; text-transform: uppercase;">
-                        Agent</h5>
-                </div>
+          <ion-col class="icon-wrp" size-md="12" size-lg="12" size-xs="12">
+            <ion-col class="icon-box" (click)="toggleflight()" [ngClass]="[ isSelected_F ? 'active'  : '!active']"
+              size-md="3" size-lg="2" size-xs="4">
+              <ion-icon name="airplane-outline" class=" header_icon"></ion-icon>
+              <h5
+                style="color: #5d5d5d; font-size: 15px; font-weight: 600;letter-spacing: 0.8px; margin-bottom: 3px; text-transform: uppercase;">
+                Flight</h5>
             </ion-col>
+            <ion-col class="icon-box" (click)="toggletrain()" [ngClass]="[ isSelected_T ? 'active'  : '!active']"
+              size-md="3" size-lg="2" size-xs="4">
+              <ion-icon name="train-outline" class=" header_icon"></ion-icon>
+              <h5
+                style="color: #5d5d5d; font-size: 15px; font-weight: 600;letter-spacing: 0.8px; margin-bottom: 3px; text-transform: uppercase;">
+                Trains</h5>
+            </ion-col>
+            <ion-col class="icon-box" (click)="togglehotel()" [ngClass]="[ isSelected_H ? 'active' : '!active']"
+              size-md="3" size-lg="2" size-xs="">
+              <ion-icon name="home-outline" class=" header_icon"></ion-icon>
+              <h5
+                style="color: #5d5d5d; font-size: 15px; font-weight: 600;letter-spacing: 0.8px; margin-bottom: 3px; text-transform: uppercase;">
+                Hotels</h5>
+            </ion-col>
+
+          </ion-col>
         </ion-row>
 
-        <ion-card class="SB" >
+        <ion-card class="SB">
+
           <form>
-            <ion-row color="primary" justify-content-center>
-              <ion-col size-md="3" size-lg="3" size-xs="1" >
-               
-              </ion-col>
-              <ion-col size-md="3" size-lg="2" size-xs="3" class="FTH " (click)="flight()" [ngClass]="[isAfterF?'FTHActive':'!FTHActive']">
-                <p>
-                  <span></span> One Way
-                </p>
-              </ion-col>
-              <ion-col size-md="3" size-lg="2" size-xs="3" class="FTH " (click)="train()" [ngClass]="[ isAfterT?'FTHActive':'!FTHActive']">
-                <p>
-                  <span></span>Round Trip
-                </p>
-              </ion-col>
-              <ion-col size-md="3" size-lg="2" size-xs="3" class=" FTH " (click)="hotel()" [ngClass]="[ isAfterH?'FTHActive':'!FTHActive']">
-                <p>
-                  <span></span> Multi Trip
-                </p>
-              </ion-col>
-            </ion-row>
+            <ion-row class="row">
+              <ion-col class=" booking-form" size-md="12" size-lg="12" size-xs="12">
+                <ion-row class="row" *ngIf="showflight">
+                  <ion-col class=" text-center" size-md="12" size-lg="12" size-xs="12">
+                    <h1>Flight Booking</h1>
+                  </ion-col>
+                  <ion-col size-md="2" size-lg="3" size-xs="12">
+                    <div class="form-group">
+                      <h2 style="color:#5f5f5f;">01 What</h2>
+                      <div class="form-checkbox">
 
-            <ion-row color="primary" justify-content-center  >
-              <ion-col size-md="4" size-lg="4" size-xs="12">
-                <ion-item>
-                  <ion-label position="floating">Select Departure City</ion-label>
-                  <ion-input></ion-input>
-                </ion-item>
-              </ion-col>
-              <ion-col size-md="4" size-lg="4" size-xs="12">
-                <ion-item>
-                  <ion-label position="floating">Select Arrival City</ion-label>
-                  <ion-input></ion-input>
-                </ion-item>
-              </ion-col>
-          
+                        <label for="one-way">
+                          <input type="radio" id="one-way" name="flight-type" (click)="toggleShow1()">
+                          <span></span>One way
+                        </label>
+                        <br>
+                        <label for="roundtrip">
+                          <input type="radio" id="roundtrip" name="flight-type" (click)="toggleShow()">
+                          <span></span>Roundtrip
+                        </label>
+                        <br>
+                      </div>
+                    </div>
+                  </ion-col>
+                  <ion-col size-md="3" size-lg="3" size-xs="12">
+                    <div class="form-group ">
+                      <form>
+                          <h2 style="color:#5f5f5f;">02 Where</h2>
+                          <span class="form-label">Leaving from</span>
+                          <input class="form-control" placeholder=" from" required type="search">
+                          <span class="form-label">Going to</span>
+                          <input class="form-control" type="text" placeholder=" To" required>
+                      </form>
+                  </div>
 
-           
-              <ion-col size-md="4" size-lg="4" size-xs="12">
-                <ion-item>
-                  <ion-label position="floating">Select Departure Date</ion-label>
-                  <ion-datetime></ion-datetime>
-                </ion-item>
-              </ion-col>
-              <ion-col size-md="3" size-lg="3" size-xs="12">
+                  </ion-col>
+                  <ion-col size-md="3" size-lg="3" size-xs="12">
+                    <div class="form-group">
+                      <h2 style="color:#5f5f5f;">03 When</h2>
+                      <span class="form-label">Departing Date</span>
+                      <input class="form-control" type="date" required>
+                      <span class="form-label" *ngIf="isShown">Arriving Date</span>
+                      <input class="form-control" type="date" required *ngIf="isShown">
+                  </div>
+                  </ion-col>
+                  <ion-col size-md="3" size-lg="3" size-xs="12">
+                    <div class="form-group">
+                      <h2 style="color:#5f5f5f;">04 Who</h2>
+                      <span class="form-label">Adults</span>
+                      <input class="form-control" type="number" required>
+                      <span class="form-label">Children</span>
+                      <input class="form-control" type="number" required>
+                  </div>
+                  </ion-col>
+                  <ion-col  size-md="3" size-lg="4" size-xs="12">
+                    
+                  </ion-col>
+                  <ion-col  size-md="3" size-lg="4" size-xs="12">
+                    <button class="submit-btn">Show Flights</button>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row class="row" *ngIf="showtrain">
+                  <ion-col class=" text-center" size-md="12" size-lg="12" size-xs="12">
+                    <h1>Flight Booking</h1>
+                  </ion-col>
+                  <ion-col size-md="2" size-lg="3" size-xs="12">
+                    <div class="form-group">
+                      <h2 style="color:#5f5f5f;">01 What</h2>
+                      <div class="form-checkbox">
+
+                        <label for="one-way">
+                          <input type="radio" id="one-way" name="flight-type" (click)="toggleShow1()">
+                          <span></span>One way
+                        </label>
+                        <br>
+                        <label for="roundtrip">
+                          <input type="radio" id="roundtrip" name="flight-type" (click)="toggleShow()">
+                          <span></span>Roundtrip
+                        </label>
+                        <br>
+                      </div>
+                    </div>
+                  </ion-col>
+                  <ion-col size-md="3" size-lg="3" size-xs="12">
+                    <div class="form-group ">
+                      <form [formGroup]="station_details">
+                          <h2 style="color:#5f5f5f;">02 Where</h2>
+                          <span class="form-label">Station from</span>
+                          <input class="form-control" type="text" placeholder=" from"
+                              formControlName="stationfrom">
+                          <span class="form-label">Station to</span>
+                          <input class="form-control" type="text" placeholder=" To" formControlName="stationto">
+                      </form>
+                  </div>
+
+                  </ion-col>
+                  <ion-col size-md="3" size-lg="3" size-xs="12">
+                    <div class="form-group">
+                      <form [formGroup]="travel_date">
+                          <h2 style="color:#5f5f5f;">03 When</h2>
+                          <span class="form-label">Departing Date</span>
+                          <input class="form-control" type="date" required formControlName="deptdate">
+                          <span class="form-label" *ngIf="isShown">returning Date</span>
+                          <input class="form-control" type="date" required *ngIf="isShown"
+                              formControlName="retdate">
+                      </form>
+                  </div>
+                  </ion-col>
+                  <ion-col size-md="3" size-lg="3" size-xs="12">
+                    <div class="form-group">
+                      <form [formGroup]="no_of_passengers">
+                          <h2 style="color:#5f5f5f;">04 Who</h2>
+                          <span class="form-label">Adults</span>
+                          <input class="form-control" type="number" required formControlName="adults">
+                          <span class="form-label">Children</span>
+                          <input class="form-control" type="number" required formControlName="childs">
+                      </form>
+                  </div>
+                  </ion-col>
+                  <ion-col  size-md="3" size-lg="4" size-xs="12">
+                    
+                  </ion-col>
+                  <ion-col  size-md="3" size-lg="4" size-xs="12">
+                    <form (ngSubmit)="onSubmit()">
+                      <button class="submit-btn" type="submit">Show Trains</button>
+                  </form>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row class="row" *ngIf="showhotel">
+                  <ion-col class=" text-center" size-md="12" size-lg="12" size-xs="12">
+                    <h1>Flight Booking</h1>
+                  </ion-col>
+                  <ion-col size-md="2" size-lg="3" size-xs="12">
+                    <div class="form-group">
+                      <h2 style="color:#5f5f5f;">01 What</h2>
+                      <div class="form-checkbox">
+
+                        <label for="one-way">
+                          <input type="radio" id="one-way" name="flight-type" (click)="toggleShow1()">
+                          <span></span>One way
+                        </label>
+                        <br>
+                        <label for="roundtrip">
+                          <input type="radio" id="roundtrip" name="flight-type" (click)="toggleShow()">
+                          <span></span>Roundtrip
+                        </label>
+                        <br>
+                      </div>
+                    </div>
+                  </ion-col>
+                  <ion-col size-md="3" size-lg="3" size-xs="12">
+                    
+
+                  </ion-col>
+                  <ion-col size-md="3" size-lg="3" size-xs="12">
+                   
+                  </ion-col>
+                  <ion-col size-md="3" size-lg="3" size-xs="12">
+                    
+                  </ion-col>
+                  <ion-col  size-md="3" size-lg="4" size-xs="12">
+                    
+                  </ion-col>
+                  <ion-col  size-md="3" size-lg="4" size-xs="12">
+                    <button class="submit-btn">Show Hotel</button>
+                  </ion-col>
+                </ion-row>
                 
+
               </ion-col>
-            
-              <ion-col size-md="6" size-lg="6" size-xs="12">
-                <button class="submit-btn" type="submit"><span class="material-icons">search</span> Search
-                  Train</button>
-              </ion-col>
-            </ion-row>
+              </ion-row>     
           </form>
         </ion-card>
       </ion-col>
-    </ion-row> 
+    </ion-row>
   </ion-grid>
 </ion-content>

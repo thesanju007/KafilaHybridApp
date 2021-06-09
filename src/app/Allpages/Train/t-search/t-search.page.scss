@@ -1,101 +1,302 @@
-.padding-none {
-    padding: 0px;
+.active{
+	border-bottom:2px solid #f2643e;
+	color: #fff;
+	}
+
+.navbar_link{
+	height: 36px;
+	padding: 0 10px;
+	border-radius: 4px;
+	background: #fff;
+	cursor: pointer;
+	margin: 0px 5px 0 0;
+	border:none;
+	color: #191a1e;
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 36px;
+	text-transform: uppercase;
+	margin-top: 10px;
+}	
+
+
+
+  .icon-wrp {
+	background-color: rgba(255, 255, 255, 1);
+	border-radius: 5px;
+	box-shadow: 0 1px 10px 0 rgb(0 0 0 / 11%);
+	display: inline-block;
+	width: 100%;
+}
+.icon-wrp .icon-box {
+	display: inline-block;
+	padding: 18px 0;
+	text-align: center;
+	width: 19.73%;
+}
+
+.header_icon{
+	color: #f2643e;
+	font-size: 30px;
+	margin-bottom: 8px;
+}
+
+
+.line{
+	border-bottom: 1px solid #f2643e;
+	width:100%;
+	margin-top: 10px;
+}
+
+#booking {
+font-family: 'Roboto', sans-serif;
+background-size: cover;
+background-position: center;
+}
+
+.booking-form {
+margin-top: 20px;
+background:#fff;
+padding: 10px 40px 10px 40px;
+border-radius: 2px;
+border: 1px solid rgba(255,255,255,.28);
+box-shadow: 0 3px 5px 2px rgb(0 0 0 / 30%);
+}
+
+
+.input_box {
+
+height: 40px;
+color: #191a1e;
+border: none;
+font-size:15px;
+font-weight: 400;
+-webkit-box-shadow: none;
+box-shadow: none;
+border-radius: 3px;
+padding: 0px 25px;
+width: 100%;
+margin-left: 3px;
+margin-bottom: 10px;;
+}
+
+.booking-form .form-label {
+margin-top: 10px;
+font-weight: 400;
+text-transform: uppercase;
+line-height: 24px;
+height: 24px;
+font-size: 12px;
+color: #191a1e;
+}
+
+.booking-form .form-checkbox input {
+position: absolute !important;
+margin-left: -9999px !important;
+visibility: hidden !important;
+}
+
+.booking-form .form-checkbox label {
+position: relative;
+padding-top: 4px;
+padding-left: 30px;
+font-weight: 400;
+color: #191a1e;
+}
+
+.booking-form .form-checkbox label+label {
+margin-left: 15px;
+}
+
+.booking-form .form-checkbox input+span {
+position: absolute;
+left: 2px;
+top: 4px;
+width: 20px;
+height: 20px;
+background:#fff;
+border:1px solid lightgray;
+border-radius: 50%;
+}
+
+.booking-form .form-checkbox input+span:after {
+content: '';
+position: absolute;
+top: 50%;
+left: 50%;
+width: 0px;
+height: 0px;
+border-radius: 50%;
+background-color: #f23e3e;
+-webkit-transition: 0.2s all;
+transition: 0.2s all;
+-webkit-transform: translate(-50%, -50%);
+transform: translate(-50%, -50%);
+}
+
+.booking-form .form-checkbox input:not(:checked)+span:after {
+opacity: 0;
+}
+
+.booking-form .form-checkbox input:checked+span:after {
+opacity: 1;
+width: 10px;
+height: 10px;
+}
+
+.booking-form .form-btn {
+margin-top: 0px;
+}
+
+.booking-form .submit-btn {
+color: #fff;
+background-color:#f2643e;
+font-weight: 400;
+height: 40px;
+font-size: 20px;
+border: none;
+width: 100%;
+border-radius: 4px;
+text-transform: uppercase;
+-webkit-transition: 0.2s all;
+transition: 0.2s all;
+margin-top: 10px;
+margin-bottom: 10px;
+}
+
+.booking-form {
+margin-top: 20px;
+background:#fff;
+padding: 10px 40px 10px 40px;
+border-radius: 2px;
+border: 1px solid rgba(255,255,255,.28);
+box-shadow: 0 3px 5px 2px rgb(0 0 0 / 30%);
+width: 130%
   }
-  .FTH {
-    color: #dd2c00;
-    background-color: #fff;
-    border: 1px solid #dd2c00;
-    font-size: 20px;
-    text-align: center;
-    font-family: serif;
-    padding: 10px 0px 0px 0px;
-    cursor: pointer;
+.login-page-wrap {
+
+min-height: 100%;
+height: 100vh;
+width: 100%;
+overflow: hidden;
+}
+.login-page-wrap .content-wrap {
+  height: 100%;
+ 
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  overflow-y: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.login-page-wrap .login-content {
+  padding-top: 70px;
+}
+
+   .item-title {
+	  font-size: 24px;
+	  margin-bottom: 30px;
+	 
+	  padding-bottom: 20px;
   }
-  .FTHActive {
-    background-color: #dd2c00;
-    color: #fff;
-    font-size: 20px;
-    text-align: center;
+  .login-page-wrap .login-form-wrap {
+	padding-bottom: 50px;
    
-    font-family: serif;
-    padding: 10px 0px 0px 0px;
-    cursor: pointer;
-  }
-  .SB {
-    background-color: #fff;
-    border-top: 3px solid #dd2c00;
-    border-left: 1px solid #dd2c00;
-    border-right: 1px solid #dd2c00;
-    border-bottom: 1px solid #dd2c00;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    z-index: 9999;
-    margin-top: 30px;
-  }
-  .submit-btn {
-    width: 100%;
-    padding: 10px;
-    background: #dd2c00;
-    color: white;
-    font-size: 19px;
-    font-family: serif;
-    border: none;
-    font-weight: 600;
-    opacity: 1;
-    box-shadow: 1px 1px 1px 1px lightgrey;
+	padding-left: 52px;
+	z-index: 1;
+	font-family: "Nunito", sans-serif;
+   
+	z-index: 1;
+}
+.form-group {
+
+margin-bottom: 30px;
+}
+.form-control {
+border: none;
+border-radius: 0;
+padding: 5px 0;
+border-bottom: 1px solid #eaeaea;
+width: 100%;
+}
+
+  .reset-password a{
+  margin-top: 10px;
+  display: block;
+  text-align: right;
+  color: #ff3d00;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+
+  .form-check {
+	
+	  padding-left: 0;
   }
   
-  .material-icons {
-    font-family: "Material Icons";
-    font-weight: normal;
-    font-style: normal;
-    font-size: 18px;
-    line-height: 0;
-    letter-spacing: normal;
-    text-transform: none;
-    display: inline-block;
-    white-space: nowrap;
-    word-wrap: normal;
-    direction: ltr;
-    -webkit-font-smoothing: antialiased;
-  }
-  ion-radio {
-    margin: 0px 10px 0px 10px;
-  }
-  ion-radio-group {
-    color: black;
-  }
-  
-  @media only screen and (min-width: 769px) {
-    .for-app {
-      padding: 80px 0px 0px 0px;
-    }
-  }
-  .active{
-		border-bottom:2px solid #f2643e;
-		color: #fff;
-		}
-	
-	.navbar_link{
-	    height: 36px;
-		padding: 0 10px;
-		border-radius: 4px;
-		background: #fff;
-		cursor: pointer;
-		margin: 0px 5px 0 0;
-		border:none;
-		color: #191a1e;
-		font-size: 15px;
-		font-weight: 400;
-		line-height: 36px;
-		text-transform: uppercase;
-		margin-top: 10px;
-	}	
 
-	
 
-	  .icon-wrp {
+  .form-check input[type="checkbox"] {
+	  cursor: pointer;
+	  position: absolute;
+	  width: 14px;
+	  height:14px;
+	  top: 3px;
+	  left: 10px;
+	  z-index: 1;
+	 
+	
+  }
+  .form-check label {
+	  display: inline-block;
+	  position: relative;
+	  padding-left: 30px;
+	  font-size: 14px;
+	  color: #646464;
+	  cursor: pointer;
+  }
+
+   .submit-btn1 {
+	  height: auto;
+	  border: none;
+	  border-radius: 4px;
+	  font-weight: 700;
+	  color: #ffffff;
+	  font-size: 14px;
+	  padding: 8px 25px;
+	  background-color: #ff3d00;
+	  -webkit-transition: all 0.3s ease-in-out;
+	  transition: all 0.3s ease-in-out;
+	  width:40%;
+  }
+	
+	
+	.example-h2 {
+		margin: 10px;
+	}
+	
+	.example-section {
+		display: flex;
+		align-content: center;
+		align-items: center;
+		height: 60px;
+	}
+	
+	.example-margin {
+		margin: 0 10px;
+	}
+	
+	
+	.icon-wrp {
 		background-color: rgba(255, 255, 255, 1);
 		border-radius: 5px;
 		box-shadow: 0 1px 10px 0 rgb(0 0 0 / 11%);
@@ -108,322 +309,47 @@
 		text-align: center;
 		width: 19.73%;
 	}
-
+	
 	.header_icon{
-		color: #f2643e;
+		color: #df2b18;
 		font-size: 30px;
 		margin-bottom: 8px;
 	}
 	
-
-	.line{
-		border-bottom: 1px solid #f2643e;
-		width:100%;
+	.login-page-wrap .nav-tabs {
+		position: absolute;
+		left: -50px;
+		top: 60px;
+		z-index: -1;
+		display: block;
+		border-bottom: none;}
+	
+	
+		.nav {
+		
+		flex-wrap: wrap;
+		padding-left: 0;
+		margin-bottom: 0;
+		list-style: none;
+	}
+	
+	.login-page-wrap .nav-tabs li {
+		margin-bottom: 10px;
+	
+		writing-mode: vertical-lr;
+	
+		transform: rotate(
+	180deg
+	);
+	}
+	.login-page-wrap .nav-tabs li .nav-link {
+		text-align: center;
+		background-color: #615dfa;
+		font-size: 16px;
+		color: #fff;
+		font-weight: 700;
+		border: none;
+		border-radius: 0 6px 6px 0;
+		padding: 35px 12px;
 		margin-top: 10px;
 	}
-	
-#booking {
-	font-family: 'Roboto', sans-serif;
-	background-size: cover;
-	background-position: center;
-}
-
-.booking-form {
-	margin-top: 20px;
-	background:#fff;
-	padding: 10px 40px 10px 40px;
-	border-radius: 2px;
-	border: 1px solid rgba(255,255,255,.28);
-	box-shadow: 0 3px 5px 2px rgb(0 0 0 / 30%);
-}
-
-
-.input_box {
-	
-	height: 40px;
-	color: #191a1e;
-	border: none;
-	font-size:15px;
-	font-weight: 400;
-	-webkit-box-shadow: none;
-	box-shadow: none;
-	border-radius: 3px;
-	padding: 0px 25px;
-	width: 100%;
-	margin-left: 3px;
-	margin-bottom: 10px;;
-}
-
-.booking-form .form-label {
-	margin-top: 10px;
-	font-weight: 400;
-	text-transform: uppercase;
-	line-height: 24px;
-	height: 24px;
-	font-size: 12px;
-	color: #191a1e;
-}
-
-.booking-form .form-checkbox input {
-	position: absolute !important;
-	margin-left: -9999px !important;
-	visibility: hidden !important;
-}
-
-.booking-form .form-checkbox label {
-	position: relative;
-	padding-top: 4px;
-	padding-left: 30px;
-	font-weight: 400;
-	color: #191a1e;
-}
-
-.booking-form .form-checkbox label+label {
-	margin-left: 15px;
-}
-
-.booking-form .form-checkbox input+span {
-	position: absolute;
-	left: 2px;
-	top: 4px;
-	width: 20px;
-	height: 20px;
-	background:#fff;
-	border:1px solid lightgray;
-	border-radius: 50%;
-}
-
-.booking-form .form-checkbox input+span:after {
-	content: '';
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	width: 0px;
-	height: 0px;
-	border-radius: 50%;
-	background-color: #f23e3e;
-	-webkit-transition: 0.2s all;
-	transition: 0.2s all;
-	-webkit-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%);
-}
-
-.booking-form .form-checkbox input:not(:checked)+span:after {
-	opacity: 0;
-}
-
-.booking-form .form-checkbox input:checked+span:after {
-	opacity: 1;
-	width: 10px;
-	height: 10px;
-}
-
-.booking-form .form-btn {
-	margin-top: 0px;
-}
-
-.booking-form .submit-btn {
-	color: #fff;
-	background-color:#f2643e;
-	font-weight: 400;
-	height: 40px;
-	font-size: 20px;
-	border: none;
-	width: 20%;
-	border-radius: 4px;
-	text-transform: uppercase;
-	-webkit-transition: 0.2s all;
-	transition: 0.2s all;
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-
-.booking-form {
-	margin-top: 20px;
-	background:#fff;
-	padding: 10px 40px 10px 40px;
-	border-radius: 2px;
-	border: 1px solid rgba(255,255,255,.28);
-	box-shadow: 0 3px 5px 2px rgb(0 0 0 / 30%);
-	width: 130%
-	  }
-  .login-page-wrap {
-  
-	min-height: 100%;
-	height: 100vh;
-	width: 100%;
-	overflow: hidden;
-  }
-	.login-page-wrap .content-wrap {
-	  height: 100%;
-	 
-	  display: -webkit-box;
-	  display: -webkit-flex;
-	  display: -ms-flexbox;
-	  display: flex;
-	  -webkit-box-pack: center;
-	  -webkit-justify-content: center;
-	  -ms-flex-pack: center;
-	  justify-content: center;
-	  overflow-y: auto;
-	  position: relative;
-	  z-index: 1;
-	}
-  
-	.login-page-wrap .login-content {
-	  padding-top: 70px;
-	}
-	
-	   .item-title {
-		  font-size: 24px;
-		  margin-bottom: 30px;
-		 
-		  padding-bottom: 20px;
-	  }
-	  .login-page-wrap .login-form-wrap {
-		padding-bottom: 50px;
-	   
-		padding-left: 52px;
-		z-index: 1;
-		font-family: "Nunito", sans-serif;
-	   
-		z-index: 1;
-	}
-  .form-group {
-   
-	margin-bottom: 30px;
-  }
-   .form-control {
-	border: none;
-	border-radius: 0;
-	padding: 5px 0;
-	border-bottom: 1px solid #eaeaea;
-  }
-  
-	  .reset-password a{
-	  margin-top: 10px;
-	  display: block;
-	  text-align: right;
-	  color: #ff3d00;
-	  font-size: 15px;
-	  font-weight: 600;
-	  text-decoration: none;
-  }
-  
-  
-	  .form-check {
-		
-		  padding-left: 0;
-	  }
-	  
-  
-  
-	  .form-check input[type="checkbox"] {
-		  cursor: pointer;
-		  position: absolute;
-		  width: 14px;
-		  height:14px;
-		  top: 3px;
-		  left: 10px;
-		  z-index: 1;
-		 
-		
-	  }
-	  .form-check label {
-		  display: inline-block;
-		  position: relative;
-		  padding-left: 30px;
-		  font-size: 14px;
-		  color: #646464;
-		  cursor: pointer;
-	  }
-  
-	   .submit-btn1 {
-		  height: auto;
-		  border: none;
-		  border-radius: 4px;
-		  font-weight: 700;
-		  color: #ffffff;
-		  font-size: 14px;
-		  padding: 8px 25px;
-		  background-color: #ff3d00;
-		  -webkit-transition: all 0.3s ease-in-out;
-		  transition: all 0.3s ease-in-out;
-		  width:40%;
-	  }
-		
-		
-		.example-h2 {
-			margin: 10px;
-		}
-		
-		.example-section {
-			display: flex;
-			align-content: center;
-			align-items: center;
-			height: 60px;
-		}
-		
-		.example-margin {
-			margin: 0 10px;
-		}
-		
-		
-		.icon-wrp {
-			background-color: rgba(255, 255, 255, 1);
-			border-radius: 5px;
-			box-shadow: 0 1px 10px 0 rgb(0 0 0 / 11%);
-			display: inline-block;
-			width: 100%;
-		}
-		.icon-wrp .icon-box {
-			display: inline-block;
-			padding: 18px 0;
-			text-align: center;
-			width: 19.73%;
-		}
-		
-		.header_icon{
-			color: #df2b18;
-			font-size: 30px;
-			margin-bottom: 8px;
-		}
-		
-		.login-page-wrap .nav-tabs {
-			position: absolute;
-			left: -50px;
-			top: 60px;
-			z-index: -1;
-			display: block;
-			border-bottom: none;}
-		
-		
-			.nav {
-			
-			flex-wrap: wrap;
-			padding-left: 0;
-			margin-bottom: 0;
-			list-style: none;
-		}
-		
-		.login-page-wrap .nav-tabs li {
-			margin-bottom: 10px;
-		
-			writing-mode: vertical-lr;
-		
-			transform: rotate(
-		180deg
-		);
-		}
-		.login-page-wrap .nav-tabs li .nav-link {
-			text-align: center;
-			background-color: #615dfa;
-			font-size: 16px;
-			color: #fff;
-			font-weight: 700;
-			border: none;
-			border-radius: 0 6px 6px 0;
-			padding: 35px 12px;
-			margin-top: 10px;
-		}
-  

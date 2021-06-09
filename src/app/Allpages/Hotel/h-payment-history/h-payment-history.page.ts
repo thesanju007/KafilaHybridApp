@@ -6,9 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./h-payment-history.page.scss'],
 })
 export class HPaymentHistoryPage implements OnInit {
-
+  isLoggedIn = false;
+  tt;
   constructor() { }
-
+  
   ngOnInit() {
   }
 
