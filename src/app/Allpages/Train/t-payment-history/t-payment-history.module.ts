@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { FormShareModule } from '../../../form-share/form-share.module';
 import { IonicModule } from '@ionic/angular';
 
 import { TPaymentHistoryPageRoutingModule } from './t-payment-history-routing.module';
@@ -14,7 +14,8 @@ import {PaymentModule} from '../../../components/payment/payment.module';
     FormsModule,
     IonicModule,
     TPaymentHistoryPageRoutingModule,
-    PaymentModule
+    PaymentModule,
+    FormShareModule
   ],
   declarations: [TPaymentHistoryPage]
 })

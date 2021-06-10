@@ -11,7 +11,7 @@ import { MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatRadioModule} from '@angular/material/radio';
 import { MatMenuModule} from '@angular/material/menu';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-
+import {MatTableModule} from '@angular/material/table';
 @NgModule({
   declarations: [],
   imports: [
@@ -29,7 +29,9 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
     MatIconModule,
     FormsModule,ReactiveFormsModule,
     MatSidenavModule ,
-    MatSelectModule
+    MatSelectModule,
+    MatTableModule
+    
   ]
 })
 export class FormShareModule { }

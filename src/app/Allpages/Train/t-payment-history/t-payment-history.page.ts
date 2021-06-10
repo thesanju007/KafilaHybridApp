@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./t-payment-history.page.scss'],
 })
 export class TPaymentHistoryPage implements OnInit {
-
+  
   constructor() { }
 
   ngOnInit() {
