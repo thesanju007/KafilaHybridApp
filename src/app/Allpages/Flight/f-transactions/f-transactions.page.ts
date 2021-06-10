@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { TestService } from '../../../Services/test.service'
 @Component({
   selector: 'app-f-transactions',
@@ -9,10 +10,17 @@ export class FTransactionsPage implements OnInit {
 
   constructor(private tService: TestService) { }
   results: any;
+  myValueSub: Subscription;
   ngOnInit() {
-    this.tService.getTestData("https://reqres.in/api/users?page=2").subscribe(result=>{
-      this.results=result.data
+    this.myValueSub = this.tService.getTestData("https://reqres.in/api/users?page=2").subscribe(result => {
+      this.results = result.data
     });
+  }
+  ngOnDestroy() {
+    if (this.myValueSub) {
+      this.myValueSub.unsubscribe();
+      console.log("Destroy")
+    }
   }
 
 }

@@ -43,4 +43,11 @@ export class TestService {
     return this.subject.asObservable();
   }
 
+
+  sendClickEventRM(){
+    this.subject.next();
+  }
+  getClickEventRM():Observable<any>{
+    return this.subject.asObservable();
+  }
 }

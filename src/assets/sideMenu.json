@@ -1,7 +1,7 @@
 [
     {"title": "Flight",  "icon": "Airplane", "showDetails": "false","subMenu" :
         [
-            {"title": "Search", "url": "dashboard", "icon": "search" },
+            {"title": "Search", "url": "fsearch", "icon": "search" },
             {"title": "Booking History", "url": "fbookinghistory", "icon": "book" },
             {"title": "Cancellation History", "url": "fcancellationhistory", "icon": "trash" },
             {"title": "Refund History", "url": "frefundhistory", "icon": "repeat" },

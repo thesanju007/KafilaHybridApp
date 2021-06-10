@@ -12,11 +12,13 @@ export class HomePage implements OnInit {
   Menu:any;
   clickEventSubs:Subscription
   bigMenu=false;
-  smallMenu=true;
   constructor(private route: Router,private tService: TestService) {
     this.clickEventSubs=this.tService.getClickEvent().subscribe(()=>{
       this.toggleMenu();
     })
+
+
+  
   }
   ngOnInit() {
     this.tService.getTestData("../../../assets/sideMenu.json").subscribe(result=>{
@@ -63,4 +65,5 @@ export class HomePage implements OnInit {
       p.showDetails = true;  
     }
   }
+
 }

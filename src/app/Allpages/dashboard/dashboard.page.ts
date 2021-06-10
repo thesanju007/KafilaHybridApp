@@ -29,7 +29,7 @@ export class DashboardPage implements OnInit {
       this.arp_new=result    
     });    
   }
-
+ 
   removeAirportDep(airport){
     this.arp = this.arp_new.filter(Array => Array.code !== airport);
   }
