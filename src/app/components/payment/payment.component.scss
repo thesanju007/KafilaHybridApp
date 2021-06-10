@@ -43,7 +43,23 @@ ion-content {
     padding: 5px;
     margin: 0;
 }
-.mat-radio-button ~ .mat-radio-button {
-  margin-left: 16px;
+CSS
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
 }
 
+.example-radio-button {
+  margin: 5px;
+}
+hr {
+  margin-left: 0px;
+ margin-right: 60px;
+}
+ion-button {
+ margin-left: 50px;
+ margin-right: 50px;
+
+
+}
