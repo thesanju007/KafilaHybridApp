@@ -42,12 +42,11 @@ export class TestService {
   getClickEvent():Observable<any>{
     return this.subject.asObservable();
   }
-
-
-  sendClickEventRM(){
-    this.subject.next();
+  holdData
+  getData(recieve){
+    this.holdData=recieve
   }
-  getClickEventRM():Observable<any>{
-    return this.subject.asObservable();
+  sendData(){
+    return this.holdData
   }
 }

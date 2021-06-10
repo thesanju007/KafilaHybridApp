@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TestService } from '../../Services/test.service'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
@@ -22,7 +23,7 @@ export class DashboardPage implements OnInit {
   imgList=["1.jpg","3.jpg","7.jpg"]
   quantity:any;
 
-  constructor(private tService: TestService) {}
+  constructor(private tService: TestService,private route: Router) {}
   ngOnInit() {
     this.tService.getTestData("../../../assets/airport.json").subscribe(result=>{
       this.arp=result   
@@ -77,10 +78,10 @@ export class DashboardPage implements OnInit {
   }
   
   flightData = new FormGroup({
-    flighttype: new FormControl('', [Validators.required]),
-    D_airport : new FormControl('', [Validators.required]),
-    A_airport : new FormControl('', [Validators.required]),
-    D_date    : new FormControl('', [Validators.required]),
+    flighttype: new FormControl('',[Validators.required]),
+    D_airport : new FormControl('',[Validators.required]),
+    A_airport : new FormControl('',[Validators.required]),
+    D_date    : new FormControl('',[Validators.required]),
     A_date    : new FormControl(''),
     PClass    : new FormControl(''),
     PFlight   : new FormControl(''),
@@ -90,7 +91,11 @@ export class DashboardPage implements OnInit {
   })
 
   checkFlight() {
-    console.log(this.flightData.value)
+    let testData=this.flightData.value
+    this.tService.getData(testData)
+    console.log(testData)
+    this.route.navigate(['home/fbookinghistory']);
+
   }
   
   get Error() {

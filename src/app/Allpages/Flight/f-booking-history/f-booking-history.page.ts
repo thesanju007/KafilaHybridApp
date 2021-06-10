@@ -1,15 +1,18 @@
 import { OnInit, Component } from '@angular/core';
-
+import { TestService } from '../../../Services/test.service'
 @Component({
   selector: 'app-f-booking-history',
   templateUrl: './f-booking-history.page.html',
   styleUrls: ['./f-booking-history.page.scss'],
 })
 export class FBookingHistoryPage implements OnInit {
-  constructor() {
+  constructor(private tService: TestService) {
   }
 
+  x
   ngOnInit() {
+    this.x=this.tService.holdData
+
   }
 
 }

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
-
+import { PaymentComponent } from '../../components/payment/payment.component'
 const routes: Routes = [
   {
     path: '',
@@ -93,6 +93,10 @@ const routes: Routes = [
       {
         path: 'myaccount',
         loadChildren: () => import('../my-account/my-account.module').then( m => m.MyAccountPageModule)
+      },
+      { 
+        path:'payment',
+        component:PaymentComponent
       },
     ]
   },
