@@ -43,4 +43,14 @@ export class TestService {
     return this.subject.asObservable();
   }
 
+  private data = {};  
+  
+  setOption( value) {      
+     this.data = value;  
+   }  
+   
+   getOption() {  
+     return this.data;  
+   }  
+
 }

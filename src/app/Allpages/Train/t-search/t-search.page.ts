@@ -1,6 +1,6 @@
 import { Component, OnInit , Input} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
+import { TestService } from 'src/app/Services/test.service'
 @Component({
   selector: 'app-t-search',
   templateUrl: './t-search.page.html',
@@ -18,7 +18,8 @@ export class TSearchPage implements OnInit {
   isSelected_H: any = false;
   toggleStyle : boolean = false;
   value:any;
-  constructor() {}
+  constructor(private service:TestService) {  
+}  
 
 
   station_details= new FormGroup({
@@ -47,7 +48,7 @@ export class TSearchPage implements OnInit {
      let travel_data = Object.assign(this.station_details.value, this.travel_date.value,this.no_of_passengers.value);
      console.log( travel_data);
     
-     
+     this.service.setOption( travel_data);  
   
    }
 
