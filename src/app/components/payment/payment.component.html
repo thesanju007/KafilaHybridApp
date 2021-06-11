@@ -1,81 +1,95 @@
-
-
- 
-  <ion-grid >
-    <ion-row >
-      <ion-card color="secondary" >
-        <ion-card-header>
-          <ion-card-title>Agency Name: KAFILA HOSPITALITY AND TRAVEL PRIVATE LIMITED (18785869)</ion-card-title>
-          </ion-card-header>
-         <ion-card-content >
-          <ion-label >
-          <ion-checkbox slot="end"  class="my-chkbox"></ion-checkbox>
-             I agree to pay mention amount from my current agency balance: {{parent_data}}/-</ion-label>
-          </ion-card-content>
-      </ion-card> 
-    </ion-row>
+<ion-grid>
+  <ion-row>
+    <ion-card color="secondary">
+      <ion-card-header>
+        <ion-card-title>Agency Name: KAFILA HOSPITALITY AND TRAVEL PRIVATE LIMITED (18785869)</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-label>
+          <ion-checkbox slot="end" class="my-chkbox"></ion-checkbox>
+          I agree to pay mention amount from my current agency balance: {{parent_data}}/-
+        </ion-label>
+        <p>
+          
+          <ion-text color="danger">{{Pdata|json}}</ion-text>
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </ion-row>
   <ion-row>
     <ion-col push="0.2">
-      
-      <ion-list *ngFor="let data of PG"  >
-       <ion-item    (click)="optionControler(data.name)"  > <ion-icon name="home" color="primary" size="small"> </ion-icon> {{data.name|titlecase}}</ion-item>
-       
+
+      <ion-list *ngFor="let data of PG">
+        <ion-item (click)="optionControler(data.name)">
+          <ion-icon name="home" color="primary" size="small"> </ion-icon> {{data.name|titlecase}}
+        </ion-item>
+
       </ion-list>
     </ion-col>
-    
+
     <ion-col push="0.3">
-      <ion-content [ngSwitch]="pg_name" >
-                   
-        <ng-container *ngSwitchCase ="pg_name" > 
+      <ion-content [ngSwitch]="pg_name">
+
+        <ng-container *ngSwitchCase="pg_name">
           <ion-text color="primary">
-           <h3> Selected Payment Gateway:- <ion-text color="danger">{{pg_name}}</ion-text> </h3>
+            <h3> Selected Payment Gateway:- <ion-text color="danger">{{pg_name}}</ion-text>
+            </h3>
           </ion-text>
-            <mat-radio-group [(ngModel)]="selected" example-radio-group  (change)="get_calculation($event)" >
-            <mat-radio-button [value]="pg_name+','+idata.iname+','+idata.percent+','+idata.value" *ngFor="let idata of itemArr" class="example-radio-button">
-              {{idata.iname}}  
+          <mat-radio-group [(ngModel)]="selected" example-radio-group (change)="get_calculation($event)">
+            <mat-radio-button [value]="pg_name+','+idata.iname+','+idata.percent+','+idata.value"
+              *ngFor="let idata of itemArr" class="example-radio-button">
+              {{idata.iname}}
             </mat-radio-button>
-            
-          </mat-radio-group> 
-         
-      </ng-container>
-      
-  <ng-container *ngIf="CD!null">
-    <ion-content isScrolling="true">
-       <ion-grid >
-        <hr color="secondary" >
-        <ion-row><ion-col><ion-text>Amount:-</ion-text></ion-col>
-          <ion-col><ion-text>{{CD.AMOUNT}}{{"/-"}}</ion-text></ion-col>
-        </ion-row>
-        <ion-row><ion-col><ion-text>ConvenienceCharge:-</ion-text></ion-col>
-           <ion-col>
-              <ion-text *ngIf="CD.PG_PERCENT==='true' ? '%':'Fixed' as tt" >{{CD.PG_VALUE}}
-               <ion-badge color="primary" >{{tt}}</ion-badge>
-              </ion-text>
-              
-          </ion-col>
-        </ion-row>
-        <ion-row><ion-col><ion-text>ConvenienceFee:-</ion-text></ion-col>
-          <ion-col><ion-text>{{CD.PG_CHARGE}}{{"/-"}}</ion-text></ion-col>
-        </ion-row>
-        <hr color="secondary" >
-        <ion-row><ion-col><ion-text  >TotalAmount:-</ion-text></ion-col>
-          <ion-col><ion-text class="bold">{{CD.NET}}{{"/-"}}</ion-text></ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-content>
 
+          </mat-radio-group>
 
+        </ng-container>
 
-  
-  </ng-container>
-</ion-content> 
- </ion-col>
- </ion-row>
- <ion-button class = "button button-block " [disabled]="!conf"  (ionFocus)="onConfirm()">Confirm</ion-button>
- </ion-grid> 
+        <ng-container *ngIf="CD!null">
+          <ion-content isScrolling="true">
+            <ion-grid>
+              <hr color="secondary">
+              <ion-row>
+                <ion-col>
+                  <ion-text>Amount:-</ion-text>
+                </ion-col>
+                <ion-col>
+                  <ion-text>{{CD.AMOUNT}}{{"/-"}}</ion-text>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-text>ConvenienceCharge:-</ion-text>
+                </ion-col>
+                <ion-col>
+                  <ion-text *ngIf="CD.PG_PERCENT==='true' ? '%':'Fixed' as tt">{{CD.PG_VALUE}}
+                    <ion-badge color="primary">{{tt}}</ion-badge>
+                  </ion-text>
 
-    
-  
-  
-
-
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-text>ConvenienceFee:-</ion-text>
+                </ion-col>
+                <ion-col>
+                  <ion-text>{{CD.PG_CHARGE}}{{"/-"}}</ion-text>
+                </ion-col>
+              </ion-row>
+              <hr color="secondary">
+              <ion-row>
+                <ion-col>
+                  <ion-text>TotalAmount:-</ion-text>
+                </ion-col>
+                <ion-col>
+                  <ion-text class="bold">{{CD.NET}}{{"/-"}}</ion-text>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-content>
+        </ng-container>
+      </ion-content>
+    </ion-col>
+  </ion-row>
+  <ion-button class="button button-block " [disabled]="!conf" (ionFocus)="onConfirm()">Confirm</ion-button>
+</ion-grid>

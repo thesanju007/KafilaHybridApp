@@ -8,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class TPaymentHistoryPage implements OnInit {
   
   constructor() { }
-
+  val: any;
+  data:any
+  getData() {
+    this.data= {
+      value: this.val
+    }
+    console.log(this.data)
+  }
   ngOnInit() {
   }
 

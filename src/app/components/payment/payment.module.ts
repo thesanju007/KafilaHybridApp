@@ -14,4 +14,6 @@ import { fromEventPattern } from 'rxjs';
   exports:[PaymentComponent],
   
 })
-export class PaymentModule { }
+export class PaymentModule { 
+ 
+}

@@ -157,7 +157,7 @@
                   </ion-col>
                   <ion-col  size-md="3" size-lg="4" size-xs="12">
                     <form (ngSubmit)="onSubmit()">
-                      <button class="submit-btn" type="submit">Show Trains</button>
+                      <button  [data]="travel_data" routerLink="./payment" class="submit-btn">show train</button> 
                   </form>
                   </ion-col>
                 </ion-row>
@@ -198,7 +198,7 @@
                     
                   </ion-col>
                   <ion-col  size-md="3" size-lg="4" size-xs="12">
-                    <button class="submit-btn">Show Hotel</button>
+                  
                   </ion-col>
                 </ion-row>
                 
