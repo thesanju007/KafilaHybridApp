@@ -9,10 +9,10 @@ export class FBookingHistoryPage implements OnInit {
   constructor(private tService: TestService) {
   }
 
-  x
+  x:any
   ngOnInit() {
-    this.x=this.tService.holdData
-
+    this.x=this.tService.sendData()
+    console.log(this.x)
   }
 
 }

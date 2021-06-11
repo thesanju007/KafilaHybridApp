@@ -16,22 +16,28 @@ export class HomePage implements OnInit {
     this.clickEventSubs=this.tService.getClickEvent().subscribe(()=>{
       this.toggleMenu();
     })
-
-
-  
   }
+
   ngOnInit() {
     this.tService.getTestData("../../../assets/sideMenu.json").subscribe(result=>{
       this.Menu=result
     });
+    window.addEventListener("keyup", disableF5);
+    window.addEventListener("keydown", disableF5);
+
+    function disableF5(e: any) {
+      if ((e.which || e.keyCode) == 116 || ((e.which || e.keyCode) == 82 )) 
+      e.preventDefault();
+    };
    
   }
+  
   ionViewWillEnter()
   {
     setTimeout(() => {
       alert("Session Timeout")
       this.route.navigate(['index']);
-    }, 6*60*60*500);
+    }, 1*60*60*500);
   }
   toggleMenu(){ 
     if(this.bigMenu==true){        
@@ -65,5 +71,11 @@ export class HomePage implements OnInit {
       p.showDetails = true;  
     }
   }
-
+  
+  toggleOff(d){
+    console.log(d)
+    this.Menu[0].showDetails = true;
+    this.Menu[1].showDetails = true;
+    this.Menu[2].showDetails = true;
+  }
 }

@@ -1,5 +1,5 @@
 <ion-grid>
-  <ion-row>
+  <ion-row class="ion-padding">
     <ion-card >
       <ion-card-header>
         <ion-card-title color="secondary">Agency Name: KAFILA HOSPITALITY AND TRAVEL PRIVATE LIMITED (18785869)</ion-card-title>
@@ -13,7 +13,7 @@
       </ion-card-content>
     </ion-card>
   </ion-row>
-  <ion-row>
+  <ion-row class="ion-padding">
     <ion-col>
       <ion-list *ngFor="let data of PG">
         <ion-item (click)="optionControler(data.name)" lines="full">
@@ -85,13 +85,9 @@
             </ion-grid>
           </ion-content>
 
-
-
-
         </ng-container>
       </ion-content>
     </ion-col>
   </ion-row>
   <ion-button class="button button-block " [disabled]="!conf" (ionFocus)="onConfirm()">Confirm</ion-button>
-  
 </ion-grid>

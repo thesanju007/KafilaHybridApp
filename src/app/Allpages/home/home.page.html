@@ -20,7 +20,7 @@
           </ion-list>
 
 
-          <ion-item *ngIf="!d.subMenu" [routerLink]="['/','home',d.url]">
+          <ion-item *ngIf="!d.subMenu" [routerLink]="['/','home',d.url]" (click)="toggleOff(d)">
             <ion-icon slot="start" name={{d.icon}}></ion-icon>
             <ion-label>{{d.title}}</ion-label>
           </ion-item>

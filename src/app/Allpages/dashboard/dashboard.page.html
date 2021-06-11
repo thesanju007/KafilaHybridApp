@@ -1,16 +1,19 @@
-<ion-content  class="padding-none bg-color">
-  <ion-grid  class="ion-padding for-app">
+<ion-content class="padding-none bg-color">
+  <ion-grid class="ion-padding for-app">
     <ion-row color="primary" justify-content-center class="padding-none">
-      <ion-col size-xs="12" size-md="12" size-lg="12" size-xl="12"  class="padding-none">
+      <ion-col size-xs="12" size-md="12" size-lg="12" size-xl="12" class="padding-none">
         <ion-row color="primary" justify-content-center>
-          <ion-col size-md="2" size-lg="1" size-xs="4" class="FTH " (click)="flight()" [ngClass]="[isAfterF?'FTHActive':'!FTHActive']">           
-            <span class="material-icons">flight</span> Flight            
+          <ion-col size-md="2" size-lg="1" size-xs="4" class="FTH " (click)="flight()"
+            [ngClass]="[isAfterF?'FTHActive':'!FTHActive']">
+            <span class="material-icons">flight</span> Flight
           </ion-col>
-          <ion-col size-md="2" size-lg="1" size-xs="4" class="FTH " (click)="train()" [ngClass]="[ isAfterT?'FTHActive':'!FTHActive']">            
-            <span class="material-icons">train</span>Trains           
+          <ion-col size-md="2" size-lg="1" size-xs="4" class="FTH " (click)="train()"
+            [ngClass]="[ isAfterT?'FTHActive':'!FTHActive']">
+            <span class="material-icons">train</span>Trains
           </ion-col>
-          <ion-col size-md="2" size-lg="1" size-xs="4" class=" FTH " (click)="hotel()" [ngClass]="[ isAfterH?'FTHActive':'!FTHActive']">            
-            <span class="material-icons">local_hotel</span> Hotels          
+          <ion-col size-md="2" size-lg="1" size-xs="4" class=" FTH " (click)="hotel()"
+            [ngClass]="[ isAfterH?'FTHActive':'!FTHActive']">
+            <span class="material-icons">local_hotel</span> Hotels
           </ion-col>
         </ion-row>
 
@@ -38,11 +41,11 @@
 
 
         <ion-card class="SB" *ngIf="flight_comp">
-          <form [formGroup]="flightData"  (ngSubmit)="checkFlight()">
-            <ion-row color="primary" justify-content-center >
+          <form [formGroup]="flightData" (ngSubmit)="checkFlight()">
+            <ion-row color="primary" justify-content-center>
               <ion-col size-md="12" size-lg="12" size-xs="12">
-                <ion-radio-group formControlName="flighttype" value="1" >
-                  <ion-radio value="1" (click)="show==0?show=0:show=0" selected="selected"></ion-radio>
+                <ion-radio-group formControlName="flighttype" [(ngModel)]="t_Type">
+                  <ion-radio value="1" (click)="show==0?show=0:show=0"></ion-radio>
                   <ion-label class="R-label">One way</ion-label>
                   <ion-radio value="2" (click)="show==1?show=1:show=1"></ion-radio>
                   <ion-label class="R-label">Round Trip</ion-label>
@@ -52,14 +55,15 @@
               </ion-col>
             </ion-row>
 
-            <ion-row color="primary" justify-content-center class="tp_mgn" >
+            <ion-row color="primary" justify-content-center class="tp_mgn">
 
               <ion-col size-md="3" size-lg="3" size-xs="12">
                 <ion-item>
                   <ion-label position="stacked" class="label">Select Departure City</ion-label>
-                  <input formControlName="D_airport" list="D_airport" (change)="removeAirport($event.target.value)">
+                  <input formControlName="D_airport" list="D_airport" (change)="removeAirport($event.target.value)"
+                    [(ngModel)]="d_DepCity">
                   <datalist id="D_airport">
-                    <option  *ngFor="let arpt of arp" [value]="arpt.code" >{{arpt.city}}, {{arpt.country}}</option>
+                    <option *ngFor="let arpt of arp">{{arpt.code}} , {{arpt.city}} , {{arpt.country}}</option>
                   </datalist>
                 </ion-item>
                 <ion-text *ngIf="Error.D_airport.touched || Error.D_airport.dirty">
@@ -70,70 +74,79 @@
               <ion-col size-md="3" size-lg="3" size-xs="12">
                 <ion-item>
                   <ion-label position="stacked" class="label">Select Arrival City</ion-label>
-                  <input formControlName="A_airport" list="A_airport" (change)="removeAirportDep($event.target.value)">
+                  <input formControlName="A_airport" list="A_airport" (change)="removeAirportDep($event.target.value)"
+                    [(ngModel)]="d_ArrCity">
                   <datalist id="A_airport">
-                    <option  *ngFor="let arpt_new of arp_new" [value]="arpt_new.code" >{{arpt_new.city}}, {{arpt_new.country}}</option>
+                    <option *ngFor="let arpt_new of arp_new">{{arpt_new.code}} , {{arpt_new.city}} ,
+                      {{arpt_new.country}}</option>
                   </datalist>
-                </ion-item>  
+                </ion-item>
                 <ion-text *ngIf="Error.A_airport.touched || Error.A_airport.dirty">
                   <span class="err" *ngIf="Error.A_airport.errors">* Required Field</span>
-                </ion-text>              
+                </ion-text>
               </ion-col>
 
               <ion-col size-md="3" size-lg="3" size-xs="12">
                 <ion-item>
                   <ion-label position="stacked" class="label">Select Departure Date</ion-label>
-                  <input formControlName="D_date" type="date"  [min]="todayt" [max]="maxDate"  (change)="returnDate($event.target.value)">
-                </ion-item> 
+                  <input formControlName="D_date" type="date" [min]="todayt" [max]="maxDate"
+                    (change)="returnDate($event.target.value)" [(ngModel)]="todayt">
+                </ion-item>
                 <ion-text *ngIf="Error.D_date.touched || Error.D_date.dirty">
                   <span class="err" *ngIf="Error.D_date.errors">* Required Field</span>
-                </ion-text>              
+                </ion-text>
               </ion-col>
 
               <ion-col size-md="3" size-lg="3" size-xs="12" *ngIf="show">
                 <ion-item>
-                  <ion-label position="stacked" class="label">Select Departure Date</ion-label>
-                  <input formControlName="A_date" type="date" [min]="minDate" (change)="returnDateMax($event.target.value)">
-                </ion-item>                 
-              </ion-col> 
+                  <ion-label position="stacked" class="label">Select Return Date</ion-label>
+                  <input formControlName="A_date" type="date" [min]="minDate"
+                    (change)="returnDateMax($event.target.value)" [(ngModel)]="minDate">
+                </ion-item>
+              </ion-col>
 
             </ion-row>
 
-            <ion-row color="primary" justify-content-center  >
+            <ion-row color="primary" justify-content-center>
 
               <ion-col size-md="9" size-lg="11" size-xs="8"> </ion-col>
               <ion-col size-md="3" size-lg="1" size-xs="4">
                 <ion-text (click)="moreFields=!moreFields">
                   More Fields
-                </ion-text>               
+                </ion-text>
                 <ion-icon name="caret-down-outline" *ngIf="!moreFields"></ion-icon>
                 <ion-icon name="caret-up-outline" *ngIf="moreFields"></ion-icon>
               </ion-col>
 
             </ion-row>
 
-            <ion-row color="primary" justify-content-center  *ngIf="moreFields">
+            <ion-row color="primary" justify-content-center *ngIf="moreFields">
 
               <ion-col size-md="3" size-lg="3" size-xs="12">
                 <ion-item>
                   <ion-label position="stacked" class="label">Select Preferred Class</ion-label>
-                  <input formControlName="PClass">
-                </ion-item>              
+                  <input formControlName="PClass" list="p_class">
+                  <datalist id="p_class">
+                    <option *ngFor="let class_all of F_class">{{class_all}}</option>
+                  </datalist>
+                </ion-item>
               </ion-col>
 
               <ion-col size-md="3" size-lg="3" size-xs="12">
                 <ion-item>
                   <ion-label position="stacked" class="label">Select Preferred Flight</ion-label>
-                  <input formControlName="PFlight">
-                </ion-item>               
+                  <input formControlName="PFlight" list="p_flight">
+                  <datalist id="p_flight">
+                    <option *ngFor="let pflight of F_flights">{{pflight}}</option>
+                  </datalist>
+                </ion-item>
               </ion-col>
 
               <ion-col size-md="2" size-lg="2" size-xs="4">
                 <ion-item>
                   <ion-label position="stacked" class="label">Adults</ion-label>
-                  <ion-select formControlName="Adults" value="1" >
-                    <ion-select-option value="1" >1</ion-select-option>
-                    <ion-select-option value="2">2</ion-select-option>
+                  <ion-select formControlName="Adults" [(ngModel)]="d_Adult" interface="popover">
+                    <ion-select-option *ngFor="let adt of adult">{{adt}}</ion-select-option>
                   </ion-select>
                 </ion-item>
               </ion-col>
@@ -141,9 +154,9 @@
               <ion-col size-md="2" size-lg="2" size-xs="4">
                 <ion-item>
                   <ion-label position="stacked" class="label">Childs</ion-label>
-                  <ion-select formControlName="Childs" value="0" >
-                    <ion-select-option value="0" >0</ion-select-option>
-                    <ion-select-option value="1">1</ion-select-option>
+                  <ion-select formControlName="Childs" [(ngModel)]="d_Child" interface="popover">
+                    <ion-select-option *ngFor="let chd of childrens">{{chd}}</ion-select-option>
+
                   </ion-select>
                 </ion-item>
               </ion-col>
@@ -151,18 +164,18 @@
               <ion-col size-md="2" size-lg="2" size-xs="4">
                 <ion-item>
                   <ion-label position="stacked" class="label">Infants</ion-label>
-                  <ion-select formControlName="Infants" value="0" >
-                    <ion-select-option value="0"  >0</ion-select-option>
-                    <ion-select-option value="1">1</ion-select-option>
+                  <ion-select formControlName="Infants" [(ngModel)]="d_Infants" interface="popover">
+                    <ion-select-option *ngFor="let inf of infants">{{inf}}</ion-select-option>
                   </ion-select>
                 </ion-item>
               </ion-col>
 
             </ion-row>
-      
+
             <ion-row color="primary" justify-content-center class="ion-padding">
               <ion-col size-md="3" size-lg="3" size-xs="12">
-                <button class="submit-btn" type="submit" [disabled]="!flightData.valid"><span class="material-icons">search</span> Search
+                <button class="submit-btn" type="submit" [disabled]="!flightData.valid"><span
+                    class="material-icons">search</span> Search
                   Flights</button>
               </ion-col>
             </ion-row>
@@ -208,13 +221,13 @@
               </ion-col>
             </ion-row>
 
-            <ion-row color="primary" justify-content-center  >
+            <ion-row color="primary" justify-content-center>
               <ion-col size-md="3" size-lg="3" size-xs="12">
                 <ion-item>
                   <ion-label position="floating">Select Departure City</ion-label>
-                  <ion-input ></ion-input>                  
+                  <ion-input></ion-input>
                 </ion-item>
-               
+
               </ion-col>
               <ion-col size-md="3" size-lg="3" size-xs="12">
                 <ion-item>
@@ -222,7 +235,7 @@
                   <ion-input></ion-input>
                 </ion-item>
               </ion-col>
-          
+
               <ion-col size-md="3" size-lg="3" size-xs="12">
                 <ion-item>
                   <ion-label position="floating">Select Departure Date</ion-label>
@@ -276,7 +289,7 @@
               </ion-col>
             </ion-row>
 
-            <ion-row color="primary" justify-content-center  >
+            <ion-row color="primary" justify-content-center>
               <ion-col size-md="6" size-lg="6" size-xs="12">
                 <ion-item>
                   <ion-label position="floating">Select Departure City</ion-label>
@@ -291,7 +304,7 @@
               </ion-col>
             </ion-row>
 
-            <ion-row color="primary" justify-content-center  >
+            <ion-row color="primary" justify-content-center>
               <ion-col size-md="6" size-lg="6" size-xs="12">
                 <ion-item>
                   <ion-label position="floating">Select Departure Date</ion-label>
@@ -315,18 +328,18 @@
         </ion-card>
       </ion-col>
 
-    </ion-row> 
-    <ion-slides   [options]="slideOpts">
-      <ion-slide>   
-        <img src="../assets/1.jpg">     
+    </ion-row>
+    <ion-slides [options]="slideOpts">
+      <ion-slide>
+        <img src="../assets/1.jpg">
       </ion-slide>
       <ion-slide>
-        <img src="../assets/3.jpg">      
+        <img src="../assets/3.jpg">
       </ion-slide>
       <ion-slide>
-        <img src="../assets/7.jpg">      
+        <img src="../assets/7.jpg">
       </ion-slide>
-  </ion-slides> 
+    </ion-slides>
   </ion-grid>
-  
+
 </ion-content>

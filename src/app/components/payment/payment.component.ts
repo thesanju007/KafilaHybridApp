@@ -1,9 +1,5 @@
-import { CloseScrollStrategy } from '@angular/cdk/overlay';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatRadioChange } from '@angular/material/radio';
-import { MatSelectChange } from '@angular/material/select';
-
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
