@@ -52,11 +52,15 @@ export class DashboardPage implements OnInit {
   }
 
   removeAirportDep(airport) {
-    this.arp = this.arp_new.filter(Array => Array.code !== airport);
+    let depApt = airport.substring(0, 3);
+    
+    console.log(depApt)
+    this.arp = this.arp_new.filter(Array => Array.code !== depApt);
   }
 
   removeAirport(airport) {
-    this.arp_new = this.arp.filter(Array => Array.code !== airport);
+    let arrApt = airport.substring(0, 3);
+    this.arp_new = this.arp.filter(Array => Array.code !== arrApt);
   }
 
   returnDate(d) {
