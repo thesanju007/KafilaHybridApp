@@ -12,11 +12,7 @@ import { TestService } from 'src/app/Services/test.service'
   styleUrls: ['./payment.component.scss'],
 })
 export class PaymentComponent implements OnInit {
-<<<<<<< HEAD
- @Input() Pdata;
-=======
 @Input() Data;
->>>>>>> origin/Sanjeev
   constructor() { }
   PG_CTRL:any;
  AGENT_BALANCE=50000;
