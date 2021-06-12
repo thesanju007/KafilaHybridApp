@@ -31,6 +31,8 @@
   }
   ion-card {
     flex-basis: 100%;
+    margin-left: 50px;
+ margin-right: 50px;
 }
 ion-content {
     --overflow: hidden;
@@ -63,3 +65,9 @@ ion-button {
 
 
 }
+ ion-icon {
+  display: inline-block;
+  font-size: 25px;
+  color: #e3ffb0;
+  vertical-align: middle;
+  }

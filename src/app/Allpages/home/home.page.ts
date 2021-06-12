@@ -64,12 +64,12 @@ export class HomePage implements OnInit {
       }
       else
       p.showDetails = false;
-      console.log(this.Menu[0].showDetails)  
+     
           
     }
     else {
       p.showDetails = true;  
-      console.log(p.icon) 
+      
     }
   }
 }
