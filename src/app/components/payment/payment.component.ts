@@ -14,7 +14,7 @@ export class PaymentComponent implements OnInit {
 @Input() Data;
   constructor() { }
   PG_CTRL:any;
- AGENT_BALANCE=100000;
+ AGENT_BALANCE=50000;
   default_pg="paytm";
   PG: any []=[{"name":"paytm","status":true,"item":[{"iname":"CC","active":true,"percent":true,"value":"2"},{"iname":"DC","active":true,"percent":true,"value":"1"},{"iname":"NB","active":true,"percent":false,"value":"150"},{"iname":"UPI","active":true,"percent":true,"value":"3"},{"iname":"CASH","active":true,"percent":true,"value":"8"}]},{"name":"payu","status":true,"item":[{"iname":"CC","active":true,"percent":true,"value":"0.5"},{"iname":"DC","active":true,"percent":true,"value":"0.5"},{"iname":"NB","active":true,"percent":true,"value":"0.5"},{"iname":"UPI","active":true,"percent":true,"value":"0.5"},{"iname":"CASH","active":false,"percent":true,"value":"0.5"}]},{"name":"paymate","status":true,"item":[{"iname":"CC","active":true,"percent":true,"value":"0.5"},{"iname":"DC","active":true,"percent":true,"value":"0.5"},{"iname":"NB","active":true,"percent":true,"value":"0.5"},{"iname":"UPI","active":true,"percent":true,"value":"0.5"},{"iname":"CASH","active":true,"percent":true,"value":"0.5"}]},{"name":"hdfc","status":true,"item":[{"iname":"CC","active":true,"percent":true,"value":"0.5"},{"iname":"DC","active":true,"percent":true,"value":"0.5"},{"iname":"NB","active":true,"percent":true,"value":"0.5"},{"iname":"UPI","active":true,"percent":true,"value":"0.5"},{"iname":"CASH","active":true,"percent":true,"value":"0.5"}]}];
   OO={
