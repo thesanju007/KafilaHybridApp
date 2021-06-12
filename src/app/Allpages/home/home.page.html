@@ -1,7 +1,7 @@
 <app-header></app-header>
 <ion-app>
   <ion-split-pane contentId="main-content" class=" for-app">
-    <ion-menu contentId="main-content" type="push" *ngIf="bigMenu" swipeGesture="false">
+    <ion-menu contentId="main-content" type="{{type}}" *ngIf="bigMenu" swipeGesture="false">
       <ion-content>
         <ion-list id="inbox-list" *ngFor="let d of Menu,let i = index" lines="none">
 
@@ -24,7 +24,6 @@
             <ion-icon slot="start" name={{d.icon}}></ion-icon>
             <ion-label>{{d.title}}</ion-label>
           </ion-item>
-
 
         </ion-list>
       </ion-content>

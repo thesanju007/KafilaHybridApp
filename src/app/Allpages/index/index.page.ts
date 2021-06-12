@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-index',
   templateUrl: './index.page.html',
@@ -7,15 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexPage implements OnInit {
 
-  constructor() { }
+  constructor(public rout:Router) { }
   slideOpts = {
     autoplay: true
   };
   ngOnInit() {
   }
   none=false;
-  sidePanel(){
-    this.none=true
+  
+  login(){
+    this.rout.navigate(['/home'])
   }
 
   public appPages = [

@@ -12,11 +12,53 @@ import { MatSelectChange } from '@angular/material/select';
 })
 export class PaymentComponent implements OnInit {
   @Input() Data;
+
   constructor() { }
-  PG_CTRL: any;
+  PG_CTRL: any; //checkbox
   AGENT_BALANCE = 50000;
   default_pg = "paytm";
-  PG: any[] = [{ "name": "paytm", "status": true, "item": [{ "iname": "CC", "active": true, "percent": true, "value": "2" }, { "iname": "DC", "active": true, "percent": true, "value": "1" }, { "iname": "NB", "active": true, "percent": false, "value": "150" }, { "iname": "UPI", "active": true, "percent": true, "value": "3" }, { "iname": "CASH", "active": true, "percent": true, "value": "8" }] }, { "name": "payu", "status": true, "item": [{ "iname": "CC", "active": true, "percent": true, "value": "0.5" }, { "iname": "DC", "active": true, "percent": true, "value": "0.5" }, { "iname": "NB", "active": true, "percent": true, "value": "0.5" }, { "iname": "UPI", "active": true, "percent": true, "value": "0.5" }, { "iname": "CASH", "active": false, "percent": true, "value": "0.5" }] }, { "name": "paymate", "status": true, "item": [{ "iname": "CC", "active": true, "percent": true, "value": "0.5" }, { "iname": "DC", "active": true, "percent": true, "value": "0.5" }, { "iname": "NB", "active": true, "percent": true, "value": "0.5" }, { "iname": "UPI", "active": true, "percent": true, "value": "0.5" }, { "iname": "CASH", "active": true, "percent": true, "value": "0.5" }] }, { "name": "hdfc", "status": true, "item": [{ "iname": "CC", "active": true, "percent": true, "value": "0.5" }, { "iname": "DC", "active": true, "percent": true, "value": "0.5" }, { "iname": "NB", "active": true, "percent": true, "value": "0.5" }, { "iname": "UPI", "active": true, "percent": true, "value": "0.5" }, { "iname": "CASH", "active": true, "percent": true, "value": "0.5" }] }];
+  PG: any[] = [
+    {
+      "name": "paytm", "status": true, "item":
+        [
+          { "iname": "CC", "active": true, "percent": true, "value": "2" },
+          { "iname": "DC", "active": true, "percent": true, "value": "1" },
+          { "iname": "NB", "active": true, "percent": false, "value": "150" },
+          { "iname": "UPI", "active": true, "percent": true, "value": "3" },
+          { "iname": "CASH", "active": true, "percent": true, "value": "8" }
+        ]
+    },
+    {
+      "name": "payu", "status": true, "item":
+        [
+          { "iname": "CC", "active": true, "percent": true, "value": "0.5" },
+          { "iname": "DC", "active": true, "percent": true, "value": "0.5" },
+          { "iname": "NB", "active": true, "percent": true, "value": "0.5" },
+          { "iname": "UPI", "active": true, "percent": true, "value": "0.5" },
+          { "iname": "CASH", "active": false, "percent": true, "value": "0.5" }
+        ]
+    },
+    {
+      "name": "paymate", "status": true, "item":
+        [
+          { "iname": "CC", "active": true, "percent": true, "value": "0.5" },
+          { "iname": "DC", "active": true, "percent": true, "value": "0.5" },
+          { "iname": "NB", "active": true, "percent": true, "value": "0.5" },
+          { "iname": "UPI", "active": true, "percent": true, "value": "0.5" },
+          { "iname": "CASH", "active": true, "percent": true, "value": "0.5" }
+        ]
+    },
+    {
+      "name": "hdfc", "status": true, "item":
+        [
+          { "iname": "CC", "active": true, "percent": true, "value": "0.5" },
+          { "iname": "DC", "active": true, "percent": true, "value": "0.5" },
+          { "iname": "NB", "active": true, "percent": true, "value": "0.5" },
+          { "iname": "UPI", "active": true, "percent": true, "value": "0.5" },
+          { "iname": "CASH", "active": true, "percent": true, "value": "0.5" }
+        ]
+    }
+  ];
   OO = {
     PG_NAME: "",
     PG_COMP: "",
@@ -30,13 +72,13 @@ export class PaymentComponent implements OnInit {
   itemArr: any[] = [];
   pg_name = "";
   selected: string;
-  conf = false;
+  conf = false; //cross-logo
   CD: any;
   chkBox: any;
   input_amount = 0;
   AMOUNT_PG = 0;
   AMOUNT_WALLET = 0
-  
+
   ngOnInit() {
     this.SetDefaultCtrl();
   }
@@ -56,35 +98,32 @@ export class PaymentComponent implements OnInit {
       this.AMOUNT_PG = this.Data.AMOUNT - this.AGENT_BALANCE;
     }
   }
+
   AgencyBalanceStatus() {
-
     return this.Data.AMOUNT > this.AGENT_BALANCE ? false : true;
-
   }
 
   optionControler(x: string) {
-
     var i = 0;
     for (i = 0; i < this.PG.length; i++) {
       if (x == this.PG[i]["name"]) {
         this.pg_name = this.PG[i]["name"];
         this.itemArr = this.PG[i]["item"].filter((e) => { return e.active == true })
-
       }
       else {
         this.PG[i]["value"] = false;
-
       }
-
     }
     this.conf = false;
-
   }
+
   get_calculation($event: MatRadioChange) {
-    if (this.AgencyBalanceStatus() == true) { this.AMOUNT_PG = this.Data.AMOUNT; this.AMOUNT_WALLET = 0; }
     var PGC = 0;
     var NET = 0;
     var dt = $event.value.split(",");
+    if (this.AgencyBalanceStatus() == true) { 
+      this.AMOUNT_PG = this.Data.AMOUNT; this.AMOUNT_WALLET = 0; 
+    }
     if (dt[2] === 'true') {
       PGC = (this.AMOUNT_PG * (dt[3] / 100));
       NET = parseInt(this.AMOUNT_PG.toString()) + (this.AMOUNT_PG * (dt[3] / 100));
@@ -101,7 +140,6 @@ export class PaymentComponent implements OnInit {
     this.OO.AMOUNT_PG = this.AMOUNT_PG;
     this.OO.AMOUNT_WALLET = this.AMOUNT_WALLET;
     this.OO.NET = NET;
-
     this.CD = this.OO;
     this.conf = true;
 
@@ -120,29 +158,23 @@ export class PaymentComponent implements OnInit {
       }
     }
     else {
-
       if (this.WalletPGConditon()) {
         this.ChkboxUNChecked();
       }
-
     }
-
   }
   ToggelChkboxOnButton() {
-
     if (this.chkBox == false) {
       if (this.WalletPGConditon()) {
         this.FilloutputDataForWallet();
       }
     }
-
-
   }
+
   FilloutputDataForWallet() {
     this.chkBox = true;
     this.conf = true;
     this.PG_CTRL = false;
-
     this.OO.PG_NAME = "";
     this.OO.PG_COMP = "";
     this.OO.PG_PERCENT = "0";
@@ -154,17 +186,25 @@ export class PaymentComponent implements OnInit {
     this.AMOUNT_WALLET = this.Data.AMOUNT;
     this.CD = this.OO;
   }
+
   ChkboxChecked() {
     this.conf = true;
     this.PG_CTRL = false;
   }
+
   ChkboxUNChecked() {
     this.conf = false;
     this.PG_CTRL = true;
   }
+
   WalletPGConditon() {
-    if (this.AgencyBalanceStatus()) { return true; }
-    else { return false; }
+    if (this.AgencyBalanceStatus()) {
+      return true;
+    }
+    else {
+      return false;
+    }
 
   }
+
 }

@@ -4,13 +4,13 @@
       <ion-toolbar>
         <ion-row color="primary" justify-content-center class="ion-padding">
           <ion-col class="top-head" size-md="2" size-lg="2" size-xs="12">
-            
+
           </ion-col>
           <ion-col class="top-head" size-md="1" size-lg="1" size-xs="12">
             <img alt="logo" id="header_logo" height="40" src="../assets/logo.png">
           </ion-col>
           <ion-col class="top-head" size-md="3" size-lg="3" size-xs="12">
-           
+
           </ion-col>
           <ion-col class="top-head" size-md="1" size-lg="1" size-xs="4">
             About Us
@@ -25,7 +25,12 @@
             Create New Account
           </ion-col>
           <ion-col align-self-center size-md="1" size-lg="1" size-xs="6">
-            <ion-button (click)="sidePanel()" href="/home">Login</ion-button>
+            <ion-router-link color="light">
+              <ion-button (click)="login()">
+                Login
+              </ion-button>
+
+            </ion-router-link>
           </ion-col>
         </ion-row>
       </ion-toolbar>
@@ -53,6 +58,8 @@
   </ion-content>
 
 </ion-app>
+
+
 
 
 
