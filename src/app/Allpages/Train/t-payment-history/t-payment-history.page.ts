@@ -6,6 +6,7 @@ import { TestService } from 'src/app/Services/test.service'
   styleUrls: ['./t-payment-history.page.scss'],
 })
 export class TPaymentHistoryPage implements OnInit {
+<<<<<<< HEAD
   public size: number;  
     public square: number;  
   constructor(private serice:TestService) {  this.size = 16;  
@@ -19,7 +20,20 @@ export class TPaymentHistoryPage implements OnInit {
     }
     console.log(this.data)
   }
+=======
+  message={
+  AGENCY_NAME:"KAFILA",
+  AGENT_ID:"18785869",
+  P_TYPE:"AIR",
+  AMOUNT:0
+  };
+  constructor() { }
+
+>>>>>>> origin/Sanjeev
   ngOnInit() {
   }
-
+onConfirm()
+{
+  
+}
 }

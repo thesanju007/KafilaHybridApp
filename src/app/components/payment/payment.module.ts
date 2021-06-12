@@ -9,7 +9,8 @@ import { fromEventPattern } from 'rxjs';
   declarations: [PaymentComponent],
   imports: [
     CommonModule,
-    FormShareModule
+    FormShareModule,
+  
   ],
   exports:[PaymentComponent],
   
