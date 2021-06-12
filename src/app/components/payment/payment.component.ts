@@ -12,7 +12,13 @@ import { TestService } from 'src/app/Services/test.service'
   styleUrls: ['./payment.component.scss'],
 })
 export class PaymentComponent implements OnInit {
-@Input() Data;
+
+Data={
+  AGENCY_NAME:"KAFILA",
+  AGENT_ID:"18785869",
+  P_TYPE:"AIR",
+  AMOUNT:0
+  };
   constructor() { }
   PG_CTRL:any;
  AGENT_BALANCE=50000;
