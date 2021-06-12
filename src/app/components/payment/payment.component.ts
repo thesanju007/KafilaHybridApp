@@ -12,8 +12,8 @@ import { TestService } from 'src/app/Services/test.service'
   styleUrls: ['./payment.component.scss'],
 })
 export class PaymentComponent implements OnInit {
-
-Data={
+@Input() Data;
+message={
   AGENCY_NAME:"KAFILA",
   AGENT_ID:"18785869",
   P_TYPE:"AIR",

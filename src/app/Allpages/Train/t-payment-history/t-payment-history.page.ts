@@ -10,7 +10,7 @@ export class TPaymentHistoryPage implements OnInit {
   AGENCY_NAME:"KAFILA",
   AGENT_ID:"18785869",
   P_TYPE:"AIR",
-  AMOUNT:57777
+  AMOUNT:40000
   };
   constructor() { }
 
