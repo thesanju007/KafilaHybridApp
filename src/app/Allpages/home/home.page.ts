@@ -65,10 +65,20 @@ export class HomePage implements OnInit {
         this.Menu[1].showDetails= true;
       }
       else
+<<<<<<< HEAD
       p.showDetails = false;    
     }
     else {
       p.showDetails = true;  
+=======
+      p.showDetails = false;
+     
+          
+    }
+    else {
+      p.showDetails = true;  
+      
+>>>>>>> origin/Sanjeev
     }
   }
   

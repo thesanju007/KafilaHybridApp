@@ -28,9 +28,40 @@ mat-drawer-content {
   vertical-align: bottom;
   position: relative;
   
+<<<<<<< HEAD
 }
 ion-card {
   flex-basis: 100%;
+=======
+  mat-drawer-content {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .my-chkbox {
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    margin: 0;
+    vertical-align: bottom;
+    position: relative;
+    
+  }
+  .my-rb {
+    width: 25px;
+    height: 25px;
+    padding: 5px;
+    margin: 0;
+    vertical-align: bottom;
+    position: relative;
+    
+  }
+  ion-card {
+    flex-basis: 100%;
+    margin-left: 50px;
+ margin-right: 50px;
+>>>>>>> origin/Sanjeev
 }
 ion-content {
   --overflow: hidden;
@@ -67,3 +98,13 @@ ion-icon{
 
 
 
+<<<<<<< HEAD
+=======
+}
+ ion-icon {
+  display: inline-block;
+  font-size: 25px;
+  color: #e3ffb0;
+  vertical-align: middle;
+  }
+>>>>>>> origin/Sanjeev
