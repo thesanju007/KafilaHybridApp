@@ -16,7 +16,5 @@ export class TPaymentHistoryPage implements OnInit {
 
   ngOnInit() {
   }
-  onConfirm() {
-    let data=this.message
-  }
+  
 }

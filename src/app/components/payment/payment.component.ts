@@ -11,7 +11,7 @@ import { MatSelectChange } from '@angular/material/select';
   styleUrls: ['./payment.component.scss'],
 })
 export class PaymentComponent implements OnInit {
-  // @Input() Data;
+  @Input() Data;
   constructor() { }
   PG_CTRL: any;
   AGENT_BALANCE = 50000;
@@ -36,12 +36,7 @@ export class PaymentComponent implements OnInit {
   input_amount = 0;
   AMOUNT_PG = 0;
   AMOUNT_WALLET = 0
-  Data = {
-    AGENCY_NAME: "KAFILA",
-    AGENT_ID: "18785869",
-    P_TYPE: "AIR",
-    AMOUNT: 0
-  };
+  
   ngOnInit() {
     this.SetDefaultCtrl();
   }
