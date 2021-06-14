@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  urls:'http://devapi.ksofttechnology.com//API/rail'
+
 };

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Md5 } from 'ts-md5';
 
 @Component({
   selector: 'app-t-refund-history',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TRefundHistoryPage implements OnInit {
 
-  constructor() { }
+  constructor() {this.decode() }
+  password: string = "hello world a";
 
+  
+  decode() {
+    const passwordMd5 = Md5.hashStr(this.password).toString(); 
+    console.log(passwordMd5);
+  }
+  
   ngOnInit() {
+   
   }
 
 }

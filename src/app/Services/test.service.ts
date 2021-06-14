@@ -4,6 +4,8 @@ import { Observable,Subject } from 'rxjs';
 import {  throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { Md5 } from 'ts-md5';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -52,5 +54,9 @@ export class TestService {
    getOption() {  
      return this.data;  
    }  
+   decode(password) {
+    const passwordMd5 = Md5.hashStr(password).toString(); 
+  console.log(passwordMd5);
+  }
 
 }
