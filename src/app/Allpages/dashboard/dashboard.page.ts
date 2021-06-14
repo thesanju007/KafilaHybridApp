@@ -47,7 +47,7 @@ export class DashboardPage implements OnInit {
       this.arp = result
       this.arp_new = result
     });
-    console.log(new Date(new Date().getTime() + 86400000).toISOString().split('T')[0])
+    //console.log(new Date(new Date().getTime() + 86400000).toISOString().split('T')[0])
 
   }
 
@@ -124,7 +124,7 @@ export class DashboardPage implements OnInit {
       NAME: "GET_FLIGHT",
       STR: [
         {
-          AUTH_TOKEN: "f4630b87-303e-4bf7-ac5b-ba8046a9ea3c",
+          AUTH_TOKEN: "b53e07c1-d094-4a00-b746-1294a3051793",
           SESSION_ID: "",
           TRIP: this.flightData.value.flighttype,
           SECTOR: "D",
@@ -144,11 +144,11 @@ export class DashboardPage implements OnInit {
     let js_data = JSON.stringify(data)
     if (this.flightData.value.flighttype == "1") {
       this.tService.getData(js_data)
-      this.route.navigate(['home/fbookinghistory']);
-      // this.tService.postTestData("http://stageapi.ksofttechnology.com/API/FLIGHT", js_data).subscribe((Flight) => {
-      //   console.log(Flight)
-      //   
-      // })
+      // this.route.navigate(['home/fbookinghistory']);
+      this.tService.postTestData("/API/FLIGHT", js_data).subscribe((Flight) => {
+        console.log(Flight)
+        
+      })
     }
     else if (this.flightData.value.flighttype == "2") {
       alert("Round Trip")

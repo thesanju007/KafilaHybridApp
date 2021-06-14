@@ -20,8 +20,8 @@ export class IndexPage implements OnInit {
   }
 
   public appPages = [
-    { title: 'Login', url: '/home', icon: 'person-circle' },
-    { title: 'Sinup', url: '/home', icon: 'person-circle' },
+    { title: 'Login', url: '/home', icon: 'log-in' },
+    { title: 'Sinup', url: '/home', icon: 'log-out' },
     { title: 'About Us', url: '/about', icon: 'people' },
     { title: 'Contact Us', url: '/contact', icon: 'call' },
     { title: 'Payment Uplaod', url: '/gallery', icon: 'images' },

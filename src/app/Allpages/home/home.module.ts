@@ -5,11 +5,13 @@ import { HomePageRoutingModule } from './home-routing.module';
 import { HomePage } from './home.page';
 import { FooterPage } from '../footer/footer.page';
 import { HeaderPage } from '../header/header.page';
+import { FormShareModule } from '../../form-share/form-share.module';
 @NgModule({
   imports: [
     CommonModule,
     IonicModule,
     HomePageRoutingModule,
+    FormShareModule
     
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],

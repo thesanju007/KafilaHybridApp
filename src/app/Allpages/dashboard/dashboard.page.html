@@ -90,7 +90,7 @@
                 <ion-item>
                   <ion-label position="stacked" class="label">Select Departure Date</ion-label>
                   <input formControlName="D_date" type="date" [min]="todayt" [max]="maxDate"
-                    (change)="returnDate($event.target.value)" [(ngModel)]="todayt">
+                    (change)="returnDate($event.target.value)" >
                 </ion-item>
                 <ion-text *ngIf="Error.D_date.touched || Error.D_date.dirty">
                   <span class="err" *ngIf="Error.D_date.errors">* Required Field</span>

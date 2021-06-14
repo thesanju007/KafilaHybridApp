@@ -1,35 +1,56 @@
 <app-header></app-header>
 <ion-app>
   <ion-split-pane contentId="main-content" class=" for-app">
-    <ion-menu contentId="main-content" type="{{type}}" *ngIf="bigMenu" swipeGesture="false">
+    <ion-menu contentId="main-content" type="push" *ngIf="bigMenu" swipeGesture="false">
       <ion-content>
         <ion-list id="inbox-list" *ngFor="let d of Menu,let i = index" lines="none">
+          <ion-item *ngIf="!d.subMenu" [routerLink]="['/','home',d.url]" (click)="toggleOff()" class="main-tag">
+            <ion-icon slot="start" name={{d.icon}}></ion-icon>
+            <ion-label>{{d.title}}</ion-label>
+          </ion-item>
 
-          <ion-item *ngIf="d.subMenu" (click)="toggleDetails(d)">
+
+          <ion-item *ngIf="d.active_status" (click)="toggleDetails(d)" class="main-tag">
             <ion-icon slot="start" name={{d.icon}}></ion-icon>
             <ion-label>{{d.title}}</ion-label>
             <ion-icon name="caret-down-outline" *ngIf="d.showDetails"></ion-icon>
             <ion-icon name="caret-up-outline" *ngIf="!d.showDetails"></ion-icon>
           </ion-item>
 
+         
           <ion-list *ngIf="!d.showDetails">
             <ion-item *ngFor="let s of d.subMenu" [routerLink]="['/','home',s.url]">
               <ion-icon slot="start" name={{s.icon}}></ion-icon>
               <ion-label>{{s.title}}</ion-label>
+              <ion-icon slot="end" name={{s.Eicon}}></ion-icon>
             </ion-item>
           </ion-list>
 
 
-          <ion-item *ngIf="!d.subMenu" [routerLink]="['/','home',d.url]" (click)="toggleOff(d)">
-            <ion-icon slot="start" name={{d.icon}}></ion-icon>
-            <ion-label>{{d.title}}</ion-label>
-          </ion-item>
-
         </ion-list>
+        
+        <ion-list id="inbox-list"  lines="none">
+          <ion-item *ngIf="more" (click)="credTrue=!credTrue" class="main-tag">
+            <ion-icon slot="start" name="list"></ion-icon>
+          <ion-label>More</ion-label>
+          <ion-icon name="caret-down-outline" *ngIf="!credTrue"></ion-icon>
+            <ion-icon name="caret-up-outline" *ngIf="credTrue"></ion-icon>
+          </ion-item>
+          
+          <form [formGroup]="set_cre" (ngSubmit)="checkCredentials()" *ngIf="credTrue" class="cred-box">
+            <ion-item class="cred">
+              <ion-label position="floating">Enter Password</ion-label>
+              <ion-input formControlName="cre1"></ion-input>
+            </ion-item>
+            <ion-button class="submit-btn wid" type="submit">check</ion-button>
+          </form>
+        </ion-list>
+
+        
       </ion-content>
-    </ion-menu>   
+    </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>
   </ion-split-pane>
- 
+
 </ion-app>
 <app-footer></app-footer>

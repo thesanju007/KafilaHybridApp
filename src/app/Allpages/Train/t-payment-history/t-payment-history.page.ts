@@ -12,6 +12,7 @@ export class TPaymentHistoryPage implements OnInit {
     P_TYPE: "AIR",
     AMOUNT: 5777
   };
+  
   constructor() { }
   ngOnInit() { }
   check() {

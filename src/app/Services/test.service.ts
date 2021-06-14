@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class TestService {
   urls='https://reqres.in/api/users';
+  localproxyUrl='http://localhost:3000'
   httphead = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -28,7 +29,7 @@ export class TestService {
 
 
   postTestData(url:any,data:any):Observable<any>{
-    return this.http.post<any>( url,data,this.httphead).pipe(
+    return this.http.post<any>( 'http://localhost:3000'+url,data,this.httphead).pipe(
       retry(2),
       catchError(this.handleError)
     )
