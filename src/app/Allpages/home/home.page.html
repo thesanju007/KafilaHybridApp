@@ -1,7 +1,7 @@
 <app-header></app-header>
-<ion-app>
-  <ion-split-pane contentId="main-content" class=" for-app">
-    <ion-menu contentId="main-content" type="push" *ngIf="bigMenu" swipeGesture="false">
+<ion-app class=" for-app">
+  <ion-split-pane contentId="main-content" >
+    <ion-menu contentId="main-content" type="overlay" *ngIf="bigMenu" swipeGesture="false">
       <ion-content>
         <ion-list id="inbox-list" *ngFor="let d of Menu,let i = index" lines="none">
           <ion-item *ngIf="!d.subMenu" [routerLink]="['/','home',d.url]" (click)="toggleOff()" class="main-tag">
@@ -19,7 +19,7 @@
 
          
           <ion-list *ngIf="!d.showDetails">
-            <ion-item *ngFor="let s of d.subMenu" [routerLink]="['/','home',s.url]">
+            <ion-item *ngFor="let s of d.subMenu" [routerLink]="['/','home',s.url]" (click)="bigMenu=!bigMenu">
               <ion-icon slot="start" name={{s.icon}}></ion-icon>
               <ion-label>{{s.title}}</ion-label>
               <ion-icon slot="end" name={{s.Eicon}}></ion-icon>
@@ -53,4 +53,3 @@
   </ion-split-pane>
 
 </ion-app>
-<app-footer></app-footer>

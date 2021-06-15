@@ -12,6 +12,7 @@ import { MatRadioModule} from '@angular/material/radio';
 import { MatMenuModule} from '@angular/material/menu';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import {MatTableModule} from '@angular/material/table';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -30,7 +31,8 @@ import {MatTableModule} from '@angular/material/table';
     FormsModule,ReactiveFormsModule,
     MatSidenavModule ,
     MatSelectModule,
-    MatTableModule
+    MatTableModule,
+
     
   ]
 })

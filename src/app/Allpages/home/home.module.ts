@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { HomePageRoutingModule } from './home-routing.module';
 import { HomePage } from './home.page';
-import { FooterPage } from '../footer/footer.page';
+
 import { HeaderPage } from '../header/header.page';
 import { FormShareModule } from '../../form-share/form-share.module';
 @NgModule({
@@ -15,6 +15,6 @@ import { FormShareModule } from '../../form-share/form-share.module';
     
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  declarations: [HomePage,FooterPage,HeaderPage]
+  declarations: [HomePage,HeaderPage]
 })
 export class HomePageModule {}

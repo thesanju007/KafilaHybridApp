@@ -101,7 +101,7 @@
                 <ion-item>
                   <ion-label position="stacked" class="label">Select Return Date</ion-label>
                   <input formControlName="A_date" type="date" [min]="minDate"
-                    (change)="returnDateMax($event.target.value)" [(ngModel)]="minDate">
+                    (change)="returnDateMax($event.target.value)" >
                 </ion-item>
               </ion-col>
 
@@ -343,3 +343,4 @@
   </ion-grid>
 
 </ion-content>
+<app-footer></app-footer>

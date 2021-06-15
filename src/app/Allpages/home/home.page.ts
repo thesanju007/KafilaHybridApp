@@ -100,6 +100,7 @@ export class HomePage implements OnInit {
   }
 
   toggleOff() {
+    this.bigMenu = false;
     this.credTrue=false
     for (let i of this.Menu) {
       i.showDetails = true
