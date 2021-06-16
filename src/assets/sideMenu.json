@@ -115,9 +115,9 @@
     },
     {
         "id": "3",
+        "active": "false",
         "title": "Hotel",
-        "icon": "home",
-        "active_status": "true",
+        "icon": "home",   
         "showDetails": "false",
         "subMenu": [
             {
@@ -185,11 +185,12 @@
         "subMenu": [
             {
                 "sid": "6",
+                "active": "false",
                 "title": "Menu Master",
                 "url": "dashboard",
                 "icon": "build",
-                "Eicon": "chevron-forward",
-                "active_status_child": "true"
+                "Eicon": "chevron-forward"
+               
             }
         ]
     }

@@ -5,25 +5,22 @@
       <ion-content>
         <ion-list id="inbox-list" *ngFor="let d of Menu,let i = index" lines="none">
 
-
           <!-- WITHOUT SUBMENU -->
 
-          <ion-item *ngIf="!d.subMenu" [routerLink]="['/','home',d.url]" (click)="toggleOff()" class="main-tag">
+          <ion-item *ngIf="!d.subMenu" [routerLink]="['/','home',d.url]" (click)="myAccount()" class="main-tag">
             <ion-icon slot="start" name={{d.icon}}></ion-icon>
-            <ion-label>{{d.title}} T</ion-label>
+            <ion-label>{{d.title}} </ion-label>
           </ion-item>
 
 
 
           <!-- MAINMENU -->
-
-          <ion-item *ngIf="d.active" (click)="toggleDetails(d)" class="main-tag">
+          <ion-item *ngIf="d.active" (click)="toggleSubMenu(d)" class="main-tag">
             <ion-icon slot="start" name={{d.icon}}></ion-icon>
             <ion-label>{{d.title}}</ion-label>
             <ion-icon name="caret-down-outline" *ngIf="d.showDetails"></ion-icon>
             <ion-icon name="caret-up-outline" *ngIf="!d.showDetails"></ion-icon>
           </ion-item>
-
 
 
 
@@ -37,12 +34,11 @@
             </ion-item>
           </ion-list>
 
-
         </ion-list>
         
-        
+
         <ion-list id="inbox-list"  lines="none">
-          <ion-item *ngIf="more" (click)="credTrue=!credTrue" class="main-tag">
+          <ion-item *ngIf="moreOption" (click)="credTrue=!credTrue" class="main-tag">
             <ion-icon slot="start" name="list"></ion-icon>
           <ion-label>More</ion-label>
           <ion-icon name="caret-down-outline" *ngIf="!credTrue"></ion-icon>

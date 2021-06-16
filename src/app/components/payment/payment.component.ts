@@ -108,7 +108,10 @@ export class PaymentComponent implements OnInit {
     for (i = 0; i < this.PG.length; i++) {
       if (x == this.PG[i]["name"]) {
         this.pg_name = this.PG[i]["name"];
-        this.itemArr = this.PG[i]["item"].filter((e) => { return e.active == true })
+        this.itemArr = this.PG[i]["item"].filter((e) => { 
+            return e.active == true 
+          }
+        )
       }
       else {
         this.PG[i]["value"] = false;
@@ -121,8 +124,8 @@ export class PaymentComponent implements OnInit {
     var PGC = 0;
     var NET = 0;
     var dt = $event.value.split(",");
-    if (this.AgencyBalanceStatus() == true) { 
-      this.AMOUNT_PG = this.Data.AMOUNT; this.AMOUNT_WALLET = 0; 
+    if (this.AgencyBalanceStatus() == true) {
+      this.AMOUNT_PG = this.Data.AMOUNT; this.AMOUNT_WALLET = 0;
     }
     if (dt[2] === 'true') {
       PGC = (this.AMOUNT_PG * (dt[3] / 100));
