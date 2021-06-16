@@ -25,7 +25,7 @@ export class HomePage implements OnInit {
   ngOnInit() {
     this.tService.getTestData("../../../assets/sideMenu.json").subscribe(result => {
       this.Menu = result
-      this.Menu[4].active_status = false
+      this.Menu[4].active = false
 
     });
 
@@ -127,7 +127,7 @@ export class HomePage implements OnInit {
     if (this.set_cre.value.cre1 == "12345") {
       this.credTrue = false
       this.more = false
-      this.Menu[4].active_status = true
+      this.Menu[4].active = true
 
     }
 

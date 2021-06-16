@@ -4,30 +4,42 @@
     <ion-menu contentId="main-content" type="overlay" *ngIf="bigMenu" swipeGesture="false">
       <ion-content>
         <ion-list id="inbox-list" *ngFor="let d of Menu,let i = index" lines="none">
+
+
+          <!-- WITHOUT SUBMENU -->
+
           <ion-item *ngIf="!d.subMenu" [routerLink]="['/','home',d.url]" (click)="toggleOff()" class="main-tag">
             <ion-icon slot="start" name={{d.icon}}></ion-icon>
-            <ion-label>{{d.title}}</ion-label>
+            <ion-label>{{d.title}} T</ion-label>
           </ion-item>
 
 
-          <ion-item *ngIf="d.active_status" (click)="toggleDetails(d)" class="main-tag">
+
+          <!-- MAINMENU -->
+
+          <ion-item *ngIf="d.active" (click)="toggleDetails(d)" class="main-tag">
             <ion-icon slot="start" name={{d.icon}}></ion-icon>
             <ion-label>{{d.title}}</ion-label>
             <ion-icon name="caret-down-outline" *ngIf="d.showDetails"></ion-icon>
             <ion-icon name="caret-up-outline" *ngIf="!d.showDetails"></ion-icon>
           </ion-item>
 
-         
+
+
+
+         <!-- SUBMENU -->
+
           <ion-list *ngIf="!d.showDetails">
-            <ion-item *ngFor="let s of d.subMenu" [routerLink]="['/','home',s.url]" (click)="bigMenu=!bigMenu">
-              <ion-icon slot="start" name={{s.icon}}></ion-icon>
-              <ion-label>{{s.title}}</ion-label>
-              <ion-icon slot="end" name={{s.Eicon}}></ion-icon>
+            <ion-item *ngFor="let s_Menu of d.subMenu" [routerLink]="['/','home',s_Menu.url]" (click)="bigMenu=!bigMenu">
+              <ion-icon slot="start" name={{s_Menu.icon}}></ion-icon>
+              <ion-label>{{s_Menu.title}}</ion-label>
+              <ion-icon slot="end" name={{s_Menu.Eicon}}></ion-icon>
             </ion-item>
           </ion-list>
 
 
         </ion-list>
+        
         
         <ion-list id="inbox-list"  lines="none">
           <ion-item *ngIf="more" (click)="credTrue=!credTrue" class="main-tag">

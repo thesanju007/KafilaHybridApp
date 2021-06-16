@@ -3,7 +3,7 @@
 }
 
 .bg-color{
-  --ion-background-color: rgb(233, 231, 231);
+  --ion-background-color: rgb(245, 245, 245);
 }
 ion-item{
   --ion-background-color: #fff;
@@ -112,13 +112,52 @@ ion-slides{
   padding: 20px 0px 0px 15px;
   color:red;
 }
-@media only screen and (max-width: 768px) {
+.for-app {
+    padding: 60px 20px 80px 20px;
+  }
+
+  @media only screen and (max-width: 768px ) {
+    .R-label{
+      font-weight: 500;
+      font-size: 13px;
+    }
+    .label{
+      font-size: 17px;
+      font-weight: 500;
+    }
+    input::placeholder{
+      font-size: 14px;
+    }
+    .FTH {
+  
+      font-size: 16px;
+  
+    }
+    .for-app {
+      padding: 60px 10px 80px 10px;
+    }
+  
+  }
+
+@media only screen and (max-width: 425px ) {
+  .R-label{
+    font-weight: 500;
+    font-size: 13px;
+  }
+  .label{
+    font-size: 17px;
+    font-weight: 500;
+  }
+  input::placeholder{
+    font-size: 14px;
+  }
+  .FTH {
+
+    font-size: 16px;
+
+  }
   .for-app {
     padding: 60px 10px 80px 10px;
   }
-}
-@media only screen and (min-width: 769px) {
-  .for-app {
-    padding: 80px 80px 80px 40px;
-  }
+
 }

@@ -1,41 +1,88 @@
+ion-row{
+  padding: 10px;
+}
 ion-slides {
   width: 100%;
 
 }
-ion-icon{
-  font-size: 18px;
-  font-weight: 500;
+
+.top-head{
+  cursor: pointer;
+  color: #498AFF;
+}
+
+
+ul{
+  display: inline-flex;
+  list-style: none;
+  li{
+    padding: 0px 10px;
+    text-align: end;
+  }
+}
+
+@media only screen and (min-width: 779px) {
+  // .for-app{
+  //   display:none
+  // }
+  // .for-web{
+  //   display:block
+  // }
+}
+@media only screen and (max-width: 768px) {
+  // .for-app{
+  //   display:block
+  // }
+  // .for-web{
+  //   display:none
+  // }
+  // .top-head{
+  //   text-align: center;
+  //   padding: 20px 0px 0px 0px;
+  // }
+  // ion-slides {
+  //   width: 100%;  
+  // }
+
+  // .app{
+  //   display: none;
+  // }
+
+  ul{
+    display: inline-flex;
+    list-style: none;
+    margin: 0px;
+    li{
+      padding: 10px 13px 0px 0px;
+      
+    }
+  }
+  ion-row{
+    padding: 0px;
+  }
 
 }
-.top-head{
-  text-align: center;
-  padding: 20px 0px 0px 0px;
-  cursor: pointer;
-  color: black;
-}
-.top-head:hover{
-  font-weight: 500;
-}
-@media only screen and (min-width: 779px) {
-  .for-app{
-    display:none
+
+@media only screen and (max-width: 425px ) {
+.app{
+    display: none;
   }
-  .for-web{
-    display:block
+  ul{
+    display: inline-flex;
+    list-style: none;
+    float: left;
+    padding: 0px 0px 0px 5px;
+    margin: 0px;
+    li{
+      padding: 10px 0px 0px 5px;
+      
+    }
   }
-}
-@media only screen and (max-width: 778px) {
-  .for-app{
-    display:block
+  ion-row{
+    padding: 0px;
   }
-  .for-web{
-    display:none
+  .s-app{
+    font-size: 12px;
   }
-  .top-head{
-    text-align: center;
-    padding: 0px 0px 0px 0px;
-  }
-  ion-slides {
-    width: 100%;  
-  }
+
 }

@@ -1,23 +1,21 @@
 <ion-content class="padding-none bg-color">
   <ion-grid class="ion-padding for-app">
     <ion-row color="primary" justify-content-center class="padding-none">
-      <ion-col size-xs="12" size-md="12" size-lg="12" size-xl="12" class="padding-none">
+      <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12" class="padding-none">
         <ion-row color="primary" justify-content-center>
-          <ion-col size-md="2" size-lg="1" size-xs="4" class="FTH " (click)="flight()"
+          <ion-col  size-sm="4" size-xs="4" size-md="2" size-lg="2" size-xl="1" class="FTH " (click)="flight()"
             [ngClass]="[isAfterF?'FTHActive':'!FTHActive']">
             <span class="material-icons">flight</span> Flight
           </ion-col>
-          <ion-col size-md="2" size-lg="1" size-xs="4" class="FTH " (click)="train()"
+          <ion-col  size-sm="4" size-xs="4" size-md="2" size-lg="2" size-xl="1" class="FTH " (click)="train()"
             [ngClass]="[ isAfterT?'FTHActive':'!FTHActive']">
             <span class="material-icons">train</span>Trains
           </ion-col>
-          <ion-col size-md="2" size-lg="1" size-xs="4" class=" FTH " (click)="hotel()"
+          <ion-col size-sm="4" size-xs="4" size-md="2" size-lg="2" size-xl="1" class=" FTH " (click)="hotel()"
             [ngClass]="[ isAfterH?'FTHActive':'!FTHActive']">
             <span class="material-icons">local_hotel</span> Hotels
           </ion-col>
         </ion-row>
-
-
 
 
 
@@ -57,7 +55,7 @@
 
             <ion-row color="primary" justify-content-center class="tp_mgn">
 
-              <ion-col size-md="3" size-lg="3" size-xs="12">
+              <ion-col size-sm="12" size-xs="12" size-md="3" size-lg="3" size-xl="3" >
                 <ion-item>
                   <ion-label position="stacked" class="label">Select Departure City</ion-label>
                   <input formControlName="D_airport" list="D_airport" (change)="removeAirport($event.target.value)"
@@ -71,11 +69,11 @@
                 </ion-text>
               </ion-col>
 
-              <ion-col size-md="3" size-lg="3" size-xs="12">
+              <ion-col size-sm="12" size-xs="12" size-md="3" size-lg="3" size-xl="3">
                 <ion-item>
                   <ion-label position="stacked" class="label">Select Arrival City</ion-label>
                   <input formControlName="A_airport" list="A_airport" (change)="removeAirportDep($event.target.value)"
-                  placeholder="{{d_ArrCity}}">
+                    placeholder="{{d_ArrCity}}">
                   <datalist id="A_airport">
                     <option *ngFor="let arpt_new of arp_new">{{arpt_new.code}} , {{arpt_new.city}} ,
                       {{arpt_new.country}}</option>
@@ -86,22 +84,22 @@
                 </ion-text>
               </ion-col>
 
-              <ion-col size-md="3" size-lg="3" size-xs="12">
+              <ion-col size-sm="12" size-xs="12" size-md="3" size-lg="3" size-xl="3">
                 <ion-item>
                   <ion-label position="stacked" class="label">Select Departure Date</ion-label>
                   <input formControlName="D_date" type="date" [min]="todayt" [max]="maxDate"
-                    (change)="returnDate($event.target.value)" >
+                    (change)="returnDate($event.target.value)">
                 </ion-item>
                 <ion-text *ngIf="Error.D_date.touched || Error.D_date.dirty">
                   <span class="err" *ngIf="Error.D_date.errors">* Required Field</span>
                 </ion-text>
               </ion-col>
 
-              <ion-col size-md="3" size-lg="3" size-xs="12" *ngIf="show">
+              <ion-col size-sm="12" size-xs="12" size-md="3" size-lg="3" size-xl="3" *ngIf="show">
                 <ion-item>
                   <ion-label position="stacked" class="label">Select Return Date</ion-label>
                   <input formControlName="A_date" type="date" [min]="minDate"
-                    (change)="returnDateMax($event.target.value)" >
+                    (change)="returnDateMax($event.target.value)">
                 </ion-item>
               </ion-col>
 
@@ -109,8 +107,8 @@
 
             <ion-row color="primary" justify-content-center>
 
-              <ion-col size-md="9" size-lg="11" size-xs="8"> </ion-col>
-              <ion-col size-md="3" size-lg="1" size-xs="4">
+              <ion-col size-sm="4" size-xs="8" size-md="9" size-lg="11" size-xl="11" > </ion-col>
+              <ion-col size-sm="8" size-xs="4" size-md="3" size-lg="1" size-xl="1" >
                 <ion-text (click)="moreFields=!moreFields">
                   More Fields
                 </ion-text>

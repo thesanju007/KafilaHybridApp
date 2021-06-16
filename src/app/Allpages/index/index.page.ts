@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PopoverController } from '@ionic/angular';
+import { LoginPopoverComponent } from '../../components/login-popover/login-popover.component'
 @Component({
   selector: 'app-index',
   templateUrl: './index.page.html',
@@ -7,11 +9,12 @@ import { Router } from '@angular/router';
 })
 export class IndexPage implements OnInit {
 
-  constructor(public rout:Router) { }
+  constructor(public rout:Router,public popoverController: PopoverController) { }
   slideOpts = {
     autoplay: true
   };
   ngOnInit() {
+   
   }
   none=false;
   
@@ -27,4 +30,19 @@ export class IndexPage implements OnInit {
     { title: 'Payment Uplaod', url: '/gallery', icon: 'images' },
     
   ];
+  
+  async presentPopover(ev: any) {
+    const popover = await this.popoverController.create({
+      component: LoginPopoverComponent,
+      cssClass: 'pop-over-style',
+      event: ev,
+      translucent: false,
+      animated:true,
+      backdropDismiss:true
+      
+    });
+   
+    await popover.present();
+    const { role } = await popover.onDidDismiss();
+  }
 }
