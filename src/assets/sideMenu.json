@@ -1,7 +1,7 @@
 [
     {
         "id": "1",
-        "active": "false",
+        "active": "true",
         "title": "Flight",
         "icon": "Airplane",
         "showDetails": "false",
@@ -58,7 +58,7 @@
     },
     {
         "id": "2",
-        "active": "false",
+        "active": "true",
         "title": "Train",
         "icon": "train",
         "showDetails": "false",
@@ -115,7 +115,7 @@
     },
     {
         "id": "3",
-        "active": "false",
+        "active": "true",
         "title": "Hotel",
         "icon": "home",   
         "showDetails": "false",
@@ -184,7 +184,7 @@
         "icon": "settings",
         "subMenu": [
             {
-                "sid": "6",
+                "sid": "1",
                 "active": "false",
                 "title": "Menu Master",
                 "url": "dashboard",

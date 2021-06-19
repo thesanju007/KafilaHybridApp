@@ -1,6 +1,40 @@
-.pop-over-style {
-    top: 87px;
-    left: 1250.39px;
-    transform-origin: left top;
+@media only screen and (max-width: 3100px) {
+    .popover_setting .popover-content {
+        --min-width: 300px !important;
+        --min-height: 150px !important;
+        --ion-text-color: #000;
+        background-color: white;
+        top: 79px !important;
+        transform-origin: left top !important;
+        z-index: 10 !important;
+        background-color: rgb(233, 233, 233);
+    }
+    
+}
 
-  }
+
+
+@media only screen and (max-width: 768px ) {
+    .popover_setting .popover-content {
+        --max-width: 200px !important;
+        --max-height: 350px !important;
+        --ion-text-color: #000;
+        background-color: white;
+        transform-origin: left top !important;
+        top: 57px !important;
+        background-color: rgb(233, 233, 233);
+    }
+}
+
+
+
+@media only screen and (max-width: 425px ) {
+    .popover_setting .popover-content {
+        --max-width: 200px !important;
+        --max-height: 350px !important;
+        --ion-text-color: #000;
+        background-color: white;
+        transform-origin: left top !important;
+        background-color: rgb(233, 233, 233);
+    }
+}

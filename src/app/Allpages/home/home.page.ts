@@ -19,18 +19,19 @@ export class HomePage implements OnInit {
     this.clickEventSubs = this.tService.getClickEvent().subscribe(() => {
       this.toggleMenu();
     })
+
   }
+
+  dataFromBackend = [{ "id": 1 }, { "id": 3 }]
 
   ngOnInit() {
     this.tService.getTestData("../../../assets/sideMenu.json").subscribe(result => {
       this.Menu = result
-      this.Menu[4].active = false
-
-
+      result[4].active = false
     });
+
     window.addEventListener("keyup", disableF5);
     window.addEventListener("keydown", disableF5);
-
     function disableF5(e: any) {
       if ((e.which || e.keyCode) == 116 || ((e.which || e.keyCode) == 82))
         e.preventDefault();
@@ -41,10 +42,13 @@ export class HomePage implements OnInit {
   ionViewWillEnter() {
     setTimeout(() => {
       alert("Session Timeout")
-      this.route.navigate(['index']);
+      // this.route.navigate(['index']);
+      location.replace("/index")
     }, 1 * 60 * 60 * 500);
   }
-  
+  logout(){
+    location.replace("/index")
+  }
   toggleMenu() {
     if (this.bigMenu == true) {
       this.bigMenu = !this.bigMenu
@@ -55,12 +59,17 @@ export class HomePage implements OnInit {
 
   toggleSubMenu(p) {
     this.credTrue = false
-    for (let i of this.Menu) {
-      if (i.title == p.title) {
-        i.showDetails = false;
+    if (p.showDetails) {
+      for (let i of this.Menu) {
+        if (i.title == p.title) {
+          i.showDetails = false;
+        }
+        else
+          i.showDetails = true;
       }
-      else
-      i.showDetails = true;
+    }
+    else {
+      p.showDetails = true;
     }
   }
 
@@ -84,7 +93,6 @@ export class HomePage implements OnInit {
       this.credTrue = false
       this.moreOption = false
       this.Menu[4].active = true
-
     }
 
   }

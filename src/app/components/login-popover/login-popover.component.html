@@ -1,37 +1,42 @@
-<ion-grid>
-  <ion-row>
-    <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
-      <ion-item lines="none">
-        <input placeholder="Enter Agent ID" required>
-      </ion-item>
-    </ion-col>
+<form [formGroup]="set_cre" (ngSubmit)="closeModel()" class="cred-box">
+  <ion-grid>
+    <ion-row>
+      <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
+        <ion-item lines="none">
+          <input placeholder="Enter Agent ID" formControlName="cre1">
+        </ion-item>
+      </ion-col>
 
-    <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
-      <ion-item lines="none">
-        <input placeholder="Enter Agent Username" required>
-      </ion-item>
-    </ion-col>
+      <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
+        <ion-item lines="none">
+          <input placeholder="Enter Agent Username" formControlName="cre2">
+        </ion-item>
+      </ion-col>
 
-    <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
-      <ion-item lines="none">
-        <input placeholder="Enter Your Password" required>
-      </ion-item>
-    </ion-col>
+      <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
+        <ion-item lines="none">
+          <input placeholder="Enter Your Password" formControlName="cre2">
+        </ion-item>
+      </ion-col>
 
-    <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
-      <ion-button href="/home">  Login <ion-icon name="log-in-outline"></ion-icon></ion-button>
-    </ion-col>
-
-
-    <ion-col class="or-text" size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
-      <ion-text>OR</ion-text>
-    </ion-col>
+      <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
+        <button class="submit-btn" type="submit"> Login
+          <ion-icon name="log-in-outline"></ion-icon>
+        </button>
+      </ion-col>
 
 
-    <ion-col class="or-text" size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12" >
-      <ion-text>not a member ? </ion-text><ion-text color="primary">SignUp</ion-text>
-    </ion-col>
+      <ion-col class="or-text" size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
+        <ion-text>OR</ion-text>
+      </ion-col>
 
 
-  </ion-row>
-</ion-grid>
+      <ion-col class="or-text" size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
+        <ion-text>not a member ? </ion-text>
+        <ion-text color="primary">SignUp</ion-text>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+</form>

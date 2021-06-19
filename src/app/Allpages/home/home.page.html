@@ -13,9 +13,9 @@
           </ion-item>
 
 
-
           <!-- MAINMENU -->
-          <ion-item *ngIf="d.active" (click)="toggleSubMenu(d)" class="main-tag">
+           
+          <ion-item *ngIf="d.active" (click)="toggleSubMenu(d)" (ionClick)="d.showDetails=!d.showDetails " class="main-tag">
             <ion-icon slot="start" name={{d.icon}}></ion-icon>
             <ion-label>{{d.title}}</ion-label>
             <ion-icon name="caret-down-outline" *ngIf="d.showDetails"></ion-icon>
@@ -23,11 +23,10 @@
           </ion-item>
 
 
-
          <!-- SUBMENU -->
 
           <ion-list *ngIf="!d.showDetails">
-            <ion-item *ngFor="let s_Menu of d.subMenu" [routerLink]="['/','home',s_Menu.url]" (click)="bigMenu=!bigMenu">
+            <ion-item *ngFor="let s_Menu of d.subMenu" [routerLink]="['/','home',s_Menu.url]" (click)="bigMenu=!bigMenu" >
               <ion-icon slot="start" name={{s_Menu.icon}}></ion-icon>
               <ion-label>{{s_Menu.title}}</ion-label>
               <ion-icon slot="end" name={{s_Menu.Eicon}}></ion-icon>
@@ -53,9 +52,17 @@
             <ion-button class="submit-btn wid" type="submit">check</ion-button>
           </form>
         </ion-list>
-
+        
         
       </ion-content>
+
+
+      <ion-item  (click)="logout()" lines="none" class="line-up">
+        <ion-icon slot="start" name="log-out-outline"></ion-icon>
+        <ion-label>Logout </ion-label>
+      </ion-item>
+
+
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>
   </ion-split-pane>
