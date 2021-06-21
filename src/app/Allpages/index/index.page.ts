@@ -17,6 +17,7 @@ export class IndexPage implements OnInit {
   ngOnInit() {
 
   }
+
   none = false;
 
   // login() {
@@ -39,19 +40,23 @@ export class IndexPage implements OnInit {
       component: LoginPopoverComponent,
       event: ev,
       cssClass: 'popover_setting',
-      translucent: true,
-      componentProps: {
-        'model_title': "Nomadic model's reveberation"
-      }
+      translucent: false,
+      mode: 'ios',     
     });
 
 
     popover.onDidDismiss().then((modelData) => {
-      if (modelData !== null) {
-        this.modelData_data = modelData.data;
-        console.log('Modal Data : ' + this.modelData_data);
+      if (modelData!== null) {
+        if (modelData.data.cre1 == "18785869" && modelData.data.cre2 == "pslv" && modelData.data.cre3 == "111000") {
+          this.rout.navigate(['home/dashboard'])
+        }
+        else {
+          alert("Wrong Credentials")
+        }
       }
     });
+
+
 
     return await popover.present();
   }

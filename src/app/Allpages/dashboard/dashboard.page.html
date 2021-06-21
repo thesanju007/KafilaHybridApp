@@ -3,11 +3,11 @@
     <ion-row color="primary" justify-content-center class="padding-none">
       <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12" class="padding-none">
         <ion-row color="primary" justify-content-center>
-          <ion-col  size-sm="4" size-xs="4" size-md="2" size-lg="2" size-xl="1" class="FTH " (click)="flight()"
+          <ion-col size-sm="4" size-xs="4" size-md="2" size-lg="2" size-xl="1" class="FTH " (click)="flight()"
             [ngClass]="[isAfterF?'FTHActive':'!FTHActive']">
             <span class="material-icons">flight</span> Flight
           </ion-col>
-          <ion-col  size-sm="4" size-xs="4" size-md="2" size-lg="2" size-xl="1" class="FTH " (click)="train()"
+          <ion-col size-sm="4" size-xs="4" size-md="2" size-lg="2" size-xl="1" class="FTH " (click)="train()"
             [ngClass]="[ isAfterT?'FTHActive':'!FTHActive']">
             <span class="material-icons">train</span>Trains
           </ion-col>
@@ -52,18 +52,20 @@
                 </ion-radio-group>
               </ion-col>
             </ion-row>
-
             <ion-row color="primary" justify-content-center class="tp_mgn">
 
-              <ion-col size-sm="12" size-xs="12" size-md="3" size-lg="3" size-xl="3" >
+              <ion-col size-sm="12" size-xs="12" size-md="3" size-lg="3" size-xl="3">
                 <ion-item>
                   <ion-label position="stacked" class="label">Select Departure City</ion-label>
                   <input formControlName="D_airport" list="D_airport" (change)="removeAirport($event.target.value)"
-                    placeholder="{{d_DepCity}}">
-                  <datalist id="D_airport">
+                    placeholder="{{d_DepCity}}" autocomplete="on" role="combobox">
+
+                  <datalist id="D_airport"  role="combobox">
                     <option *ngFor="let arpt of arp">{{arpt.code}} , {{arpt.city}} , {{arpt.country}}</option>
                   </datalist>
                 </ion-item>
+           
+
                 <ion-text *ngIf="Error.D_airport.touched || Error.D_airport.dirty">
                   <span class="err" *ngIf="Error.D_airport.errors">* Required Field</span>
                 </ion-text>
@@ -72,8 +74,7 @@
               <ion-col size-sm="12" size-xs="12" size-md="3" size-lg="3" size-xl="3">
                 <ion-item>
                   <ion-label position="stacked" class="label">Select Arrival City</ion-label>
-                  <input formControlName="A_airport" list="A_airport" (change)="removeAirportDep($event.target.value)"
-                    placeholder="{{d_ArrCity}}">
+                  <input formControlName="A_airport" list="A_airport" (change)="removeAirportDep($event.target.value)" placeholder="{{d_ArrCity}}">
                   <datalist id="A_airport">
                     <option *ngFor="let arpt_new of arp_new">{{arpt_new.code}} , {{arpt_new.city}} ,
                       {{arpt_new.country}}</option>
@@ -87,8 +88,7 @@
               <ion-col size-sm="12" size-xs="12" size-md="3" size-lg="3" size-xl="3">
                 <ion-item>
                   <ion-label position="stacked" class="label">Select Departure Date</ion-label>
-                  <input formControlName="D_date" type="date" [min]="todayt" [max]="maxDate"
-                    (change)="returnDate($event.target.value)">
+                  <input formControlName="D_date" type="date" [min]="todayt" [max]="maxDate" (change)="returnDate($event.target.value)">
                 </ion-item>
                 <ion-text *ngIf="Error.D_date.touched || Error.D_date.dirty">
                   <span class="err" *ngIf="Error.D_date.errors">* Required Field</span>
@@ -98,17 +98,16 @@
               <ion-col size-sm="12" size-xs="12" size-md="3" size-lg="3" size-xl="3" *ngIf="show">
                 <ion-item>
                   <ion-label position="stacked" class="label">Select Return Date</ion-label>
-                  <input formControlName="A_date" type="date" [min]="minDate"
-                    (change)="returnDateMax($event.target.value)">
+                  <input formControlName="A_date" type="date" [min]="minDate" (change)="returnDateMax($event.target.value)">
                 </ion-item>
               </ion-col>
-
             </ion-row>
+
 
             <ion-row color="primary" justify-content-center>
 
-              <ion-col size-sm="4" size-xs="7" size-md="9" size-lg="10" size-xl="11" > </ion-col>
-              <ion-col size-sm="8" size-xs="5" size-md="3" size-lg="2" size-xl="1" >
+              <ion-col size-sm="4" size-xs="7" size-md="9" size-lg="10" size-xl="11"> </ion-col>
+              <ion-col size-sm="8" size-xs="5" size-md="3" size-lg="2" size-xl="1">
                 <ion-text (click)="moreFields=!moreFields">
                   More Fields
                 </ion-text>
@@ -172,9 +171,9 @@
 
             <ion-row color="primary" justify-content-center class="ion-padding">
               <ion-col size-md="3" size-lg="3" size-xs="12">
-                <button class="submit-btn" type="submit" [disabled]="!flightData.valid"><span
-                    class="material-icons">search</span> Search
-                  Flights</button>
+                <button class="submit-btn" type="submit" [disabled]="!flightData.valid">
+                  <span class="material-icons">search</span> Search Flights
+                </button>
               </ion-col>
             </ion-row>
           </form>
@@ -222,18 +221,17 @@
             <ion-row color="primary" justify-content-center>
               <ion-col size-md="3" size-lg="3" size-xs="12">
                 <ion-item>
-                  <ion-label position="floating">Select Departure City</ion-label>
-                  <ion-input></ion-input>
+
                 </ion-item>
 
               </ion-col>
               <ion-col size-md="3" size-lg="3" size-xs="12">
                 <ion-item>
-                  <ion-label position="floating">Select Arrival City</ion-label>
-                  <ion-input></ion-input>
+              
+
                 </ion-item>
               </ion-col>
-
+           
               <ion-col size-md="3" size-lg="3" size-xs="12">
                 <ion-item>
                   <ion-label position="floating">Select Departure Date</ion-label>

@@ -22,8 +22,8 @@ export class DashboardPage implements OnInit {
   hotel_comp = false
   imgList = ["1.jpg", "3.jpg", "7.jpg"]
   adult = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-  childrens=["0","1", "2", "3", "4", "5", "6", "7", "8"]
-  infants=["0","1","2", "3", "4",]
+  childrens = ["0", "1", "2", "3", "4", "5", "6", "7", "8"]
+  infants = ["0", "1", "2", "3", "4",]
   d_DepCity = "DEL, Delhi, India"
   d_ArrCity = "BOM, Mumbai, India"
   t_Type = "1";
@@ -53,7 +53,7 @@ export class DashboardPage implements OnInit {
 
   removeAirportDep(airport) {
     let depApt = airport.substring(0, 3);
-    
+
     console.log(depApt)
     this.arp = this.arp_new.filter(Array => Array.code !== depApt);
   }
@@ -67,7 +67,7 @@ export class DashboardPage implements OnInit {
     this.minDate = d
   }
   returnDateMax(d) {
-    
+
     this.maxDate = d
   }
 
@@ -114,7 +114,7 @@ export class DashboardPage implements OnInit {
     Childs: new FormControl(''),
     Infants: new FormControl(''),
   })
-
+  // list=false;
   checkFlight() {
 
     let depApt = this.flightData.value.D_airport.substring(0, 3);
@@ -147,7 +147,7 @@ export class DashboardPage implements OnInit {
       // this.route.navigate(['home/fbookinghistory']);
       this.tService.postTestData("/API/FLIGHT", js_data).subscribe((Flight) => {
         console.log(Flight)
-        
+
       })
     }
     else if (this.flightData.value.flighttype == "2") {
@@ -162,5 +162,13 @@ export class DashboardPage implements OnInit {
   get Error() {
     return this.flightData.controls;
   }
+
+
+
+
+
+
+
+
 
 }

@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-
+import { LoginPopoverModule } from '../app/components/login-popover/login-popover.module'
 //import { PaymentModule } from './components/payment/payment.module';
 
 @NgModule({
@@ -18,8 +18,9 @@ import { HttpClientModule } from '@angular/common/http';
     IonicModule.forRoot(),
     AppRoutingModule, 
     BrowserAnimationsModule,
-    HttpClientModule
-   // PaymentModule
+    HttpClientModule,
+   // PaymentModule,
+   LoginPopoverModule
     
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

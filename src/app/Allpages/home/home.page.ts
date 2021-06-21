@@ -30,25 +30,28 @@ export class HomePage implements OnInit {
       result[4].active = false
     });
 
-    window.addEventListener("keyup", disableF5);
-    window.addEventListener("keydown", disableF5);
-    function disableF5(e: any) {
-      if ((e.which || e.keyCode) == 116 || ((e.which || e.keyCode) == 82))
-        e.preventDefault();
-    };
+    // window.addEventListener("keyup", disableF5);
+    // window.addEventListener("keydown", disableF5);
+    // function disableF5(e: any) {
+    //   if ((e.which || e.keyCode) == 116 || ((e.which || e.keyCode) == 82))
+    //     e.preventDefault();
+    // };
 
   }
 
   ionViewWillEnter() {
     setTimeout(() => {
       alert("Session Timeout")
-      // this.route.navigate(['index']);
       location.replace("/index")
     }, 1 * 60 * 60 * 500);
   }
+
+
   logout(){
     location.replace("/index")
   }
+
+  
   toggleMenu() {
     if (this.bigMenu == true) {
       this.bigMenu = !this.bigMenu

@@ -7,7 +7,7 @@
 
           <!-- WITHOUT SUBMENU -->
 
-          <ion-item *ngIf="!d.subMenu" [routerLink]="['/','home',d.url]" (click)="myAccount()" class="main-tag">
+          <ion-item *ngIf="!d.subMenu" [routerLink]="['/','home',d.url]" (click)="myAccount()" class="main-tag" routerDirection="forward">
             <ion-icon slot="start" name={{d.icon}}></ion-icon>
             <ion-label>{{d.title}} </ion-label>
           </ion-item>

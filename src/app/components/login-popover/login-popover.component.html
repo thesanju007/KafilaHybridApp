@@ -5,24 +5,26 @@
         <ion-item lines="none">
           <input placeholder="Enter Agent ID" formControlName="cre1">
         </ion-item>
+       
       </ion-col>
 
       <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
         <ion-item lines="none">
-          <input placeholder="Enter Agent Username" formControlName="cre2">
+          <input placeholder="Enter Agent Username"  formControlName="cre2">
         </ion-item>
       </ion-col>
 
       <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
         <ion-item lines="none">
-          <input placeholder="Enter Your Password" formControlName="cre2">
+          <input type="password" placeholder="Enter Your Password"  formControlName="cre3">
         </ion-item>
       </ion-col>
 
+      
       <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
-        <button class="submit-btn" type="submit"> Login
+        <ion-button type="submit" (click)="closeModel()"> Login
           <ion-icon name="log-in-outline"></ion-icon>
-        </button>
+        </ion-button>
       </ion-col>
 
 
@@ -40,3 +42,4 @@
   </ion-grid>
 
 </form>
+
