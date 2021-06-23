@@ -1,70 +1,193 @@
-ion-row{
-  padding: 10px;
-}
-ion-slides {
-  width: 100%;
 
-}
+
 
 .top-head{
   cursor: pointer;
-  color: #498AFF;
+}
+.mail{
+  padding: 10px 0px 0px 0px;
+  cursor: pointer;
+}
+.top-Head-upper{
+  background-color: rgba(231, 231, 231, 0.945);
+  font-weight: 500;
+  color: #17745b;
 }
 
-
-ul{
-  display: inline-flex;
-  list-style: none;
-  li{
-    padding: 0px 10px;
-    text-align: end;
-  }
+.top-Head-upper-r{
+  padding: 0px 20px;
+  cursor: pointer;
+}
+ion-col{
+  padding: 0px;
+}
+ion-toolbar {
+  --background: var(--ion-item-background, var(--ion-background-color, #17745b));
+  color: #fff;
+ 
+}
+.main-footer-head{
+  padding: 20px 0px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #f7bb1e;
+  font-family: serif;
+}
+.main-footer-min{
+  padding: 10px 0px;
+  font-size: 15px;
+  font-weight: 400;
+  color: #ffffff;
 }
 
-@media only screen and (min-width: 779px) {
-  // .for-app{
-  //   display:none
-  // }
-  // .for-web{
-  //   display:block
-  // }
-}
-@media only screen and (max-width: 768px) {
-  // .for-app{
-  //   display:block
-  // }
-  // .for-web{
-  //   display:none
-  // }
-  // .top-head{
-  //   text-align: center;
-  //   padding: 20px 0px 0px 0px;
-  // }
-  // ion-slides {
-  //   width: 100%;  
-  // }
-
-  // .app{
-  //   display: none;
-  // }
+@media only screen and (min-width: 769px) {
 
   ul{
     display: inline-flex;
     list-style: none;
-    margin: 0px;
+    margin: 0px 0px 0px 0px;
+    padding: 0px;
     li{
-      padding: 10px 13px 0px 0px;
-      
+      padding: 10px 6px 0px 10px;
+    
+    }
+  }
+  .mid-Head-Row{
+    padding: 15px 0px 0px 0px;
+  }
+
+  .s-app{
+    font-size: 15px;
+  }
+}
+
+
+@media only screen and (max-width: 768px) {
+  .mail{
+    padding: 10px 0px 0px 0px;
+    cursor: pointer;
+    font-size: 11px;
+  }
+  .top-Head-upper{
+    background-color: rgba(231, 231, 231, 0.945);
+    font-weight: 400;
+    color: #17745b;
+  }
+ 
+  ion-col{
+    padding: 0px!important;
+    margin: 0px;
+  }
+  .top-Head-upper-r{
+    padding: 0px 15px;
+    cursor: pointer;
+  }
+  .top-Head-upper-ul{
+    padding: 0px!important;
+    margin: 0px;
+    font-size: 11px;
+  }
+  .top-Head-upper-li{
+    padding: 0px!important;
+    margin: 0px;
+  }
+  ul{
+    display: inline-flex;
+    list-style: none;
+    margin: 10px 0px 0px 0px;
+    padding: 0px;
+    li{
+      padding: 10px 6px 0px 10px;
+    
     }
   }
   ion-row{
     padding: 0px;
   }
 
+  .s-app{
+    font-size: 12px;
+  }
 }
 
-@media only screen and (max-width: 425px ) {
+@media only screen and (max-width: 665px ) {
 .app{
+    display: none;
+  }
+  .mail{
+    display: none;
+  }
+  .top-Head-upper{
+    background-color: rgba(231, 231, 231, 0.945);
+    font-weight: 400;
+    color: #17745b;
+  }
+ 
+  ion-col{
+    padding: 0px!important;
+    margin: 0px;
+  }
+  .top-Head-upper-r{
+    padding: 0px 15px;
+    cursor: pointer;
+  }
+  .top-Head-upper-ul{
+    padding: 0px!important;
+    margin: 0px;
+    font-size: 11px;
+  }
+  .top-Head-upper-li{
+    padding: 0px!important;
+    margin: 0px;
+  }
+  ul{
+    display: inline-flex;
+    list-style: none;
+    float: left;
+    padding: 0px 0px 0px 5px;
+    margin: 10px 0px 0px 0px;
+    li{
+      padding: 10px 0px 0px 30px;
+    }
+  }
+  ion-row{
+    padding: 0px;
+  }
+  .s-app{
+    font-size: 10px;
+  }
+
+}
+
+
+@media only screen and (max-width: 425px ) {
+  .app{
+      display: none;
+  }
+  .top-Head-upper{
+    background-color: rgba(231, 231, 231, 0.945);
+    font-weight: 400;
+    color: #17745b;
+  }
+ 
+  ion-col{
+    padding: 0px!important;
+    margin: 0px;
+  }
+  .top-Head-upper-r{
+    padding: 0px 5px;
+    cursor: pointer;
+  }
+  .top-Head-upper-ul{
+    padding: 0px!important;
+    margin: 0px;
+    font-size: 11px;
+  }
+  .top-Head-upper-li{
+    padding: 0px!important;
+    margin: 0px;
+  }
+  .papp{
     display: none;
   }
   ul{
@@ -72,7 +195,7 @@ ul{
     list-style: none;
     float: left;
     padding: 0px 0px 0px 5px;
-    margin: 0px;
+    margin: 10px 0px 0px 0px;
     li{
       padding: 10px 0px 0px 10px;
     }
@@ -84,5 +207,8 @@ ul{
     font-size: 10px;
   }
   
-
-}
+  }
+  ion-slides {
+    width: 100%;
+  
+  }

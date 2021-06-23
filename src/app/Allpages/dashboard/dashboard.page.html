@@ -52,19 +52,21 @@
                 </ion-radio-group>
               </ion-col>
             </ion-row>
-            <ion-row color="primary" justify-content-center class="tp_mgn">
 
+
+            <ion-row color="primary" justify-content-center class="tp_mgn">
+            
               <ion-col size-sm="12" size-xs="12" size-md="3" size-lg="3" size-xl="3">
                 <ion-item>
                   <ion-label position="stacked" class="label">Select Departure City</ion-label>
                   <input formControlName="D_airport" list="D_airport" (change)="removeAirport($event.target.value)"
                     placeholder="{{d_DepCity}}" autocomplete="on" role="combobox">
 
-                  <datalist id="D_airport"  role="combobox">
+                  <datalist id="D_airport" role="combobox">
                     <option *ngFor="let arpt of arp">{{arpt.code}} , {{arpt.city}} , {{arpt.country}}</option>
                   </datalist>
                 </ion-item>
-           
+
 
                 <ion-text *ngIf="Error.D_airport.touched || Error.D_airport.dirty">
                   <span class="err" *ngIf="Error.D_airport.errors">* Required Field</span>
@@ -74,7 +76,8 @@
               <ion-col size-sm="12" size-xs="12" size-md="3" size-lg="3" size-xl="3">
                 <ion-item>
                   <ion-label position="stacked" class="label">Select Arrival City</ion-label>
-                  <input formControlName="A_airport" list="A_airport" (change)="removeAirportDep($event.target.value)" placeholder="{{d_ArrCity}}">
+                  <input formControlName="A_airport" list="A_airport" (change)="removeAirportDep($event.target.value)"
+                    placeholder="{{d_ArrCity}}">
                   <datalist id="A_airport">
                     <option *ngFor="let arpt_new of arp_new">{{arpt_new.code}} , {{arpt_new.city}} ,
                       {{arpt_new.country}}</option>
@@ -88,7 +91,8 @@
               <ion-col size-sm="12" size-xs="12" size-md="3" size-lg="3" size-xl="3">
                 <ion-item>
                   <ion-label position="stacked" class="label">Select Departure Date</ion-label>
-                  <input formControlName="D_date" type="date" [min]="todayt" [max]="maxDate" (change)="returnDate($event.target.value)">
+                  <input formControlName="D_date" type="date" [min]="todayt" [max]="maxDate"
+                    (change)="returnDate($event.target.value)">
                 </ion-item>
                 <ion-text *ngIf="Error.D_date.touched || Error.D_date.dirty">
                   <span class="err" *ngIf="Error.D_date.errors">* Required Field</span>
@@ -98,7 +102,8 @@
               <ion-col size-sm="12" size-xs="12" size-md="3" size-lg="3" size-xl="3" *ngIf="show">
                 <ion-item>
                   <ion-label position="stacked" class="label">Select Return Date</ion-label>
-                  <input formControlName="A_date" type="date" [min]="minDate" (change)="returnDateMax($event.target.value)">
+                  <input formControlName="A_date" type="date" [min]="minDate"
+                    (change)="returnDateMax($event.target.value)">
                 </ion-item>
               </ion-col>
             </ion-row>
@@ -170,13 +175,15 @@
             </ion-row>
 
             <ion-row color="primary" justify-content-center class="ion-padding">
-              <ion-col size-md="3" size-lg="3" size-xs="12">
+              <ion-col size-md="3" size-lg="3" size-xs="2"></ion-col>
+              <ion-col size-md="6" size-lg="6" size-xs="8">
                 <button class="submit-btn" type="submit" [disabled]="!flightData.valid">
                   <span class="material-icons">search</span> Search Flights
                 </button>
               </ion-col>
             </ion-row>
           </form>
+
         </ion-card>
 
 
@@ -220,18 +227,16 @@
 
             <ion-row color="primary" justify-content-center>
               <ion-col size-md="3" size-lg="3" size-xs="12">
-                <ion-item>
-
-                </ion-item>
+                
 
               </ion-col>
               <ion-col size-md="3" size-lg="3" size-xs="12">
                 <ion-item>
-              
+
 
                 </ion-item>
               </ion-col>
-           
+
               <ion-col size-md="3" size-lg="3" size-xs="12">
                 <ion-item>
                   <ion-label position="floating">Select Departure Date</ion-label>
@@ -336,7 +341,38 @@
         <img src="../assets/7.jpg">
       </ion-slide>
     </ion-slides>
+
   </ion-grid>
+  <!-- <ion-grid>
+    <ion-row>
+      <ion-col size-md="3" size-lg="3" size-xs="12" class="dropdown">
+        <input placeholder="Enter departure Airport" ngModel (keyup)="search($event)" (click)="showArpList()"
+          value="{{d_DepCity}}">
+        <ul *ngIf="showw" class="dropdown-content">
+          <li *ngFor="let arpt of arp|airportFilter:s" (click)="airValue(arpt)">
+            <a>
+              <span>{{arpt.city}} , {{arpt.country}} </span>
+              <strong>[ {{arpt.code}} ]</strong>
+            </a>
+          </li>
+        </ul>
+      </ion-col>
+
+
+      <ion-col size-md="3" size-lg="3" size-xs="12" class="dropdown">
+        <input placeholder="Enter departure Airport" ngModel (keyup)="searchRet($event)" (click)="showArpListRet()"
+          value="{{d_ArrCity}}">
+        <ul *ngIf="showwR" class="dropdown-content">
+          <li *ngFor="let arpt_new of arp_new|airportFilter:r" (click)="airValueRet(arpt_new)">
+            <a>
+              <span>{{arpt_new.city}} , {{arpt_new.country}} </span>
+              <strong>[ {{arpt_new.code}} ]</strong>
+            </a>
+          </li>
+        </ul>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
 
 </ion-content>
 <app-footer></app-footer>

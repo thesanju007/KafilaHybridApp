@@ -113,8 +113,48 @@ ion-slides{
   color:red;
 }
 .for-app {
-    padding: 60px 20px 80px 20px;
+  padding: 60px 20px 80px 20px;
+}
+
+ul {
+  
+  // top: 6px!important;
+  left: 0px!important;
+  margin: 0px 0px 0px 20px!important;
+  padding: 0px 0px 0px 0px!important;
+  width: 90%;
+  position: absolute;
+  overflow: auto;
+  box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
+  z-index: 9999;
+  list-style: none;
+  li {
+   
+    border-radius:2px!important;
+    padding:4px 10px ;
+    border: 1px solid rgb(173, 173, 173);
+    font-family: serif;
+    background-color: #fff;
+    font-size: 15px;   
+    
+        
+      span{
+      color: rgb(82, 82, 82);
+      }
+      strong{
+        float: right;
+        color: black;
+      }
+    
   }
+  li:hover{
+    background-color:rgb(207, 207, 207) ;
+    cursor: pointer;
+  }
+}
+
+
+
 
   @media only screen and (max-width: 768px ) {
     .R-label{

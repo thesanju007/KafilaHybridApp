@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TestService } from '../../Services/test.service'
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
@@ -24,8 +26,8 @@ export class DashboardPage implements OnInit {
   adult = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
   childrens = ["0", "1", "2", "3", "4", "5", "6", "7", "8"]
   infants = ["0", "1", "2", "3", "4",]
-  d_DepCity = "DEL, Delhi, India"
-  d_ArrCity = "BOM, Mumbai, India"
+  d_DepCity
+  d_ArrCity
   t_Type = "1";
   d_Adult = "1";
   d_Child = "0";
@@ -51,17 +53,8 @@ export class DashboardPage implements OnInit {
 
   }
 
-  removeAirportDep(airport) {
-    let depApt = airport.substring(0, 3);
 
-    console.log(depApt)
-    this.arp = this.arp_new.filter(Array => Array.code !== depApt);
-  }
 
-  removeAirport(airport) {
-    let arrApt = airport.substring(0, 3);
-    this.arp_new = this.arp.filter(Array => Array.code !== arrApt);
-  }
 
   returnDate(d) {
     this.minDate = d
@@ -115,6 +108,49 @@ export class DashboardPage implements OnInit {
     Infants: new FormControl(''),
   })
   // list=false;
+
+  showw = false
+  showwR = false
+  searcharp
+  //Departure Airport
+  s:any;
+  showArpList() {
+    this.showw = true
+  }
+  airValue(arpt) {
+    this.d_DepCity = arpt.code + " , " + arpt.city + " , " + arpt.country
+    this.showw = false
+    this.removeAirport(arpt.code)
+  }
+  removeAirport(arrApt) {
+    this.arp_new = this.arp.filter(Array => Array.code !== arrApt);
+  }
+  search(val:any){
+    this.s = val.target.value;
+
+  }
+
+  //Return Airport
+  r
+  searchRet(val:any){
+    this.r = val.target.value;
+  }
+  showArpListRet() {
+    this.showwR = true
+  }
+
+  airValueRet(arpt) {
+    this.d_ArrCity = arpt.code + " , " + arpt.city + " , " + arpt.country
+    this.showwR = false
+    this.removeAirportDep(arpt.code)
+  }
+
+  removeAirportDep(depApt) {
+    this.arp = this.arp_new.filter(Array => Array.code !== depApt);
+  }
+
+  //Get Flight Data
+
   checkFlight() {
 
     let depApt = this.flightData.value.D_airport.substring(0, 3);
@@ -162,9 +198,6 @@ export class DashboardPage implements OnInit {
   get Error() {
     return this.flightData.controls;
   }
-
-
-
 
 
 
