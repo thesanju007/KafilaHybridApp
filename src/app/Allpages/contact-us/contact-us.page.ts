@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PopoverController, ToastController, LoadingController } from '@ionic/angular';
 import { LoginPopoverComponent } from '../../components/login-popover/login-popover.component';
-
 @Component({
-  selector: 'app-index',
-  templateUrl: './index.page.html',
-  styleUrls: ['./index.page.scss'],
+  selector: 'app-contact-us',
+  templateUrl: './contact-us.page.html',
+  styleUrls: ['./contact-us.page.scss'],
 })
-export class IndexPage implements OnInit {
+export class ContactUsPage implements OnInit {
 
   constructor(
     public rout: Router,
@@ -42,9 +41,6 @@ export class IndexPage implements OnInit {
       translucent: false,
       mode: 'ios',
     });
-
-
-
 
     popover.onDidDismiss().then((modelData) => {
       if (modelData.data.cre1 !== "" && modelData.data.cre2 !== "" && modelData.data.cre3 !== "") {

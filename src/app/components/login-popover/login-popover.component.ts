@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ContentChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
+
 @Component({
   selector: 'app-login-popover',
   templateUrl: './login-popover.component.html',
@@ -9,7 +9,7 @@ import { PopoverController } from '@ionic/angular';
 })
 export class LoginPopoverComponent implements OnInit {
 
-  constructor(private route: Router, public popoverController: PopoverController) { }
+  constructor(public popoverController: PopoverController) { }
 
   ngOnInit() { }
 
@@ -19,7 +19,7 @@ export class LoginPopoverComponent implements OnInit {
     cre3: new FormControl('', [Validators.required])
 
   })
- 
+
 
   closeModel() {
     let data = {
@@ -30,6 +30,12 @@ export class LoginPopoverComponent implements OnInit {
     this.popoverController.dismiss(data)
   }
 
+  passwordType: string = 'password';
+  passwordIcon: string = 'eye-off';
 
+  hideShowPassword() {
+    this.passwordType = this.passwordType === 'text' ? 'password' : 'text';
+    this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
+  }
 
 }

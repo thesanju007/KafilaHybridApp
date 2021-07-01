@@ -67,7 +67,7 @@
                 "sid": "1",
                 "active": "false",
                 "title": "Search",
-                "url": "fsearch",
+                "url": "tsearch",
                 "icon": "search",
                 "Eicon": "chevron-forward"
             },
@@ -75,7 +75,7 @@
                 "sid": "2",
                 "active": "false",
                 "title": "Booking History",
-                "url": "fbookinghistory",
+                "url": "tbookinghistory",
                 "icon": "book",
                 "Eicon": "chevron-forward"
             },
@@ -83,7 +83,7 @@
                 "sid": "3",
                 "active": "false",
                 "title": "Cancellation History",
-                "url": "fcancellationhistory",
+                "url": "tcancellationhistory",
                 "icon": "trash",
                 "Eicon": "chevron-forward"
             },
@@ -91,7 +91,7 @@
                 "sid": "4",
                 "active": "false",
                 "title": "Refund History",
-                "url": "frefundhistory",
+                "url": "trefundhistory",
                 "icon": "repeat",
                 "Eicon": "chevron-forward"
             },
@@ -99,7 +99,7 @@
                 "sid": "5",
                 "active": "false",
                 "title": "Transactions",
-                "url": "ftransactions",
+                "url": "ttransactions",
                 "icon": "swap-horizontal",
                 "Eicon": "chevron-forward"
             },
@@ -107,7 +107,7 @@
                 "sid": "6",
                 "active": "false",
                 "title": "Payment History",
-                "url": "fpaymenthistory",
+                "url": "tpaymenthistory",
                 "icon": "cash",
                 "Eicon": "chevron-forward"
             }
@@ -124,7 +124,7 @@
                 "sid": "1",
                 "active": "false",
                 "title": "Search",
-                "url": "fsearch",
+                "url": "hsearch",
                 "icon": "search",
                 "Eicon": "chevron-forward"
             },
@@ -132,7 +132,7 @@
                 "sid": "2",
                 "active": "false",
                 "title": "Booking History",
-                "url": "fbookinghistory",
+                "url": "hbookinghistory",
                 "icon": "book",
                 "Eicon": "chevron-forward"
             },
@@ -140,7 +140,7 @@
                 "sid": "3",
                 "active": "false",
                 "title": "Cancellation History",
-                "url": "fcancellationhistory",
+                "url": "hcancellationhistory",
                 "icon": "trash",
                 "Eicon": "chevron-forward"
             },
@@ -148,7 +148,7 @@
                 "sid": "4",
                 "active": "false",
                 "title": "Refund History",
-                "url": "frefundhistory",
+                "url": "hrefundhistory",
                 "icon": "repeat",
                 "Eicon": "chevron-forward"
             },
@@ -156,7 +156,7 @@
                 "sid": "5",
                 "active": "false",
                 "title": "Transactions",
-                "url": "ftransactions",
+                "url": "htransactions",
                 "icon": "swap-horizontal",
                 "Eicon": "chevron-forward"
             },
@@ -164,7 +164,7 @@
                 "sid": "6",
                 "active": "false",
                 "title": "Payment History",
-                "url": "fpaymenthistory",
+                "url": "hpaymenthistory",
                 "icon": "cash",
                 "Eicon": "chevron-forward"
             }

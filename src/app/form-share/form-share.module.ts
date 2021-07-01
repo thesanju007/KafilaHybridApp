@@ -12,12 +12,10 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatMenuModule } from '@angular/material/menu';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
-import {MatTooltipModule} from '@angular/material/tooltip';
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-
   ],
   exports: [
     MatMenuModule,
@@ -28,13 +26,11 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatProgressBarModule,
     MatDatepickerModule,
     MatIconModule,
-    FormsModule, ReactiveFormsModule,
+    FormsModule, 
+    ReactiveFormsModule,
     MatSidenavModule,
     MatSelectModule,
     MatTableModule,
-    MatTooltipModule
-
-
   ]
 })
 export class FormShareModule { }

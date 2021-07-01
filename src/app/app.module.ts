@@ -21,7 +21,8 @@ import { LoginPopoverModule } from '../app/components/login-popover/login-popove
     BrowserAnimationsModule,
     HttpClientModule,
    // PaymentModule,
-   LoginPopoverModule
+   LoginPopoverModule,
+
     
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

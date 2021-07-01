@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PopoverController, ToastController, LoadingController } from '@ionic/angular';
 import { LoginPopoverComponent } from '../../components/login-popover/login-popover.component';
-
 @Component({
-  selector: 'app-index',
-  templateUrl: './index.page.html',
-  styleUrls: ['./index.page.scss'],
+  selector: 'app-about-us',
+  templateUrl: './about-us.page.html',
+  styleUrls: ['./about-us.page.scss'],
 })
-export class IndexPage implements OnInit {
+export class AboutUsPage implements OnInit {
 
   constructor(
     public rout: Router,
@@ -24,14 +23,7 @@ export class IndexPage implements OnInit {
   };
   ngOnInit() { }
   none = false;
-  
-  public appPages = [
-    { title: 'Login', url: '/home', icon: 'log-in' },
-    { title: 'Signup', url: '/home', icon: 'log-out' },
-    { title: 'About Us', url: '/about', icon: 'people' },
-    { title: 'Contact Us', url: '/contact', icon: 'call' },
-    { title: 'Payment Uplaod', url: '/gallery', icon: 'images' },
-  ];
+
   modelData_data: any;
 
   async presentPopover(ev: any) {
@@ -42,9 +34,6 @@ export class IndexPage implements OnInit {
       translucent: false,
       mode: 'ios',
     });
-
-
-
 
     popover.onDidDismiss().then((modelData) => {
       if (modelData.data.cre1 !== "" && modelData.data.cre2 !== "" && modelData.data.cre3 !== "") {
@@ -109,4 +98,5 @@ export class IndexPage implements OnInit {
   contactus(){
     location.replace("/contactus")
   }
+
 }
