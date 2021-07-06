@@ -17,6 +17,7 @@ ion-col{
 ion-toolbar {
   --background: var(--ion-item-background, var(--ion-background-color, #17745b));
   color: #fff;
+  padding: 0%;
  
 }
 .country{
@@ -31,11 +32,34 @@ ion-toolbar {
   cursor: pointer;
   font-weight: 500;
 }
+.t-spot{
+  height: 220px;
+  width:  445px;
+}
 
+
+ion-button{
+  margin: 0px 0px 20px 20px;
+}
 @media only screen and (max-width: 3000px) {
   .INR{
     height: 14px;
     width:  14px;
+  }
+  .t-spot{
+    height: 220px;
+    width:  445px;
+  }
+  .c-Header{
+    padding: 20px 0px 0px 0px;
+    font-weight: 500;
+    color: #17745b;
+    font-size: 24px;
+  }
+  .c-content{
+    font-size: 20px;
+    color: red;
+    text-align: center;
   }
   .mail{
     padding: 10px 0px 0px 0px;
@@ -101,6 +125,21 @@ ion-toolbar {
 @media only screen and (max-width: 1440px)and (min-width: 1025px ) {
   .mail{
     padding: 10px 0px 0px 0px;
+  }
+  .c-content{
+    font-size: 19px;
+    color: red;
+    text-align: center;
+  }
+  .c-Header{
+    padding: 20px 0px 0px 0px;
+    font-weight: 500;
+    color: #17745b;
+    font-size: 22px;
+  }
+  .t-spot{
+    height: 220px;
+    width:  445px;
   }
   .INR{
     height: 14px;
@@ -174,6 +213,21 @@ ion-toolbar {
     width:  80px;
     cursor: pointer;
   }
+  .c-Header{
+    padding: 20px 0px 0px 0px;
+    font-weight: 500;
+    color: #17745b;
+    font-size: 20px;
+  }
+  .c-content{
+    font-size: 17px;
+    color: red;
+    text-align: center;
+  }
+  .t-spot{
+    height: 220px;
+    width:  445px;
+  }
   .INR{
     height: 14px;
     width:  14px;
@@ -235,6 +289,21 @@ ion-toolbar {
     height: 35px;
     width:  70px;
     cursor: pointer;
+  }
+  .c-Header{
+    padding: 20px 0px 0px 0px;
+    font-weight: 500;
+    color: #17745b;
+    font-size: 18px;
+  }
+  .c-content{
+    font-size: 15px;
+    color: red;
+    text-align: center;
+  }
+  .t-spot{
+    height: 160px;
+    width:  245px;
   }
   .INR{
     height: 14px;
@@ -325,6 +394,21 @@ ion-toolbar {
 @media only screen and (max-width: 605px )and (min-width: 426px ) {
 .app{
     display: none;
+  }
+  .c-Header{
+    padding: 20px 0px 0px 0px;
+    font-weight: 500;
+    color: #17745b;
+    font-size: 18px;
+  }
+  .c-content{
+    font-size: 14px;
+    color: red;
+    text-align: center;
+  }
+  .t-spot{
+    height: 120px;
+    width:  245px;
   }
   .INR{
     height: 12px;
@@ -420,6 +504,21 @@ ion-toolbar {
   .app{
     display: none;
   }
+  .c-Header{
+    padding: 20px 0px 0px 0px;
+    font-weight: 500;
+    color: #17745b;
+    font-size: 18px;
+  }
+  .c-content{
+    font-size: 15px;
+    color: red;
+    text-align: center;
+  }
+  .t-spot{
+    height: 120px;
+    width:  245px;
+  }
   .INR{
     height: 12px;
     width:  12px;
@@ -458,7 +557,7 @@ ion-toolbar {
     text-align: center;
   }
   .mid-Head-Row{
-    padding: 5px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
   }
   .papp{
     display: none;
@@ -512,10 +611,12 @@ ion-toolbar {
     float: left;
   }
   .c-Header{
-    font-size: 12px;
+    padding: 20px 0px 0px 0px;
   }
   .c-content{
-    font-size: 9px;
+    font-size: 14px;
+    color: red;
+    text-align: center;
   }
 }
 
