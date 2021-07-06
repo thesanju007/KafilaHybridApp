@@ -23,9 +23,9 @@ export class LoginPopoverComponent implements OnInit {
 
   closeModel() {
     let data = {
-      cre1: this.set_cre.value.cre1,
-      cre2: this.set_cre.value.cre2,
-      cre3: this.set_cre.value.cre3,
+      cred1: this.set_cre.value.cre1,
+      cred2: this.set_cre.value.cre2,
+      cred3: this.set_cre.value.cre3,
     }
     this.popoverController.dismiss(data)
   }

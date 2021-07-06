@@ -42,16 +42,19 @@ export class HomePage implements OnInit {
   ionViewWillEnter() {
     setTimeout(() => {
       alert("Session Timeout")
-      location.replace("/index")
+      this.logout()
     }, 1 * 60 * 60 * 500);
   }
 
 
-  logout(){
-    location.replace("/index")
+  logout() {
+    this.route.navigate(['/index'])
+      .then(() => {
+        window.location.reload();
+      });
   }
 
-  
+
   toggleMenu() {
     if (this.bigMenu == true) {
       this.bigMenu = !this.bigMenu

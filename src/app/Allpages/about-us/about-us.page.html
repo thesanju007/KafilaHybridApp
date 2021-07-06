@@ -61,27 +61,26 @@
 
           <ion-col size-xs="8" size-sm="9" size-md="8" size-lg="7" size-xl="5">
             <ul>
-
               <li class="app">
-
+                <ion-label class=" s-app" (click)="index()">
+                  Home
+                </ion-label>
+              </li>
+              <li class="app">
                 <ion-label class=" s-app" (click)="contactus()">
                   Contact Us
                 </ion-label>
-
               </li>
-
               <li class="papp">
                 <ion-label class=" s-app">
                   Payment Upload
                 </ion-label>
               </li>
-
               <li>
                 <ion-label class=" s-app">
                   Register As Partner
                 </ion-label>
               </li>
-
               <li>
                 <ion-label class=" s-app" (click)="presentPopover($event)">
                   <ion-icon name="person-circle-outline"></ion-icon>
@@ -91,7 +90,6 @@
               </li>
             </ul>
           </ion-col>
-
         </ion-row>
       </ion-toolbar>
     </ion-header>
@@ -132,10 +130,10 @@
       </ion-row>
 
       <ion-row class="ion-margin ion-padding">
-        <ion-col size-sm="4" size-xs="4" size-md="1" size-lg="1" size-xl="1">
+        <ion-col size-sm="1" size-xs="1" size-md="1" size-lg="1" size-xl="1">
 
         </ion-col>
-        <ion-col class="center" size-sm="8" size-xs="8" size-md="2" size-lg="2" size-xl="2">
+        <ion-col class="center" size-sm="10" size-xs="10" size-md="2" size-lg="2" size-xl="2">
           <img class="circular--square" src="../../../assets/MD.jpeg">
           <p class="director">Director</p>
           <p class="director-name">Mr. Pradeep Chadha</p>
@@ -181,7 +179,7 @@
         </ion-col>
 
 
-        <ion-col size-sm="6" size-xs="6" size-md="4" size-lg="4" size-xl="4">
+        <ion-col size-sm="12" size-xs="12" size-md="4" size-lg="4" size-xl="4">
           <ion-card class="team-h ion-padding">
             <img class="circular--square" src="../../../assets/AM.jpg" height="100">
             <p class="director">IT Team</p>
@@ -197,7 +195,7 @@
 
 
 
-        <ion-col size-sm="6" size-xs="6" size-md="4" size-lg="4" size-xl="4">
+        <ion-col size-sm="12" size-xs="12" size-md="4" size-lg="4" size-xl="4">
           <ion-card class="team-h ion-padding">
             <img class="circular--square" src="../../../assets/AF.jpg" height="100">
             <p class="director">Packaging Team</p>
@@ -214,7 +212,7 @@
 
 
 
-        <ion-col size-sm="6" size-xs="6" size-md="4" size-lg="4" size-xl="4">
+        <ion-col size-sm="12" size-xs="12" size-md="4" size-lg="4" size-xl="4">
           <ion-card class="team-h ion-padding">
             <img class="circular--square" src="../../../assets/AM.jpg" height="100">
             <p class="director">Account Team</p>
@@ -232,7 +230,7 @@
 
 
 
-        <ion-col size-sm="6" size-xs="6" size-md="4" size-lg="4" size-xl="4">
+        <ion-col size-sm="12" size-xs="12" size-md="4" size-lg="4" size-xl="4">
           <ion-card class="team-h ion-padding">
             <img class="circular--square" src="../../../assets/AM.jpg" height="100">
             <p class="director">Ticketing Team</p>
@@ -249,7 +247,7 @@
 
 
 
-        <ion-col size-sm="6" size-xs="6" size-md="4" size-lg="4" size-xl="4">
+        <ion-col size-sm="12" size-xs="12" size-md="4" size-lg="4" size-xl="4">
           <ion-card class="team-h ion-padding">
             <img class="circular--square" src="../../../assets/AF.jpg" height="100">
             <p class="director">Support Team</p>
@@ -266,7 +264,7 @@
 
 
 
-        <ion-col size-sm="6" size-xs="6" size-md="4" size-lg="4" size-xl="4">
+        <ion-col size-sm="12" size-xs="12" size-md="4" size-lg="4" size-xl="4">
           <ion-card class="team-h ion-padding">
             <img class="circular--square" src="../../../assets/AF.jpg" height="100">
             <p class="director">Hr Team</p>
@@ -279,14 +277,7 @@
             </p>
           </ion-card>
         </ion-col>
-
-
-
       </ion-row>
-
-
-
-
     </ion-grid>
 
 
@@ -325,7 +316,14 @@
 
 
 
-
+    <ion-fab class="fix-btn" horizontal="end" vertical="bottom" slot="fixed">
+      <ion-router-link target="_blank"
+        href="https://web.whatsapp.com/send?phone=+919540748072&amp;text=Hi, I would like to get more information..">
+        <ion-fab-button>
+          <ion-icon name="logo-whatsapp"></ion-icon>
+        </ion-fab-button>
+      </ion-router-link>
+    </ion-fab>
     <ion-footer>
       <ion-toolbar class="ion-padding">
 
@@ -337,17 +335,17 @@
                 Kafila Tours & Travels
               </ion-col>
               <ion-col class="main-footer-min" size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
-                <ion-label>
+                <ion-label (click)="aboutus()" class="footer-hover">
                   <ion-icon name="information-circle"></ion-icon> About Us
                 </ion-label>
               </ion-col>
               <ion-col class="main-footer-min" size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
-                <ion-label>
+                <ion-label class="footer-hover">
                   <ion-icon name="lock-closed"></ion-icon> Privacy & Policy
                 </ion-label>
               </ion-col>
               <ion-col class="main-footer-min" size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
-                <ion-label>
+                <ion-label class="footer-hover">
                   <ion-icon name="lock-closed"></ion-icon> Rule & Restrictions
                 </ion-label>
               </ion-col>
@@ -362,17 +360,17 @@
                 Support & Terms
               </ion-col>
               <ion-col class="main-footer-min" size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
-                <ion-label>
+                <ion-label (click)="contactus()" class="footer-hover">
                   <ion-icon name="call"></ion-icon> Contact Us
                 </ion-label>
               </ion-col>
               <ion-col class="main-footer-min" size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
-                <ion-label>
+                <ion-label class="footer-hover">
                   <ion-icon name="person-add"></ion-icon> Register
                 </ion-label>
               </ion-col>
               <ion-col class="main-footer-min" size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
-                <ion-label>
+                <ion-label class="footer-hover">
                   <ion-icon name="lock-closed"></ion-icon> Terms & Conditions
                 </ion-label>
               </ion-col>
@@ -387,17 +385,17 @@
                 Contact Us
               </ion-col>
               <ion-col class="main-footer-min" size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
-                <ion-label>
+                <ion-label class="footer-hover">
                   <ion-icon name="call"></ion-icon> +91 8587855513
                 </ion-label>
               </ion-col>
               <ion-col class="main-footer-min" size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
-                <ion-label>
+                <ion-label class="footer-hover">
                   <ion-icon name="mail"></ion-icon> support@kafilatravel.in
                 </ion-label>
               </ion-col>
               <ion-col class="main-footer-min" size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
-                <ion-label>
+                <ion-label class="footer-hover">
                   <ion-icon name="mail"></ion-icon> feedback@kafilatravel.in
                 </ion-label>
               </ion-col>

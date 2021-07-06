@@ -96,13 +96,25 @@ export class ContactUsPage implements OnInit {
     this.isLoading = false;
     return await this.loadingController.dismiss().then(() => console.log('dismissed'));
   }
-  index(){
-    location.replace("/index")
+  index() {
+    // this.rout.navigate(['/index'])
+    //   .then(() => {
+    //     window.location.reload();
+    //   });
+    window.location.replace('/index')
   }
-  aboutus(){
-    location.replace("/aboutus")
+  aboutus() {
+    // this.rout.navigate(['/aboutus'])
+    //   .then(() => {
+    //     window.location.reload();
+    //   });
+    window.location.replace('/aboutus')
   }
-  contactus(){
-    location.replace("/contactus")
+  contactus() {
+    // this.rout.navigate(['/contactus'])
+    //   .then(() => {
+    //     window.location.reload();
+    //   });
+    window.location.replace('/contactus')
   }
 }

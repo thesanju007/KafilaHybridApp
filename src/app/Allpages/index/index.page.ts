@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PopoverController, ToastController, LoadingController } from '@ionic/angular';
 import { LoginPopoverComponent } from '../../components/login-popover/login-popover.component';
-
 @Component({
   selector: 'app-index',
   templateUrl: './index.page.html',
@@ -14,17 +13,17 @@ export class IndexPage implements OnInit {
     public rout: Router,
     public popoverController: PopoverController,
     public toastController: ToastController,
-    public loadingController: LoadingController
+    public loadingController: LoadingController,
   ) { }
   slideOpts = {
     autoplay: true,
-    initialSlide: 0,  
-    speed: 500,  
-    effect: 'flip',  
+    initialSlide: 0,
+    speed: 500,
+    effect: 'flip',
   };
   ngOnInit() { }
   none = false;
-  
+
   public appPages = [
     { title: 'Login', url: '/home', icon: 'log-in' },
     { title: 'Signup', url: '/home', icon: 'log-out' },
@@ -42,14 +41,10 @@ export class IndexPage implements OnInit {
       translucent: false,
       mode: 'ios',
     });
-
-
-
-
     popover.onDidDismiss().then((modelData) => {
-      if (modelData.data.cre1 !== "" && modelData.data.cre2 !== "" && modelData.data.cre3 !== "") {
+      if (modelData.data.cred1 !== "" && modelData.data.cred2 !== "" && modelData.data.cred3 !== "") {
         this.present()
-        if (modelData.data.cre1 == "18785869" && modelData.data.cre2 == "pslv" && modelData.data.cre3 == "111000") {
+        if (modelData.data.cred1 == "18785869" && modelData.data.cred2 == "pslv" && modelData.data.cred3 == "111000") {
           this.dismiss()
           this.rout.navigate(['home/dashboard'])
         }
@@ -58,14 +53,13 @@ export class IndexPage implements OnInit {
           this.dismiss()
         }
       }
-      else if(modelData.data.cre1 == "" || modelData.data.cre2 == "" || modelData.data.cre3 == ""){
+      else if (modelData.data.cred1 == "" || modelData.data.cred2 == "" || modelData.data.cred3 == "") {
         this.dismiss()
+        this.blank()
       }
-      
     });
     return await popover.present();
   }
-
 
   async presentToast() {
     const toast = await this.toastController.create({
@@ -75,8 +69,15 @@ export class IndexPage implements OnInit {
     toast.present();
   }
 
-  isLoading = false;
+  async blank() {
+    const toast = await this.toastController.create({
+      message: 'Enter all details',
+      duration: 3000,
+    });
+    toast.present();
+  }
 
+  isLoading = false;
 
   async present() {
     this.isLoading = true;
@@ -84,7 +85,8 @@ export class IndexPage implements OnInit {
       message: 'Please wait...',
       mode: 'ios',
       backdropDismiss: false,
-      spinner: 'bubbles'
+      spinner: 'bubbles',
+      duration: 2000
     }).then(a => {
       a.present().then(() => {
         console.log('presented');
@@ -95,18 +97,31 @@ export class IndexPage implements OnInit {
     });
   }
 
-
   async dismiss() {
     this.isLoading = false;
     return await this.loadingController.dismiss().then(() => console.log('dismissed'));
   }
-  index(){
-    location.replace("/index")
+
+  index() {
+    // this.rout.navigate(['/index'])
+    //   .then(() => {
+    //     window.location.reload();
+    //   });
+    window.location.replace('/index')
   }
-  aboutus(){
-    location.replace("/aboutus")
+  aboutus() {
+    // this.rout.navigate(['/aboutus'])
+    //   .then(() => {
+    //     window.location.reload();
+    //   });
+    window.location.replace('/aboutus')
   }
-  contactus(){
-    location.replace("/contactus")
+  contactus() {
+    // this.rout.navigate(['/contactus'])
+    //   .then(() => {
+    //     window.location.reload();
+    //   });
+    window.location.replace('/contactus')
   }
+
 }

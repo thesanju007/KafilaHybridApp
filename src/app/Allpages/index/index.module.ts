@@ -14,4 +14,5 @@ import { IndexPage } from './index.page';
   ],
   declarations: [IndexPage]
 })
-export class IndexPageModule {}
+export class IndexPageModule {
+}
