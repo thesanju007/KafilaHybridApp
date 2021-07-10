@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
 import { TestService } from '../../Services/test.service'
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -22,7 +22,6 @@ export class DashboardPage implements OnInit {
   flight_comp = true
   train_comp = false
   hotel_comp = false
-  imgList = ["1.jpg", "3.jpg", "7.jpg"]
   adult = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
   childrens = ["0", "1", "2", "3", "4", "5", "6", "7", "8"]
   infants = ["0", "1", "2", "3", "4",]
@@ -43,7 +42,8 @@ export class DashboardPage implements OnInit {
   F_flights = [
     "All"
   ]
-  constructor(private tService: TestService, private route: Router) { }
+
+  constructor(private tService: TestService, private route: Router, private fb: FormBuilder) { }
   ngOnInit() {
     this.tService.getTestData("../../../assets/airport.json").subscribe(result => {
       this.arp = result
@@ -94,8 +94,38 @@ export class DashboardPage implements OnInit {
     this.isAfterF = false;
     this.isAfterT = false;
   }
+  //flight Data
 
-  flightData = new FormGroup({
+
+
+  one_way = true
+  round_trip = false
+  multi_trip = true
+
+  R_Onw_Way() {
+    this.one_way = true
+    this.round_trip = false
+    this.multi_trip = true
+
+  }
+  R_Round_Trip() {
+    this.one_way = false
+    this.round_trip = true
+    this.multi_trip = true
+
+  }
+
+  R_Multi_Trip() {
+    this.one_way = false
+    this.round_trip = false
+    this.multi_trip = false
+
+  }
+
+mfArray=["1","2","3",]
+
+
+  flightData = this.fb.group({
     flighttype: new FormControl('', [Validators.required]),
     D_airport: new FormControl('', [Validators.required]),
     A_airport: new FormControl('', [Validators.required]),
@@ -106,14 +136,36 @@ export class DashboardPage implements OnInit {
     Adults: new FormControl(''),
     Childs: new FormControl(''),
     Infants: new FormControl(''),
+    quantities: this.fb.array([])
+
   })
-  // list=false;
+
+  quantities(): FormArray {
+    return this.flightData.get("quantities") as FormArray
+  }
+
+  newQuantity(): FormGroup {
+    return this.fb.group({
+      MD_airport: new FormControl('', [Validators.required]),
+      MA_airport: new FormControl('', [Validators.required]),
+      MD_date: new FormControl('', [Validators.required]),
+    })
+  }
+
+  addQuantity() {
+    this.quantities().push(this.newQuantity());
+  }
+  
+  removeQuantity(i:number) {
+    this.quantities().removeAt(i);
+  }
+   
+
 
   showw = false
   showwR = false
   searcharp
-  //Departure Airport
-  s:any;
+  s: any;
   showArpList() {
     this.showw = true
   }
@@ -125,14 +177,14 @@ export class DashboardPage implements OnInit {
   removeAirport(arrApt) {
     this.arp_new = this.arp.filter(Array => Array.code !== arrApt);
   }
-  search(val:any){
+  search(val: any) {
     this.s = val.target.value;
 
   }
 
   //Return Airport
   r
-  searchRet(val:any){
+  searchRet(val: any) {
     this.r = val.target.value;
   }
   showArpListRet() {
@@ -181,16 +233,97 @@ export class DashboardPage implements OnInit {
     if (this.flightData.value.flighttype == "1") {
       this.tService.getData(js_data)
       // this.route.navigate(['home/fbookinghistory']);
-      this.tService.postTestData("/API/FLIGHT", js_data).subscribe((Flight) => {
-        console.log(Flight)
+      // this.tService.postTestData("/API/FLIGHT", js_data).subscribe((Flight) => {
+      //   console.log(Flight)
 
-      })
+      // })
     }
     else if (this.flightData.value.flighttype == "2") {
       alert("Round Trip")
     }
     else {
       alert("Multi Trip")
+      console.log(this.flightData.value)
+    }
+
+  }
+
+
+  //tain Data
+
+
+
+
+  s_Trains = true
+  check_PNR = false
+  live_trains = false
+  live_station = false
+
+  trainData = new FormGroup({
+    radiotype: new FormControl('', [Validators.required]),
+    D_station: new FormControl('', [Validators.required]),
+    A_station: new FormControl('', [Validators.required]),
+    DT_date: new FormControl('', [Validators.required]),
+    PNR: new FormControl(''),
+    LiveTrain: new FormControl(''),
+
+  })
+  R_train() {
+    this.s_Trains = true
+    this.check_PNR = false
+    this.live_trains = false
+    this.live_station = false
+  }
+  R_check_PNR() {
+    this.check_PNR = true
+    this.s_Trains = false
+    this.live_trains = false
+    this.live_station = false
+  }
+  R_live_trains_status() {
+    this.live_trains = true
+    this.s_Trains = false
+    this.check_PNR = false
+    this.live_station = false
+
+  }
+  R_live_station() {
+    this.live_station = true
+    this.s_Trains = false
+    this.check_PNR = false
+    this.live_trains = false
+  }
+  checkTrains() {
+
+    if (this.trainData.value.radiotype == 1) {
+      alert("FLIGHT SEARCH")
+      let trainData = {
+        "TYPE": "RAIL",
+        "NAME": "GET_TRAIN",
+        "STR": [
+          {
+            "TOKEN_TYPE": "SLF",
+            "AUTH_TOKEN": "",
+            "SESSION_ID": "",
+            "SRC": this.trainData.value.D_station,
+            "DES": this.trainData.value.A_station,
+            "DEP_DATE": this.trainData.value.DT_date,
+            "OI": "",
+            "HS": "D"
+          }
+        ]
+      }
+      console.log(trainData)
+    }
+
+    if (this.trainData.value.radiotype == 2) {
+      alert("CHECK PNR")
+      console.log(this.trainData.value.PNR)
+    }
+
+    if (this.trainData.value.radiotype == 3) {
+      alert("SEARCHING LIVE TRAIN")
+      console.log(this.trainData.value.LiveTrain)
     }
 
   }

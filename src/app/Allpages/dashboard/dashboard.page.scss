@@ -11,18 +11,19 @@ ion-item{
 input{
   outline: 0;
   border: none;
-  padding: 20px 0px 0px 0px;
   width: 100%;
+  padding: 10px;
 }
+
 ion-icon {
-  color: #3f51b5;
+  color: #017959;
 }
 .label{
   font-size: 20px;
   font-weight: 500;
 }
 ion-text {
-  color: #3f51b5;
+  color: #017959;
   font-weight: 500;
   cursor: pointer;
 }
@@ -35,10 +36,10 @@ ion-text {
   background-color: #fff;
   font-size: 20px;
   text-align: center;
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
+  // border-top-right-radius: 10px;
+  // border-top-left-radius: 10px;
   font-family: serif;
-  padding: 10px 0px 10px 0px;
+  padding: 10px 0px 5px 0px;
   cursor: pointer;
   border: 1px solid #017959;
 }
@@ -47,28 +48,28 @@ ion-text {
   color: #fff;
   font-size: 20px;
   text-align: center;
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
+  // border-top-right-radius: 10px;
+  // border-top-left-radius: 10px;
   font-family: serif;
-  padding: 10px 0px 10px 0px;
+  padding: 10px 0px 5px 0px;
   cursor: pointer;
 }
 .SB {
   background-color: #fff;
-  border-top: 3px solid #017959;
+  border-top: 2px solid #017959;
   border-left: 1px solid #017959;
   border-right: 1px solid #017959;
   border-bottom: 1px solid #017959;
   border-top-right-radius: 1px;
-  border-top-left-radius: 1px;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
   z-index: 9999;
   margin: 0px;
 }
 .submit-btn {
   width: 100%;
-  padding: 10px 0px;
+  padding: 16px 0px;
   background: #017959;
   color: white;
   font-size: 19px;
@@ -78,6 +79,7 @@ ion-text {
   opacity: 1;
   box-shadow: 1px 1px 1px 1px lightgrey;
   border-radius: 5px;
+  margin: 10px 0px 0px 0px;
 }
 .tp_mgn{
   padding: 20px 0px 0px 0px;
@@ -152,11 +154,45 @@ ul {
     cursor: pointer;
   }
 }
-
-
-
-
-  @media only screen and (max-width: 768px ) {
+.img{
+  background-image: url('../../../assets/bgFlight.jpg');
+}
+fieldset {
+ border-radius: 5px;
+border-radius: 5px;
+border: 1px solid rgb(207, 207, 207);
+padding: 0px 15px;
+ }
+legend{
+  color: black;
+  font-weight: 500;
+}
+.border{
+  border: 1px solid rgb(207, 207, 207);
+  text-align: center;
+  border-radius: 50%;
+  padding: 5px 0px 0px 0px;
+  margin: 12px 0px 0px 0px;
+  cursor: pointer;
+}
+@media only screen and(max-width:3000px){
+ 
+}
+  @media only screen and (max-width: 767px ) {
+    .none{
+      display: none;
+    }
+    .border{
+      border: 1px solid rgb(207, 207, 207);
+      text-align: center;
+      border-radius: 50%;
+      height: 30px;
+      width: 30px;
+      cursor: pointer;
+    }
+    .p-margin{
+      margin: 0px 0px 0px 150px;
+    }
     .R-label{
       font-weight: 500;
       font-size: 13px;

@@ -36,7 +36,6 @@ export class HomePage implements OnInit {
     //   if ((e.which || e.keyCode) == 116 || ((e.which || e.keyCode) == 82))
     //     e.preventDefault();
     // };
-
   }
 
   ionViewWillEnter() {
@@ -46,14 +45,14 @@ export class HomePage implements OnInit {
     }, 1 * 60 * 60 * 500);
   }
 
-
   logout() {
     this.route.navigate(['/index'])
       .then(() => {
         window.location.reload();
       });
+    localStorage.clear();
+    sessionStorage.clear();
   }
-
 
   toggleMenu() {
     if (this.bigMenu == true) {
@@ -61,7 +60,6 @@ export class HomePage implements OnInit {
     }
     this.bigMenu = !this.bigMenu
   }
-
 
   toggleSubMenu(p) {
     this.credTrue = false
@@ -79,7 +77,6 @@ export class HomePage implements OnInit {
     }
   }
 
-
   myAccount() {
     this.bigMenu = false;
     this.credTrue = false
@@ -88,10 +85,8 @@ export class HomePage implements OnInit {
     }
   }
 
-
   set_cre = new FormGroup({
     cre1: new FormControl('', [Validators.required]),
-
   })
 
   checkCredentials() {
