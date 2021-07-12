@@ -1,21 +1,23 @@
 <app-header></app-header>
 <ion-app class=" for-app">
-  <ion-split-pane contentId="main-content" >
+  <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay" *ngIf="bigMenu" swipeGesture="false">
       <ion-content>
         <ion-list id="inbox-list" *ngFor="let d of Menu,let i = index" lines="none">
 
           <!-- WITHOUT SUBMENU -->
 
-          <ion-item *ngIf="!d.subMenu" [routerLink]="['/','home',d.url]" (click)="myAccount()" class="main-tag" routerDirection="forward">
+          <ion-item *ngIf="!d.subMenu" [routerLink]="['/','home',d.url]" (click)="myAccount()" class="main-tag"
+            routerDirection="forward">
             <ion-icon slot="start" name={{d.icon}}></ion-icon>
             <ion-label>{{d.title}} </ion-label>
           </ion-item>
 
 
           <!-- MAINMENU -->
-           
-          <ion-item *ngIf="d.active" (click)="toggleSubMenu(d)" (ionClick)="d.showDetails=!d.showDetails " class="main-tag">
+
+          <ion-item *ngIf="d.active" (click)="toggleSubMenu(d)" (ionClick)="d.showDetails=!d.showDetails "
+            class="main-tag">
             <ion-icon slot="start" name={{d.icon}}></ion-icon>
             <ion-label>{{d.title}}</ion-label>
             <ion-icon name="caret-down-outline" *ngIf="d.showDetails"></ion-icon>
@@ -23,10 +25,11 @@
           </ion-item>
 
 
-         <!-- SUBMENU -->
+          <!-- SUBMENU -->
 
           <ion-list *ngIf="!d.showDetails">
-            <ion-item *ngFor="let s_Menu of d.subMenu" [routerLink]="['/','home',s_Menu.url]" (click)="bigMenu=!bigMenu" >
+            <ion-item *ngFor="let s_Menu of d.subMenu" [routerLink]="['/','home',s_Menu.url]"
+              (click)="bigMenu=!bigMenu">
               <ion-icon slot="start" name={{s_Menu.icon}}></ion-icon>
               <ion-label>{{s_Menu.title}}</ion-label>
               <ion-icon slot="end" name={{s_Menu.Eicon}}></ion-icon>
@@ -34,16 +37,16 @@
           </ion-list>
 
         </ion-list>
-        
 
-        <ion-list id="inbox-list"  lines="none">
+
+        <ion-list id="inbox-list" lines="none">
           <ion-item *ngIf="moreOption" (click)="credTrue=!credTrue" class="main-tag">
             <ion-icon slot="start" name="list"></ion-icon>
-          <ion-label>More</ion-label>
-          <ion-icon name="caret-down-outline" *ngIf="!credTrue"></ion-icon>
+            <ion-label>More</ion-label>
+            <ion-icon name="caret-down-outline" *ngIf="!credTrue"></ion-icon>
             <ion-icon name="caret-up-outline" *ngIf="credTrue"></ion-icon>
           </ion-item>
-          
+
           <form [formGroup]="set_cre" (ngSubmit)="checkCredentials()" *ngIf="credTrue" class="cred-box">
             <ion-item class="cred">
               <ion-label position="floating">Enter Password</ion-label>
@@ -52,12 +55,12 @@
             <ion-button class="submit-btn wid" type="submit">check</ion-button>
           </form>
         </ion-list>
-        
-        
+
+
       </ion-content>
 
 
-      <ion-item  (click)="logout()" lines="none" class="line-up">
+      <ion-item (click)="logout()" lines="none" class="line-up">
         <ion-icon slot="start" name="log-out-outline"></ion-icon>
         <ion-label>Logout </ion-label>
       </ion-item>

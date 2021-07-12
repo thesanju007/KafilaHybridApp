@@ -27,6 +27,7 @@ export class DashboardPage implements OnInit {
   infants = ["0", "1", "2", "3", "4",]
   d_DepCity
   d_ArrCity
+  f_Type = "1";
   t_Type = "1";
   d_Adult = "1";
   d_Child = "0";

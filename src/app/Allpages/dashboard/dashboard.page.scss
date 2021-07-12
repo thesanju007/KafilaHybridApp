@@ -1,7 +1,14 @@
 .padding-none {
   padding: 0px;
 }
-
+.rotate-90 {
+  display: inline-block; 
+  transform: rotate(45deg);
+}
+.rotate-0{
+  display: inline-block; 
+  transform: rotate(-45deg);
+}
 .bg-color{
   --ion-background-color: rgb(245, 245, 245);
 }
@@ -13,6 +20,10 @@ input{
   border: none;
   width: 100%;
   padding: 10px;
+  background-color: white;
+}
+input:disabled {
+cursor: not-allowed;
 }
 
 ion-icon {
@@ -41,18 +52,12 @@ ion-text {
   font-family: serif;
   padding: 10px 0px 5px 0px;
   cursor: pointer;
-  border: 1px solid #017959;
+  border-top: 1px  solid #017959;
+  border-left: 1px  solid #017959 ;
 }
 .FTHActive {
   background-color: #017959;
   color: #fff;
-  font-size: 20px;
-  text-align: center;
-  // border-top-right-radius: 10px;
-  // border-top-left-radius: 10px;
-  font-family: serif;
-  padding: 10px 0px 5px 0px;
-  cursor: pointer;
 }
 .SB {
   background-color: #fff;
@@ -168,13 +173,14 @@ legend{
   font-weight: 500;
 }
 .border{
-  border: 1px solid rgb(207, 207, 207);
+
   text-align: center;
   border-radius: 50%;
-  padding: 5px 0px 0px 0px;
-  margin: 12px 0px 0px 0px;
+  padding: 10px 0px 0px 0px;
+  margin: 18px 0px 0px 0px;
   cursor: pointer;
 }
+
 @media only screen and(max-width:3000px){
  
 }
@@ -183,7 +189,7 @@ legend{
       display: none;
     }
     .border{
-      border: 1px solid rgb(207, 207, 207);
+
       text-align: center;
       border-radius: 50%;
       height: 30px;

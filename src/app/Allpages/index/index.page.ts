@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PopoverController, ToastController, LoadingController } from '@ionic/angular';
 import { LoginPopoverComponent } from '../../components/login-popover/login-popover.component';
+import { TestService } from '../../Services/test.service'
 @Component({
   selector: 'app-index',
   templateUrl: './index.page.html',
@@ -14,6 +15,7 @@ export class IndexPage implements OnInit {
     public popoverController: PopoverController,
     public toastController: ToastController,
     public loadingController: LoadingController,
+    private tService: TestService,
   ) { }
   slideOpts = {
     autoplay: true,
@@ -44,14 +46,18 @@ export class IndexPage implements OnInit {
     popover.onDidDismiss().then((modelData) => {
       if (modelData.data.cred1 !== "" && modelData.data.cred2 !== "" && modelData.data.cred3 !== "") {
         this.present()
-        if (modelData.data.cred1 == "18785869" && modelData.data.cred2 == "pslv" && modelData.data.cred3 == "111000") {
-          this.dismiss()
-          this.rout.navigate(['home/dashboard'])
-        }
-        else {
-          this.presentToast()
-          this.dismiss()
-        }
+        this.tService.getTestData("../../../assets/credentials.json").subscribe(result => {
+          for (let x of result) {
+            if (modelData.data.cred1 == x.AgentId && modelData.data.cred2 == x.AgentUsername && modelData.data.cred3 == x.Password) {
+              this.dismiss()
+              this.rout.navigate(['home/dashboard'])
+            }
+            else {
+              this.presentToast()
+              this.dismiss()
+            }
+          }
+        });
       }
       else if (modelData.data.cred1 == "" || modelData.data.cred2 == "" || modelData.data.cred3 == "") {
         this.dismiss()

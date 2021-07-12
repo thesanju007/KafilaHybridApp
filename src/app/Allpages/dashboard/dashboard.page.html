@@ -9,7 +9,7 @@
           <ion-col class="none" size-md="3" size-lg="3" size-xl="3"></ion-col>
           <ion-col size-sm="4" size-xs="4" size-md="3" size-lg="3" size-xl="3" class="FTH " (click)="flight()"
             [ngClass]="[isAfterF?'FTHActive':'!FTHActive']">
-            <span class="material-icons">flight</span> Flight
+            <span class="material-icons rotate-90">flight</span> Flight
           </ion-col>
           <ion-col size-sm="4" size-xs="4" size-md="3" size-lg="3" size-xl="3" class="FTH " (click)="train()"
             [ngClass]="[ isAfterT?'FTHActive':'!FTHActive']">
@@ -46,7 +46,7 @@
           <form [formGroup]="flightData" (ngSubmit)="checkFlight()">
             <ion-row color="primary" justify-content-center>
               <ion-col size-md="12" size-lg="12" size-xs="12">
-                <ion-radio-group formControlName="flighttype" [(ngModel)]="t_Type">
+                <ion-radio-group formControlName="flighttype" [(ngModel)]="f_Type">
                   <ion-radio value="1" (click)="R_Onw_Way()"></ion-radio>
                   <ion-label class="R-label">One way</ion-label>
                   <ion-radio value="2" (click)="R_Round_Trip()"></ion-radio>
@@ -61,25 +61,34 @@
               </ion-col>
             </ion-row>
 
+
+
+
+
+
+
+
+
+
+
+            <!-- ONE WAY    ROUND TRIP ADVANCE TRIP  -->
             <ion-row color="primary" justify-content-center class="tp_mgn" *ngIf="multi_trip">
               <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
                 <ion-row>
                   <ion-col size-sm="12" size-xs="12" size-md="5" size-lg="5" size-xl="5">
-
                     <fieldset>
-                      <legend>Select Departure City</legend>
+                      <legend>
+                        <ion-icon class="rotate-0" name="airplane-outline"></ion-icon> FROM
+                      </legend>
                       <input formControlName="D_airport" list="D_airport" (change)="removeAirport($event.target.value)"
                         placeholder="DEL, Delhi, India">
                     </fieldset>
                     <!-- <ion-label position="stacked" class="label">Select Departure City</ion-label>
                     <input formControlName="D_airport" list="D_airport" (change)="removeAirport($event.target.value)"
                       placeholder="{{d_DepCity}}" autocomplete="on" role="combobox">
-  
                     <datalist id="D_airport" role="combobox">
                       <option *ngFor="let arpt of arp">{{arpt.code}} , {{arpt.city}} , {{arpt.country}}</option>
-                    </datalist> -->
-
-
+                    </datalist> || TYPEHEAD-->
                     <ion-text *ngIf="Error.D_airport.touched || Error.D_airport.dirty">
                       <span class="err" *ngIf="Error.D_airport.errors">* Required Field</span>
                     </ion-text>
@@ -92,17 +101,19 @@
                   </ion-col>
 
                   <ion-col size-sm="12" size-xs="12" size-md="5" size-lg="5" size-xl="5">
-                    <!-- <ion-item>
+                    <!--
                     <ion-label position="stacked" class="label">Select Arrival City</ion-label>
                     <input formControlName="A_airport" list="A_airport" (change)="removeAirportDep($event.target.value)"
                       placeholder="{{d_ArrCity}}">
                     <datalist id="A_airport">
                       <option *ngFor="let arpt_new of arp_new">{{arpt_new.code}} , {{arpt_new.city}} ,
                         {{arpt_new.country}}</option>
-                    </datalist>
-                  </ion-item> -->
+                    </datalist> || TYPEHEAD
+                     -->
                     <fieldset>
-                      <legend>Select Departure City</legend>
+                      <legend>
+                        <ion-icon class="rotate-90" name="airplane-outline"></ion-icon> TO
+                      </legend>
                       <input formControlName="A_airport" list="A_airport"
                         (change)="removeAirportDep($event.target.value)" placeholder="Bom, Mumbai, India">
                     </fieldset>
@@ -115,11 +126,12 @@
 
                   <ion-col size-sm="12" size-xs="12" size-md="5" size-lg="5" size-xl="5">
                     <fieldset>
-                      <legend>Select Departure Date</legend>
+                      <legend>
+                        <ion-icon name="calendar-outline"></ion-icon> DEPARTURE DATE
+                      </legend>
                       <input formControlName="D_date" type="text" [min]="todayt" [max]="maxDate"
                         placeholder="{{todayt}}" (change)="returnDate($event.target.value)"
                         onfocus="(this.type='date')">
-
                     </fieldset>
                     <ion-text *ngIf="Error.D_date.touched || Error.D_date.dirty">
                       <span class="err" *ngIf="Error.D_date.errors">* Required Field</span>
@@ -130,7 +142,9 @@
 
                   <ion-col size-sm="12" size-xs="12" size-md="5" size-lg="5" size-xl="5">
                     <fieldset [disabled]="!round_trip">
-                      <legend>Select Return Date</legend>
+                      <legend>
+                        <ion-icon name="calendar-outline"></ion-icon> RETURN DATE
+                      </legend>
                       <input formControlName="A_date" type="text" [min]="minDate" placeholder="{{todayt}}"
                         (change)="returnDateMax($event.target.value)" onfocus="(this.type='date')">
                     </fieldset>
@@ -139,6 +153,7 @@
               </ion-col>
 
               <ion-col size-sm="4" size-xs="7" size-md="8" size-lg="8" size-xl="9"> </ion-col>
+
               <ion-col size-sm="8" size-xs="5" size-md="4" size-lg="4" size-xl="3">
                 <ion-text (click)="moreFields=!moreFields">
                   More Fields
@@ -146,11 +161,6 @@
                 <ion-icon name="caret-down-outline" *ngIf="!moreFields"></ion-icon>
                 <ion-icon name="caret-up-outline" *ngIf="moreFields"></ion-icon>
               </ion-col>
-
-
-
-
-
 
               <!-- <ion-col size-sm="12" size-xs="12" size-md="6" size-lg="6" size-xl="6">
                 <ion-item>
@@ -170,9 +180,7 @@
                 </ion-item>
               </ion-col> -->
 
-
               <ion-row color="primary" justify-content-center *ngIf="moreFields">
-
                 <ion-col size-sm="12" size-xs="12" size-md="5" size-lg="5" size-xl="5">
                   <fieldset>
                     <legend>Select Preferred Class</legend>
@@ -223,7 +231,9 @@
                     </ion-select>
                   </ion-item> -->
                 </ion-col>
+
                 <ion-col size-md="1" size-lg="1" size-xl="1"></ion-col>
+
                 <ion-col size-xs="3" size-sm="3" size-md="3" size-lg="3" size-xl="3">
                   <fieldset>
                     <legend>Childs</legend>
@@ -238,7 +248,9 @@
                     </ion-select>
                   </ion-item> -->
                 </ion-col>
+
                 <ion-col size-md="1" size-lg="1" size-xl="1"></ion-col>
+
                 <ion-col size-xs="3" size-sm="3" size-md="3" size-lg="3" size-xl="3">
                   <fieldset>
                     <legend>Infants</legend>
@@ -253,17 +265,8 @@
                     </ion-select>
                   </ion-item> -->
                 </ion-col>
-
               </ion-row>
-
             </ion-row>
-
-
-
-
-
-
-
 
 
 
@@ -273,7 +276,8 @@
 
             <!-- MULTI TRIP -->
             <ion-row color="primary" justify-content-center class="tp_mgn" *ngIf="!multi_trip">
-              <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12" style="border-bottom: 1px solid red;">
+              <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12"
+                style="border-bottom: 1px solid red;">
                 <ion-row>
                   <ion-col size-sm="4" size-xs="4" size-md="2" size-lg="2" size-xl="2" *ngFor="let x of mfArray">
                     <ion-text>Flight {{x}}</ion-text>
@@ -284,7 +288,6 @@
                 </ion-row>
               </ion-col>
 
-
               <ion-col size-sm="12" size-xs="12" size-md="6" size-lg="6" size-xl="6" class="ion-padding-top">
                 <fieldset>
                   <legend>Select Departure City</legend>
@@ -293,8 +296,7 @@
                 </fieldset>
               </ion-col>
 
-
-              <ion-col size-sm="12" size-xs="12" size-md="6" size-lg="6" size-xl="6"  class="ion-padding-top">
+              <ion-col size-sm="12" size-xs="12" size-md="6" size-lg="6" size-xl="6" class="ion-padding-top">
                 <fieldset>
                   <legend>Select Departure City</legend>
                   <input formControlName="A_airport" list="D_airport" (change)="removeAirport($event.target.value)"
@@ -302,8 +304,7 @@
                 </fieldset>
               </ion-col>
 
-
-              <ion-col size-sm="12" size-xs="12" size-md="6" size-lg="6" size-xl="6"  class="ion-padding-top">
+              <ion-col size-sm="12" size-xs="12" size-md="6" size-lg="6" size-xl="6" class="ion-padding-top">
                 <fieldset>
                   <legend>Select Departure Date</legend>
                   <input formControlName="D_date" type="text" [min]="todayt" [max]="maxDate" placeholder="{{todayt}}"
@@ -311,27 +312,22 @@
                 </fieldset>
               </ion-col>
 
-
-
-
-
               <ion-row *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">
-                <ion-col size-sm="12" size-xs="12" size-md="6" size-lg="6" size-xl="6"  class="ion-padding-top">
+                <ion-col size-sm="12" size-xs="12" size-md="6" size-lg="6" size-xl="6" class="ion-padding-top">
                   <fieldset>
                     <legend>Select Departure City</legend>
                     <input formControlName="MD_airport" placeholder="DEL, Delhi, India">
                   </fieldset>
                 </ion-col>
 
-                <ion-col size-sm="12" size-xs="12" size-md="6" size-lg="6" size-xl="6"  class="ion-padding-top">
+                <ion-col size-sm="12" size-xs="12" size-md="6" size-lg="6" size-xl="6" class="ion-padding-top">
                   <fieldset>
                     <legend>Select Departure City</legend>
                     <input formControlName="MD_airport" list="MA_airport" placeholder="Bom, Mumbai, India">
                   </fieldset>
                 </ion-col>
 
-
-                <ion-col size-sm="12" size-xs="12" size-md="6" size-lg="6" size-xl="6"  class="ion-padding-top">
+                <ion-col size-sm="12" size-xs="12" size-md="6" size-lg="6" size-xl="6" class="ion-padding-top">
                   <fieldset>
                     <legend>Select Departure Date</legend>
                     <input formControlName="MD_date" type="text" [min]="todayt" [max]="maxDate" placeholder="{{todayt}}"
@@ -342,8 +338,6 @@
               </ion-row>
             </ion-row>
 
-
-
             <ion-row color="primary" justify-content-center class="ion-padding-top">
               <ion-col size-md="3" size-lg="3" size-xs="2"></ion-col>
               <ion-col size-md="6" size-lg="6" size-xs="8">
@@ -353,7 +347,6 @@
               </ion-col>
             </ion-row>
           </form>
-
         </ion-card>
 
 
@@ -380,6 +373,19 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- TRAIN CARD -->
         <ion-card class="SB ion-padding" *ngIf="train_comp">
           <form [formGroup]="trainData" (ngSubmit)="checkTrains()">
             <ion-row color="primary" justify-content-center>
@@ -402,24 +408,24 @@
 
 
             <!-- TRAIN SEARCH ROW -->
-            <ion-row color="primary" justify-content-center *ngIf="s_Trains">
-              <ion-col size-md="6" size-lg="6" size-xs="12">
+            <ion-row color="primary" justify-content-center *ngIf="s_Trains" class="ion-padding-top">
+              <ion-col size-md="6" size-lg="6" size-xs="12" class="ion-padding-top">
                 <fieldset>
-                  <legend>Select Departure Station</legend>
+                  <legend><ion-icon name="train-outline"></ion-icon> Select Departure Station</legend>
                   <input formControlName="D_station" placeholder="NDLS, Delhi, India">
                 </fieldset>
 
               </ion-col>
-              <ion-col size-md="6" size-lg="6" size-xs="12">
+              <ion-col size-md="6" size-lg="6" size-xs="12" class="ion-padding-top">
                 <fieldset>
-                  <legend>Select Arrival Station</legend>
+                  <legend><ion-icon name="train-outline"></ion-icon> Select Arrival Station</legend>
                   <input formControlName="A_station" placeholder="MMCT, Mumbai, India">
                 </fieldset>
               </ion-col>
 
               <ion-col size-md="6" size-lg="6" size-xs="12">
                 <fieldset>
-                  <legend>Select Date</legend>
+                  <legend><ion-icon name="calendar-outline"></ion-icon> Select Date</legend>
                   <input formControlName="DT_date" type="text" [min]="todayt" placeholder="{{todayt}}"
                     onfocus="(this.type='date')">
                 </fieldset>
@@ -435,14 +441,14 @@
 
 
             <!-- PNR CHECK ROW -->
-            <ion-row color="primary" justify-content-center *ngIf="check_PNR">
-              <ion-col size-md="6" size-lg="6" size-xs="12">
+            <ion-row color="primary" justify-content-center *ngIf="check_PNR" class="ion-padding-top">
+              <ion-col size-md="6" size-lg="6" size-xs="12" class="ion-padding-top">
                 <fieldset>
                   <legend>Enter PNR </legend>
                   <input formControlName="PNR" placeholder="XXX XXX XX">
                 </fieldset>
               </ion-col>
-              <ion-col size-md="6" size-lg="6" size-xs="12">
+              <ion-col size-md="6" size-lg="6" size-xs="12" class="ion-padding-top">
                 <button class="submit-btn" type="submit"><span class="material-icons">search</span>
                   Check PNR status</button>
               </ion-col>
@@ -451,14 +457,14 @@
 
 
             <!-- LIVE TRAIN ROW -->
-            <ion-row color="primary" justify-content-center *ngIf="live_trains">
-              <ion-col size-md="6" size-lg="6" size-xs="12">
+            <ion-row color="primary" justify-content-center *ngIf="live_trains" class="ion-padding-top">
+              <ion-col size-md="6" size-lg="6" size-xs="12" class="ion-padding-top">
                 <fieldset>
                   <legend>Enter Train Name / no. </legend>
                   <input formControlName="LiveTrain" placeholder="XXX XXX XX">
                 </fieldset>
               </ion-col>
-              <ion-col size-md="6" size-lg="6" size-xs="12">
+              <ion-col size-md="6" size-lg="6" size-xs="12" class="ion-padding-top">
                 <button class="submit-btn" type="submit"><span class="material-icons">search</span> Search
                   Live Train</button>
               </ion-col>
@@ -466,15 +472,15 @@
 
 
 
-            <!-- LIVE STATION ROW -->
-            <ion-row color="primary" justify-content-center *ngIf="live_station">
-              <ion-col size-md="6" size-lg="6" size-xs="12">
+            <!-- LIVE STATION ROW -->  
+            <ion-row color="primary" justify-content-center *ngIf="live_station" class="ion-padding-top">
+              <ion-col size-md="6" size-lg="6" size-xs="12" class="ion-padding-top">
                 <fieldset>
                   <legend>Enter Station Name </legend>
                   <input formControlName="LiveTrain" placeholder="XXX XXX XX">
                 </fieldset>
               </ion-col>
-              <ion-col size-md="6" size-lg="6" size-xs="12">
+              <ion-col size-md="6" size-lg="6" size-xs="12" class="ion-padding-top">
                 <button class="submit-btn" type="submit"><span class="material-icons">search</span> Search
                   Station</button>
               </ion-col>
@@ -508,63 +514,98 @@
 
 
 
-        <ion-card class="SB" *ngIf="hotel_comp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- HOTEL CARD-->
+        <ion-card class="SB ion-padding" *ngIf="hotel_comp">
           <form>
-            <ion-row color="primary" justify-content-center class="ion-padding">
-              <ion-col size-md="12" size-lg="12" size-xs="12">
-                <ion-radio-group>
-                  <ion-radio value="1" (click)="show==0?show=0:show=0"></ion-radio>
-                  <ion-label>One way</ion-label>
-                  <ion-radio value="2" (click)="show==1?show=1:show=1"></ion-radio>
-                  <ion-label>Round Trip</ion-label>
-                  <ion-radio value="3" (click)="show==1?show=1:show=1"></ion-radio>
-                  <ion-label>Multi Trip</ion-label>
-                </ion-radio-group>
-              </ion-col>
-            </ion-row>
+            <ion-row class="ion-padding-top">
+              <ion-col size-md="6" size-lg="6" size-xs="12" class="ion-padding-top">
+                <fieldset>
+                  <legend><ion-icon name="location-outline"></ion-icon> Enter City Name
+                  </legend>
+                  <input placeholder="NDLS, Delhi, India">
+                </fieldset>
 
-            <ion-row color="primary" justify-content-center>
-              <ion-col size-md="6" size-lg="6" size-xs="12">
-                <ion-item>
-                  <ion-label position="floating">Select Departure City</ion-label>
-                  <ion-input></ion-input>
-                </ion-item>
               </ion-col>
-              <ion-col size-md="6" size-lg="6" size-xs="12">
-                <ion-item>
-                  <ion-label position="floating">Select Arrival City</ion-label>
-                  <ion-input></ion-input>
-                </ion-item>
+              <ion-col size-md="6" size-lg="6" size-xs="12" class="ion-padding-top">
+                <fieldset>
+                  <legend><ion-icon name="calendar-outline"></ion-icon> Select Check-in Date</legend>
+                  <input type="text" [min]="todayt" placeholder="{{todayt}}" onfocus="(this.type='date')">
+                </fieldset>
               </ion-col>
-            </ion-row>
 
-            <ion-row color="primary" justify-content-center>
               <ion-col size-md="6" size-lg="6" size-xs="12">
-                <ion-item>
-                  <ion-label position="floating">Select Departure Date</ion-label>
-                  <ion-datetime></ion-datetime>
-                </ion-item>
+                <fieldset>
+                  <legend><ion-icon name="calendar-outline"></ion-icon> Select Check-out Date</legend>
+                  <input type="text" [min]="todayt" placeholder="{{todayt}}" onfocus="(this.type='date')">
+                </fieldset>
               </ion-col>
               <ion-col size-md="6" size-lg="6" size-xs="12">
-                <ion-item *ngIf="show">
-                  <ion-label position="floating">Select Arrival Date</ion-label>
-                  <ion-datetime></ion-datetime>
-                </ion-item>
+                <fieldset>
+                  <legend><ion-icon name="star-outline"></ion-icon> Stars</legend>
+                  <ion-select interface="popover" [(ngModel)]="d_Adult">
+                    <ion-select-option>1 Star</ion-select-option>
+                  </ion-select>
+                </fieldset>
               </ion-col>
-            </ion-row>
-            <ion-row color="primary" justify-content-center class="ion-padding">
-              <ion-col size-md="7" size-lg="6" size-xs="12">
+
+              <ion-col size-md="6" size-lg="6" size-xs="12">
+                <fieldset>
+                  <legend><ion-icon name="globe-outline"></ion-icon> Select Nationality
+                  </legend>
+                  <ion-select interface="popover" [(ngModel)]="d_Adult">
+                    <ion-select-option>1 Star</ion-select-option>
+                  </ion-select>
+                </fieldset>
+              </ion-col>
+
+              <ion-col size-md="6" size-lg="6" size-xs="12">
+                <fieldset>
+                  <legend><ion-icon name="home-outline"></ion-icon> Select Residence</legend>
+                  <ion-select interface="popover" [(ngModel)]="d_Adult">
+                    <ion-select-option>1 Star</ion-select-option>
+                  </ion-select>
+                </fieldset>
+              </ion-col>
+              <ion-col size-md="6" size-lg="6" size-xs="12">
+                <fieldset>
+                  <legend><ion-icon name="storefront-outline"></ion-icon> Rooms</legend>
+                  <ion-select interface="popover" [(ngModel)]="d_Adult">
+                    <ion-select-option>1 Star</ion-select-option>
+                  </ion-select>
+                </fieldset>
+              </ion-col>
+
+              <ion-col size-md="6" size-lg="6" size-xs="12">
                 <button class="submit-btn" type="submit"><span class="material-icons">search</span> Search
                   Hotel</button>
+
               </ion-col>
             </ion-row>
+
+
           </form>
         </ion-card>
+
+
+
       </ion-col>
-
     </ion-row>
-
-
   </ion-grid>
 
   <ion-grid class="ion-padding">
