@@ -3,12 +3,12 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'index',
+    redirectTo: 'ccindex',
     pathMatch: 'full'
   },
 
   {
-    path: 'index',
+    path: 'ccindex',
     loadChildren: () => import('./Allpages/index/index.module').then(m => m.IndexPageModule)
   },
  

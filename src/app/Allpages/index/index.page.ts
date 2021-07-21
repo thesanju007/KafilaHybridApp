@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PopoverController, ToastController, LoadingController } from '@ionic/angular';
-import { LoginPopoverComponent } from '../../components/login-popover/login-popover.component';
+import { ToastController, LoadingController } from '@ionic/angular';
 import { TestService } from '../../Services/test.service'
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-index',
   templateUrl: './index.page.html',
@@ -10,121 +10,18 @@ import { TestService } from '../../Services/test.service'
 })
 export class IndexPage implements OnInit {
 
-  constructor(
-    public rout: Router,
-    public popoverController: PopoverController,
-    public toastController: ToastController,
-    public loadingController: LoadingController,
-    private tService: TestService,
-  ) { }
-  slideOpts = {
-    autoplay: true,
-    initialSlide: 0,
-    speed: 500,
-    effect: 'flip',
-  };
-  ngOnInit() { }
-  none = false;
+  constructor(public rout: Router, private tService: TestService) { }
 
-  public appPages = [
-    { title: 'Login', url: '/home', icon: 'log-in' },
-    { title: 'Signup', url: '/home', icon: 'log-out' },
-    { title: 'About Us', url: '/about', icon: 'people' },
-    { title: 'Contact Us', url: '/contact', icon: 'call' },
-    { title: 'Payment Uplaod', url: '/gallery', icon: 'images' },
-  ];
-  modelData_data: any;
-
-  async presentPopover(ev: any) {
-    const popover = await this.popoverController.create({
-      component: LoginPopoverComponent,
-      event: ev,
-      cssClass: 'popover_setting',
-      translucent: false,
-      mode: 'ios',
-    });
-    popover.onDidDismiss().then((modelData) => {
-      if (modelData.data.cred1 !== "" && modelData.data.cred2 !== "" && modelData.data.cred3 !== "" &&  modelData.data.tp !== "" ) {
-        this.present()
-        // this.tService.getTestData("../../../assets/credentials.json").subscribe(result => {
-        //   for (let x of result) {
-        //     if (modelData.data.cred1 == x.AgentId && modelData.data.cred2 == x.AgentUsername && modelData.data.cred3 == x.Password) {
-        //       this.dismiss()
-        //       this.rout.navigate(['home/dashboard'])
-        //     }
-        //   }
-        // });
-        console.log(modelData)
-      }
-      else{
-        this.dismiss()
-        this.blank()
-      }
-    });
-    return await popover.present();
-  }
-
-  async presentToast() {
-    const toast = await this.toastController.create({
-      message: 'Wrong Credentials',
-      duration: 3000,
-    });
-    toast.present();
-  }
-
-  async blank() {
-    const toast = await this.toastController.create({
-      message: 'Enter all details',
-      duration: 3000,
-    });
-    toast.present();
-  }
-
-  isLoading = false;
-
-  async present() {
-    this.isLoading = true;
-    return await this.loadingController.create({
-      message: 'Please wait...',
-      mode: 'ios',
-      backdropDismiss: false,
-      spinner: 'bubbles',
-      // duration: 2000
-    }).then(a => {
-      a.present().then(() => {
-        console.log('presented');
-        if (!this.isLoading) {
-          a.dismiss().then(() => console.log('abort presenting'));
-        }
-      });
+  uType
+  onCvalue = "Flight"
+  ngOnInit() {
+    this.tService.getTestData("../../../assets/userType.json").subscribe(result => {
+      this.uType = result
     });
   }
-
-  async dismiss() {
-    this.isLoading = false;
-    return await this.loadingController.dismiss().then(() => console.log('dismissed'));
+  typeVal(e) {
+    this.onCvalue = e
   }
 
-  index() {
-    // this.rout.navigate(['/index'])
-    //   .then(() => {
-    //     window.location.reload();
-    //   });
-    window.location.replace('/index')
-  }
-  aboutus() {
-    // this.rout.navigate(['/aboutus'])
-    //   .then(() => {
-    //     window.location.reload();
-    //   });
-    window.location.replace('/aboutus')
-  }
-  contactus() {
-    // this.rout.navigate(['/contactus'])
-    //   .then(() => {
-    //     window.location.reload();
-    //   });
-    window.location.replace('/contactus')
-  }
 
 }
