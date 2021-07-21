@@ -37,6 +37,7 @@ export class HomePage implements OnInit {
     //     e.preventDefault();
     // };
   }
+  
 
   ionViewWillEnter() {
     setTimeout(() => {

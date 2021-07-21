@@ -5,7 +5,7 @@ import { DashboardPageRoutingModule } from './dashboard-routing.module';
 import { DashboardPage } from './dashboard.page';
 import { FormShareModule } from '../../form-share/form-share.module';
 import { FooterPage } from '../footer/footer.page';
-import { AirportFilterPipe} from '../../Allpipes/airport-filter.pipe'
+
 @NgModule({
   imports: [
     CommonModule,
@@ -14,6 +14,6 @@ import { AirportFilterPipe} from '../../Allpipes/airport-filter.pipe'
     FormShareModule
   ],
 
-  declarations: [DashboardPage,FooterPage,AirportFilterPipe]
+  declarations: [DashboardPage,FooterPage]
 })
 export class DashboardPageModule {}

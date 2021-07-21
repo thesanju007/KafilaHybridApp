@@ -44,22 +44,19 @@ export class IndexPage implements OnInit {
       mode: 'ios',
     });
     popover.onDidDismiss().then((modelData) => {
-      if (modelData.data.cred1 !== "" && modelData.data.cred2 !== "" && modelData.data.cred3 !== "") {
+      if (modelData.data.cred1 !== "" && modelData.data.cred2 !== "" && modelData.data.cred3 !== "" &&  modelData.data.tp !== "" ) {
         this.present()
-        this.tService.getTestData("../../../assets/credentials.json").subscribe(result => {
-          for (let x of result) {
-            if (modelData.data.cred1 == x.AgentId && modelData.data.cred2 == x.AgentUsername && modelData.data.cred3 == x.Password) {
-              this.dismiss()
-              this.rout.navigate(['home/dashboard'])
-            }
-            else {
-              this.presentToast()
-              this.dismiss()
-            }
-          }
-        });
+        // this.tService.getTestData("../../../assets/credentials.json").subscribe(result => {
+        //   for (let x of result) {
+        //     if (modelData.data.cred1 == x.AgentId && modelData.data.cred2 == x.AgentUsername && modelData.data.cred3 == x.Password) {
+        //       this.dismiss()
+        //       this.rout.navigate(['home/dashboard'])
+        //     }
+        //   }
+        // });
+        console.log(modelData)
       }
-      else if (modelData.data.cred1 == "" || modelData.data.cred2 == "" || modelData.data.cred3 == "") {
+      else{
         this.dismiss()
         this.blank()
       }
@@ -92,7 +89,7 @@ export class IndexPage implements OnInit {
       mode: 'ios',
       backdropDismiss: false,
       spinner: 'bubbles',
-      duration: 2000
+      // duration: 2000
     }).then(a => {
       a.present().then(() => {
         console.log('presented');

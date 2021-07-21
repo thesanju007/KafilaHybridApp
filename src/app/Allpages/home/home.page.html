@@ -6,7 +6,6 @@
         <ion-list id="inbox-list" *ngFor="let d of Menu,let i = index" lines="none">
 
           <!-- WITHOUT SUBMENU -->
-
           <ion-item *ngIf="!d.subMenu" [routerLink]="['/','home',d.url]" (click)="myAccount()" class="main-tag"
             routerDirection="forward">
             <ion-icon slot="start" name={{d.icon}}></ion-icon>
@@ -14,8 +13,9 @@
           </ion-item>
 
 
-          <!-- MAINMENU -->
 
+
+          <!-- MAINMENU -->
           <ion-item *ngIf="d.active" (click)="toggleSubMenu(d)" (ionClick)="d.showDetails=!d.showDetails "
             class="main-tag">
             <ion-icon slot="start" name={{d.icon}}></ion-icon>
@@ -25,8 +25,8 @@
           </ion-item>
 
 
-          <!-- SUBMENU -->
 
+          <!-- SUBMENU -->
           <ion-list *ngIf="!d.showDetails">
             <ion-item *ngFor="let s_Menu of d.subMenu" [routerLink]="['/','home',s_Menu.url]"
               (click)="bigMenu=!bigMenu">
@@ -52,13 +52,11 @@
               <ion-label position="floating">Enter Password</ion-label>
               <ion-input formControlName="cre1"></ion-input>
             </ion-item>
-            <ion-button class="submit-btn wid" type="submit">check</ion-button>
+            <ion-button type="submit">check</ion-button>
           </form>
         </ion-list>
 
-
       </ion-content>
-
 
       <ion-item (click)="logout()" lines="none" class="line-up">
         <ion-icon slot="start" name="log-out-outline"></ion-icon>
