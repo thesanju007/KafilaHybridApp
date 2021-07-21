@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { TestService } from '../../Services/test.service'
+import { TestService } from '../../Services/test.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',

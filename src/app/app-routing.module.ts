@@ -29,11 +29,6 @@ const routes: Routes = [
     path: 'footer',
     loadChildren: () => import('./Allpages/footer/footer.module').then( m => m.FooterPageModule)
   },
-
-  
-  
-  
-  
 ];
 
 @NgModule({

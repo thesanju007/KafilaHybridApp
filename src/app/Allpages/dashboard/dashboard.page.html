@@ -4,9 +4,7 @@
       <ion-col size-xs="12" size-md="12" size-lg="12" size-xl="12"  class="padding-none">
         <ion-row color="primary" justify-content-center>
           <ion-col size-md="3" size-lg="2" size-xs="4" class="FTH " (click)="flight()" [ngClass]="[isAfterF?'FTHActive':'!FTHActive']">
-            <p>
-              <span class="material-icons">flight</span> Flight
-            </p>
+            <p><span class="material-icons">flight</span> Flight</p>
           </ion-col>
           <ion-col size-md="3" size-lg="2" size-xs="4" class="FTH " (click)="train()" [ngClass]="[ isAfterT?'FTHActive':'!FTHActive']">
             <p>
@@ -136,10 +134,6 @@
           </form>
         </ion-card>
 
-
-
-
-
         <ion-card class="SB" *ngIf="train_comp">
           <form>
             <ion-row color="primary" justify-content-center class="ion-padding">
@@ -192,10 +186,6 @@
             </ion-row>
           </form>
         </ion-card>
-
-
-
-
         <ion-card class="SB" *ngIf="hotel_comp">
           <form>
             <ion-row color="primary" justify-content-center class="ion-padding">
@@ -265,6 +255,3 @@
   </ion-grid>
   
 </ion-content>
-
-
-
