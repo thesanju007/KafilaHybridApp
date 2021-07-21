@@ -15,39 +15,39 @@
 
             <ion-item-divider>
               <ion-card-content>
-                <form class="cred-box">
+                <form [formGroup]="set_cre" (ngSubmit)="ccGetData()" class="cred-box">
                   <ion-grid>
                     <ion-row>
                       <ion-col class="bgw" size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
                         <ion-item class="bgw" lines="none">
-                          <input placeholder="Enter Agent ID">
+                          <input placeholder="Enter Agent ID" formControlName="cre1">
                         </ion-item>
                       </ion-col>
 
                       <ion-col class="bgw" size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
                         <ion-item class="bgw" lines="none">
-                          <input placeholder="Enter Agent Username">
+                          <input placeholder="Enter Agent Username" formControlName="cre2">
                         </ion-item>
                       </ion-col>
 
                       <ion-col class="bgw" size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
                         <ion-item class="bgw" lines="none">
-                          <input placeholder="Enter Your Password">
+                          <input placeholder="Enter Your Password" formControlName="cre3" type="password">
 
                         </ion-item>
                       </ion-col>
 
                       <ion-col class="bgw" size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
                         <ion-item class="bgw" lines="none">
-                          <select  (change)="typeVal($event.target.value)">
-                            
+                          <select  (change)="typeVal($event.target.value)" formControlName="cre4">
+                            <option value="" disabled selected hidden >User Type</option>
                             <option *ngFor="let x of uType" [value]="x.Type">{{x.Type}}</option>
                           </select>
                         </ion-item>
                       </ion-col>
 
                       <ion-col class="ion-padding-top" size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
-                        <button class="ccL-btn" type="submit"><ion-icon slot="start" name="log-in"></ion-icon> Login as {{onCvalue}} User
+                        <button class="ccL-btn" type="submit"><ion-icon slot="start" name="log-in"></ion-icon> Login {{onCvalue}}
 
                         </button>
                       </ion-col>
