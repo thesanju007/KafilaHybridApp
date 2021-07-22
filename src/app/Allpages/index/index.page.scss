@@ -6,7 +6,7 @@ ion-item{
   border-bottom: 1px solid rgb(189, 189, 189);
 }
 ion-card-title{
-  color: rgb(42, 118, 54);
+  color: #302b46;
   font-size: 22px;
   font-weight: 600;
 }
@@ -14,28 +14,61 @@ ion-app{
   background-color: rgb(163, 163, 163);
 }
 ion-card{
-  border: 1px solid rgb(42, 118, 54);
+  // border: 1px solid rgb(42, 118, 54);
+  border-radius: 20px;
+  margin: 100px 0px 0px 0px;
 }
 .ccL-btn{
-  background-color: rgb(42, 118, 54);
+  opacity: .8;
+  background-color: #211e2f;
   color: white;
-  width: 100%;
+  width:80%;
   padding: 15px;
   font-size: 20px;
   font-weight: 500;
-  border-radius: 5px;
+  border-radius: 50px;
+  margin: 16px 0px 0px 0px;
 }
-
+.ccL-btn:hover{
+  opacity: 1;
+  background-color: #211e2f;
+  color: white;
+  width:80%;
+  padding: 15px;
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 50px;
+  margin: 16px 0px 0px 0px;
+}
+ion-col{
+  padding: 0px;
+  margin: 0px;
+}
 input{
-  border: none;
+  //border: none;
+  border: 1px solid rgb(209, 209, 209);
   outline: 0;
-  width: 100%;
+  width: 80%;
+  padding: 15px;
   background-color: white;
+  margin: 10px 0px;
+  border-radius: 50px;
 }
 select{
   width: 100%;
-  border: none;
+  //border: none;
   outline: 0;
+  border: 1px solid rgb(209, 209, 209);
+  border-radius: 50px;
+  outline: 0;
+  width: 80%;
+  padding: 15px;
+}
+option{
+  color: black;
+}
+h2{
+  color: black;
 }
 ion-icon{
   font-size: 19px;
@@ -52,15 +85,17 @@ ion-label{
   font-family: sans-serif;
   color: #17745b;
 }
-
+.ad-img{
+  background-image: url('../../../assets/ad.jpg');
+}
 
 @media only screen and (min-width: 769px) {
 
-  input{
-      border: none;
-      outline: 0;
-      width: 100%;
-  }
+  // input{
+  //     border: none;
+  //     outline: 0;
+  //     width: 100%;
+  // }
   ion-icon{
       font-size: 19px;
   }
