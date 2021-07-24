@@ -1,8 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { HomePage } from './home.page';
 import { PaymentComponent } from '../../components/payment/payment.component'
+import { AgentAuthorizationComponent } from "../../components/Train/agent-authorization/agent-authorization.component";
+import { BookingHistoryComponent } from "../../components/Train/booking-history/booking-history.component";
+import { CancellationHistoryComponent } from "../../components/Train/cancellation-history/cancellation-history.component";
+import { PendingHistoryComponent } from "../../components/Train/pending-history/pending-history.component";
+import { RLAgentListComponent } from "../../components/Train/rlagent-list/rlagent-list.component";
+import { RLRefundHistoryComponent } from "../../components/Train/rlrefund-history/rlrefund-history.component";
 const routes: Routes = [
   {
     path: '',
@@ -12,100 +17,52 @@ const routes: Routes = [
   {
     path: '',
     component: HomePage,
-    children:[
+    children: [
       {
         path: 'dashboard',
-        loadChildren: () => import('../../Allpages/dashboard/dashboard.module').then( m => m.DashboardPageModule)
+        loadChildren: () => import('../../Allpages/dashboard/dashboard.module').then(m => m.DashboardPageModule)
       },
       {
-        path: 'fsearch',
-        loadChildren: () => import('../Flight/f-search/f-search.module').then( m => m.FSearchPageModule)
+        path: 'payment',
+        component: PaymentComponent
       },
       {
-        path: 'fbookinghistory',
-        loadChildren: () => import('../Flight/f-booking-history/f-booking-history.module').then( m => m.FBookingHistoryPageModule)
-      },     
+        path: 'RLAgentAuth',
+        component: AgentAuthorizationComponent
+      }
+      ,
       {
-        path: 'fcancellationhistory',
-        loadChildren: () => import('../Flight/f-cancellation-history/f-cancellation-history.module').then( m => m.FCancellationHistoryPageModule)
-      },
+        path: 'RlBookingHistory',
+        component: BookingHistoryComponent
+      }
+      ,
       {
-        path: 'frefundhistory',
-        loadChildren: () => import('../Flight/f-refund-history/f-refund-history.module').then( m => m.FRefundHistoryPageModule)
-      },
+        path: 'RLCancel',
+        component: CancellationHistoryComponent
+      }
+      ,
       {
-        path: 'fpaymenthistory',
-        loadChildren: () => import('../Flight/f-payment-history/f-payment-history.module').then( m => m.FPaymentHistoryPageModule)
-      },
+        path: 'RLPending',
+        component: PendingHistoryComponent
+      }
+      ,
       {
-        path: 'ftransactions',
-        loadChildren: () => import('../Flight/f-transactions/f-transactions.module').then( m => m.FTransactionsPageModule)
-      },
+        path: 'RLAgent',
+        component: RLAgentListComponent
+      }
+      ,
       {
-        path: 'tsearch',
-        loadChildren: () => import('../Train/t-search/t-search.module').then( m => m.TSearchPageModule)
-      },
-      {
-        path: 'tbookinghistory',
-        loadChildren: () => import('../Train/t-booking-history/t-booking-history.module').then( m => m.TBookingHistoryPageModule)
-      },
-      {
-        path: 'tcancellationhistory',
-        loadChildren: () => import('../Train/t-cancellation-history/t-cancellation-history.module').then( m => m.TCancellationHistoryPageModule)
-      },
-      {
-        path: 'trefundhistory',
-        loadChildren: () => import('../Train/t-refund-history/t-refund-history.module').then( m => m.TRefundHistoryPageModule)
-      },
-      {
-        path: 'tpaymenthistory',
-        loadChildren: () => import('../Train/t-payment-history/t-payment-history.module').then( m => m.TPaymentHistoryPageModule)
-      },
-      {
-        path: 'ttransactions',
-        loadChildren: () => import('../Train/t-transactions/t-transactions.module').then( m => m.TTransactionsPageModule)
-      },
-      
-      {
-        path: 'hsearch',
-        loadChildren: () => import('../Hotel/h-search/h-search.module').then( m => m.HSearchPageModule)
-      },
-      {
-        path: 'hpaymenthistory',
-        loadChildren: () => import('../Hotel/h-payment-history/h-payment-history.module').then( m => m.HPaymentHistoryPageModule)
-      },
-      {
-        path: 'hrefundhistory',
-        loadChildren: () => import('../Hotel/h-refund-history/h-refund-history.module').then( m => m.HRefundHistoryPageModule)
-      },
-      {
-        path: 'hcancellationhistory',
-        loadChildren: () => import('../Hotel/h-cancellation-history/h-cancellation-history.module').then( m => m.HCancellationHistoryPageModule)
-      },
-      {
-        path: 'hbookinghistory',
-        loadChildren: () => import('../Hotel/h-booking-history/h-booking-history.module').then( m => m.HBookingHistoryPageModule)
-      },
-      {
-        path: 'htransactions',
-        loadChildren: () => import('../Hotel/h-transactions/h-transactions.module').then( m => m.HTransactionsPageModule)
-      },
-      {
-        path: 'myaccount',
-        loadChildren: () => import('../my-account/my-account.module').then( m => m.MyAccountPageModule)
-      },
-      { 
-        path:'payment',
-        component:PaymentComponent
-      },
+        path: 'RLRefund',
+        component: RLRefundHistoryComponent
+      }
     ]
   },
 
-  
+
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class HomePageRoutingModule {}
+export class HomePageRoutingModule { }

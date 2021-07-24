@@ -13,7 +13,7 @@ const routes: Routes = [
   },
  
   {
-    path: 'home',
+    path: 'cchome',
     loadChildren: () => import('./Allpages/home/home.module').then(m => m.HomePageModule)
   },
   {
@@ -29,14 +29,7 @@ const routes: Routes = [
     path: 'footer',
     loadChildren: () => import('./Allpages/footer/footer.module').then(m => m.FooterPageModule)
   },
-  {
-    path: 'aboutus',
-    loadChildren: () => import('./Allpages/about-us/about-us.module').then(m => m.AboutUsPageModule)
-  },
-  {
-    path: 'contactus',
-    loadChildren: () => import('./Allpages/contact-us/contact-us.module').then(m => m.ContactUsPageModule)
-  },
+
   { 
     path: '**', 
     redirectTo: '/error' 

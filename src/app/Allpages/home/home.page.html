@@ -4,13 +4,12 @@
     <ion-menu contentId="main-content" type="overlay" *ngIf="bigMenu" swipeGesture="false">
       <ion-content>
         <ion-list id="inbox-list" *ngFor="let d of Menu,let i = index" lines="none">
-
           <!-- WITHOUT SUBMENU -->
-          <ion-item *ngIf="!d.subMenu" [routerLink]="['/','home',d.url]" (click)="myAccount()" class="main-tag"
+          <!-- <ion-item *ngIf="!d.subMenu" [routerLink]="['/','home',d.url]" (click)="myAccount()" class="main-tag"
             routerDirection="forward">
             <ion-icon slot="start" name={{d.icon}}></ion-icon>
             <ion-label>{{d.title}} </ion-label>
-          </ion-item>
+          </ion-item> -->
 
 
 
@@ -28,7 +27,7 @@
 
           <!-- SUBMENU -->
           <ion-list *ngIf="!d.showDetails">
-            <ion-item *ngFor="let s_Menu of d.subMenu" [routerLink]="['/','home',s_Menu.url]"
+            <ion-item *ngFor="let s_Menu of d.subMenu" [routerLink]="['/','cchome',s_Menu.url]"
               (click)="bigMenu=!bigMenu">
               <ion-icon slot="start" name={{s_Menu.icon}}></ion-icon>
               <ion-label>{{s_Menu.title}}</ion-label>
@@ -40,20 +39,20 @@
 
 
         <ion-list id="inbox-list" lines="none">
-          <ion-item *ngIf="moreOption" (click)="credTrue=!credTrue" class="main-tag">
+          <!-- <ion-item *ngIf="moreOption" (click)="credTrue=!credTrue" class="main-tag">
             <ion-icon slot="start" name="list"></ion-icon>
             <ion-label>More</ion-label>
             <ion-icon name="caret-down-outline" *ngIf="!credTrue"></ion-icon>
             <ion-icon name="caret-up-outline" *ngIf="credTrue"></ion-icon>
-          </ion-item>
+          </ion-item> -->
 
-          <form [formGroup]="set_cre" (ngSubmit)="checkCredentials()" *ngIf="credTrue" class="cred-box">
+          <!-- <form [formGroup]="set_cre" (ngSubmit)="checkCredentials()" *ngIf="credTrue" class="cred-box">
             <ion-item class="cred">
               <ion-label position="floating">Enter Password</ion-label>
               <ion-input formControlName="cre1"></ion-input>
             </ion-item>
             <ion-button type="submit">check</ion-button>
-          </form>
+          </form> -->
         </ion-list>
 
       </ion-content>

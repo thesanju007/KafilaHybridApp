@@ -9,13 +9,13 @@
               <ion-col size-md="6" size-lg="6" size-xl="6" style="border-right: 1px solid rgb(192, 192, 192);">
                 <ion-item-divider>
                   <ion-card-header class="">
-                    <img alt="logo" id="header_logo" height="50" src="../assets/logo.png">
+                    <img alt="logo" id="header_logo" src="../assets/logo.png">
                     <ion-card-title>Kafila Hospitality and Travels Pvt. Ltd. System</ion-card-title>
                   </ion-card-header>
                 </ion-item-divider>
                 <ion-item-divider>
                   <ion-card-content>
-                    <form [formGroup]="set_cre" (ngSubmit)="ccGetData()" class="cred-box">
+                    <form [formGroup]="set_cre" (ngSubmit)="ccGetData($event)" class="cred-box">
                       <ion-grid>
                         <ion-row>
                           <ion-col>
@@ -42,16 +42,16 @@
 
                           <ion-col class="bgw ion-margin-top" size-sm="12" size-xs="12" size-md="12" size-lg="12"
                             size-xl="12">
-                            <select (change)="typeVal($event.target.value)" formControlName="cre4">
+                            <select formControlName="cre4">
                               <option value="" disabled selected hidden>Select User Type</option>
-                              <option *ngFor="let x of uType" [value]="x.Type">{{x.Type}}</option>
+                              <option *ngFor="let x of uType" [value]="x.Id">{{x.Type}}</option>
                             </select>
                           </ion-col>
 
                           <ion-col class="ion-padding-top" size-sm="12" size-xs="12" size-md="12" size-lg="12"
                             size-xl="12">
                             <button class="ccL-btn" type="submit">
-                              <ion-icon slot="start" name="log-in"></ion-icon> Login {{onCvalue}}
+                              <ion-icon slot="start" name="log-in"></ion-icon> Login
                             </button>
                           </ion-col>
                         </ion-row>

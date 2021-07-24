@@ -14,9 +14,10 @@ ion-app{
   background-color: rgb(163, 163, 163);
 }
 ion-card{
-  // border: 1px solid rgb(42, 118, 54);
+border: 1px solid #211e2f;
   border-radius: 20px;
   margin: 100px 0px 0px 0px;
+  box-shadow: 0px 0px 2px 0px #8c8c8c;
 }
 .ccL-btn{
   opacity: .8;
@@ -46,23 +47,25 @@ ion-col{
 }
 input{
   //border: none;
-  border: 1px solid rgb(209, 209, 209);
+  border: 1px solid #211e2f;
   outline: 0;
   width: 80%;
   padding: 15px;
   background-color: white;
   margin: 10px 0px;
   border-radius: 50px;
+  color: black;
 }
 select{
   width: 100%;
   //border: none;
   outline: 0;
-  border: 1px solid rgb(209, 209, 209);
+  border: 1px solid #211e2f;
   border-radius: 50px;
   outline: 0;
   width: 80%;
   padding: 15px;
+  color: black;
 }
 option{
   color: black;

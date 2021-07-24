@@ -25,11 +25,8 @@ export class HomePage implements OnInit {
   dataFromBackend = [{ "id": 1 }, { "id": 3 }]
 
   ngOnInit() {
-    this.tService.getTestData("../../../assets/sideMenu.json").subscribe(result => {
-      this.Menu = result
-      result[4].active = false
-    });
-
+    let test=sessionStorage.getItem("Menu")
+    this.Menu=JSON.parse(test)
     // window.addEventListener("keyup", disableF5);
     // window.addEventListener("keydown", disableF5);
     // function disableF5(e: any) {
@@ -47,7 +44,7 @@ export class HomePage implements OnInit {
   }
 
   logout() {
-    this.route.navigate(['/index'])
+    this.route.navigate(['/ccindex'])
       .then(() => {
         window.location.reload();
       });
@@ -86,17 +83,17 @@ export class HomePage implements OnInit {
     }
   }
 
-  set_cre = new FormGroup({
-    cre1: new FormControl('', [Validators.required]),
-  })
+  // set_cre = new FormGroup({
+  //   cre1: new FormControl('', [Validators.required]),
+  // })
 
-  checkCredentials() {
-    if (this.set_cre.value.cre1 == "12345") {
-      this.credTrue = false
-      this.moreOption = false
-      this.Menu[4].active = true
-    }
+  // checkCredentials() {
+  //   if (this.set_cre.value.cre1 == "12345") {
+  //     this.credTrue = false
+  //     this.moreOption = false
+  //     this.Menu[4].active = true
+  //   }
 
-  }
+  // }
 
 }

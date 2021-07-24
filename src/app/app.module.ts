@@ -6,9 +6,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginPopoverModule } from '../app/components/login-popover/login-popover.module';
-// import { AirportFilterPipe } from './Allpipes/airport-filter.pipe'
-//import { PaymentModule } from './components/payment/payment.module';
 
 @NgModule({
    declarations: [AppComponent],
@@ -20,10 +17,6 @@ import { LoginPopoverModule } from '../app/components/login-popover/login-popove
     AppRoutingModule, 
     BrowserAnimationsModule,
     HttpClientModule,
-   // PaymentModule,
-   LoginPopoverModule,
-
-    
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
