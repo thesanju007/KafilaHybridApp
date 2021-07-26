@@ -36,12 +36,12 @@ export class HomePage implements OnInit {
   }
   
 
-  ionViewWillEnter() {
-    setTimeout(() => {
-      alert("Session Timeout")
-      this.logout()
-    }, 1 * 60 * 60 * 500);
-  }
+  // ionViewWillEnter() {
+  //   setTimeout(() => {
+  //     alert("Session Timeout")
+  //     this.logout()
+  //   }, 1 * 60 * 60 * 500);
+  // }
 
   logout() {
     this.route.navigate(['/ccindex'])

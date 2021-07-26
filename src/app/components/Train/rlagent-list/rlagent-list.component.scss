@@ -1,0 +1,133 @@
+*{
+    font-family: serif;
+  
+  }
+  h3{
+      color: black;
+  }
+label{
+    color: black;
+}
+ 
+  
+  .ccL-btn{
+    opacity: .8;
+    background-color: #211e2f;
+    color: white;
+    width:28%;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 5px;
+    margin: 12px 0px 0px 0px;
+  }
+  .ccL-btn:hover{
+    opacity: 1;
+    background-color: #211e2f;
+    color: white;
+    width:28%;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 5px;
+    margin: 12px 0px 0px 0px;
+  }
+  ion-col{
+    padding: 0px;
+    margin: 0px;
+  }
+  input{
+    //border: none;
+    border: 1px solid #211e2f;
+    outline: 0;
+    width: 27%;
+    padding: 15px;
+    background-color: white;
+    margin: 10px 0px;
+    border-radius: 5px;
+    color: black;
+  }
+  input[type=date]{
+    //border: none;
+    border: 1px solid #211e2f;
+    outline: 0;
+    width: 50%;
+    padding: 15px;
+    background-color: white;
+    margin: 10px 0px;
+    border-radius: 5px;
+    color: black;
+  }
+  ion-icon{
+    font-size: 19px;
+  }
+ion-card{
+    background-color: rgba(228, 228, 228, 0.741);
+}
+
+.t-main-row{
+    background-color: #211e2f;
+    padding: 10px 0px 0px 0px;
+    color: white;
+}
+.t-list-row{
+    background-color: rgba(228, 228, 228, 0.741);
+    padding: 15px 0px;
+    border-top: 1px solid #211e2f;
+}
+.t-list-row:hover{
+    background-color: rgba(255, 255, 255, 0.741);
+    padding: 15px 0px;
+    cursor: pointer;
+}
+ion-text{
+    font-size: 15px;
+}
+
+
+  @media only screen and (min-width: 769px) {
+  
+    // input{
+    //     border: none;
+    //     outline: 0;
+    //     width: 100%;
+    // }
+    ion-icon{
+        font-size: 19px;
+    }
+    ion-button{
+        width: 100%;
+    }
+  }
+  @media only screen and (max-width: 768px) {
+   
+    input{
+        border: none;
+        outline: 0;
+        width: 100%;
+    }
+    ion-icon{
+        font-size: 19px;
+    }
+    ion-button{
+        width: 100%;
+    }
+  
+  }
+  
+  @media only screen and (max-width: 425px ) {
+  
+    input{
+        border: none;
+        outline: 0;
+        width: 100%;
+    }
+    ion-icon{
+        font-size: 19px;
+    }
+    ion-button{
+        width: 100%;
+    }
+  }
+  
+  

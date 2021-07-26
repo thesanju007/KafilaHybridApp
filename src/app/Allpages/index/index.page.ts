@@ -4,7 +4,6 @@ import { ToastController, LoadingController } from '@ionic/angular';
 import { TestService } from '../../Services/test.service'
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Md5 } from 'ts-md5';
-import { JsonpClientBackend } from '@angular/common/http';
 @Component({
   selector: 'app-index',
   templateUrl: './index.page.html',
@@ -23,7 +22,6 @@ export class IndexPage implements OnInit {
       .subscribe(data => {
         this.ipAddress = data
       })
-
   }
 
   uType
@@ -41,13 +39,14 @@ export class IndexPage implements OnInit {
     cre4: new FormControl('', [Validators.required])
 
   })
+
   decode(password) {
     this.passwordMd5 = Md5.hashStr(password).toString();
   }
 
   ccGetData(e) {
     e.preventDefault();
-    if (this.set_cre.value !== "" && this.set_cre.value.cre2 !== "" && this.set_cre.value.cre3 !== "" && this.set_cre.value.cre4 !== "") {
+    if (this.set_cre.value.cre1 !== "" && this.set_cre.value.cre2 !== "" && this.set_cre.value.cre3 !== "" && this.set_cre.value.cre4 !== "") {
       this.decode(this.set_cre.value.cre2.toUpperCase() + "|" + this.set_cre.value.cre3.toUpperCase());
       let ccLoginData = {
         "P_TYPE": "CC",
@@ -64,13 +63,13 @@ export class IndexPage implements OnInit {
       let jccLoginData = JSON.stringify(ccLoginData)
       this.tService.postTestData("CC", jccLoginData).subscribe(result => {
         if (result.response !== "") {
-          console.log(result.response)
+          sessionStorage.setItem("LoginDetails",jccLoginData)
           sessionStorage.setItem("Menu", result.response)
           this.rout.navigate(['/cchome'])
         }
 
       });
-     
+
     }
     else {
       alert("Fillup All Details")

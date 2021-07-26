@@ -1,3 +1,105 @@
-<p>
-  rlagent-list works!
-</p>
+<ion-app>
+  <ion-content>
+    <ion-grid>
+      <ion-row class="ion-margin-top">
+        <ion-col size-md="1" size-lg="1" size-xl="1"></ion-col>
+        <ion-col size-md="10" size-lg="10" size-xl="10">
+          <ion-card class="ion-padding-top ion-text-center">
+            <form [formGroup]="agtLstGP" (ngSubmit)="AgtSrhBtn($event)">
+              <ion-row class="ion-padding">
+                <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+                  <input placeholder="Enter Rail Agent ID" formControlName="RAID">
+                </ion-col>
+                <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+                  <h3>OR</h3>
+                </ion-col>
+                <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                  <label>From</label><br>
+                  <input type="date" placeholder="From" formControlName="FROM">
+                </ion-col>
+                <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                  <label>To</label><br>
+                  <input type="date" placeholder="To" formControlName="TO">
+                </ion-col>
+
+                <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+                  <button class="ccL-btn" type="submit">
+                    <ion-icon slot="start" name="search"></ion-icon> Search Agents
+                  </button>
+                </ion-col>
+              </ion-row>
+            </form>
+          </ion-card>
+
+          <ion-grid *ngIf="!non_list" class="ion-text-center ">
+            <ion-row class="t-main-row">
+              <ion-col size-xs="2" size-sm="2" size-md="1" size-lg="1" size-xl="1">
+                <h2>
+                  S.No
+                </h2>
+              </ion-col>
+              <ion-col size-xs="2" size-sm="2" size-md="1" size-lg="1" size-xl="1">
+                <h2>
+                  RAID
+                </h2>
+              </ion-col>
+              <ion-col size-xs="3" size-sm="3" size-md="2" size-lg="2" size-xl="2">
+                <h2>
+                  RAIL ID
+                </h2>
+              </ion-col>
+              <ion-col size-xs="3" size-sm="3" size-md="2" size-lg="2" size-xl="2">
+                <h2>EMAIL
+
+                </h2>
+              </ion-col>
+              <ion-col size-xs="3" size-sm="3" size-md="2" size-lg="2" size-xl="2">
+                <h2>
+                  MOBILE
+                </h2>
+              </ion-col>
+              <ion-col size-xs="3" size-sm="3" size-md="2" size-lg="2" size-xl="2">
+                <h2>
+                  COMPANY NAME
+                </h2>
+              </ion-col>
+              <ion-col size-xs="3" size-sm="3" size-md="2" size-lg="2" size-xl="2">
+                <h2>
+                  STATUS
+                </h2>
+              </ion-col>
+            </ion-row>
+
+            <ion-row *ngFor="let d of agtList, index as i" class="t-list-row">
+              <ion-col size-xs="2" size-sm="2" size-md="1" size-lg="1" size-xl="1">
+                <ion-text>{{i+1}}</ion-text>
+              </ion-col>
+              <ion-col size-xs="2" size-sm="2" size-md="1" size-lg="1" size-xl="1">
+                <ion-text>{{d.RAID}}</ion-text>
+              </ion-col>
+              <ion-col size-xs="3" size-sm="3" size-md="2" size-lg="2" size-xl="2">
+                <ion-text>{{d.RAIL_ID}}</ion-text>
+              </ion-col>
+              <ion-col size-xs="3" size-sm="3" size-md="2" size-lg="2" size-xl="2">
+                <ion-text>{{d.EMAIL}}</ion-text>
+              </ion-col>
+              <ion-col size-xs="3" size-sm="3" size-md="2" size-lg="2" size-xl="2">
+                <ion-text>{{d.MOBILE}}</ion-text>
+              </ion-col>
+              <ion-col size-xs="3" size-sm="3" size-md="2" size-lg="2" size-xl="2">
+                <ion-text>{{d.COMP_NAME}}</ion-text>
+              </ion-col>
+              <ion-col size-xs="3" size-sm="3" size-md="2" size-lg="2" size-xl="2">
+                <ion-text>{{d.STATUS}}</ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+
+         
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+</ion-app>
