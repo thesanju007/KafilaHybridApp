@@ -11,6 +11,7 @@ export class RLAgentListComponent implements OnInit {
   constructor(private tService: TestService) { }
   login_Details
   non_list = true
+  show=true
   agtList
   ngOnInit() {
     let Json_LD = sessionStorage.getItem("LoginDetails")
@@ -24,6 +25,7 @@ export class RLAgentListComponent implements OnInit {
     TO: new FormControl(),
   })
   AgtSrhBtn(e) {
+    this.show=false
     e.preventDefault();
     let agtList = {
       "P_TYPE": "CC",
@@ -47,6 +49,7 @@ export class RLAgentListComponent implements OnInit {
       if (result.response !== "") {
         this.agtList = JSON.parse(result.response)
         this.non_list = false
+        this.show=true
         console.log(this.agtList)
       }
 

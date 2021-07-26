@@ -51,7 +51,11 @@
                           <ion-col class="ion-padding-top" size-sm="12" size-xs="12" size-md="12" size-lg="12"
                             size-xl="12">
                             <button class="ccL-btn" type="submit">
-                              <ion-icon slot="start" name="log-in"></ion-icon> Login
+                              <span *ngIf="show">
+                                <ion-icon slot="start" name="log-in"></ion-icon> Login
+                              </span>
+                              <ion-spinner *ngIf="!show"></ion-spinner>
+
                             </button>
                           </ion-col>
                         </ion-row>
