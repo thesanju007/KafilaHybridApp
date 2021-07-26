@@ -1,9 +1,8 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TestService } from '../../Services/test.service'
 import { Subscription } from 'rxjs'
-import { Platform } from '@ionic/angular';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -13,44 +12,22 @@ export class HomePage implements OnInit {
   Menu: any;
   clickEventSubs: Subscription
   bigMenu = false;
-  credTrue = false
-  moreOption = true
-  constructor(private route: Router, private tService: TestService, public platform: Platform,) {
+
+  constructor(private route: Router, private tService: TestService) {
     this.clickEventSubs = this.tService.getClickEvent().subscribe(() => {
       this.toggleMenu();
     })
-
   }
 
-  dataFromBackend = [{ "id": 1 }, { "id": 3 }]
 
   ngOnInit() {
-    let test=sessionStorage.getItem("Menu")
-    this.Menu=JSON.parse(test)
-    // window.addEventListener("keyup", disableF5);
-    // window.addEventListener("keydown", disableF5);
-    // function disableF5(e: any) {
-    //   if ((e.which || e.keyCode) == 116 || ((e.which || e.keyCode) == 82))
-    //     e.preventDefault();
-    // };
+    let test = sessionStorage.getItem("Menu")
+   this.Menu = JSON.parse(test)
+    
+     
+    console.log(this.Menu)
   }
-  
 
-  // ionViewWillEnter() {
-  //   setTimeout(() => {
-  //     alert("Session Timeout")
-  //     this.logout()
-  //   }, 1 * 60 * 60 * 500);
-  // }
-
-  logout() {
-    this.route.navigate(['/ccindex'])
-      .then(() => {
-        window.location.reload();
-      });
-    localStorage.clear();
-    sessionStorage.clear();
-  }
 
   toggleMenu() {
     if (this.bigMenu == true) {
@@ -60,7 +37,6 @@ export class HomePage implements OnInit {
   }
 
   toggleSubMenu(p) {
-    this.credTrue = false
     if (p.showDetails) {
       for (let i of this.Menu) {
         if (i.title == p.title) {
@@ -75,25 +51,10 @@ export class HomePage implements OnInit {
     }
   }
 
-  myAccount() {
-    this.bigMenu = false;
-    this.credTrue = false
-    for (let i of this.Menu) {
-      i.showDetails = true
-    }
+  logout() {
+    this.route.navigate(['/ccindex']);
+    localStorage.clear();
+    sessionStorage.clear();
   }
-
-  // set_cre = new FormGroup({
-  //   cre1: new FormControl('', [Validators.required]),
-  // })
-
-  // checkCredentials() {
-  //   if (this.set_cre.value.cre1 == "12345") {
-  //     this.credTrue = false
-  //     this.moreOption = false
-  //     this.Menu[4].active = true
-  //   }
-
-  // }
 
 }

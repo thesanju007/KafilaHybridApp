@@ -11,17 +11,6 @@ label{
  
   
   .ccL-btn{
-    opacity: .8;
-    background-color: #211e2f;
-    color: white;
-    width:28%;
-    padding: 15px;
-    font-size: 20px;
-    font-weight: 500;
-    border-radius: 5px;
-    margin: 12px 0px 0px 0px;
-  }
-  .ccL-btn:hover{
     opacity: 1;
     background-color: #211e2f;
     color: white;
@@ -31,7 +20,9 @@ label{
     font-weight: 500;
     border-radius: 5px;
     margin: 12px 0px 0px 0px;
+    cursor: pointer;
   }
+
   ion-col{
     padding: 0px;
     margin: 0px;
@@ -62,7 +53,7 @@ label{
     font-size: 19px;
   }
 ion-card{
-    background-color: rgba(228, 228, 228, 0.741);
+    background-color: rgba(228, 228, 228, 0.568);
 }
 
 .t-main-row{
@@ -112,22 +103,34 @@ ion-text{
     ion-button{
         width: 100%;
     }
-  
-  }
-  
-  @media only screen and (max-width: 425px ) {
-  
-    input{
-        border: none;
+    .for-app{
+        display: none;
+    }
+    input[type=date]{
+        //border: none;
+        border: 1px solid #211e2f;
         outline: 0;
         width: 100%;
-    }
-    ion-icon{
-        font-size: 19px;
-    }
-    ion-button{
-        width: 100%;
-    }
+        padding: 15px;
+        background-color: white;
+        margin: 10px 0px;
+        border-radius: 5px;
+        color: black;
+      }
+      .ccL-btn{
+        opacity: 1;
+        background-color: #211e2f;
+        color: white;
+        width:100%;
+        padding: 15px;
+        font-size: 20px;
+        font-weight: 500;
+        border-radius: 5px;
+        margin: 12px 0px 0px 0px;
+        cursor: pointer;
+      }
   }
+  
+
   
   
