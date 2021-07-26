@@ -11,21 +11,29 @@ export class RLAgentListComponent implements OnInit {
   constructor(private tService: TestService) { }
   login_Details
   non_list = true
-  show=true
+  show = true
+  dis = true
+  id=true
   agtList
   ngOnInit() {
     let Json_LD = sessionStorage.getItem("LoginDetails")
     this.login_Details = JSON.parse(Json_LD)
   }
-
-
+  RfieldEn(){
+    this.id=true
+    this.dis=false
+  }
+  fieldEn() {
+    this.id = false
+    this.dis=true
+  }
   agtLstGP = new FormGroup({
     RAID: new FormControl(),
     FROM: new FormControl(),
     TO: new FormControl(),
   })
   AgtSrhBtn(e) {
-    this.show=false
+    this.show = false
     e.preventDefault();
     let agtList = {
       "P_TYPE": "CC",
@@ -49,7 +57,7 @@ export class RLAgentListComponent implements OnInit {
       if (result.response !== "") {
         this.agtList = JSON.parse(result.response)
         this.non_list = false
-        this.show=true
+        this.show = true
         console.log(this.agtList)
       }
 
