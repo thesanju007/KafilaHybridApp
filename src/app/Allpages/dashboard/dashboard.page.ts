@@ -1,12 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TestService } from '../../Services/test.service';
+=======
+
+>>>>>>> origin/ccShivam
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage implements OnInit {
+<<<<<<< HEAD
   todayt = new Date().toJSON().split('T')[0];
   minDate:any
   arp: any
@@ -79,3 +84,8 @@ export class DashboardPage implements OnInit {
   }
   
 }
+=======
+  constructor() { }
+  ngOnInit() {}
+}
+>>>>>>> origin/ccShivam

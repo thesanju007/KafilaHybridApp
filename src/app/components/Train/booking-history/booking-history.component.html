@@ -1,0 +1,93 @@
+<ion-app>
+  <ion-content>
+    <ion-grid>
+      <ion-row class="ion-margin-top ion-padding ion-text-center">
+        <ion-col size-md="12" size-lg="12" size-xl="12" class="ion-padding">
+
+          <form [formGroup]="agtLstGP" (ngSubmit)="AgtSrhBtn($event)">
+            <table>
+              <tr>
+                <th><input formControlName="RAID" placeholder="Agent ID"></th>
+                <th> <input formControlName="FROM" type="date" ></th>
+                <th><input formControlName="TO" type="date" ></th>
+                <th> <button class="ccL-btn" type="submit">
+                    <span *ngIf="show">
+                      <ion-icon slot="start" name="search"></ion-icon> Search Agents
+                    </span>
+                    <ion-spinner *ngIf="!show"></ion-spinner>
+                  </button></th>
+              </tr>
+            </table>
+          </form>
+          <table>
+            <thead>
+              <tr>
+                <th class="padding">
+                  #
+                </th>
+                <th class="padding">
+                  BookingID
+                </th>
+                <th class="padding">
+                  <ion-icon name="arrow-up-outline" style="cursor: pointer; color: red;" (click)="sortMailAsc()">
+                  </ion-icon> 
+                  EmailID
+                  <ion-icon name="arrow-down-outline" style="cursor: pointer; color: red;" (click)="sortMailDesc()">
+                  </ion-icon>
+                </th>
+                <th class="padding">
+                  FID
+                </th>
+                <th class="padding">
+                  RID
+                </th>
+                <th class="padding">
+                  PNR
+                </th>
+                <th class="padding">
+                  <ion-icon name="arrow-up-outline" style="cursor: pointer; color: red;" (click)="sortBalAsc()">
+                  </ion-icon> Amount
+                  <ion-icon name="arrow-down-outline" style="cursor: pointer; color: red;" (click)="sortBalDesc()">
+                  </ion-icon>
+
+
+                </th>
+                <th class="padding">
+                  Status
+                </th>
+                <th class="padding">
+                  <ion-icon name="arrow-up-outline" style="cursor: pointer; color: red;" (click)="sortDateAsc()">
+                  </ion-icon> Dep Date
+                  <ion-icon name="arrow-down-outline" style="cursor: pointer; color: red;" (click)="sortDateDesc()">
+                  </ion-icon>
+
+                </th>
+                <th class="padding">
+                  Time
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let d of agtList, index as i" class="hvr">
+                <td>{{i+1}}</td>
+                <td>{{d.BOOKING_ID}}</td>
+                <td>{{d.EMAIL_ID}}</td>
+                <td>{{d.FID}}</td>
+                <td>{{d.RID}}</td>
+                <td>{{d.PNR}}</td>
+                <td>{{d.AMOUNT | currency:'INR'}}</td>
+                <td>{{d.STATUS}}</td>
+                <td>{{d.DEP_DATE | date: 'dd/MM/yyyy'}}</td>
+                <td>{{d.ETIME | date: 'dd/MM/yyyy'}} {{d.ETIME | date:"HH:mm"}}</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </ion-col>
+
+
+      </ion-row>
+    </ion-grid>
+
+  </ion-content>
+</ion-app>

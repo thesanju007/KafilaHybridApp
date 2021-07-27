@@ -1,0 +1,20 @@
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item> 
+      <ion-label stacked>display</ion-label>
+      <input #myInput type="text" [(ngModel)]="inputValue" name="fieldName" ngDefaultControl>
+    </ion-item>    
+    <ion-item>
+      <button ion-button (click)="inputValueToLable()">
+        move value to lable
+        </button>
+    </ion-item>
+    <ion-item>
+      <ion-label >
+      {{lableText}}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

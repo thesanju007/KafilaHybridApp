@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { FooterPageRoutingModule } from './footer-routing.module';
-import { FooterPage } from './footer.page';
+
 
 @NgModule({
   imports: [
@@ -12,6 +12,6 @@ import { FooterPage } from './footer.page';
     IonicModule,
     FooterPageRoutingModule
   ],
-  declarations: [FooterPage]
+  declarations: []
 })
 export class FooterPageModule {}

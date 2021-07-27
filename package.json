@@ -25,7 +25,11 @@
     "@ionic/angular": "^5.5.2",
     "ngx-cookie-service": "^12.0.0",
     "rxjs": "~6.6.0",
+<<<<<<< HEAD
     "ts-md5": "^1.2.8",
+=======
+    "ts-md5": "^1.2.9",
+>>>>>>> origin/ccShivam
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },

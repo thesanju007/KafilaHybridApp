@@ -21,7 +21,11 @@ export class ShowtrainPage implements OnInit {
   cookieValue;
   constructor(private route:Router,private service:TestService,private cservice:CrudService, private cookieService: CookieService) {
    
+<<<<<<< HEAD
     this.user_record =this.service.getOption(); 
+=======
+  
+>>>>>>> origin/ccShivam
   this.read();
 
 }

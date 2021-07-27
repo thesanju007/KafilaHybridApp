@@ -1,34 +1,49 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'index',
+    redirectTo: 'ccindex',
     pathMatch: 'full'
   },
 
   {
-    path: 'index',
-    loadChildren: () => import('./Allpages/index/index.module').then( m => m.IndexPageModule)
+    path: 'ccindex',
+    loadChildren: () => import('./Allpages/index/index.module').then(m => m.IndexPageModule)
   },
-  
+ 
   {
-    path: 'home',
-    loadChildren: () => import('./Allpages/home/home.module').then( m => m.HomePageModule)
+    path: 'cchome',
+    loadChildren: () => import('./Allpages/home/home.module').then(m => m.HomePageModule)
   },
   {
     path: 'error',
-    loadChildren: () => import('./Allpages/error/error.module').then( m => m.ErrorPageModule)
+    loadChildren: () => import('./Allpages/error/error.module').then(m => m.ErrorPageModule)
   },
+ 
   {
     path: 'header',
-    loadChildren: () => import('./Allpages/header/header.module').then( m => m.HeaderPageModule)
+    loadChildren: () => import('./Allpages/header/header.module').then(m => m.HeaderPageModule)
   },
   {
     path: 'footer',
-    loadChildren: () => import('./Allpages/footer/footer.module').then( m => m.FooterPageModule)
+    loadChildren: () => import('./Allpages/footer/footer.module').then(m => m.FooterPageModule)
   },
+<<<<<<< HEAD
+=======
+
+  { 
+    path: '**', 
+    redirectTo: '/error' 
+  },
+  
+
+
+
+
+
+
+>>>>>>> origin/ccShivam
 ];
 
 @NgModule({
@@ -37,4 +52,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

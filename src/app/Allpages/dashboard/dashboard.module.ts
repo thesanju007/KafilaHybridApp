@@ -4,6 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { DashboardPageRoutingModule } from './dashboard-routing.module';
 import { DashboardPage } from './dashboard.page';
 import { FormShareModule } from '../../form-share/form-share.module';
+import { FooterPage } from '../footer/footer.page';
 
 @NgModule({
   imports: [
@@ -13,6 +14,6 @@ import { FormShareModule } from '../../form-share/form-share.module';
     FormShareModule
   ],
 
-  declarations: [DashboardPage]
+  declarations: [DashboardPage,FooterPage]
 })
 export class DashboardPageModule {}
