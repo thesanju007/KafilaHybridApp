@@ -65,23 +65,33 @@ export class BookingHistoryComponent implements OnInit {
 
     });
   }
+  sortMailAsc() {
+    return this.agtList.sort((a, b) => {
+      return a.EMAIL_ID.localeCompare(b.EMAIL_ID);
+    })
+  }
+  sortMailDesc() {
+    return this.agtList.sort((a, b) => {
+      return b.EMAIL_ID.localeCompare(a.EMAIL_ID);
+    })
+  }
   sortBalAsc() {
     return this.agtList.sort((a, b) => {
-      return <any>new Date(a.AMOUNT) - <any>new Date(b.AMOUNT);
+      return a.AMOUNT - b.AMOUNT;
     });
   }
 
   sortBalDesc() {
     return this.agtList.sort((a, b) => {
-      return <any>new Date(b.AMOUNT) - <any>new Date(a.AMOUNT);
+      return b.AMOUNT - a.AMOUNT;
     });
   }
-  sortDateAsc(){
+  sortDateAsc() {
     return this.agtList.sort((a, b) => {
       return <any>new Date(a.DEP_DATE) - <any>new Date(b.DEP_DATE);
     });
   }
-  sortDateDesc(){
+  sortDateDesc() {
     return this.agtList.sort((a, b) => {
       return <any>new Date(b.DEP_DATE) - <any>new Date(a.DEP_DATE);
     });

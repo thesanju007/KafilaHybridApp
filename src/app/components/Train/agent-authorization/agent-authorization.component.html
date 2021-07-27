@@ -1,4 +1,3 @@
-
 <ion-app>
   <ion-content>
     <ion-grid>
@@ -25,17 +24,24 @@
                   #
                 </th>
                 <th class="padding">
+                  <ion-icon name="arrow-up-outline" style="cursor: pointer; color: red;" (click)="sortCnameAsc()">
+                  </ion-icon>
                   Company Name
+                  <ion-icon name="arrow-down-outline" style="cursor: pointer; color: red;" (click)="sortCnameDesc()">
+                  </ion-icon>
                 </th>
                 <th class="padding">
+                  <ion-icon name="arrow-up-outline" style="cursor: pointer; color: red;" (click)="sortMailAsc()">
+                  </ion-icon>
                   EmailID
+                  <ion-icon name="arrow-down-outline" style="cursor: pointer; color: red;" (click)="sortMailDesc()">
+                  </ion-icon>
                 </th>
-
                 <th class="padding">
                   RAID
                 </th>
                 <th class="padding">
-                  Rail Id 
+                  Rail Id
                 </th>
                 <th class="padding">
                   Rail Pwd
@@ -45,20 +51,24 @@
                   Mobile
                 </th>
                 <th class="padding">
-                  <ion-icon name="arrow-up-outline" style="cursor: pointer; color: red;" (click)="sortBalAsc()"></ion-icon> Balance 
-                  <ion-icon name="arrow-down-outline" style="cursor: pointer; color: red;" (click)="sortBalDesc()"></ion-icon>
-                 
+                  <ion-icon name="arrow-up-outline" style="cursor: pointer; color: red;" (click)="sortBalAsc()">
+                  </ion-icon> Balance
+                  <ion-icon name="arrow-down-outline" style="cursor: pointer; color: red;" (click)="sortBalDesc()">
+                  </ion-icon>
+
                 </th>
                 <th class="padding">
                   Status
                 </th>
                 <th class="padding">
-                  <ion-icon name="arrow-up-outline" style="cursor: pointer; color: red;" (click)="sortDateAsc()"></ion-icon>  Time
-                  <ion-icon name="arrow-down-outline" style="cursor: pointer; color: red;" (click)="sortDateDesc()"></ion-icon>
+                  <ion-icon name="arrow-up-outline" style="cursor: pointer; color: red;" (click)="sortDateAsc()">
+                  </ion-icon> Time
+                  <ion-icon name="arrow-down-outline" style="cursor: pointer; color: red;" (click)="sortDateDesc()">
+                  </ion-icon>
                 </th>
-                <th class="padding">
+                <!-- <th class="padding">
                   Action
-                </th>
+                </th> -->
               </tr>
             </thead>
             <tbody>
@@ -72,11 +82,11 @@
                 <td>{{d.MOBILE}}</td>
                 <td>{{d.BALANCE | currency:'INR'}}</td>
                 <td>{{d.STATUS}}</td>
-                <td>{{d.ETIME}}</td>
-                <td>
+                <td>{{d.ETIME | date: 'dd/MM/yyyy'}} {{d.ETIME | date:"HH:mm"}}</td>
+                <!-- <td>
                   <ion-icon name="pencil-outline" style="cursor: pointer;"></ion-icon>
                   <ion-icon name="trash-outline" style="cursor: pointer;"></ion-icon>
-                </td>
+                </td> -->
               </tr>
             </tbody>
           </table>

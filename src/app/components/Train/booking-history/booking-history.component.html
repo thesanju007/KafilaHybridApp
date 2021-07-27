@@ -29,7 +29,11 @@
                   BookingID
                 </th>
                 <th class="padding">
+                  <ion-icon name="arrow-up-outline" style="cursor: pointer; color: red;" (click)="sortMailAsc()">
+                  </ion-icon> 
                   EmailID
+                  <ion-icon name="arrow-down-outline" style="cursor: pointer; color: red;" (click)="sortMailDesc()">
+                  </ion-icon>
                 </th>
                 <th class="padding">
                   FID
@@ -73,8 +77,8 @@
                 <td>{{d.PNR}}</td>
                 <td>{{d.AMOUNT | currency:'INR'}}</td>
                 <td>{{d.STATUS}}</td>
-                <td>{{d.DEP_DATE}}</td>
-                <td>{{d.DEP_DATE}}</td>
+                <td>{{d.DEP_DATE | date: 'dd/MM/yyyy'}}</td>
+                <td>{{d.ETIME | date: 'dd/MM/yyyy'}} {{d.ETIME | date:"HH:mm"}}</td>
               </tr>
             </tbody>
           </table>

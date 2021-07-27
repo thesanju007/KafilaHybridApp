@@ -63,7 +63,26 @@ export class RLAgentListComponent implements OnInit {
 
     });
   }
-
+  sortCnameAsc() {
+    return this.agtList.sort((a, b) => {
+      return a.COMP_NAME.localeCompare(b.COMP_NAME);
+    })
+  }
+  sortCnameDesc() {
+    return this.agtList.sort((a, b) => {
+      return b.COMP_NAME.localeCompare(a.COMP_NAME);
+    })
+  }
+  sortMailAsc() {
+    return this.agtList.sort((a, b) => {
+      return a.EMAIL.localeCompare(b.EMAIL);
+    })
+  }
+  sortMailDesc() {
+    return this.agtList.sort((a, b) => {
+      return b.EMAIL.localeCompare(a.EMAIL);
+    })
+  }
   sortDateAsc(){
     return this.agtList.sort((a, b) => {
       return <any>new Date(a.ETIME) - <any>new Date(b.ETIME);
