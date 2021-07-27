@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-pending-history',
   templateUrl: './pending-history.component.html',
@@ -7,7 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PendingHistoryComponent implements OnInit {
 
-  constructor() { }
+  lableText: string = "";
+    inputValue: string = " ";
+    constructor() {}
+
+    inputValueToLable(){
+      console.log(this.inputValue);
+      this.lableText = this.inputValue;
+    }
 
   ngOnInit() {}
 

@@ -1,117 +1,89 @@
 <ion-app>
   <ion-content>
     <ion-grid>
-      <ion-row class="ion-margin-top">
-        <ion-col size-md="1" size-lg="1" size-xl="1" class="for-app"></ion-col>
-        <ion-col size-md="10" size-lg="10" size-xl="10">
-          <ion-card class="ion-padding-top ">
-            <form [formGroup]="agtLstGP" (ngSubmit)="AgtSrhBtn($event)">
-              <ion-row class="ion-padding">
-                <ion-col size-xs="12" size-sm="12" size-md="4" size-lg="4" size-xl="4">
-                  <fieldset [disabled]="!id" (click)="RfieldEn()">
-                    <legend>
-                      Agent ID
-                    </legend>
-                    <input formControlName="RAID">
-                  </fieldset>
-                </ion-col>
+      <ion-row class="ion-margin-top ion-padding ion-text-center">
+        <ion-col size-md="12" size-lg="12" size-xl="12" class="ion-padding">
 
-                <ion-col size-xs="12" size-sm="12" size-md="4" size-lg="4" size-xl="4">
-                  <fieldset [disabled]="!dis" (click)="fieldEn()">
-                    <legend>
-                      FROM
-                    </legend>
-                    <input formControlName="FROM" type="date">
-                  </fieldset>
-                </ion-col>
-
-                <ion-col size-xs="12" size-sm="12" size-md="4" size-lg="4" size-xl="4">
-                  <fieldset [disabled]="!dis" (click)="fieldEn()">
-                    <legend>
-                      TO
-                    </legend>
-                    <input formControlName="TO" type="date">
-                  </fieldset>
-                </ion-col>
-
-                <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
-                  <button class="ccL-btn" type="submit">
+          <form [formGroup]="agtLstGP" (ngSubmit)="AgtSrhBtn($event)">
+            <table>
+              <tr>
+                <th><input formControlName="RAID" placeholder="Agent ID"></th>
+                <th> <input formControlName="FROM" type="date" ></th>
+                <th><input formControlName="TO" type="date" ></th>
+                <th> <button class="ccL-btn" type="submit">
                     <span *ngIf="show">
                       <ion-icon slot="start" name="search"></ion-icon> Search Agents
                     </span>
                     <ion-spinner *ngIf="!show"></ion-spinner>
-                  </button>
-                </ion-col>
-              </ion-row>
-            </form>
-          </ion-card>
-
-          <ion-grid *ngIf="!non_list" class="ion-text-center ">
-            <ion-row class="t-main-row">
-              <ion-col size-xs="2" size-sm="2" size-md="1" size-lg="1" size-xl="1">
-                <h2>
-                  S.No
-                </h2>
-              </ion-col>
-              <ion-col size-xs="2" size-sm="2" size-md="1" size-lg="1" size-xl="1">
-                <h2>
+                  </button></th>
+              </tr>
+            </table>
+          </form>
+          <table>
+            <thead>
+              <tr>
+                <th class="padding">
+                  #
+                </th>
+                <th class="padding">
+                  BookingID
+                </th>
+                <th class="padding">
+                  EmailID
+                </th>
+                <th class="padding">
                   FID
-                </h2>
-              </ion-col>
-              <ion-col size-xs="3" size-sm="3" size-md="2" size-lg="2" size-xl="2">
-                <h2>
-                  BOOKING ID
-                </h2>
-              </ion-col>
-              <ion-col size-xs="3" size-sm="3" size-md="2" size-lg="2" size-xl="2">
-                <h2>DEP DATE
-
-                </h2>
-              </ion-col>
-              <ion-col size-xs="3" size-sm="3" size-md="2" size-lg="2" size-xl="2">
-                <h2>
-                  AMOUNT
-                </h2>
-              </ion-col>
-              <ion-col size-xs="3" size-sm="3" size-md="2" size-lg="2" size-xl="2">
-                <h2>
-                  EMAIL
-                </h2>
-              </ion-col>
-              <ion-col size-xs="3" size-sm="3" size-md="2" size-lg="2" size-xl="2">
-                <h2>
+                </th>
+                <th class="padding">
+                  RID
+                </th>
+                <th class="padding">
                   PNR
-                </h2>
-              </ion-col>
-            </ion-row>
+                </th>
+                <th class="padding">
+                  <ion-icon name="arrow-up-outline" style="cursor: pointer; color: red;" (click)="sortBalAsc()">
+                  </ion-icon> Amount
+                  <ion-icon name="arrow-down-outline" style="cursor: pointer; color: red;" (click)="sortBalDesc()">
+                  </ion-icon>
 
-            <ion-row *ngFor="let d of agtList, index as i" class="t-list-row">
-              <ion-col size-xs="2" size-sm="2" size-md="1" size-lg="1" size-xl="1">
-                <ion-text>{{i+1}}</ion-text>
-              </ion-col>
-              <ion-col size-xs="2" size-sm="2" size-md="1" size-lg="1" size-xl="1">
-                <ion-text>{{d.FID}}</ion-text>
-              </ion-col>
-              <ion-col size-xs="3" size-sm="3" size-md="2" size-lg="2" size-xl="2">
-                <ion-text>{{d.BOOKING_ID}}</ion-text>
-              </ion-col>
-              <ion-col size-xs="3" size-sm="3" size-md="2" size-lg="2" size-xl="2">
-                <ion-text>{{d.DEP_DATE}}</ion-text>
-              </ion-col>
-              <ion-col size-xs="3" size-sm="3" size-md="2" size-lg="2" size-xl="2">
-                <ion-text>{{d.AMOUNT}}</ion-text>
-              </ion-col>
-              <ion-col size-xs="3" size-sm="3" size-md="2" size-lg="2" size-xl="2">
-                <ion-text>{{d.EMAIL}}</ion-text>
-              </ion-col>
-              <ion-col size-xs="3" size-sm="3" size-md="2" size-lg="2" size-xl="2">
-                <ion-text>{{d.PNR}}</ion-text>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
+
+                </th>
+                <th class="padding">
+                  Status
+                </th>
+                <th class="padding">
+                  <ion-icon name="arrow-up-outline" style="cursor: pointer; color: red;" (click)="sortDateAsc()">
+                  </ion-icon> Dep Date
+                  <ion-icon name="arrow-down-outline" style="cursor: pointer; color: red;" (click)="sortDateDesc()">
+                  </ion-icon>
+
+                </th>
+                <th class="padding">
+                  Time
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let d of agtList, index as i" class="hvr">
+                <td>{{i+1}}</td>
+                <td>{{d.BOOKING_ID}}</td>
+                <td>{{d.EMAIL_ID}}</td>
+                <td>{{d.FID}}</td>
+                <td>{{d.RID}}</td>
+                <td>{{d.PNR}}</td>
+                <td>{{d.AMOUNT | currency:'INR'}}</td>
+                <td>{{d.STATUS}}</td>
+                <td>{{d.DEP_DATE}}</td>
+                <td>{{d.DEP_DATE}}</td>
+              </tr>
+            </tbody>
+          </table>
 
         </ion-col>
+
+
       </ion-row>
     </ion-grid>
+
   </ion-content>
 </ion-app>

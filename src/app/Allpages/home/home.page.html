@@ -22,8 +22,8 @@
 
           <!-- SUBMENU -->
           <ion-list *ngIf="!d.showDetails">
-            <ion-item *ngFor="let s_Menu of d.subMenu" [routerLink]="['/','cchome',s_Menu.url]"
-              (click)="bigMenu=!bigMenu">
+            <ion-item *ngFor="let s_Menu of d.subMenu"  
+              (click)="routing(s_Menu.url)">
               <ion-icon slot="start" name={{s_Menu.icon}}></ion-icon>
               <ion-label>{{s_Menu.title}}</ion-label>
               <ion-icon slot="end" name={{s_Menu.Eicon}}></ion-icon>

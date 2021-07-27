@@ -7,7 +7,7 @@ import { TestService } from '../../../Services/test.service'
   styleUrls: ['./booking-history.component.scss'],
 })
 export class BookingHistoryComponent implements OnInit {
-
+  todayt = new Date(new Date().getTime()).toISOString().split('T')[0];
   constructor(private tService: TestService) { }
   login_Details
   non_list = true
@@ -29,8 +29,8 @@ export class BookingHistoryComponent implements OnInit {
   }
   agtLstGP = new FormGroup({
     RAID: new FormControl(),
-    FROM: new FormControl(),
-    TO: new FormControl(),
+    FROM: new FormControl(this.todayt),
+    TO: new FormControl(this.todayt),
   })
   AgtSrhBtn(e) {
     this.show = false
@@ -63,6 +63,27 @@ export class BookingHistoryComponent implements OnInit {
         console.log(this.agtList)
       }
 
+    });
+  }
+  sortBalAsc() {
+    return this.agtList.sort((a, b) => {
+      return <any>new Date(a.AMOUNT) - <any>new Date(b.AMOUNT);
+    });
+  }
+
+  sortBalDesc() {
+    return this.agtList.sort((a, b) => {
+      return <any>new Date(b.AMOUNT) - <any>new Date(a.AMOUNT);
+    });
+  }
+  sortDateAsc(){
+    return this.agtList.sort((a, b) => {
+      return <any>new Date(a.DEP_DATE) - <any>new Date(b.DEP_DATE);
+    });
+  }
+  sortDateDesc(){
+    return this.agtList.sort((a, b) => {
+      return <any>new Date(b.DEP_DATE) - <any>new Date(a.DEP_DATE);
     });
   }
 

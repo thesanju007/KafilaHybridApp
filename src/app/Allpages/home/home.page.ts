@@ -51,6 +51,13 @@ export class HomePage implements OnInit {
     }
   }
 
+  routing(url) {
+    this.bigMenu = !this.bigMenu
+    this.route.navigate(['cchome/', url]).then(() => {
+      window.location.reload();
+    });
+  }
+
   logout() {
     this.route.navigate(['/ccindex']);
     localStorage.clear();

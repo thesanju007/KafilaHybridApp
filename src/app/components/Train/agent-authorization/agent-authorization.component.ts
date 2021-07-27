@@ -60,4 +60,27 @@ export class AgentAuthorizationComponent implements OnInit {
     });
   }
 
+
+
+  sortBalAsc() {
+    return this.agtList.sort((a, b) => {
+      return <any>new Date(a.BALANCE) - <any>new Date(b.BALANCE);
+    });
+  }
+
+  sortBalDesc() {
+    return this.agtList.sort((a, b) => {
+      return <any>new Date(b.BALANCE) - <any>new Date(a.BALANCE);
+    });
+  }
+  sortDateAsc(){
+    return this.agtList.sort((a, b) => {
+      return <any>new Date(a.ETIME) - <any>new Date(b.ETIME);
+    });
+  }
+  sortDateDesc(){
+    return this.agtList.sort((a, b) => {
+      return <any>new Date(b.ETIME) - <any>new Date(a.ETIME);
+    });
+  }
 }
