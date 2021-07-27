@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 //import { PaymentModule } from './components/payment/payment.module';
 
@@ -22,7 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
    // PaymentModule
     
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, },CookieService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

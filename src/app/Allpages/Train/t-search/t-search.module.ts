@@ -5,13 +5,15 @@ import { IonicModule } from '@ionic/angular';
 import { TSearchPageRoutingModule } from './t-search-routing.module';
 import { TSearchPage } from './t-search.page';
 import { FormShareModule } from '../../../form-share/form-share.module';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     TSearchPageRoutingModule,
-    FormShareModule
+    FormShareModule,
+  
   ],
   declarations: [TSearchPage]
 })

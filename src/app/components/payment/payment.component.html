@@ -1,6 +1,3 @@
-
-
- 
   <ion-grid >
     <ion-row >
       <ion-card  color = "secondary">
@@ -26,7 +23,7 @@
     <ion-col push="0.2">
       
       <ion-list *ngFor="let data of PG"  >
-       <ion-item    (click)="optionControler(data.name)"  > <ion-icon name="home" color="primary" size="small"> </ion-icon> {{data.name|titlecase}}</ion-item>
+       <ion-item    (click)="optionControler(data.name)" > <ion-icon name="home" color="primary" size="small"> </ion-icon> {{data.name|titlecase}}</ion-item>
        
       </ion-list>
     </ion-col>
@@ -59,7 +56,6 @@
               <ion-text *ngIf="CD.PG_PERCENT==='true' ? '%':'Fixed' as tt" >{{CD.PG_VALUE}}
                <ion-badge color="primary" >{{tt}}</ion-badge>
               </ion-text>
-              
           </ion-col>
         </ion-row>
         <ion-row><ion-col><ion-text>ConvenienceFee:-</ion-text></ion-col>

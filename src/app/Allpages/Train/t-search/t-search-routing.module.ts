@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: TSearchPage
+  },  {
+    path: 'showtrain',
+    loadChildren: () => import('./showtrain/showtrain.module').then( m => m.ShowtrainPageModule)
   }
+
 ];
 
 @NgModule({

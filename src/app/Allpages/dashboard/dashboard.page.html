@@ -4,9 +4,7 @@
       <ion-col size-xs="12" size-md="12" size-lg="12" size-xl="12"  class="padding-none">
         <ion-row color="primary" justify-content-center>
           <ion-col size-md="3" size-lg="2" size-xs="4" class="FTH " (click)="flight()" [ngClass]="[isAfterF?'FTHActive':'!FTHActive']">
-            <p>
-              <span class="material-icons">flight</span> Flight
-            </p>
+            <p><span class="material-icons">flight</span> Flight</p>
           </ion-col>
           <ion-col size-md="3" size-lg="2" size-xs="4" class="FTH " (click)="train()" [ngClass]="[ isAfterT?'FTHActive':'!FTHActive']">
             <p>
@@ -38,8 +36,6 @@
 
             <ion-row color="primary" justify-content-center  >
               <ion-col size-md="6" size-lg="6" size-xs="12">
-                
-
                 <ion-item>
                   <ion-label position="stacked" class="label">Select Departure City</ion-label>
                   <input formControlName="D_airport" list="D_airport" (change)="removeAirport($event.target.value)">
@@ -69,7 +65,6 @@
                   <ion-label position="stacked" class="label">Select Departure Date</ion-label>
                   <input formControlName="A_date" type="date" [min]="minDate" >
                 </ion-item> 
-                
               </ion-col>              
             </ion-row>
 
@@ -136,10 +131,6 @@
           </form>
         </ion-card>
 
-
-
-
-
         <ion-card class="SB" *ngIf="train_comp">
           <form>
             <ion-row color="primary" justify-content-center class="ion-padding">
@@ -160,9 +151,7 @@
                 <ion-item>
                   <ion-label position="floating">Select Departure City</ion-label>
                   <ion-input ></ion-input>
-                  
                 </ion-item>
-               
               </ion-col>
               <ion-col size-md="6" size-lg="6" size-xs="12">
                 <ion-item>
@@ -192,10 +181,6 @@
             </ion-row>
           </form>
         </ion-card>
-
-
-
-
         <ion-card class="SB" *ngIf="hotel_comp">
           <form>
             <ion-row color="primary" justify-content-center class="ion-padding">
@@ -211,7 +196,7 @@
               </ion-col>
             </ion-row>
 
-            <ion-row color="primary" justify-content-center  >
+            <ion-row color="primary" justify-content-center>
               <ion-col size-md="6" size-lg="6" size-xs="12">
                 <ion-item>
                   <ion-label position="floating">Select Departure City</ion-label>
@@ -265,6 +250,3 @@
   </ion-grid>
   
 </ion-content>
-
-
-

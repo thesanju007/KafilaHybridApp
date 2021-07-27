@@ -44,13 +44,11 @@ export class TestService {
   getClickEvent():Observable<any>{
     return this.subject.asObservable();
   }
-
-  private data = {};  
-  
+  private data :any;  
   setOption( value) {      
      this.data = value;  
+     console.log(this.data);
    }  
-   
    getOption() {  
      return this.data;  
    }  
@@ -58,5 +56,16 @@ export class TestService {
     const passwordMd5 = Md5.hashStr(password).toString(); 
   console.log(passwordMd5);
   }
+
+  
+  setData(data:any)
+  {
+  
+  localStorage.setItem("passengerdata",JSON.stringify(data));
+  }
+  getData(data:any)
+  {
+    return (localStorage.getItem("passengerdata"));
+  } 
 
 }

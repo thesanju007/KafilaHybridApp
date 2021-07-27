@@ -1,18 +1,18 @@
 import { Component, OnInit , Input} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TestService } from 'src/app/Services/test.service';
-import { CrudService } from 'src/app/Services/crud.service'
+import { CrudService } from 'src/app/Services/crud.service';
+import { Router,ActivatedRoute }from '@angular/router';
 @Component({
   selector: 'app-t-search',
   templateUrl: './t-search.page.html',
   styleUrls: ['./t-search.page.scss'],
 })
 export class TSearchPage implements OnInit {
-  
   isShown : Boolean = false;
-  showflight : Boolean = true;
+  showflight : Boolean = false;
   showhotel : Boolean = false;
-  showtrain : Boolean = false;
+  showtrain : Boolean = true;
   showlogin : Boolean = false;
   show : Boolean = true;
   isSelected_F: any = true;
@@ -21,16 +21,13 @@ export class TSearchPage implements OnInit {
   toggleStyle : boolean = false;
   value:any;
   password=12345;
-  constructor(private service:TestService,private cservice:CrudService) {  
-  
-}  
 
-
+  constructor(private service:TestService,private cservice:CrudService,private route:Router){  }  
   station_details= new FormGroup({
  
     stationfrom:new FormControl('',[Validators.required]),
     stationto:new FormControl('',[Validators.required]),
-   
+    
    });
 
 
@@ -42,6 +39,7 @@ export class TSearchPage implements OnInit {
    });
 
    no_of_passengers= new FormGroup({
+
     adults:new FormControl('',[Validators.required]),
     childs:new FormControl('',[Validators.required]),
 
@@ -49,37 +47,22 @@ export class TSearchPage implements OnInit {
 
    onSubmit()
    {
-    let data={
-      "TYPE": "RAIL",
-      "NAME": "GET_TRAIN",
-      "STR": [
-        {
-     "TOKEN_TYPE": "SLF",
-          "AUTH_TOKEN": "2df1a7e1-ac5f-421c-a4bd-1d57229ce3be",
-          "SESSION_ID": "",
-          "SRC":  this.station_details.value.stationfrom.toUpperCase(),
-          "DES":  this.station_details.value.stationto.toUpperCase(),
-          "DEP_DATE": this.travel_date.value.deptdate,
-          "OI": "",
-          "HS": "D"
-        }
-      ]
-    };
-     console.log(this.station_details[0]);
-     let travel_data = Object.assign(this.station_details.value, this.travel_date.value,this.no_of_passengers.value);
-     console.log( travel_data);
+    this.station_details.value.stationfrom.toUpperCase();
+    this.station_details.value.stationto.toUpperCase();
+     
+     var travel_data = Object.assign(this.station_details.value, this.travel_date.value,this.no_of_passengers.value);
+     
+     console.log( travel_data.stationfrom);
     
      this.service.setOption( travel_data);
        
-    this.service.decode(this.password);
-    console.log(data);
-    
-    this.cservice.postTestData(data).subscribe(result=>{
-      console.log(result);   
-    
-     });
+     this.service.decode(this.password);
+  
+     this.route.navigate(['home/tsearch/showtrain']);
+
    }
 
+   
   toggleShow() {
     this.isShown = true;
   }

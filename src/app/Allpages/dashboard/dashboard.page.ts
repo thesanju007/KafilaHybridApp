@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { TestService } from '../../Services/test.service'
+import { TestService } from '../../Services/test.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
@@ -25,11 +25,8 @@ export class DashboardPage implements OnInit {
   ngOnInit() {
     this.tService.getTestData("../../../assets/airport.json").subscribe(result=>{
       this.arp=result   
-      // this.arp_new=result
     });
-
   }
-
   removeAirport(airport){
     this.arp_new=this.arp.filter(function(value, index, arr){ 
       return value.code!==airport;
