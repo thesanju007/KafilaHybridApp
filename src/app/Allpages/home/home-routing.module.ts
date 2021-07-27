@@ -11,7 +11,7 @@ import { RLRefundHistoryComponent } from "../../components/Train/rlrefund-histor
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'RLAgent',
     pathMatch: 'full'
   },
   {
@@ -54,7 +54,8 @@ const routes: Routes = [
       {
         path: 'RLRefund',
         component: RLRefundHistoryComponent
-      }
+      },
+      
     ]
   },
 

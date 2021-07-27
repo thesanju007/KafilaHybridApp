@@ -25,7 +25,7 @@ export class HomePage implements OnInit {
    this.Menu = JSON.parse(test)
     
      
-    console.log(this.Menu)
+    //console.log(this.Menu)
   }
 
 
@@ -55,6 +55,7 @@ export class HomePage implements OnInit {
     this.route.navigate(['/ccindex']);
     localStorage.clear();
     sessionStorage.clear();
+    console.clear()
   }
 
 }

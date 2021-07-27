@@ -11,7 +11,7 @@ import { Md5 } from 'ts-md5';
 })
 export class IndexPage implements OnInit {
   ipAddress: any;
-  show=true
+  show = true
   u_gp = {
     "P_TYPE": "CC",
     "R_TYPE": "MGMT",
@@ -46,7 +46,7 @@ export class IndexPage implements OnInit {
   }
 
   ccGetData(e) {
-    this.show=false
+    this.show = false
     e.preventDefault();
     if (this.set_cre.value.cre1 !== "" && this.set_cre.value.cre2 !== "" && this.set_cre.value.cre3 !== "" && this.set_cre.value.cre4 !== "") {
       this.decode(this.set_cre.value.cre2.toUpperCase() + "|" + this.set_cre.value.cre3.toUpperCase());
@@ -65,17 +65,17 @@ export class IndexPage implements OnInit {
       let jccLoginData = JSON.stringify(ccLoginData)
       this.tService.postTestData("CC", jccLoginData).subscribe(result => {
         if (result.response !== "") {
-          sessionStorage.setItem("LoginDetails",jccLoginData)
+          sessionStorage.setItem("LoginDetails", jccLoginData)
           sessionStorage.setItem("Menu", result.response)
           this.rout.navigate(['/cchome'])
-          
+
         }
 
       });
 
     }
     else {
-      this.show=true
+      this.show = true
       alert("Fillup All Details")
     }
 
