@@ -71,17 +71,16 @@ color: white;
 th{
     font-size: 20px;
     font-weight: 500;
-border: 1px solid #ddd;
 }
 td{
-border: 1px solid #ddd;
+
 padding: 20px 0px;
 font-size:16px;
 color:#000;
 // word-spacing: 2px;
 cursor: pointer;
 }
-.hvr:nth-child(even){background-color: #f2f2f2;}
+.hvr:nth-child(even){background-color: #f8f7ff;}
 .hvr:hover {background-color: #ddd;}
 .padding{
 padding: 8px;
@@ -115,3 +114,6 @@ ion-button{
 }
 
 }
+
+
+  
