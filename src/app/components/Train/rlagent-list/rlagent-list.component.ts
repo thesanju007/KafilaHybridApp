@@ -1,31 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TestService } from '../../../Services/test.service'
+import { LoadingController } from '@ionic/angular';
 @Component({
   selector: 'app-rlagent-list',
   templateUrl: './rlagent-list.component.html',
   styleUrls: ['./rlagent-list.component.scss'],
 })
 export class RLAgentListComponent implements OnInit {
-
-  constructor(private tService: TestService) { }
+  todayt = new Date(new Date().getTime()).toISOString().split('T')[0];
+  constructor(private tService: TestService, public loadingController: LoadingController) { }
   login_Details
   non_list = true
   show = true
   dis = true
-  id=true
+  id = true
   agtList
   ngOnInit() {
     let Json_LD = sessionStorage.getItem("LoginDetails")
     this.login_Details = JSON.parse(Json_LD)
   }
-  RfieldEn(){
-    this.id=true
-    this.dis=false
+  RfieldEn() {
+    this.id = true
+    this.dis = false
   }
   fieldEn() {
     this.id = false
-    this.dis=true
+    this.dis = true
   }
   agtLstGP = new FormGroup({
     RAID: new FormControl(),
@@ -33,7 +34,7 @@ export class RLAgentListComponent implements OnInit {
     TO: new FormControl(),
   })
   AgtSrhBtn(e) {
-    this.show = false
+    this.present()
     e.preventDefault();
     let agtList = {
       "P_TYPE": "CC",
@@ -55,9 +56,8 @@ export class RLAgentListComponent implements OnInit {
     console.log(jAgtList)
     this.tService.postTestData("CC", jAgtList).subscribe(result => {
       if (result.response !== "") {
+        this.dismiss()
         this.agtList = JSON.parse(result.response)
-        this.non_list = false
-        this.show = true
         console.log(this.agtList)
       }
 
@@ -83,14 +83,38 @@ export class RLAgentListComponent implements OnInit {
       return b.EMAIL.localeCompare(a.EMAIL);
     })
   }
-  sortDateAsc(){
+  sortDateAsc() {
     return this.agtList.sort((a, b) => {
       return <any>new Date(a.ETIME) - <any>new Date(b.ETIME);
     });
   }
-  sortDateDesc(){
+  sortDateDesc() {
     return this.agtList.sort((a, b) => {
       return <any>new Date(b.ETIME) - <any>new Date(a.ETIME);
     });
   }
+  isLoading = false;
+  async present() {
+    this.isLoading = true;
+    return await this.loadingController.create({
+      message: 'Loading',
+      mode: 'ios',
+      backdropDismiss: false,
+      spinner: 'bubbles',
+      // duration: 2000
+    }).then(a => {
+      a.present().then(() => {
+        console.log('presented');
+        if (!this.isLoading) {
+          a.dismiss().then(() => console.log());
+        }
+      });
+    });
+  }
+
+  async dismiss() {
+    this.isLoading = false;
+    return await this.loadingController.dismiss().then(() => console.log());
+  }
+
 }

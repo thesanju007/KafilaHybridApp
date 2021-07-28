@@ -5,17 +5,21 @@
         <ion-col size-md="12" size-lg="12" size-xl="12" class="ion-padding">
 
           <form [formGroup]="agtLstGP" (ngSubmit)="AgtSrhBtn($event)">
-            <table>
-              <tr>
-                <th><input formControlName="RAID" placeholder="Agent ID"></th>
-                <th> <button class="ccL-btn" type="submit">
-                    <span *ngIf="show">
-                      <ion-icon slot="start" name="search"></ion-icon> Search Agents
-                    </span>
-                    <ion-spinner *ngIf="!show"></ion-spinner>
-                  </button></th>
-              </tr>
-            </table>
+            <ion-row class="bdr ion-padding">
+              <ion-col size-md="3" size-lg="3" size-xl="3">
+                
+              </ion-col>
+              <ion-col size-md="3" size-lg="3" size-xl="3">
+                <input formControlName="RAID" placeholder="Agent ID">
+              </ion-col>
+              
+              <ion-col size-md="2" size-lg="2" size-xl="2">
+                <button class="ccL-btn" type="submit">
+                  <ion-icon slot="start" name="search"></ion-icon> Search Agents
+                </button>
+              </ion-col>
+
+            </ion-row>
           </form>
           <table>
             <thead>
@@ -81,7 +85,7 @@
                 <td>{{d.RAIL_PWD}}</td>
                 <td>{{d.MOBILE}}</td>
                 <td>{{d.BALANCE | currency:'INR'}}</td>
-                <td>{{d.STATUS}}</td>
+                <td [style.color]="style1 ? 'red' : 'green'">{{d.STATUS}}</td>
                 <td>{{d.ETIME | date: 'dd/MM/yyyy'}} {{d.ETIME | date:"HH:mm"}}</td>
                 <!-- <td>
                   <ion-icon name="pencil-outline" style="cursor: pointer;"></ion-icon>
