@@ -1,32 +1,3 @@
-<<<<<<< HEAD
-  <ion-grid >
-    <ion-row >
-      <ion-card  color = "secondary">
-        <ion-card-header>
-          <ion-card-title>Agency Name: {{Data.AGENCY_NAME}} ({{Data.AGENT_ID}})</ion-card-title>
-          <!-- <ion-card-subtitle>{{Data.AMOUNT}}</ion-card-subtitle> -->
-          </ion-card-header>
-         <ion-card-content >
-           
-          <ion-label >
-            <ion-icon name="close-circle"    *ngIf="!chkBox" (click)="ToggelChkboxOnButton()">ShowBalance</ion-icon>
-          <ion-checkbox slot="end"  class="my-chkbox"  *ngIf="chkBox as val"   checked="val" (ionFocus)="ToggelChkbox()"></ion-checkbox>
-             I agree to pay  <strong> {{this.AMOUNT_WALLET| currency:"INR"}}/- </strong>from my current agency balance: <strong>{{this.AGENT_BALANCE| currency:"INR"}}/-</strong></ion-label>
-             
-          </ion-card-content>
-          
-      </ion-card> 
-      
-    </ion-row>
-    
-  <ion-row  *ngIf="PG_CTRL">
-   
-    <ion-col push="0.2">
-      
-      <ion-list *ngFor="let data of PG"  >
-       <ion-item    (click)="optionControler(data.name)" > <ion-icon name="home" color="primary" size="small"> </ion-icon> {{data.name|titlecase}}</ion-item>
-       
-=======
 <ion-grid>
   <ion-row>
     <ion-card color="secondary">
@@ -57,7 +28,6 @@
           <ion-icon name="home" color="primary" size="small"> </ion-icon> {{data.name|titlecase}}
         </ion-item>
 
->>>>>>> origin/ccShivam
       </ion-list>
     </ion-col>
 

@@ -6,14 +6,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-<<<<<<< HEAD
-import { CookieService } from 'ngx-cookie-service';
-
-//import { PaymentModule } from './components/payment/payment.module';
-
-=======
 import { TmoduleModule } from '../app/components/Train/tmodule/tmodule.module'
->>>>>>> origin/ccShivam
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -25,7 +18,7 @@ import { TmoduleModule } from '../app/components/Train/tmodule/tmodule.module'
     BrowserAnimationsModule,
     HttpClientModule, TmoduleModule
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, },CookieService],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, },],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

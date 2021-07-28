@@ -12,24 +12,6 @@ import { TestService } from 'src/app/Services/test.service'
   styleUrls: ['./payment.component.scss'],
 })
 export class PaymentComponent implements OnInit {
-<<<<<<< HEAD
-@Input() Data;
-
-  constructor() { }
-  PG_CTRL:any;
-  AGENT_BALANCE=50000;
-  default_pg="paytm";
-  PG: any []=[{"name":"paytm","status":true,"item":[{"iname":"CC","active":true,"percent":true,"value":"2"},{"iname":"DC","active":true,"percent":true,"value":"1"},{"iname":"NB","active":true,"percent":false,"value":"150"},{"iname":"UPI","active":true,"percent":true,"value":"3"},{"iname":"CASH","active":true,"percent":true,"value":"8"}]},{"name":"payu","status":true,"item":[{"iname":"CC","active":true,"percent":true,"value":"0.5"},{"iname":"DC","active":true,"percent":true,"value":"0.5"},{"iname":"NB","active":true,"percent":true,"value":"0.5"},{"iname":"UPI","active":true,"percent":true,"value":"0.5"},{"iname":"CASH","active":false,"percent":true,"value":"0.5"}]},{"name":"paymate","status":true,"item":[{"iname":"CC","active":true,"percent":true,"value":"0.5"},{"iname":"DC","active":true,"percent":true,"value":"0.5"},{"iname":"NB","active":true,"percent":true,"value":"0.5"},{"iname":"UPI","active":true,"percent":true,"value":"0.5"},{"iname":"CASH","active":true,"percent":true,"value":"0.5"}]},{"name":"hdfc","status":true,"item":[{"iname":"CC","active":true,"percent":true,"value":"0.5"},{"iname":"DC","active":true,"percent":true,"value":"0.5"},{"iname":"NB","active":true,"percent":true,"value":"0.5"},{"iname":"UPI","active":true,"percent":true,"value":"0.5"},{"iname":"CASH","active":true,"percent":true,"value":"0.5"}]}];
-  OO={
-    PG_NAME:"", 
-    PG_COMP:"", 
-    PG_PERCENT:"",
-    PG_VALUE:"", 
-    PG_CHARGE:0,
-    AMOUNT_PG:0,
-    AMOUNT_WALLET:0,
-    NET:0
-=======
   @Input() Data;
 
   constructor() { }
@@ -87,7 +69,6 @@ export class PaymentComponent implements OnInit {
     AMOUNT_PG: 0,
     AMOUNT_WALLET: 0,
     NET: 0
->>>>>>> origin/ccShivam
   };
   itemArr: any[] = [];
   pg_name = "";
@@ -123,18 +104,6 @@ export class PaymentComponent implements OnInit {
     return this.Data.AMOUNT > this.AGENT_BALANCE ? false : true;
   }
 
-<<<<<<< HEAD
-optionControler(x:string){
-
-  var i=0;
-  for( i=0;i<this.PG.length;i++)
-  {
-    if(x==this.PG[i]["name"])
-    {
-     this.pg_name=this.PG[i]["name"];
-    this.itemArr= this.PG[i]["item"].filter((e) => { return e.active == true });
-
-=======
   optionControler(x: string) {
     var i = 0;
     for (i = 0; i < this.PG.length; i++) {
@@ -148,7 +117,6 @@ optionControler(x:string){
       else {
         this.PG[i]["value"] = false;
       }
->>>>>>> origin/ccShivam
     }
     this.conf = false;
   }

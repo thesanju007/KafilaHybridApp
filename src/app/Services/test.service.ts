@@ -92,10 +92,7 @@ export class TestService {
   
   localStorage.setItem("passengerdata",JSON.stringify(data));
   }
-  getData(data:any)
-  {
-    return (localStorage.getItem("passengerdata"));
-  } 
+ 
 
   holdData
   getData(recieve){
