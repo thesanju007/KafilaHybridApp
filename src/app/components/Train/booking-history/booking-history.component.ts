@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TestService } from '../../../Services/test.service'
 import {LoadingController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
+
 @Component({
   selector: 'app-booking-history',
   templateUrl: './booking-history.component.html',
