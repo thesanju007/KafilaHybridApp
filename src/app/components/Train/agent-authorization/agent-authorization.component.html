@@ -85,7 +85,7 @@
                 <td>{{d.RAIL_PWD}}</td>
                 <td>{{d.MOBILE}}</td>
                 <td>{{d.BALANCE | currency:'INR'}}</td>
-                <td [style.color]="style1 ? 'red' : 'green'">{{d.STATUS}}</td>
+                <td [style.color]="d.STATUS==false ? 'red' : 'green'">{{d.STATUS}}</td>
                 <td>{{d.ETIME | date: 'dd/MM/yyyy'}} {{d.ETIME | date:"HH:mm"}}</td>
                 <!-- <td>
                   <ion-icon name="pencil-outline" style="cursor: pointer;"></ion-icon>

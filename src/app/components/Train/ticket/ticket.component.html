@@ -1,0 +1,529 @@
+<ion-app>
+  <ion-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col size-xs="1" size-sm="1" size-md="1" size-lg="1" size-xl="1"></ion-col>
+        <ion-col size-xs="10" size-sm="10" size-md="10" size-lg="10" size-xl="10">
+          <ion-row>
+            <ion-col size-xs="1" size-sm="1" size-md="1" size-lg="1" size-xl="1">
+              <img alt="logo" src="../assets/1.png">
+            </ion-col>
+            <ion-col size-xs="1" size-sm="1" size-md="2" size-lg="2" size-xl="2">
+              <h3>Electronic Reservation Slip</h3>
+            </ion-col>
+            <ion-col size-xs="1" size-sm="1" size-md="5" size-lg="5" size-xl="5">
+
+            </ion-col>
+            <ion-col size-xs="1" size-sm="1" size-md="3" size-lg="3" size-xl="3">
+              <h3>IRCTC E-Ticketing Service (Agent)</h3>
+            </ion-col>
+            <ion-col size-xs="1" size-sm="1" size-md="1" size-lg="1" size-xl="1">
+              <img alt="logo" src="../assets/irctc_logo.png">
+            </ion-col>
+          </ion-row>
+
+
+
+          <ion-row>
+            <ion-col size-xs="1" size-sm="1" size-md="1" size-lg="10" size-xl="10">
+              <ul>
+
+                <li>1. You can travel on e-ticket sent on SMS or take a Virtual Reservation Message (VRM) along with any
+                  one of the prescribed ID in original. Please do not print the ERS unless extremely necessary. This
+                  Ticket will be valid with an ID proof in original. Please carry original identity proof. If found
+                  traveling without original ID proof, passenger will be treated as without ticket and charged as per
+                  extent Railway Rules.</li>
+                <li>2. Only confirmed/Partially confirmed E-ticket is valid for travel.</li>
+                <li style="color: red;">3. Fully Waitlisted E-ticket is invalid for travel if it remains fully
+                  waitlisted after preparation of
+                  chart and the refund of the booking amount shall be credited to the account used for payment for
+                  booking of the ticket. Passengers travelling on a fully waitlisted e-ticket will be treated as
+                  Ticketless.</li>
+                <li>4. Valid IDs to be presented during train journey by one of the passenger booked on an e-ticket :-
+                  Voter Identity Card / Passport / PAN Card / Driving License / Photo ID card issued by Central / State
+                  Govt / Public Sector Undertakings of State / Central Government ,District Administrations , Municipal
+                  bodies and Panchayat Administrations which are having serial number / Student Identity Card with
+                  photograph issued by recognized School or College for their students / Nationalized Bank Passbook with
+                  photograph /Credit Cards issued by Banks with laminated photograph/Unique Identification Card
+                  "Aadhaar", m-Aadhaar, e-Aadhaar. /Passenger showing the Aadhaar/Driving Licence from the "Issued
+                  Document" section by logging into his/her DigiLocker account considered as valid proof of identity.
+                  (Documents uploaded by the user i.e. the document in "Uploaded Document" section will not be
+                  considered as a valid proof of identity).</li>
+                <li>5. Service Accounting Code (SAC) 996411: Local land transport services of passengers by railways for
+                  distance upto 150 KMs Service Accounting Code (SAC) 996416: Sightseeing transportation services by
+                  railways for Tourist Ticket Service Accounting Code (SAC) 996421: Long distance transport services of
+                  passengers through rail network by Railways for distance beyond 150 KMs</li>
+                <li style="color: red;">6. While booking this ticket, you have agreed of having read the Health Protocol
+                  of Destination State
+                  of your travel. You are again advised to clearly read the Health Protocol advisory of destination
+                  state before start of your travel and follow them properly.</li>
+              </ul>
+            </ion-col>
+            <ion-col size-xs="1" size-sm="1" size-md="1" size-lg="1" size-xl="1">
+
+            </ion-col>
+            <ion-col size-xs="1" size-sm="1" size-md="1" size-lg="1" size-xl="1">
+              <img alt="logo" src="../assets/beti_bachao_logo.png">
+            </ion-col>
+          </ion-row>
+
+
+          <ion-row>
+            <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+              <ul>
+                <li>
+                  <table>
+
+                    <tbody>
+                      <tr>
+                        <td>PNR No : {{ticket[0].PNR}}</td>
+                        <td>Train No. & Name :  {{ticket[0].PNR}}</td>
+                        <td>Quota :  {{ticket[0].PNR}}</td>
+                      </tr>
+                      <tr>
+                        <td>Transaction ID :  {{ticket[0].PNR}}</td>
+                        <td>Date & Time of Booking :  {{againParseData.boardingDate}}</td>
+                        <td>Class :  {{ticket[0].PNR}}</td>
+                      </tr>
+                      <tr>
+                        <td>From :  {{ticket[0].PNR}}</td>
+                        <td>Date of Journey :  {{ticket[0].PNR}}</td>
+                        <td>To :  {{ticket[0].PNR}}</td>
+                      </tr>
+                      <tr>
+                        <td>Boarding :  {{ticket[0].PNR}}</td>
+                        <td>Date of Boarding :  {{ticket[0].PNR}}</td>
+                        <td>Scheduled Departure :  {{ticket[0].PNR}}</td>
+                      </tr>
+                      <tr>
+                        <td>Resv. Up to :  {{ticket[0].PNR}}</td>
+                        <td>Scheduled Arrival :  {{ticket[0].PNR}}</td>
+                        <td>Adult : Child :  {{ticket[0].PNR}}</td>
+                      </tr>
+                      <tr>
+                        <td>Passenger Mobile No :  {{ticket[0].PNR}}</td>
+                        <td>ATAS Opted :  {{ticket[0].PNR}}</td>
+                        <td>Distance :  {{ticket[0].distance}}KM</td>
+                      </tr>
+                      <tr>
+                        <td>Passenger Address :  {{ticket[0].PNR}}</td>
+                        <td>' '</td>
+                        <td>BookingId :  {{ticket[0].BOOKING_ID}}</td>
+                      </tr>
+
+
+                    </tbody>
+                  </table>
+                </li>
+              </ul>
+            </ion-col>
+          </ion-row>
+
+
+
+          <ion-row>
+            <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+              <ul>
+                <h3>Fare Details:</h3>
+                <li>
+                  <table>
+
+                    <tbody>
+                      <tr>
+                        <td>SL/2S</td>
+                        <td>SL/2S</td>
+                        <td>Rs.20</td>
+                      </tr>
+                      <tr>
+                        <td>SL/2S</td>
+                        <td>SL/2S</td>
+                        <td>Rs.20</td>
+                      </tr>
+                      <tr>
+                        <td>SL/2S</td>
+                        <td>SL/2S</td>
+                        <td>Rs.20</td>
+                      </tr>
+                      <tr>
+                        <td>SL/2S</td>
+                        <td>SL/2S</td>
+                        <td>Rs.20</td>
+                      </tr>
+                      <tr>
+                        <td>SL/2S</td>
+                        <td>SL/2S</td>
+                        <td>Rs.20</td>
+                      </tr>
+                      <tr>
+                        <td>SL/2S</td>
+                        <td>SL/2S</td>
+                        <td>Rs.20</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </li>
+                <ion-text>
+                  #Service charges (inclusive of GST) per e-ticket irrespective of number of passengers on the ticket
+                </ion-text>
+              </ul>
+
+            </ion-col>
+          </ion-row>
+
+
+
+          <ion-row>
+            <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+              <ul>
+                <h3>PASSENGER DETAILS:</h3>
+                <li>
+                  <table>
+
+                    <thead>
+                      <tr>
+                        <th>SL/2S</th>
+                        <th>SL/2S</th>
+                        <th>Rs.20</th>
+                        <th>SL/2S</th>
+                        <th>SL/2S</th>
+                        <th>Rs.20</th>
+                      </tr>
+
+                    </thead>
+                  </table>
+                </li>
+
+              </ul>
+
+            </ion-col>
+          </ion-row>
+
+
+          <ion-row>
+            <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+              <ul>
+                <h4>Indian Railways GST Details:</h4>
+                <h4>Invoice Number:</h4>
+                <li>
+                  <table>
+
+                    <thead>
+                      <tr>
+                        <th>SL/2S</th>
+                        <th>SL/2S</th>
+                        <th>Rs.20</th>
+                        <th>SL/2S</th>
+                        <th>SL/2S</th>
+                        <th>Rs.20</th>
+                      </tr>
+
+                    </thead>
+                  </table>
+                </li>
+
+              </ul>
+
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+              <ul>
+                <h4>PRINCIPLE SERVICE PROVIDER DETAILS:</h4>
+               
+                <li>
+                  <table>
+
+                    <thead>
+                      <tr>
+                        <th>SL/2S</th>
+                        <th>SL/2S</th>
+                        <th>Rs.20</th>
+                        <th>SL/2S</th>
+                        <th>SL/2S</th>
+                        <th>Rs.20</th>
+                      </tr>
+
+                    </thead>
+                  </table>
+                </li>
+                <li>
+                  Acronyms:    RLWL: REMOTE LOCATION WAITLIST    PQWL: POOLED QUOTA WAITLIST    RSWL: ROAD-SIDE WAITLIST
+                </li>
+                <li>Place of Supply: ()   State Code/Name of Supplier: 07 / Kafila Hospitality & Travel Pvt. Ltd.</li>
+                <li>Ticket Printing Time: 2021-7-28 17:6:13</li>
+                <li>Are you aware that 43% of your fare is borne by the common citizens of the country?</li>
+              </ul>
+
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+
+              <ul>
+                <h3>Important Notes:</h3>
+                <li>1. For details, rules and terms & conditions of E-Ticketing services, please visit www.irctc.co.in.
+                </li>
+                <li>2.Departure time and Arrival Time printed on this ERS and VRM sent through mail are liable to
+                  change. Please Check correct departure, arrival from Railway Station Enquiry, Dial 139 or SMS RAIL to
+                  139.</li>
+                <li>3. There are amendments in certain provision of Refund Rules. Refer Amended Refund Rules w.e.f
+                  12-Nov-2015.(details available on www.irctc.co.in under heading General Information --> Rules &
+                  Policies)</li>
+                <li>4.The accommodation booked is not transferable and is valid only if the ORIGINAL ID card prescribed
+                  is presented during the journey. The SMS/VRM/ERS along with valid id card of any one the passenger
+                  booked on e-ticket proof in original would be verified by TTE with the name and PNR on the chart. If
+                  the Passenger fail to produced/display SMS/VRM/ERS due to any eventuality(loss, damaged mobile/laptop
+                  etc.) but has the prescribed original proof of identity, a penalty of Rs.50/- per ticket as applicable
+                  to such cases will be levied. The ticket checking staff on board/off board will give excess fare
+                  ticket for the same.</li>
+                <li>5. E-ticket cancellations are permitted through www.irctc.co.in by the user.</li>
+                <li>6. PNRs having fully waitlisted status will be dropped and the names of the passengers on such
+                  tickets will not appear on the chart. They are not allowed to board the train. However the names of
+                  PARTIALLY waitlisted/confirmed and RAC ticket passenger will appear in the chart.</li>
+                <li>7. .Obtain certificate from the TTE /Conductor in case of (a) PARTIALLY waitlisted e-ticket when
+                  LESS NO. OF PASSENGERS travel, (b)A.C.FAILURE, (c)TRAVEL IN LOWER CLASS. This original certificate
+                  must be sent to GGM (IT), IRCTC, Internet Ticketing Centre, IRCA Building, State Entry Road, New
+                  Delhi-110055 after filing TDR online within prescribed time for claiming refund. </li>
+                <li>8. In case of Partial confirmed/RAC/Wait listed ticket, TDR should be filed online within prescribed
+                  time in case NO PASSENGER is travelling for processing of refund as per Railway refund rules.</li>
+                <li>9. While TDR refund requests are filed & registered on IRCTC website www.irctc.co.in, they are
+                  processed by Zonal Railways as per Railway Refund Rules.(detail available on www.irctc.co.in under
+                  heading Important Information-->Refund Cancellation Rules.</li>
+                <li>10. Confirmed ticket can be cancelled upto thirty minutes before scheduled departure of the train.
+                  However, no refund shall be granted on cancellation of confirmed ticket after four hours before the
+                  scheduled departure of train.</li>
+                <li>11. RAC/partially confirmed Ticket can be cancelled upto thirty minutes before scheduled departure
+                  of the train. However, refund will be granted as per provisions of extant Railway Refund Rule.</li>
+                <li>12. In case, on a party e-ticket or a family e-ticket issued for travel of more than one passenger,
+                  some passengers have confirmed reservation and others are on RAC or waiting list, full refund of fare
+                  , less clerkage, shall be admissible for confirmed passengers also subject to the condition that the
+                  ticket shall be cancelled online or online TDR shall be filed for all the passengers upto thirty
+                  minutes before the scheduled departure of the train.</li>
+                <li>13. For Suvidha Train, W.e.f. 20-Jan-2018, refund rule will be applicable as per General refund
+                  rule.</li>
+                <li>14. In case of Train Cancellation on its entire run, full refund will be granted automatically by
+                  the System. However, if the train is cancelled partially on its run, passengers are required to file
+                  TDR within 72hrs from schedule departure of the train from the passenger's boarding station.</li>
+                <li>15. Passengers are advised not to carry inflammable/dangerous/explosive/articles as part of their
+                  luggage and also to desist from smoking in the trains.</li>
+                <li>16. Contact us on: - 24*7 Hrs Customer Support at 0755-6610661, 0755-4090600 or Mail To:
+                  care@irctc.co.in.</li>
+                <li>17. Variety of meals available in more than 1500 trains. For delivery of meal of your choice on your
+                  seat log on to www.ecatering.irctc.co.in or call 1323 Toll Free. For any suggestions/complaints
+                  related to Catering services, contact Toll Free No. 1800-111-321 (07.00 hrs to 22.00 hrs).</li>
+                <li>18. FOR MEDICAL EMERGENCY/FIRST AID, CONTACT TICKET CHECKING STAFF/GUARD OR DIAL 138.(ALL India
+                  Passenger Helpline No. 138).</li>
+                <li>19. PNR and train arrival/departure enquiry no. 139</li>
+                <li>20. National Consumer Helpline (NCH) Toll Free Number: 1800-11-400 or 14404.</li>
+                <li>21. All the Terms and conditions specified will be applicable in case of opting Travel Insurance
+                  facility. Please Refer Travel Insurance’s Terms & Conditions available on Home page of www.irctc.co.in
+                  website.</li>
+                <li>22. Never purchase e-ticket from unauthorized agents or persons using their personal IDs for
+                  commercial purposes.Such tickets are liable to be cancelled and forfeited without any refund of money,
+                  under section (143) of the Indian Railway Act 1989. List of authorized agents are available on
+                  www.irctc.com E-Ticket Agent Locator.</li>
+                <li>23. General rules/ Information for e-ticket passenger have to be studied by the customer for
+                  cancellation & refund.</li>
+                <li>24. Booking of Special Train tickets through Agents (both IRCTC and Railway Agents) shall not be
+                  permitted. Users should not purchase tickets from agents.</li>
+              </ul>
+            </ion-col>
+          </ion-row>
+
+
+
+
+          <ion-row>
+            <ion-col size-xs="1" size-sm="1" size-md="12" size-lg="12" size-xl="12" class="ion-text-center">
+              <h3>General Rules/ Information for E-ticket passengers</h3>
+              <ul>
+                <li><span class="weight">A. For details, rules and terms & conditions of E-Ticketing services, please
+                    visit
+                    www.irctc.co.in.</span>
+                  <ul>
+                    <li>
+                      1. Confirmed E ticket - E-ticket where all passengers are confirmed.
+                    </li>
+                    <li>
+                      2. Partially waitlist/Confirmed/RAC E ticket - E-ticket where some passengers are confirmed/ RAC
+                      and other wait-listed.
+                    </li>
+                    <li>
+                      3. Fully waitlisted E tickets - E-ticket where all passengers are waitlisted.
+                    </li>
+                  </ul>
+                </li>
+
+                <li><span class="weight">B. Authorization to board the train:</span>
+                  <ul>
+                    <li>
+                      1. Passengers with confirmed E ticket are permitted to board the train. Their names will appear on
+                      the reservation chart.
+                    </li>
+                    <li>
+                      2. Name of passengers with Partially Waitlisted /Confirmed/RAC will appear on the chart (including
+                      the waitlisted passengers in the partially waitlist ticket.)
+                    </li>
+
+                  </ul>
+                </li>
+
+                <li><span class="weight">C. Cancellation & refund rules:</span>
+                  <ul>
+                    <li>1. Confirmed E-ticket before chart preparation: E-ticket can be cancelled online and the amount
+                      will be refunded electronically to the respective agent’s account used for booking.
+                    </li>
+                    <li>2. Confirmed E-ticket after chart preparation: Cancellation/ Refund request received after
+                      preparation of chart are forwarded by IRCTC to concerned railway for manual processing. Refund
+                      amount received from concerned railway will be credit back to the respective agent’s account used
+                      for booking by I RCTC.</li>
+                    <li>3. Partially waitlisted E-ticket before chart preparation: E-ticket can be cancelled online and
+                      the amount will be refunded electronically to the respective agent’s account used for booking.
+                    </li>
+                    <li>4. Partially waitlisted E-ticket after chart preparation: E-ticket cannot be cancelled online
+                      after chart preparation. Partially waitlisted e -ticket holder where part passengers have
+                      travelled and want to claim refund for passengers who have not travelled is required to send the
+                      original certificate issued by TTE / Conductor in lieu of the same to IRCTC after filing online
+                      refund request through the respective agent. The partially waitlisted e-ticket holder where no
+                      passengers have travelled & wants to claim refund is required to file online refund request
+                      through respective agent. It would then be forwarded to concerned railway and refund received from
+                      Railways would be credited back electronically to the respective agent’s account used for booking
+                      by IRCTC.</li>
+                    <li>5. If the ticket is partially waitlisted/ Confirmed/ RAC at remote location chart preparation
+                      then E -ticket cannot be cancelled online. It is required to file refund request online for
+                      claiming refund through the respective agent. It would then be processed offline and refund
+                      received from Railways would be credited back electronically to the respective agent’s account
+                      used for booking by IRCTC.</li>
+                    <li>6. Customer/passenger should ensure that the agent registers his or her mobile no. correctly, at
+                      the time of booking reserved rail e-tickets through agent.</li>
+                    <li>7. Whenever a ticket booked through agent is cancelled by the customer or fully waitlisted
+                      dropped ticket, an OTP SMS is sent on Customer/passenger mobile no. (Which was provided by the
+                      customer/passenger to the agent at the time of booking) along with the refund amount.</li>
+                    <li>8. The customer/passenger should share the OTP with the agent who booked the ticket, for getting
+                      the cancellation refund amount.</li>
+                    <li>9. In order to get benefitted by OTP based refund system, customer/passenger should provide
+                      correct mobile no. to the IRCTC authorized agent at the time of booking reserved rail e-tickets.
+                    </li>
+                    <li>10. Only IRCTC authorized agents are permitted to book reserved rail e-tickets to the customer.
+                    </li>
+                    <li>11. OTP based refund for cancelled tickets or fully waitlisted dropped tickets, will be
+                      processed only if the ticket is booked through IRCTC authorized agents.</li>
+                    <li>12. OTP based refund process will not work if the reserved rail tickets are booked through
+                      unauthorized agents or touts or through personal user Ids.</li>
+                  </ul>
+                </li>
+
+                <li><span class="weight">D. Dynamic fare pricing: Dynamic fare stands for the fare component which may
+                    be
+                    increased with the
+                    subsequent bookings in Premium special train.</span>
+                  <ul>
+                    <li>
+                      1. No concession shall be applicable on this train.
+                    </li>
+                    <li>
+                      2. Only end to end, GN quota bookings will be applicable.
+                    </li>
+                    <li>
+                      3. Cancellation is not allowed. However, ticket can be cancelled and full refund is admissible if
+                      the train is cancelled by Indian Railways.
+                    </li>
+                    <li>
+                      4. For any reason, if berth cannot be given to passenger by Indian Railways on booked PNR, full
+                      refund shallbe granted to the passenger through TDR.
+                    </li>
+                    <li>
+                      5. Agents will not be allowed to book tickets in trains with dynamic pricing.
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="weight">E. If train is cancelled, E-ticket can be cancelled online up to 3 days from the date
+                  of departure
+                  of the train through the respective agent’s account used forbooking.
+
+                </li>
+
+
+                <li class="weight">F. Bank charges, if any, will be payable extra. (For details of bank charges kindly
+                  refer to Terms
+                  and Conditions on www.irctc.co.in )
+
+                </li>
+
+
+                <li class="weight">G. The Compartment/ Cabin/ Coupe/ Coach/ Seat numbers for first AC and First class
+                  will be allotted
+                  at the time of chart preparation.
+
+                </li>
+
+
+                <li class="weight">H. The customer who has opted for auto-up gradation during booking of his/her
+                  e-ticket is requested
+                  to check the up-gradation chart before boarding the train.
+
+                </li>
+
+
+                <li><span class="weight">I. Convenience fee for E-Ticket</span> (inclusive of GST) (not refundable):
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Class</th>
+                        <th>Convenience Fee</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>SL/2S</td>
+                        <td>Rs.15 + GST</td>
+                      </tr>
+                      <tr>
+                        <td>1AC/2AC/3AC/CC/3F/FC</td>
+                        <td>Rs.30 + GST</td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </li>
+
+                <li><span class="weight">J. Agent service charge</span> (inclusive of GST)(not refundable)
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Class</th>
+                        <th>Convenience Fee</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>SL/2S</td>
+                        <td>Rs.20</td>
+                      </tr>
+                      <tr>
+                        <td>1AC/2AC/3AC/CC/3F/FC</td>
+                        <td>Rs.40</td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </li>
+
+
+              </ul>
+              <h3>Thank you for using IRCTC’s Services</h3>
+            </ion-col>
+          </ion-row>
+
+
+
+
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+</ion-app>

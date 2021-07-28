@@ -1,0 +1,120 @@
+*{
+    font-family: serif;
+  
+  }
+  
+  input:disabled {
+  cursor: not-allowed;
+  
+  }
+  .ccL-btn{
+  opacity: .9;
+  background-color: #6c79e0;
+  color: white;
+  width:100%;
+  padding: 15px;
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 10px;
+  margin: 2px 0px 0px 0px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px 1px #ddd;
+  }
+  .ccL-btn:hover{
+  opacity: 1;
+  }
+  
+  ion-col{
+  padding: 0px;
+  margin: 0px;
+  }
+  h2{
+      margin: 10px 0px 0px 0px;
+      color: #6c79e0;
+  }
+  .bdr{
+      border: 1px solid #6c79e0;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+  }
+  input{
+      border: 1px solid #6c79e0;
+  outline: 0;
+  width: 70%;
+  background-color: white;
+  color: black;
+  padding: 15px 10px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px 1px #ddd;
+  }
+  input[type=date]{
+      border: 1px solid #6c79e0;
+  outline: 0;
+  width: 70%;
+  background-color: white;
+  color: black;
+  padding: 15px 10px;
+  border-radius: 10px;
+  }
+  ion-icon{
+  font-size: 19px;
+  }
+  table{
+  width: 100%;
+  }
+  thead{
+  background-color: #6c79e0;
+  padding: 10px 0px ;
+  color: white;
+  width:80%;
+  
+  }
+  th{
+      font-size: 20px;
+      font-weight: 500;
+  border: 1px solid #ddd;
+  }
+  td{
+  border: 1px solid #ddd;
+  padding: 20px 0px;
+  font-size:16px;
+  color:#000;
+  cursor: pointer;
+  }
+  .hvr:nth-child(even){background-color: #f2f2f2;}
+  .hvr:hover {background-color: #ddd;}
+  .padding{
+  padding: 8px;
+  }
+  
+  @media only screen and (min-width: 769px) {
+  
+  // input{
+  //     border: none;
+  //     outline: 0;
+  //     width: 100%;
+  // }
+  ion-icon{
+      font-size: 19px;
+  }
+  ion-button{
+      width: 100%;
+  }
+  }
+  @media only screen and (max-width: 768px) {
+  
+  
+  ion-icon{
+      font-size: 19px;
+  }
+  ion-button{
+      width: 100%;
+  }
+  .for-app{
+      display: none;
+  }
+  
+  }
+
+  
+  

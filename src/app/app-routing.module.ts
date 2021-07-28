@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { TicketComponent } from './components/Train/ticket/ticket.component'
 const routes: Routes = [
   {
     path: '',
@@ -29,7 +30,10 @@ const routes: Routes = [
     path: 'footer',
     loadChildren: () => import('./Allpages/footer/footer.module').then(m => m.FooterPageModule)
   },
-
+  {
+    path: 'RlTicket',
+    component: TicketComponent
+  },
   { 
     path: '**', 
     redirectTo: '/error' 
