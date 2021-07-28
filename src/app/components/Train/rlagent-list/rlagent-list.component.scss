@@ -9,15 +9,16 @@ cursor: not-allowed;
 }
 .ccL-btn{
 opacity: .9;
-background-color: #3880ff;
+background-color: #6c79e0;
 color: white;
-width:97%;
+width:100%;
 padding: 15px;
 font-size: 20px;
 font-weight: 500;
-border-radius: 5px;
-margin: 12px 0px 0px 0px;
+border-radius: 10px;
+margin: 2px 0px 0px 0px;
 cursor: pointer;
+box-shadow: 1px 1px 1px 1px #ddd;
 }
 .ccL-btn:hover{
 opacity: 1;
@@ -27,21 +28,33 @@ ion-col{
 padding: 0px;
 margin: 0px;
 }
+h2{
+    margin: 10px 0px 0px 0px;
+    color: #6c79e0;
+}
+.bdr{
+    border: 1px solid #6c79e0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
 input{
-border: none;
+    border: 1px solid #6c79e0;
 outline: 0;
-width: 100%;
+width: 70%;
 background-color: white;
 color: black;
-padding: 0px 10px;
+padding: 15px 10px;
+border-radius: 10px;
+box-shadow: 1px 1px 1px 1px #ddd;
 }
 input[type=date]{
-border: none;
+    border: 1px solid #6c79e0;
 outline: 0;
-width: 100%;
+width: 70%;
 background-color: white;
 color: black;
-padding: 0px 10px;
+padding: 15px 10px;
+border-radius: 10px;
 }
 ion-icon{
 font-size: 19px;
@@ -56,15 +69,16 @@ color: white;
 
 }
 th{
-font-size: 16px;
+    font-size: 20px;
+    font-weight: 500;
 border: 1px solid #ddd;
 }
 td{
 border: 1px solid #ddd;
-padding: 12px 0px;
+padding: 20px 0px;
 font-size:16px;
 color:#000;
-word-spacing: 2px;
+// word-spacing: 2px;
 cursor: pointer;
 }
 .hvr:nth-child(even){background-color: #f2f2f2;}

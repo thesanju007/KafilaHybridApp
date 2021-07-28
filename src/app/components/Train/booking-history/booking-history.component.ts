@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TestService } from '../../../Services/test.service'
+import {LoadingController } from '@ionic/angular';
 @Component({
   selector: 'app-booking-history',
   templateUrl: './booking-history.component.html',
@@ -8,10 +9,9 @@ import { TestService } from '../../../Services/test.service'
 })
 export class BookingHistoryComponent implements OnInit {
   todayt = new Date(new Date().getTime()).toISOString().split('T')[0];
-  constructor(private tService: TestService) { }
+  yDate=new Date(new Date().getTime() - 86400000).toISOString().split('T')[0]
+  constructor(private tService: TestService, public loadingController: LoadingController,) { }
   login_Details
-  non_list = true
-  show = true
   dis = true
   id = true
   agtList
@@ -29,12 +29,13 @@ export class BookingHistoryComponent implements OnInit {
   }
   agtLstGP = new FormGroup({
     RAID: new FormControl(),
-    FROM: new FormControl(this.todayt),
+    FROM: new FormControl(this.yDate),
     TO: new FormControl(this.todayt),
   })
   AgtSrhBtn(e) {
-    this.show = false
+  
     e.preventDefault();
+    this.present()
     let bknHisData = {
       "P_TYPE": "CC",
       "R_TYPE": "RAIL",
@@ -58,8 +59,8 @@ export class BookingHistoryComponent implements OnInit {
     this.tService.postTestData("CC", jbknHisData).subscribe(result => {
       if (result.response !== "") {
         this.agtList = JSON.parse(result.response)
-        this.non_list = false
-        this.show = true
+      
+        this.dismiss()
         console.log(this.agtList)
       }
 
@@ -95,6 +96,29 @@ export class BookingHistoryComponent implements OnInit {
     return this.agtList.sort((a, b) => {
       return <any>new Date(b.DEP_DATE) - <any>new Date(a.DEP_DATE);
     });
+  }
+  isLoading = false;
+  async present() {
+    this.isLoading = true;
+    return await this.loadingController.create({
+      message: 'Loading',
+      mode: 'ios',
+      backdropDismiss: false,
+      spinner: 'bubbles',
+      // duration: 2000
+    }).then(a => {
+      a.present().then(() => {
+        console.log('presented');
+        if (!this.isLoading) {
+          a.dismiss().then(() => console.log());
+        }
+      });
+    });
+  }
+
+  async dismiss() {
+    this.isLoading = false;
+    return await this.loadingController.dismiss().then(() => console.log());
   }
 
 }

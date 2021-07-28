@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TestService } from '../../../Services/test.service'
+import { LoadingController } from '@ionic/angular';
 @Component({
   selector: 'app-agent-authorization',
   templateUrl: './agent-authorization.component.html',
@@ -8,13 +9,12 @@ import { TestService } from '../../../Services/test.service'
 })
 export class AgentAuthorizationComponent implements OnInit {
 
-  constructor(private tService: TestService) { }
+  constructor(private tService: TestService,public loadingController: LoadingController) { }
   login_Details
-  non_list = true
-  show = true
   dis = true
   id = true
   agtList
+
   ngOnInit() {
     let Json_LD = sessionStorage.getItem("LoginDetails")
     this.login_Details = JSON.parse(Json_LD)
@@ -31,7 +31,7 @@ export class AgentAuthorizationComponent implements OnInit {
     RAID: new FormControl(),
   })
   AgtSrhBtn(e) {
-    this.show = false
+    this.present()
     e.preventDefault();
     let aBal = {
       "P_TYPE": "CC",
@@ -52,8 +52,7 @@ export class AgentAuthorizationComponent implements OnInit {
     this.tService.postTestData("CC", jaBal).subscribe(result => {
       if (result.response !== "") {
         this.agtList = JSON.parse(result.response)
-        this.non_list = false
-        this.show = true
+        this.dismiss()
         console.log(this.agtList)
       }
 
@@ -101,5 +100,28 @@ export class AgentAuthorizationComponent implements OnInit {
     return this.agtList.sort((a, b) => {
       return <any>new Date(b.ETIME) - <any>new Date(a.ETIME);
     });
+  }
+  isLoading = false;
+  async present() {
+    this.isLoading = true;
+    return await this.loadingController.create({
+      message: 'Loading',
+      mode: 'ios',
+      backdropDismiss: false,
+      spinner: 'bubbles',
+      // duration: 2000
+    }).then(a => {
+      a.present().then(() => {
+        console.log('presented');
+        if (!this.isLoading) {
+          a.dismiss().then(() => console.log());
+        }
+      });
+    });
+  }
+
+  async dismiss() {
+    this.isLoading = false;
+    return await this.loadingController.dismiss().then(() => console.log());
   }
 }
