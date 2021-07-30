@@ -12,23 +12,27 @@ import { Router } from '@angular/router';
 export class BookingHistoryComponent implements OnInit {
   todayt = new Date(new Date().getTime()).toISOString().split('T')[0];
   yDate = new Date(new Date().getTime() - 86400000).toISOString().split('T')[0]
+
+
   constructor(private tService: TestService, public loadingController: LoadingController, private route: Router) { }
   login_Details
-  dis = true
-  id = true
+
   agtList
+  tabShow = false
   ngOnInit() {
     let Json_LD = sessionStorage.getItem("LoginDetails")
     this.login_Details = JSON.parse(Json_LD)
   }
-  RfieldEn() {
-    this.id = true
-    this.dis = false
+  dateDis = true
+  AgentActive() {
+    this.dateDis = true
+    this.agtLstGP.reset()
   }
-  fieldEn() {
-    this.id = false
-    this.dis = true
+  DateActive() {
+    this.dateDis = false
+    this.agtLstGP.reset()
   }
+
   agtLstGP = new FormGroup({
     RAID: new FormControl(),
     FROM: new FormControl(),
@@ -57,11 +61,12 @@ export class BookingHistoryComponent implements OnInit {
       "Version": "1.0.0.0.0.0"
     }
     let jbknHisData = JSON.stringify(bknHisData)
-
+    console.log(jbknHisData)
     this.tService.postTestData("CC", jbknHisData).subscribe(result => {
-      if (result.response !== "") {
+      if (result.response.lenght !== "0") {
         this.agtList = JSON.parse(result.response)
-
+        console.log(this.agtList)
+        this.tabShow = true
         this.dismiss()
 
       }
@@ -91,12 +96,12 @@ export class BookingHistoryComponent implements OnInit {
   }
   sortDateAsc() {
     return this.agtList.sort((a, b) => {
-      return <any>new Date(a.DEP_DATE) - <any>new Date(b.DEP_DATE);
+      return <any>new Date(a.ETIME) - <any>new Date(b.ETIME);
     });
   }
   sortDateDesc() {
     return this.agtList.sort((a, b) => {
-      return <any>new Date(b.DEP_DATE) - <any>new Date(a.DEP_DATE);
+      return <any>new Date(b.ETIME) - <any>new Date(a.ETIME);
     });
   }
   isLoading = false;
@@ -132,7 +137,8 @@ export class BookingHistoryComponent implements OnInit {
       "R_NAME": "RL_BOOKING_DETAILS",
       "R_DATA": {
         "RAID": d.RID,
-        "BOOKING_ID": d.BOOKING_ID
+        "BOOKING_ID": d.BOOKING_ID,
+        "FILTER": false
 
       },
       "AID": this.login_Details.AID,
@@ -149,8 +155,8 @@ export class BookingHistoryComponent implements OnInit {
 
         this.dismiss()
         //console.log(result.response)
-        sessionStorage.setItem("ticketInfo",result.response)
-        window.open( "RlTicket","_blank")
+        sessionStorage.setItem("ticketInfo", result.response)
+        window.open("RlTicket", "_blank")
       }
     });
   }

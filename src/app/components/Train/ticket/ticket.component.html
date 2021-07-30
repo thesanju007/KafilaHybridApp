@@ -4,7 +4,7 @@
       <ion-row>
         <ion-col size-xs="1" size-sm="1" size-md="1" size-lg="1" size-xl="1"></ion-col>
         <ion-col size-xs="10" size-sm="10" size-md="10" size-lg="10" size-xl="10">
-          <ion-row>
+          <ion-row class="ion-padding">
             <ion-col size-xs="1" size-sm="1" size-md="1" size-lg="1" size-xl="1">
               <img alt="logo" src="../assets/1.png">
             </ion-col>
@@ -73,45 +73,43 @@
               <ul>
                 <li>
                   <table>
-
                     <tbody>
                       <tr>
                         <td>PNR No : {{ticket[0].PNR}}</td>
-                        <td>Train No. & Name :  {{ticket[0].PNR}}</td>
-                        <td>Quota :  {{ticket[0].PNR}}</td>
+                        <td>Train No. & Name : {{resParseData.trainNumber}} & {{resParseData.trainName}}</td>
+                        <td>Quota : {{resParseData.bookedQuota}}</td>
                       </tr>
                       <tr>
-                        <td>Transaction ID :  {{ticket[0].PNR}}</td>
-                        <td>Date & Time of Booking :  {{againParseData.boardingDate}}</td>
-                        <td>Class :  {{ticket[0].PNR}}</td>
+                        <td>Transaction ID : {{resParseData.clientTransactionId}}</td>
+                        <td>Date & Time of Booking : {{resParseData.bookingDate | date: 'dd/MM/yyyy'}}
+                          {{resParseData.bookingDate | date:"HH:mm"}}</td>
+                        <td>Class : {{resParseData.journeyClass}}</td>
                       </tr>
                       <tr>
-                        <td>From :  {{ticket[0].PNR}}</td>
-                        <td>Date of Journey :  {{ticket[0].PNR}}</td>
-                        <td>To :  {{ticket[0].PNR}}</td>
+                        <td>From : {{resParseData.fromStnName}}</td>
+                        <td>To : {{resParseData.resvnUptoStnName}}</td>
+                        <td>Resv. Up to : </td>
                       </tr>
                       <tr>
-                        <td>Boarding :  {{ticket[0].PNR}}</td>
-                        <td>Date of Boarding :  {{ticket[0].PNR}}</td>
-                        <td>Scheduled Departure :  {{ticket[0].PNR}}</td>
+                        <td>Date of Journey : {{resParseData.journeyDate | date: 'dd/MM/yyyy'}}</td>
+                        <td>Date of Journey : {{resParseData.destArrvDate | date: 'dd/MM/yyyy'}}</td>
+                        <td>ATAS Opted : </td>
                       </tr>
                       <tr>
-                        <td>Resv. Up to :  {{ticket[0].PNR}}</td>
-                        <td>Scheduled Arrival :  {{ticket[0].PNR}}</td>
-                        <td>Adult : Child :  {{ticket[0].PNR}}</td>
+                        <td>Boarding : {{resParseData.boardingStnName}}</td>
+                        <td>Scheduled Arrival : {{resParseData.arrivalTime}}</td>
+                        <td>Passenger Mobile No : </td>
                       </tr>
                       <tr>
-                        <td>Passenger Mobile No :  {{ticket[0].PNR}}</td>
-                        <td>ATAS Opted :  {{ticket[0].PNR}}</td>
-                        <td>Distance :  {{ticket[0].distance}}KM</td>
+                        <td>Date of Boarding : {{resParseData.boardingDate | date: 'dd/MM/yyyy'}}</td>
+                        <td>Adult :{{resParseData.numberOfAdults}} Child : {{resParseData.numberOfChilds}}</td>
+                        <td>Passenger Address : </td>
                       </tr>
                       <tr>
-                        <td>Passenger Address :  {{ticket[0].PNR}}</td>
-                        <td>' '</td>
-                        <td>BookingId :  {{ticket[0].BOOKING_ID}}</td>
+                        <td>Scheduled Departure : {{resParseData.departureTime}}</td>
+                        <td>Distance : {{resParseData.distance}} KM</td>
+                        <td>BookingId : {{ticket[0].BOOKING_ID}}</td>
                       </tr>
-
-
                     </tbody>
                   </table>
                 </li>
@@ -124,40 +122,40 @@
           <ion-row>
             <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
               <ul>
-                <h3>Fare Details:</h3>
+                <h3>Fare Details</h3>
                 <li>
                   <table>
-
                     <tbody>
                       <tr>
-                        <td>SL/2S</td>
-                        <td>SL/2S</td>
-                        <td>Rs.20</td>
+                        <td>Ticket fare **</td>
+                        <td>{{resParseData.totalFare| currency:'INR'}}</td>
+                        <td>Rupees : zero</td>
                       </tr>
                       <tr>
-                        <td>SL/2S</td>
-                        <td>SL/2S</td>
-                        <td>Rs.20</td>
+                        <td>Convenience Fee (Incl. of GST)</td>
+                        <td>{{resParseData.serviceChargeTotal | currency:'INR'}}</td>
+                        <td>Rupees : zero</td>
                       </tr>
                       <tr>
-                        <td>SL/2S</td>
-                        <td>SL/2S</td>
-                        <td>Rs.20</td>
+                        <td>Travel Insurance Premium (Incl. of GST)</td>
+                        <td>{{resParseData.insuranceCharge | currency:'INR'}}</td>
+                        <td>Rupees : zero</td>
                       </tr>
                       <tr>
-                        <td>SL/2S</td>
-                        <td>SL/2S</td>
-                        <td>Rs.20</td>
+                        <td>Agent Service charges#</td>
+                        <td>{{resParseData.numberOfAdults | currency:'INR'}}</td>
+                        <td>Rupees : zero</td>
                       </tr>
                       <tr>
-                        <td>SL/2S</td>
-                        <td>SL/2S</td>
-                        <td>Rs.20</td>
+                        <td>PG charges</td>
+                        <td>{{resParseData.numberOfAdults | currency:'INR'}}</td>
+                        <td>Rupees : zero</td>
                       </tr>
                       <tr>
-                        <td>SL/2S</td>
-                        <td>SL/2S</td>
-                        <td>Rs.20</td>
+                        <td>Total Fare</td>
+                        <td>{{resParseData.totalCollectibleAmount * resParseData.numberOfpassenger| currency:'INR'}}
+                        </td>
+                        <td>Rupees : zero</td>
                       </tr>
                     </tbody>
                   </table>
@@ -166,7 +164,6 @@
                   #Service charges (inclusive of GST) per e-ticket irrespective of number of passengers on the ticket
                 </ion-text>
               </ul>
-
             </ion-col>
           </ion-row>
 
@@ -175,26 +172,44 @@
           <ion-row>
             <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
               <ul>
-                <h3>PASSENGER DETAILS:</h3>
+                <h3>PASSENGER DETAILS</h3>
                 <li>
                   <table>
-
                     <thead>
                       <tr>
-                        <th>SL/2S</th>
-                        <th>SL/2S</th>
-                        <th>Rs.20</th>
-                        <th>SL/2S</th>
-                        <th>SL/2S</th>
-                        <th>Rs.20</th>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Sex</th>
+                        <th>Booking Status</th>
+                        <th>Current Status</th>
                       </tr>
-
                     </thead>
+                    <tbody>
+                      <tr *ngFor="let x of resParseData.psgnDtlList; index as i">
+                        <td>
+                          {{i+1}}
+                        </td>
+                        <td>
+                          {{x.passengerName}}
+                        </td>
+                        <td>
+                          {{x.passengerAge}}
+                        </td>
+                        <td>
+                          {{x.passengerGender}}
+                        </td>
+                        <td>
+                          {{x.bookingStatus}}
+                        </td>
+                        <td>
+                          {{x.currentStatus}}
+                        </td>
+                      </tr>
+                    </tbody>
                   </table>
                 </li>
-
               </ul>
-
             </ion-col>
           </ion-row>
 
@@ -202,65 +217,112 @@
           <ion-row>
             <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
               <ul>
-                <h4>Indian Railways GST Details:</h4>
-                <h4>Invoice Number:</h4>
+                <h3>Indian Railways GST Details</h3>
+                <span>Invoice Number: {{resParseData.gstCharge.invoiceNumber}}</span>
+                <span style="float: right;">Address: {{resParseData.gstCharge.suplierAddress}}</span>
                 <li>
                   <table>
-
                     <thead>
                       <tr>
-                        <th>SL/2S</th>
-                        <th>SL/2S</th>
-                        <th>Rs.20</th>
-                        <th>SL/2S</th>
-                        <th>SL/2S</th>
-                        <th>Rs.20</th>
+                        <th colspan="2">Supplier Information</th>
+                        <th colspan="3">Recipient Information</th>
+                        <th rowspan="2">Taxable Value</th>
+                        <th colspan="2">CGST</th>
+                        <th colspan="2">SGST/UGST</th>
+                        <th colspan="2">IGST</th>
+                        <th rowspan="2">Total Tax</th>
                       </tr>
-
+                      <tr>
+                        <th>SAC Code</th>
+                        <th>GSTIN</th>
+                        <th>GSTIN</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Rate</th>
+                        <th>Amount</th>
+                        <th>Rate</th>
+                        <th>Amount</th>
+                        <th>Rate</th>
+                        <th>Amount</th>
+                      </tr>
                     </thead>
+                    <tbody>
+                      <tr>
+                        <td>{{resParseData.gstCharge.sacCode}}</td>
+                        <td>{{resParseData.gstCharge.gstinSuplier}}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0.0</td>
+                        <td>{{resParseData.gstCharge.cgstRate}}</td>
+                        <td></td>
+                        <td>{{resParseData.gstCharge.gstRate}}</td>
+                        <td></td>
+                        <td>{{resParseData.gstCharge.igstRate}}</td>
+                        <td></td>
+                        <td>0.0</td>
+                      </tr>
+                    </tbody>
                   </table>
                 </li>
-
               </ul>
-
             </ion-col>
           </ion-row>
 
           <ion-row>
             <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
               <ul>
-                <h4>PRINCIPLE SERVICE PROVIDER DETAILS:</h4>
-               
+                <h4>PRINCIPLE SERVICE PROVIDER DETAILS</h4>
                 <li>
                   <table>
-
                     <thead>
                       <tr>
-                        <th>SL/2S</th>
-                        <th>SL/2S</th>
-                        <th>Rs.20</th>
-                        <th>SL/2S</th>
-                        <th>SL/2S</th>
-                        <th>Rs.20</th>
+                        <th>Principle Agent:</th>
+                        <th></th>
+                        <th colspan="2">Corporate Name:</th>
+                        <th colspan="2"></th>
                       </tr>
-
+                      <tr>
+                        <th>Agent Name:</th>
+                        <th></th>
+                        <th>Email:</th>
+                        <th></th>
+                        <th>Contact Number:</th>
+                        <th></th>
+                      </tr>
                     </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          Address
+                        </td>
+                        <td colspan="5">
+              
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          Mobile Number
+                        </td>
+                        <td colspan="5">
+                          
+                        </td>
+                      </tr>
+                    </tbody>
                   </table>
                 </li>
                 <li>
-                  Acronyms:    RLWL: REMOTE LOCATION WAITLIST    PQWL: POOLED QUOTA WAITLIST    RSWL: ROAD-SIDE WAITLIST
+                  Acronyms: RLWL: REMOTE LOCATION WAITLIST PQWL: POOLED QUOTA WAITLIST RSWL: ROAD-SIDE WAITLIST
                 </li>
-                <li>Place of Supply: ()   State Code/Name of Supplier: 07 / Kafila Hospitality & Travel Pvt. Ltd.</li>
+                <li>Place of Supply: () State Code/Name of Supplier: 07 / Kafila Hospitality & Travel Pvt. Ltd.</li>
                 <li>Ticket Printing Time: 2021-7-28 17:6:13</li>
                 <li>Are you aware that 43% of your fare is borne by the common citizens of the country?</li>
               </ul>
-
             </ion-col>
           </ion-row>
 
           <ion-row>
             <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
-
               <ul>
                 <h3>Important Notes:</h3>
                 <li>1. For details, rules and terms & conditions of E-Ticketing services, please visit www.irctc.co.in.

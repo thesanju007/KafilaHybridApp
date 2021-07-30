@@ -11,22 +11,23 @@ export class AgentAuthorizationComponent implements OnInit {
 
   constructor(private tService: TestService,public loadingController: LoadingController) { }
   login_Details
-  dis = true
-  id = true
-  agtList
 
+  agtList
+  tabShow=false
   ngOnInit() {
     let Json_LD = sessionStorage.getItem("LoginDetails")
     this.login_Details = JSON.parse(Json_LD)
   }
-  RfieldEn() {
-    this.id = true
-    this.dis = false
+  dateDis=true
+  agtId(){
+    this.dateDis=false
+    this.agtLstGP.reset()
   }
-  fieldEn() {
-    this.id = false
-    this.dis = true
+  none(){
+    this.dateDis=true
+    this.agtLstGP.reset()
   }
+
   agtLstGP = new FormGroup({
     RAID: new FormControl(),
   })
@@ -53,6 +54,7 @@ export class AgentAuthorizationComponent implements OnInit {
       if (result.response !== "") {
         this.agtList = JSON.parse(result.response)
         this.dismiss()
+        this.tabShow=true
         console.log(this.agtList)
       }
 

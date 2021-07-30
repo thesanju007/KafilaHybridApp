@@ -1,32 +1,43 @@
 <ion-app>
   <ion-content>
     <ion-grid>
-      <ion-row class="ion-margin-top ion-padding ion-text-center">
+      <ion-row class="ion-margin-top ion-padding ">
         <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12" class="ion-padding">
-
           <form [formGroup]="agtLstGP" (ngSubmit)="AgtSrhBtn($event)">
             <ion-row class="bdr ion-padding">
-              <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
-                <input formControlName="RAID" placeholder="Agent ID">
+              <ion-col size-md="12" size-lg="12" size-xs="12">
+                <ion-radio-group value="None">
+                  <ion-radio value="Id" (click)="AgentActive()"></ion-radio>
+                  <ion-label class="R-label">Agent Id</ion-label>
+                  <ion-radio value="Date"  (click)="DateActive()"></ion-radio>
+                  <ion-label class="R-label">Date Wise</ion-label>
+                  <ion-radio value="None"  (click)="None()"></ion-radio>
+                  <ion-label class="R-label">None</ion-label>
+                </ion-radio-group>
               </ion-col>
-              <ion-col size-xs="12" size-sm="12" size-md="1" size-lg="1" size-xl="1" >
-               <h2>Or</h2>
+              <ion-col size-md="3" size-lg="3" size-xl="3">
+                <fieldset [disabled]="!aidDis">
+                  <input formControlName="RAID"  placeholder="Agent ID">
+                </fieldset>
               </ion-col>
-              <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
-                <input formControlName="FROM" type="date">
+              <ion-col size-md="3" size-lg="3" size-xl="3">
+                <fieldset [disabled]="dateDis">
+                  <input formControlName="FROM" type="date">
+                </fieldset>
               </ion-col>
-              <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
-                <input formControlName="TO" type="date">
+              <ion-col size-md="3" size-lg="3" size-xl="3">
+                <fieldset [disabled]="dateDis">
+                  <input formControlName="TO" type="date">
+                </fieldset>
               </ion-col>
-              <ion-col size-xs="12" size-sm="12" size-md="2" size-lg="2" size-xl="2">
+              <ion-col size-md="3" size-lg="3" size-xl="3">
                 <button class="ccL-btn" type="submit">
                   <ion-icon slot="start" name="search"></ion-icon> Search Agents
                 </button>
               </ion-col>
-
             </ion-row>
           </form>
-          <table>
+          <table class="ion-text-center" *ngIf="tabShow">
             <thead>
               <tr>
                 <th class="padding">
@@ -66,7 +77,6 @@
                   </ion-icon> Time
                   <ion-icon name="arrow-down-outline" style="cursor: pointer; color: red;" (click)="sortDateDesc()">
                   </ion-icon>
-
                 </th>
               </tr>
             </thead>
@@ -84,12 +94,8 @@
               </tr>
             </tbody>
           </table>
-
         </ion-col>
-
-
       </ion-row>
     </ion-grid>
-
   </ion-content>
 </ion-app>

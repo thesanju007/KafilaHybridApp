@@ -2,21 +2,35 @@
     font-family: serif;
   
   }
+  ion-radio {
+      margin: 0px 10px 0px 10px;
+    }
+    ion-radio-group {
+      color: black;
+      padding: 0px 0px 10px 0px; 
   
+    }
+    .R-label{
+      font-weight: 500;
+      font-size: 16px;
+    }
   input:disabled {
   cursor: not-allowed;
   
+  }
+  fieldset{
+      border: none;
   }
   .ccL-btn{
   opacity: .9;
   background-color: #6c79e0;
   color: white;
-  width:100%;
+  width:70%;
   padding: 15px;
   font-size: 20px;
   font-weight: 500;
-  border-radius: 10px;
-  margin: 2px 0px 0px 0px;
+  
+  margin: 17px 0px 0px 0px;
   cursor: pointer;
   box-shadow: 1px 1px 1px 1px #ddd;
   }
@@ -34,8 +48,7 @@
   }
   .bdr{
       border: 1px solid #6c79e0;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
+  
   }
   input{
       border: 1px solid #6c79e0;
@@ -44,8 +57,9 @@
   background-color: white;
   color: black;
   padding: 15px 10px;
-  border-radius: 10px;
+  
   box-shadow: 1px 1px 1px 1px #ddd;
+  margin: 12px 0px 0px 0px;
   }
   input[type=date]{
       border: 1px solid #6c79e0;
@@ -54,7 +68,8 @@
   background-color: white;
   color: black;
   padding: 15px 10px;
-  border-radius: 10px;
+
+  margin: 12px 0px 0px 0px;
   }
   ion-icon{
   font-size: 19px;
@@ -81,8 +96,8 @@
   // word-spacing: 2px;
   cursor: pointer;
   }
-  .hvr:nth-child(even){background-color: #f2f2f2;}
-  .hvr:hover {background-color: #ddd;}
+  .hvr:nth-child(even){background-color: #d9ddff8e;}
+  .hvr:hover {background-color: #d9ddff;}
   .padding{
   padding: 8px;
   }

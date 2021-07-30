@@ -11,22 +11,29 @@ export class RLAgentListComponent implements OnInit {
   todayt = new Date(new Date().getTime()).toISOString().split('T')[0];
   constructor(private tService: TestService, public loadingController: LoadingController) { }
   login_Details
-  non_list = true
-  show = true
-  dis = true
-  id = true
+  tabShow=false
+
   agtList
   ngOnInit() {
     let Json_LD = sessionStorage.getItem("LoginDetails")
     this.login_Details = JSON.parse(Json_LD)
   }
-  RfieldEn() {
-    this.id = true
-    this.dis = false
+  dateDis=true
+  aidDis=false
+  AgentActive(){
+    this.dateDis=true
+    this.aidDis=true
+    this.agtLstGP.reset()
   }
-  fieldEn() {
-    this.id = false
-    this.dis = true
+  DateActive(){
+    this.aidDis=false
+    this.dateDis=false
+    this.agtLstGP.reset()
+  }
+  None(){
+    this.dateDis=true
+    this.aidDis=false
+    this.agtLstGP.reset()
   }
   agtLstGP = new FormGroup({
     RAID: new FormControl(),
@@ -57,6 +64,7 @@ export class RLAgentListComponent implements OnInit {
     this.tService.postTestData("CC", jAgtList).subscribe(result => {
       if (result.response !== "") {
         this.dismiss()
+        this.tabShow=true
         this.agtList = JSON.parse(result.response)
         console.log(this.agtList)
       }
