@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { TicketComponent } from './components/Train/ticket/ticket.component'
+import { AuthenticationGuard} from '../app/Secutity/authentication.guard'
 const routes: Routes = [
   {
     path: '',
     redirectTo: 'ccindex',
     pathMatch: 'full'
   },
-
   {
     path: 'ccindex',
     loadChildren: () => import('./Allpages/index/index.module').then(m => m.IndexPageModule)
@@ -15,7 +15,7 @@ const routes: Routes = [
  
   {
     path: 'cchome',
-    loadChildren: () => import('./Allpages/home/home.module').then(m => m.HomePageModule)
+    loadChildren: () => import('./Allpages/home/home.module').then(m => m.HomePageModule), canActivate: [AuthenticationGuard]
   },
   {
     path: 'error',

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TestService } from '../../Services/test.service'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.page.html',
@@ -7,9 +8,19 @@ import { TestService } from '../../Services/test.service'
 })
 export class HeaderPage implements OnInit {
 
-  constructor(private tService: TestService) { }
-  ngOnInit() {}
-  Menu(){
+  name
+  constructor(private tService: TestService,private route: Router) { }
+  ngOnInit() {
+    this.name = sessionStorage.getItem("Name")
+
+  }
+  Menu() {
     this.tService.sendClickEvent();
+  }
+  logout() {
+    this.route.navigate(['/ccindex']);
+    localStorage.clear();
+    sessionStorage.clear();
+    console.clear()
   }
 }

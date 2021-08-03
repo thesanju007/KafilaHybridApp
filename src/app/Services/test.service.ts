@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient,HttpErrorResponse ,HttpHeaders} from '@angular/common/http';
-import { Observable,Subject } from 'rxjs';
-import {  throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { Observable, Subject } from 'rxjs';
+import { throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 @Injectable({
@@ -15,10 +15,16 @@ export class TestService {
     })
   }
   private subject = new Subject<any>();
-  constructor(private http:HttpClient,private route: Router) { }
+  constructor(private http: HttpClient, private route: Router) { }
+  get isLoggedIn(): boolean {
+    let authToken = sessionStorage.getItem('LoginDetails');
+    if (authToken !== null) {
+      return true
+    }
+    return false;
+  }
 
-
-  getTestData(url:any):Observable<any>{
+  getTestData(url: any): Observable<any> {
     return this.http.get(url).pipe(
       retry(2),
       catchError(this.handleError)
@@ -26,8 +32,8 @@ export class TestService {
   }
 
 
-  postTestData(url:any,data:any):Observable<any>{
-    return this.http.post<any>( 'https://caller.ksofttechnology.com/api/'+url,data,this.httphead).pipe(
+  postTestData(url: any, data: any): Observable<any> {
+    return this.http.post<any>('https://caller.ksofttechnology.com/api/' + url, data, this.httphead).pipe(
       retry(2),
       catchError(this.handleError)
     )
@@ -35,7 +41,7 @@ export class TestService {
 
 
 
- 
+
 
 
 
@@ -64,20 +70,20 @@ export class TestService {
     return throwError('Something bad happened; please try again later.');
   };
 
-  sendClickEvent(){
+  sendClickEvent() {
     this.subject.next();
   }
 
-  getClickEvent():Observable<any>{
+  getClickEvent(): Observable<any> {
     return this.subject.asObservable();
   }
 
   holdData
-  getData(recieve){
-    this.holdData=recieve
+  getData(recieve) {
+    this.holdData = recieve
   }
-  
-  sendData(){
+
+  sendData() {
     return this.holdData
   }
 }

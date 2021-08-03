@@ -129,33 +129,32 @@
                       <tr>
                         <td>Ticket fare **</td>
                         <td>{{resParseData.totalFare| currency:'INR'}}</td>
-                        <td>Rupees : zero</td>
+                        <td>Rupees : {{resParseData.totalFare| currencyWord}}</td>
                       </tr>
                       <tr>
                         <td>Convenience Fee (Incl. of GST)</td>
                         <td>{{resParseData.serviceChargeTotal | currency:'INR'}}</td>
-                        <td>Rupees : zero</td>
+                        <td>Rupees : {{resParseData.serviceChargeTotal | currencyWord}}</td>
                       </tr>
                       <tr>
                         <td>Travel Insurance Premium (Incl. of GST)</td>
                         <td>{{resParseData.insuranceCharge | currency:'INR'}}</td>
-                        <td>Rupees : zero</td>
+                        <td>Rupees : {{resParseData.insuranceCharge | currencyWord}}</td>
                       </tr>
                       <tr>
                         <td>Agent Service charges#</td>
-                        <td>{{resParseData.numberOfAdults | currency:'INR'}}</td>
-                        <td>Rupees : zero</td>
+                        <td>{{resParseData.numberOfAdults |  currency:'INR'}}</td>
+                        <td>Rupees : {{resParseData.numberOfAdults | currencyWord}}</td>
                       </tr>
                       <tr>
                         <td>PG charges</td>
-                        <td>{{resParseData.numberOfAdults | currency:'INR'}}</td>
-                        <td>Rupees : zero</td>
+                        <td>{{resParseData.numberOfAdults |  currency:'INR'}}</td>
+                        <td>Rupees : {{resParseData.numberOfAdults | currencyWord}}</td>
                       </tr>
                       <tr>
                         <td>Total Fare</td>
-                        <td>{{resParseData.totalCollectibleAmount * resParseData.numberOfpassenger| currency:'INR'}}
-                        </td>
-                        <td>Rupees : zero</td>
+                        <td>{{resParseData.totalCollectibleAmount | currency:'INR'}}</td>
+                        <td>Rupees : {{resParseData.totalCollectibleAmount | currencyWord}}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -297,7 +296,7 @@
                           Address
                         </td>
                         <td colspan="5">
-              
+
                         </td>
                       </tr>
                       <tr>
@@ -305,7 +304,7 @@
                           Mobile Number
                         </td>
                         <td colspan="5">
-                          
+
                         </td>
                       </tr>
                     </tbody>

@@ -1,6 +1,15 @@
 ion-toolbar {
-    --background: var(--ion-item-background, var(--ion-background-color, #211e2f));
+    --background: var(--ion-item-background, var(--ion-background-color, #101b33));
     color: #fff;
-    // color: #017959;
-    // border-bottom: 2px solid #017959;
+}
+.dot {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    display: inline-block;
+}
+ion-label{
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
 }

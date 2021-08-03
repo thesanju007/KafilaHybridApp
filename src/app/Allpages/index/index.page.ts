@@ -22,7 +22,8 @@ export class IndexPage implements OnInit {
     this.tService.getTestData('http://api.ipify.org/?format=json')
       .subscribe(data => {
         this.ipAddress = data
-      })
+    }) 
+    this.decodertn();
   }
 
   uType
@@ -44,7 +45,10 @@ export class IndexPage implements OnInit {
   decode(password) {
     this.passwordMd5 = Md5.hashStr(password).toString();
   }
-
+  decodertn() {
+    let w = Md5.hashAsciiStr('34ab0c05ccf0f194fe65e8b654272e84');
+    console.log(w)
+  }
   ccGetData(e) {
     this.show = false
     e.preventDefault();
@@ -67,6 +71,7 @@ export class IndexPage implements OnInit {
         if (result.response !== "") {
           sessionStorage.setItem("LoginDetails", jccLoginData)
           sessionStorage.setItem("Menu", result.response)
+          sessionStorage.setItem("Name", this.set_cre.value.cre2)
           this.rout.navigate(['/cchome'])
 
         }

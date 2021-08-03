@@ -92,26 +92,32 @@ ion-label{
  background-image: url('../../../assets/ad.jpg');
 }
 
-@media only screen and (min-width: 769px) {
-
-  // input{
-  //     border: none;
-  //     outline: 0;
-  //     width: 100%;
-  // }
-  ion-icon{
-      font-size: 19px;
-  }
-  ion-button{
-      width: 100%;
-  }
-}
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
  
   input{
-      border: none;
-      outline: 0;
-      width: 100%;
+    //border: none;
+    border: 1px solid #211e2f;
+    outline: 0;
+    width: 80%;
+    padding: 15px;
+    background-color: white;
+    margin: 10px 0px;
+    border-radius: 50px;
+    color: black;
+  }
+  select{
+    width: 100%;
+    //border: none;
+    outline: 0;
+    border: 1px solid #211e2f;
+    border-radius: 50px;
+    outline: 0;
+    width: 80%;
+    padding: 15px;
+    color: black;
+  }
+  option{
+    color: black;
   }
   ion-icon{
       font-size: 19px;
@@ -119,21 +125,15 @@ ion-label{
   ion-button{
       width: 100%;
   }
-
+.app{
+  display: none;
+}
+ion-card-title{
+  color: #302b46;
+  font-size: 16px;
+  font-weight: 600;
+}
 }
 
-@media only screen and (max-width: 425px ) {
 
-  input{
-      border: none;
-      outline: 0;
-      width: 100%;
-  }
-  ion-icon{
-      font-size: 19px;
-  }
-  ion-button{
-      width: 100%;
-  }
-}
 

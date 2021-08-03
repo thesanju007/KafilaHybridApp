@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-cancellation-history',
   templateUrl: './cancellation-history.component.html',
@@ -9,6 +10,12 @@ export class CancellationHistoryComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+  }
+
+
+ 
+
 
 }

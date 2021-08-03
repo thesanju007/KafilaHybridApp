@@ -8,23 +8,30 @@ import { CancellationHistoryComponent } from '../cancellation-history/cancellati
 import { PendingHistoryComponent } from '../pending-history/pending-history.component'
 import { RLRefundHistoryComponent } from '../rlrefund-history/rlrefund-history.component'
 import { TicketComponent } from '../ticket/ticket.component'
+import { CurrencyPipe } from '../../../Allpipes/currency.pipe'
 @NgModule({
-  declarations: [RLAgentListComponent,
+  declarations: [
+    RLAgentListComponent,
     AgentAuthorizationComponent,
     BookingHistoryComponent,
     CancellationHistoryComponent,
     PendingHistoryComponent,
     RLRefundHistoryComponent,
-    TicketComponent],
-  imports: [
-    CommonModule, FormShareModule
+    TicketComponent,
+    CurrencyPipe
   ],
-  exports: [RLAgentListComponent,
+  imports: [
+    CommonModule,
+    FormShareModule
+  ],
+  exports: [
+    RLAgentListComponent,
     AgentAuthorizationComponent,
     BookingHistoryComponent,
     CancellationHistoryComponent,
     PendingHistoryComponent,
     RLRefundHistoryComponent,
-    TicketComponent]
+    TicketComponent
+  ]
 })
 export class TmoduleModule { }

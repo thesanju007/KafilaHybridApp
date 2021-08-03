@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TestService } from '../../../Services/test.service'
 import { LoadingController } from '@ionic/angular';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-agent-authorization',
   templateUrl: './agent-authorization.component.html',
@@ -9,31 +10,42 @@ import { LoadingController } from '@ionic/angular';
 })
 export class AgentAuthorizationComponent implements OnInit {
 
-  constructor(private tService: TestService,public loadingController: LoadingController) { }
+  constructor(private tService: TestService, public loadingController: LoadingController) { }
   login_Details
-
+  subscription: Subscription
   agtList
-  tabShow=false
+  skArr = []
+  tabShow = false
   ngOnInit() {
     let Json_LD = sessionStorage.getItem("LoginDetails")
     this.login_Details = JSON.parse(Json_LD)
+    for (let i = 0; i <= 30; i++) {
+      this.skArr.push(i)
+    }
   }
-  dateDis=true
-  agtId(){
-    this.dateDis=false
+  dateDis = true
+  agtId() {
+    this.dateDis = false
+    this.agtLstGP.reset()
+    this.btn = true
+  }
+  none() {
+    this.dateDis = true
     this.agtLstGP.reset()
   }
-  none(){
-    this.dateDis=true
-    this.agtLstGP.reset()
+  btn = false
+  btnActive() {
+    this.btn = false
   }
 
   agtLstGP = new FormGroup({
-    RAID: new FormControl(),
+    RAID: new FormControl('', [Validators.pattern("[0-9]")]),
   })
+  skeltonShow = false
   AgtSrhBtn(e) {
-    this.present()
-    e.preventDefault();
+    // this.present()
+    this.skeltonShow = true
+    this.tabShow = false
     let aBal = {
       "P_TYPE": "CC",
       "R_TYPE": "RAIL",
@@ -48,61 +60,86 @@ export class AgentAuthorizationComponent implements OnInit {
       "ENV": "D",
       "Version": "1.0.0.0.0.0"
     }
-   
+
     let jaBal = JSON.stringify(aBal)
-    this.tService.postTestData("CC", jaBal).subscribe(result => {
+    this.subscription = this.tService.postTestData("CC", jaBal).subscribe(result => {
       if (result.response !== "") {
         this.agtList = JSON.parse(result.response)
-        this.dismiss()
-        this.tabShow=true
+        //this.dismiss()
+        this.skeltonShow = false
+        this.tabShow = true
         console.log(this.agtList)
       }
 
     });
   }
-
-  sortCnameAsc() {
+  up = false
+  down = true
+  up1 = false
+  down1 = true
+  up2 = false
+  down2 = true
+  up3 = false
+  down3 = true
+  sortBalAsc() {
+    this.down = false
+    this.up = true
     return this.agtList.sort((a, b) => {
-      return a.COMP_NAME.localeCompare(b.COMP_NAME);
-    })
+      return a.BALANCE - b.BALANCE;
+    });
   }
-  sortCnameDesc() {
+
+  sortBalDesc() {
+    this.down = true
+    this.up = false
     return this.agtList.sort((a, b) => {
-      return b.COMP_NAME.localeCompare(a.COMP_NAME);
-    })
+      return b.BALANCE - a.BALANCE;
+    });
   }
   sortMailAsc() {
+    this.down1 = false
+    this.up1 = true
     return this.agtList.sort((a, b) => {
       return a.EMAIL.localeCompare(b.EMAIL);
     })
   }
   sortMailDesc() {
+    this.down1 = true
+    this.up1 = false
     return this.agtList.sort((a, b) => {
       return b.EMAIL.localeCompare(a.EMAIL);
     })
   }
-
-  sortBalAsc() {
-    return this.agtList.sort((a, b) => {
-      return <any>new Date(a.BALANCE) - <any>new Date(b.BALANCE);
-    });
-  }
-
-  sortBalDesc() {
-    return this.agtList.sort((a, b) => {
-      return <any>new Date(b.BALANCE) - <any>new Date(a.BALANCE);
-    });
-  }
-  sortDateAsc(){
+  sortDateAsc() {
+    this.down2 = false
+    this.up2 = true
     return this.agtList.sort((a, b) => {
       return <any>new Date(a.ETIME) - <any>new Date(b.ETIME);
     });
   }
-  sortDateDesc(){
+  sortDateDesc() {
+    this.down2 = true
+    this.up2 = false
     return this.agtList.sort((a, b) => {
       return <any>new Date(b.ETIME) - <any>new Date(a.ETIME);
     });
   }
+  sortCnameAsc() {
+    this.down3 = false
+    this.up3 = true
+    return this.agtList.sort((a, b) => {
+      return a.COMP_NAME.localeCompare(b.COMP_NAME);
+    })
+  }
+  sortCnameDesc() {
+
+    this.down3 = true
+    this.up3 = false
+    return this.agtList.sort((a, b) => {
+      return b.COMP_NAME.localeCompare(a.COMP_NAME);
+    })
+  }
+
   isLoading = false;
   async present() {
     this.isLoading = true;
@@ -125,5 +162,8 @@ export class AgentAuthorizationComponent implements OnInit {
   async dismiss() {
     this.isLoading = false;
     return await this.loadingController.dismiss().then(() => console.log());
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
   }
 }
