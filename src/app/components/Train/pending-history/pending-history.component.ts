@@ -107,7 +107,7 @@ export class PendingHistoryComponent implements OnInit {
       mode: 'ios',
       backdropDismiss: false,
       spinner: 'bubbles',
-      // duration: 2000
+
     }).then(a => {
       a.present().then(() => {
         console.log('presented');

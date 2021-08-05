@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { TestService } from '../../../Services/test.service'
-import {LoadingController } from '@ionic/angular';
-import { ModalController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-booking-history',
@@ -11,7 +10,7 @@ import { ModalController } from '@ionic/angular';
 })
 export class BookingHistoryComponent implements OnInit {
   todayt = new Date(new Date().getTime()).toISOString().split('T')[0];
-  yDate=new Date(new Date().getTime() - 86400000).toISOString().split('T')[0]
+  yDate = new Date(new Date().getTime() - 86400000).toISOString().split('T')[0]
   constructor(private tService: TestService, public loadingController: LoadingController,) { }
   login_Details
   dis = true
@@ -35,7 +34,6 @@ export class BookingHistoryComponent implements OnInit {
     TO: new FormControl(this.todayt),
   })
   AgtSrhBtn(e) {
-  
     e.preventDefault();
     this.present()
     let bknHisData = {
@@ -54,18 +52,16 @@ export class BookingHistoryComponent implements OnInit {
       "IP": this.login_Details.IP,
       "TOKEN": this.login_Details.TOKEN,
       "ENV": "P",
-      "Version": "1.0.0.0.0.0"
+      "Version": "1.0.0.0.0.0",
     }
     let jbknHisData = JSON.stringify(bknHisData)
     console.log(jbknHisData)
     this.tService.postTestData("CC", jbknHisData).subscribe(result => {
       if (result.response !== "") {
         this.agtList = JSON.parse(result.response)
-      
         this.dismiss()
         console.log(this.agtList)
       }
-
     });
   }
   sortMailAsc() {

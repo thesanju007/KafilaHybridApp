@@ -44,51 +44,6 @@
               *ngFor="let idata of itemArr" class="example-radio-button">
               {{idata.iname}}
             </mat-radio-button>
-<<<<<<< HEAD
-            
-          </mat-radio-group> 
-         
-      </ng-container>
-      
-  <ng-container *ngIf="CD!null">
-    <ion-content isScrolling="true">
-       <ion-grid >
-        <hr color="secondary" >
-        <ion-row><ion-col><ion-text>Amount:-</ion-text></ion-col>
-          <ion-col><ion-text>{{CD.AMOUNT_PG| currency:"INR"}}{{"/-"}}</ion-text></ion-col>
-        </ion-row>
-        <ion-row><ion-col><ion-text>ConvenienceCharge:-</ion-text></ion-col>
-           <ion-col>
-              <ion-text *ngIf="CD.PG_PERCENT==='true' ? '%':'Fixed' as tt" >{{CD.PG_VALUE}}
-               <ion-badge color="primary" >{{tt}}</ion-badge>
-              </ion-text>
-          </ion-col>
-        </ion-row>
-        <ion-row><ion-col><ion-text>ConvenienceFee:-</ion-text></ion-col>
-          <ion-col><ion-text>{{CD.PG_CHARGE| currency:"INR"}}{{"/-"}}</ion-text></ion-col>
-        </ion-row>
-        <hr color="secondary" >
-        <ion-row><ion-col><ion-text><strong>TotalAmount:-</strong></ion-text></ion-col>
-          <ion-col><ion-text ><strong>{{CD.NET| currency:"INR"}}{{"/-"}}</strong></ion-text></ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-content>
-
-
-
-  
-  </ng-container>
-</ion-content> 
- </ion-col>
- </ion-row>
- <ion-button class = "button button-block "   *ngIf="conf?true:false as CONF" [disabled]="!CONF"  (click)="onConfirm()">Confirm</ion-button>
- </ion-grid> 
-
-    
-  
-  
-=======
->>>>>>> origin/ccShivam
 
           </mat-radio-group>
 
