@@ -1,8 +1,8 @@
 <ion-app>
   <ion-content>
-    
+
     <ion-grid>
-      <ion-row >
+      <ion-row>
         <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12" class="ion-padding">
           <form [formGroup]="agtLstGP" (ngSubmit)="AgtSrhBtn($event)">
             <ion-row class="bdr ion-padding">
@@ -10,13 +10,13 @@
                 <ion-radio-group value="Id">
                   <ion-radio value="Id" (click)="AgentActive()"></ion-radio>
                   <ion-label class="R-label">Agent Id</ion-label>
-                  <ion-radio value="Date"  (click)="DateActive()"></ion-radio>
+                  <ion-radio value="Date" (click)="DateActive()"></ion-radio>
                   <ion-label class="R-label">Date Wise</ion-label>
                 </ion-radio-group>
               </ion-col>
               <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
                 <fieldset [disabled]="!dateDis">
-                  <input formControlName="RAID" maxlength="8" min="8"  placeholder="Agent ID" (keydown)="btnActive()">
+                  <input formControlName="RAID" maxlength="8" min="8" placeholder="Agent ID" (keydown)="btnActive()">
                 </fieldset>
               </ion-col>
               <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
@@ -36,6 +36,7 @@
               </ion-col>
             </ion-row>
           </form>
+         
           <table class="ion-text-center" *ngIf="tabShow">
             <thead>
               <tr>
@@ -46,12 +47,12 @@
                   Booking ID
                 </th>
                 <th class="padding">
-                  
+
                   EmailID
                   <ion-icon name="caret-down-outline" *ngIf="down1" (click)="sortMailAsc()"
-                  style="cursor: pointer; color: red;"></ion-icon>
-                <ion-icon name="caret-up-outline" *ngIf="up1" (click)="sortMailDesc()"
-                  style="cursor: pointer; color: red;"></ion-icon>
+                    style="cursor: pointer; color: red;"></ion-icon>
+                  <ion-icon name="caret-up-outline" *ngIf="up1" (click)="sortMailDesc()"
+                    style="cursor: pointer; color: red;"></ion-icon>
                 </th>
                 <th class="padding">
                   FAID
@@ -66,39 +67,50 @@
                   IP
                 </th>
                 <th class="padding">
-                   Balance
-                   <ion-icon name="caret-down-outline" *ngIf="down" (click)="sortBalAsc()"
-                   style="cursor: pointer; color: red;"></ion-icon>
-                 <ion-icon name="caret-up-outline" *ngIf="up" (click)="sortBalDesc()"
-                   style="cursor: pointer; color: red;"></ion-icon>
+                  Balance
+                  <ion-icon name="caret-down-outline" *ngIf="down" (click)="sortBalAsc()"
+                    style="cursor: pointer; color: red;"></ion-icon>
+                  <ion-icon name="caret-up-outline" *ngIf="up" (click)="sortBalDesc()"
+                    style="cursor: pointer; color: red;"></ion-icon>
                 </th>
                 <th class="padding">
                   Status
                 </th>
                 <th class="padding">
-                   Time
-                   <ion-icon name="caret-down-outline" *ngIf="down2" (click)="sortDateAsc()"
-                   style="cursor: pointer; color: red;"></ion-icon>
-                 <ion-icon name="caret-up-outline" *ngIf="up2" (click)="sortDateDesc()"
-                   style="cursor: pointer; color: red;"></ion-icon>
+                  Time
+                  <ion-icon name="caret-down-outline" *ngIf="down2" (click)="sortDateAsc()"
+                    style="cursor: pointer; color: red;"></ion-icon>
+                  <ion-icon name="caret-up-outline" *ngIf="up2" (click)="sortDateDesc()"
+                    style="cursor: pointer; color: red;"></ion-icon>
                 </th>
-                <!-- <th class="padding">
-                  Action
-                </th> -->
+                <th class="padding">
+                  Details
+                </th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let d of agtList, index as i" class="hvr">
                 <td style="color: #017959;">{{i+1}}</td>
-                <td>{{d.BOOKING_ID}}</td>
+                <td  style="color: red; text-decoration: underline;cursor: pointer" (click)="PNR(d)">{{d.BOOKING_ID}}</td>
                 <td>{{d.EMAIL_ID}}</td>
                 <td>{{d.FID}}</td>
                 <td>{{d.RID}}</td>
                 <td>{{d.PNR}}</td>
                 <td>{{d.IP}}</td>
                 <td>{{d.AMOUNT}}</td>
-                <td ><span [style.background-color]="d.STATUS==false ? 'red' : 'green'" class="dot"></span></td>
+                <td><span [style.background-color]="d.STATUS==false ? 'red' : 'green'" class="dot"></span></td>
                 <td>{{d.ETIME | date: 'dd/MM/yyyy'}} {{d.ETIME | date:"HH:mm"}}</td>
+                <td>
+                  <div class="popover__wrapper">
+                    <a href="#">
+                      <h2 class="popover__title">CLICK</h2>
+                    </a>
+                    <div class="popover__content">
+                      <button class="after_hoverbtn1">CHECK TO IRCTC </button><button class="after_hoverbtn2"> REFUND TO
+                        AGENT</button>
+                    </div>
+                  </div>
+                </td>
               </tr>
             </tbody>
           </table>

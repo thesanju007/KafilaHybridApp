@@ -99,9 +99,10 @@
                 <td>{{d.DEP_DATE | date: 'dd/MM/yyyy'}}</td>
                 <td>{{d.ETIME | date: 'dd/MM/yyyy'}} {{d.ETIME | date:"HH:mm"}}</td>
                 <td *ngIf="d.PNR!==''" style="color: red; text-decoration: underline;cursor: pointer"
-                  (click)="viewMore(d)">Pnr Details
+                  (click)="PNR(d)">Pnr Details
                 </td>
-                <td *ngIf="d.PNR==''">
+                <td *ngIf="d.PNR==''" style="text-decoration: underline;cursor: pointer" (click)="PNR(d)">
+                  Details
                 </td>
               </tr>
             </tbody>

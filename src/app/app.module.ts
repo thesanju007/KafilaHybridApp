@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { TmoduleModule } from '../app/components/Train/tmodule/tmodule.module';
-// import { CurrencyPipe } from './Allpipes/currency.pipe'
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],

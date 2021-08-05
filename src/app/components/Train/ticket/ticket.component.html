@@ -2,29 +2,32 @@
   <ion-content>
     <ion-grid>
       <ion-row>
-        <ion-col size-xs="1" size-sm="1" size-md="1" size-lg="1" size-xl="1"></ion-col>
-        <ion-col size-xs="10" size-sm="10" size-md="10" size-lg="10" size-xl="10">
+        <ion-col size-xs="1" size-sm="1" size-md="1" size-lg="1" size-xl="1" class="none"></ion-col>
+        <ion-col size-xs="12" size-sm="12" size-md="10" size-lg="10" size-xl="10">
           <ion-row class="ion-padding">
-            <ion-col size-xs="1" size-sm="1" size-md="1" size-lg="1" size-xl="1">
+            <ion-col size-xs="2" size-sm="2" size-md="1" size-lg="1" size-xl="1">
               <img alt="logo" src="../assets/1.png">
             </ion-col>
-            <ion-col size-xs="1" size-sm="1" size-md="2" size-lg="2" size-xl="2">
+            <ion-col size-xs="4" size-sm="4" size-md="2" size-lg="2" size-xl="2">
               <h3>Electronic Reservation Slip</h3>
             </ion-col>
-            <ion-col size-xs="1" size-sm="1" size-md="5" size-lg="5" size-xl="5">
-
+            <ion-col size-xs="12" size-sm="12" size-md="5" size-lg="5" size-xl="5" class="ion-text-center none">
+              <img alt="logo" src="../assets/logo.png">
             </ion-col>
-            <ion-col size-xs="1" size-sm="1" size-md="3" size-lg="3" size-xl="3">
+            <ion-col size-xs="4" size-sm="4" size-md="3" size-lg="3" size-xl="3">
               <h3>IRCTC E-Ticketing Service (Agent)</h3>
             </ion-col>
-            <ion-col size-xs="1" size-sm="1" size-md="1" size-lg="1" size-xl="1">
+            <ion-col size-xs="2" size-sm="2" size-md="1" size-lg="1" size-xl="1">
               <img alt="logo" src="../assets/irctc_logo.png">
+            </ion-col>
+            <ion-col size-xs="12" size-sm="12" size-md="5" size-lg="5" size-xl="5" class="ion-text-center web">
+              <img alt="logo" src="../assets/logo.png">
             </ion-col>
           </ion-row>
 
 
 
-          <ion-row>
+          <!-- <ion-row>
             <ion-col size-xs="1" size-sm="1" size-md="1" size-lg="10" size-xl="10">
               <ul>
 
@@ -65,50 +68,51 @@
             <ion-col size-xs="1" size-sm="1" size-md="1" size-lg="1" size-xl="1">
               <img alt="logo" src="../assets/beti_bachao_logo.png">
             </ion-col>
-          </ion-row>
+          </ion-row> -->
 
 
           <ion-row>
             <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
               <ul>
+                <h3>Booking Details</h3>
                 <li>
                   <table>
                     <tbody>
                       <tr>
-                        <td>PNR No : {{ticket[0].PNR}}</td>
-                        <td>Train No. & Name : {{resParseData.trainNumber}} & {{resParseData.trainName}}</td>
-                        <td>Quota : {{resParseData.bookedQuota}}</td>
+                        <td>PNR No : {{test.ITINERARY.PnrNo!="" ? test.ITINERARY.PnrNo: 'XXXXX'}}</td>
+                        <td>Train No. & Name : {{test.ITINERARY.TrainNoName!="" ? test.ITINERARY.TrainNoName: 'XXXXX'}}</td>
+                        <td>Quota : {{test.ITINERARY.Quota}}</td>
                       </tr>
                       <tr>
-                        <td>Transaction ID : {{resParseData.clientTransactionId}}</td>
-                        <td>Date & Time of Booking : {{resParseData.bookingDate | date: 'dd/MM/yyyy'}}
-                          {{resParseData.bookingDate | date:"HH:mm"}}</td>
-                        <td>Class : {{resParseData.journeyClass}}</td>
+                        <td>Transaction ID : {{test.ITINERARY.TransactionId!="" ? test.ITINERARY.TransactionId: 'XXXXX'}}</td>
+                        <td>Date & Time of Booking : {{test.ITINERARY.BookingDateTime| date: 'dd/MM/yyyy'}}
+                          {{test.ITINERARY.BookingDateTime| date:"HH:mm"}}</td>
+                        <td>Class : {{test.ITINERARY.Class!="" ? test.ITINERARY.Class: 'XXXXX'}}</td>
                       </tr>
                       <tr>
-                        <td>From : {{resParseData.fromStnName}}</td>
-                        <td>To : {{resParseData.resvnUptoStnName}}</td>
-                        <td>Resv. Up to : </td>
+                        <td>From : {{test.ITINERARY.From}}</td>
+                        <td>To : {{test.ITINERARY.To}}</td>
+                        <td>Resv. Up to : {{test.ITINERARY.ResvUpTo!="" ? test.ITINERARY.ResvUpTo: 'XXXXX'}} </td>
                       </tr>
                       <tr>
-                        <td>Date of Journey : {{resParseData.journeyDate | date: 'dd/MM/yyyy'}}</td>
-                        <td>Date of Journey : {{resParseData.destArrvDate | date: 'dd/MM/yyyy'}}</td>
-                        <td>ATAS Opted : </td>
+                        <td>Date of Journey : {{test.ITINERARY.DateOfJourney | date: 'dd/MM/yyyy'}}</td>
+                        <td>Date of Arrival : {{test.ITINERARY.ScheduleDeparture | date: 'dd/MM/yyyy'}}</td>
+                        <td>ATAS Opted : {{test.ITINERARY.ATASOpted!="" ? test.ITINERARY.ATASOpted: 'XXXXX'}} </td>
                       </tr>
                       <tr>
-                        <td>Boarding : {{resParseData.boardingStnName}}</td>
-                        <td>Scheduled Arrival : {{resParseData.arrivalTime}}</td>
-                        <td>Passenger Mobile No : </td>
+                        <td>Scheduled Departure : {{test.ITINERARY.ScheduleDeparture| date:"HH:mm"}}</td>
+                        <td>Scheduled Arrival : {{test.ITINERARY.ScheduleArrival| date:"HH:mm"}}</td>
+                        <td>Passenger Mobile No : {{test.ITINERARY.PxMobile!="" ? test.ITINERARY.PxMobile: 'XXXXX'}}</td>
                       </tr>
                       <tr>
-                        <td>Date of Boarding : {{resParseData.boardingDate | date: 'dd/MM/yyyy'}}</td>
-                        <td>Adult :{{resParseData.numberOfAdults}} Child : {{resParseData.numberOfChilds}}</td>
-                        <td>Passenger Address : </td>
+                        <td>Boarding : {{test.ITINERARY.Boarding!="" ? test.ITINERARY.Boarding: 'XXXXX'}}</td>
+                        <td>Adult :{{test.ITINERARY.Adult!="" ? test.ITINERARY.Adult: 'XXXXX'}} Child : </td>
+                        <td>Passenger Address : {{test.ITINERARY.PxAddress!="" ? test.ITINERARY.PxAddress: 'XXXXX'}} </td>
                       </tr>
                       <tr>
-                        <td>Scheduled Departure : {{resParseData.departureTime}}</td>
-                        <td>Distance : {{resParseData.distance}} KM</td>
-                        <td>BookingId : {{ticket[0].BOOKING_ID}}</td>
+                        <td>Date of Boarding : {{test.ITINERARY.DateOfBoarding | date: 'dd/MM/yyyy'}}</td>
+                        <td>Distance : {{test.ITINERARY.Distance}} </td>
+                        <td>BookingId : {{test.ITINERARY.BookingId!="" ? test.ITINERARY.BookingId: 'XXXXX'}}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -128,33 +132,33 @@
                     <tbody>
                       <tr>
                         <td>Ticket fare **</td>
-                        <td>{{resParseData.totalFare| currency:'INR'}}</td>
-                        <td>Rupees : {{resParseData.totalFare| currencyWord}}</td>
+                        <td>{{test.FARE.TicketFare| currency:'INR'}}</td>
+                        <td>Rupees : {{test.FARE.TicketFare| currencyWord}}</td>
                       </tr>
                       <tr>
                         <td>Convenience Fee (Incl. of GST)</td>
-                        <td>{{resParseData.serviceChargeTotal | currency:'INR'}}</td>
-                        <td>Rupees : {{resParseData.serviceChargeTotal | currencyWord}}</td>
+                        <td>{{test.FARE.ConvenienceFee | currency:'INR'}}</td>
+                        <td>Rupees : {{test.FARE.ConvenienceFee | currencyWord}}</td>
                       </tr>
                       <tr>
                         <td>Travel Insurance Premium (Incl. of GST)</td>
-                        <td>{{resParseData.insuranceCharge | currency:'INR'}}</td>
-                        <td>Rupees : {{resParseData.insuranceCharge | currencyWord}}</td>
+                        <td>{{test.FARE.TravelInsurance | currency:'INR'}}</td>
+                        <td>Rupees : {{test.FARE.TravelInsurance | currencyWord}}</td>
                       </tr>
                       <tr>
                         <td>Agent Service charges#</td>
-                        <td>{{resParseData.numberOfAdults |  currency:'INR'}}</td>
-                        <td>Rupees : {{resParseData.numberOfAdults | currencyWord}}</td>
+                        <td>{{test.FARE.AgentServiceCharge | currency:'INR'}}</td>
+                        <td>Rupees : {{test.FARE.AgentServiceCharge | currencyWord}}</td>
                       </tr>
                       <tr>
                         <td>PG charges</td>
-                        <td>{{resParseData.numberOfAdults |  currency:'INR'}}</td>
-                        <td>Rupees : {{resParseData.numberOfAdults | currencyWord}}</td>
+                        <td>{{test.FARE.PGCharge | currency:'INR'}}</td>
+                        <td>Rupees : {{test.FARE.PGCharge | currencyWord}}</td>
                       </tr>
                       <tr>
                         <td>Total Fare</td>
-                        <td>{{resParseData.totalCollectibleAmount | currency:'INR'}}</td>
-                        <td>Rupees : {{resParseData.totalCollectibleAmount | currencyWord}}</td>
+                        <td>{{test.FARE.TotalFare | currency:'INR'}}</td>
+                        <td>Rupees : {{test.FARE.TotalFare | currencyWord}}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -185,24 +189,24 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let x of resParseData.psgnDtlList; index as i">
-                        <td>
+                      <tr *ngFor="let x of test.PAX; index as i">
+                        <th>
                           {{i+1}}
+                        </th>
+                        <td>
+                          {{x.Name}}
                         </td>
                         <td>
-                          {{x.passengerName}}
+                          {{x.Age}}
                         </td>
                         <td>
-                          {{x.passengerAge}}
+                          {{x.Sex}}
                         </td>
                         <td>
-                          {{x.passengerGender}}
+                          {{x.BookingStatus}}
                         </td>
                         <td>
-                          {{x.bookingStatus}}
-                        </td>
-                        <td>
-                          {{x.currentStatus}}
+                          {{x.CurrentStatus}}
                         </td>
                       </tr>
                     </tbody>
@@ -213,7 +217,7 @@
           </ion-row>
 
 
-          <ion-row>
+          <!-- <ion-row>
             <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
               <ul>
                 <h3>Indian Railways GST Details</h3>
@@ -266,61 +270,61 @@
                 </li>
               </ul>
             </ion-col>
-          </ion-row>
+          </ion-row> -->
 
           <ion-row>
             <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
               <ul>
-                <h4>PRINCIPLE SERVICE PROVIDER DETAILS</h4>
+                <h3>PRINCIPLE SERVICE PROVIDER DETAILS</h3>
                 <li>
                   <table>
                     <thead>
                       <tr>
-                        <th>Principle Agent:</th>
-                        <th></th>
-                        <th colspan="2">Corporate Name:</th>
-                        <th colspan="2"></th>
+                        <th>Principle Agent :</th>
+                        <td>{{test.PSP.PrincipalAgent}}</td>
+                        <th colspan="2">Corporate Name :</th>
+                        <td colspan="2">{{test.PSP.CorporateName}}</td>
                       </tr>
                       <tr>
-                        <th>Agent Name:</th>
-                        <th></th>
-                        <th>Email:</th>
-                        <th></th>
-                        <th>Contact Number:</th>
-                        <th></th>
+                        <th>Agent Name :</th>
+                        <td>{{test.PSP.AgentName}}</td>
+                        <th>Email :</th>
+                        <td>{{test.PSP.EmailId}}</td>
+                        <th>Contact Number :</th>
+                        <td>{{test.PSP.MobileNumber}}</td>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>
-                          Address
-                        </td>
+                        <th>
+                          Address :
+                        </th>
                         <td colspan="5">
-
+                          {{test.PSP.Address}}
                         </td>
                       </tr>
-                      <tr>
-                        <td>
-                          Mobile Number
-                        </td>
+                      <!-- <tr>
+                        <th>
+                          Mobile Number :
+                        </th>
                         <td colspan="5">
-
+                          {{test.PSP.MobileNumber}}
                         </td>
-                      </tr>
+                      </tr> -->
                     </tbody>
                   </table>
                 </li>
-                <li>
+                <!-- <li>
                   Acronyms: RLWL: REMOTE LOCATION WAITLIST PQWL: POOLED QUOTA WAITLIST RSWL: ROAD-SIDE WAITLIST
                 </li>
                 <li>Place of Supply: () State Code/Name of Supplier: 07 / Kafila Hospitality & Travel Pvt. Ltd.</li>
                 <li>Ticket Printing Time: 2021-7-28 17:6:13</li>
-                <li>Are you aware that 43% of your fare is borne by the common citizens of the country?</li>
+                <li>Are you aware that 43% of your fare is borne by the common citizens of the country?</li> -->
               </ul>
             </ion-col>
           </ion-row>
 
-          <ion-row>
+          <!-- <ion-row>
             <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
               <ul>
                 <h3>Important Notes:</h3>
@@ -330,7 +334,7 @@
                   change. Please Check correct departure, arrival from Railway Station Enquiry, Dial 139 or SMS RAIL to
                   139.</li>
                 <li>3. There are amendments in certain provision of Refund Rules. Refer Amended Refund Rules w.e.f
-                  12-Nov-2015.(details available on www.irctc.co.in under heading General Information --> Rules &
+                  12-Nov-2015.(details available on www.irctc.co.in under heading General Information  Rules &
                   Policies)</li>
                 <li>4.The accommodation booked is not transferable and is valid only if the ORIGINAL ID card prescribed
                   is presented during the journey. The SMS/VRM/ERS along with valid id card of any one the passenger
@@ -351,7 +355,7 @@
                   time in case NO PASSENGER is travelling for processing of refund as per Railway refund rules.</li>
                 <li>9. While TDR refund requests are filed & registered on IRCTC website www.irctc.co.in, they are
                   processed by Zonal Railways as per Railway Refund Rules.(detail available on www.irctc.co.in under
-                  heading Important Information-->Refund Cancellation Rules.</li>
+                  heading Important Information Refund Cancellation Rules.</li>
                 <li>10. Confirmed ticket can be cancelled upto thirty minutes before scheduled departure of the train.
                   However, no refund shall be granted on cancellation of confirmed ticket after four hours before the
                   scheduled departure of train.</li>
@@ -391,11 +395,11 @@
                   permitted. Users should not purchase tickets from agents.</li>
               </ul>
             </ion-col>
-          </ion-row>
+          </ion-row>  -->
 
 
 
-
+          <!-- 
           <ion-row>
             <ion-col size-xs="1" size-sm="1" size-md="12" size-lg="12" size-xl="12" class="ion-text-center">
               <h3>General Rules/ Information for E-ticket passengers</h3>
@@ -577,7 +581,7 @@
               </ul>
               <h3>Thank you for using IRCTC’s Services</h3>
             </ion-col>
-          </ion-row>
+          </ion-row> -->
 
 
 

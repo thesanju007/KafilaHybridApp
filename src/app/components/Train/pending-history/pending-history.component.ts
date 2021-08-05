@@ -13,32 +13,33 @@ export class PendingHistoryComponent implements OnInit {
   maxDate = new Date(new Date().getTime()).toISOString().split('T')[0];
   constructor(private tService: TestService, public loadingController: LoadingController) { }
   login_Details
-  tabShow=false
-  dateDis=true
+  tabShow = false
+  dateDis = true
   agtList
-  skArr=[]
+  skArr = []
   skeltonShow = false
   subscription: Subscription
   ngOnInit() {
     let Json_LD = sessionStorage.getItem("LoginDetails")
     this.login_Details = JSON.parse(Json_LD)
-    for(let i=0; i<=30; i++){
+    for (let i = 0; i <= 30; i++) {
       this.skArr.push(i)
     }
+
   }
-  AgentActive(){
-    this.dateDis=true
+  AgentActive() {
+    this.dateDis = true
     this.agtLstGP.reset()
-    this.btn=true
+    this.btn = true
   }
-  DateActive(){
-    this.dateDis=false
+  DateActive() {
+    this.dateDis = false
     this.agtLstGP.reset()
-    this.btn=true
+    this.btn = true
   }
-  btn=true
+  btn = true
   btnActive() {
-   this.btn=false
+    this.btn = false
   }
   agtLstGP = new FormGroup({
     RAID: new FormControl(),
@@ -46,11 +47,11 @@ export class PendingHistoryComponent implements OnInit {
     TO: new FormControl(),
   })
   AgtSrhBtn(e) {
-  
+
     e.preventDefault();
-     // this.present()
-     this.skeltonShow = true
-     this.tabShow=false
+    // this.present()
+    this.skeltonShow = true
+    this.tabShow = false
     let pndHistList = {
       "P_TYPE": "CC",
       "R_TYPE": "RAIL",
@@ -72,11 +73,11 @@ export class PendingHistoryComponent implements OnInit {
 
     let jPndHistList = JSON.stringify(pndHistList)
     console.log(jPndHistList)
-    this.subscription=this.tService.postTestData("CC", jPndHistList).subscribe(result => {
+    this.subscription = this.tService.postTestData("CC", jPndHistList).subscribe(result => {
       if (result.response !== "") {
         //this.dismiss()
         this.skeltonShow = false
-        this.tabShow=true
+        this.tabShow = true
         this.agtList = JSON.parse(result.response)
         console.log(this.agtList)
       }
@@ -135,29 +136,11 @@ export class PendingHistoryComponent implements OnInit {
       return <any>new Date(b.ETIME) - <any>new Date(a.ETIME);
     });
   }
-  isLoading = false;
-  async present() {
-    this.isLoading = true;
-    return await this.loadingController.create({
-      message: 'Loading',
-      mode: 'ios',
-      backdropDismiss: false,
-      spinner: 'bubbles',
-      // duration: 2000
-    }).then(a => {
-      a.present().then(() => {
-        console.log('presented');
-        if (!this.isLoading) {
-          a.dismiss().then(() => console.log());
-        }
-      });
-    });
+
+  PNR(d) {
+    this.tService.viewMore(d)
   }
 
-  async dismiss() {
-    this.isLoading = false;
-    return await this.loadingController.dismiss().then(() => console.log());
-  }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe()

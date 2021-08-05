@@ -141,58 +141,9 @@ export class BookingHistoryComponent implements OnInit {
   }
 
 
-  isLoading = false;
-  async present() {
-    this.isLoading = true;
-    return await this.loadingController.create({
-      message: 'Loading',
-      mode: 'ios',
-      backdropDismiss: false,
-      spinner: 'bubbles',
-      // duration: 2000
-    }).then(a => {
-      a.present().then(() => {
-        console.log();
-        if (!this.isLoading) {
-          a.dismiss().then(() => console.log());
-        }
-      });
-    });
-  }
 
-  async dismiss() {
-    this.isLoading = false;
-    return await this.loadingController.dismiss().then(() => console.log());
-  }
-
-  viewMore(d) {
-    this.present()
-    let vObj = {
-      "P_TYPE": "CC",
-      "R_TYPE": "RAIL",
-      "R_NAME": "RL_BOOKING_DETAILS",
-      "R_DATA": {
-        "RAID": d.RID,
-        "BOOKING_ID": d.BOOKING_ID,
-        "FILTER": false
-      },
-      "AID": this.login_Details.AID,
-      "MODULE": this.login_Details.MODULE,
-      "IP": this.login_Details.IP,
-      "TOKEN": this.login_Details.TOKEN,
-      "ENV": "P",
-      "Version": "1.0.0.0.0.0"
-    }
-    let jvObj = JSON.stringify(vObj)
-    this.subscription = this.tService.postTestData("CC", jvObj).subscribe(result => {
-      if (result.response !== "") {
-
-        this.dismiss()
-        //console.log(result.response)
-        sessionStorage.setItem("ticketInfo", result.response)
-        window.open("RlTicket", "_blank")
-      }
-    });
+  PNR(d) {
+    this.tService.viewMore(d)
   }
   ngOnDestroy(): void {
     this.subscription.unsubscribe()
