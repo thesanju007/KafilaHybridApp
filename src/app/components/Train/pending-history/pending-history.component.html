@@ -25,8 +25,8 @@
             </ion-row>
           </form>
 
-          <button (click)=checktoirctc()>show</button>
-          <button (click)=refund()>show re</button>
+          <button (click)=checktoirctc(d)>show</button>
+          <button (click)=refund(d)>show re</button>
           <table>
             <thead>
               <tr>
@@ -97,8 +97,8 @@
                       ACTION
                     </ion-button>
                     <div class="popover__content">
-                      <ion-button color="success" class="after_hoverbtn1" (click)=checktoirctc()>CHECK TO IRCTC </ion-button>
-                      <ion-button color="danger" class="after_hoverbtn1" (click)=refund()> REFUND TO AGENT</ion-button>
+                      <ion-button color="success" class="after_hoverbtn1" (click)=checktoirctc(d)>CHECK TO IRCTC </ion-button>
+                      <ion-button color="danger" class="after_hoverbtn1" (click)=refund(d)> REFUND TO AGENT</ion-button>
                     </div>
                   </div>
                 </td>

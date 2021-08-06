@@ -123,16 +123,16 @@ export class PendingHistoryComponent implements OnInit {
     return await this.loadingController.dismiss().then(() => console.log());
   }
 
-  checktoirctc() {
-    this.present()
+  checktoirctc(d) {
+  
    
     let pndHistList = {
       "P_TYPE": "CC",
       "R_TYPE": "RAIL",
       "R_NAME": "RL_CHK_BOOKING_IRCTC",
       "R_DATA": {
-        "RAID":"14889208",
-       "BOOKING_ID":"RL0508211400PM598c0" ,
+        "RAID":d.RID,
+       "BOOKING_ID":d.BOOKING_ID ,
        "REQUIRED_RESULT":false
   
       },
@@ -159,7 +159,7 @@ export class PendingHistoryComponent implements OnInit {
     });
   
   }
-  refund() {
+  refund(d) {
     this.present()
    
     let pndHistList = {
@@ -168,9 +168,9 @@ export class PendingHistoryComponent implements OnInit {
       "R_NAME": "RL_REFUND_PROCESS",
       "R_DATA": {
         "REFUND_TYPE": "FAILED_BOOKING",
-        "RID": "79547372",
-        "FID": "18785869",
-        "BOOKING_ID": "RL0508211634PM2f0e9",
+        "RID": d.RID,
+        "FID": d.FID,
+        "BOOKING_ID": d.BOOKING_ID,
         "STAFF": "SANJEEV"
       },
       "AID": this.login_Details.AID,
