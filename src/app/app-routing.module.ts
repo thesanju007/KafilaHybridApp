@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { RLCHKBOOKINGIRCTCComponent } from 'src/app/components/Train/rl-chk-booking-irctc/rl-chk-booking-irctc.component';
+import { RefundComponent } from './components/Train/refund/refund.component';
 const routes: Routes = [
   {
     path: '',
@@ -29,7 +31,14 @@ const routes: Routes = [
     path: 'footer',
     loadChildren: () => import('./Allpages/footer/footer.module').then(m => m.FooterPageModule)
   },
-
+  {
+    path: 'rl-chk-booking-irctc',
+    component: RLCHKBOOKINGIRCTCComponent
+  },
+  {
+    path: 'refund',
+    component: RefundComponent
+  },
   { 
     path: '**', 
     redirectTo: '/error' 

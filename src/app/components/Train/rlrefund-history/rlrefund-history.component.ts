@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rlrefund-history.component.scss'],
 })
 export class RLRefundHistoryComponent implements OnInit {
-
+data:any;
   constructor() { }
 
   ngOnInit() {}

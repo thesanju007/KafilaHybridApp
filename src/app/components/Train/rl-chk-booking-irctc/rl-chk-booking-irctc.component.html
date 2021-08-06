@@ -1,0 +1,58 @@
+<p>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Agent id:{{this.data.PARAM.AID}}</ion-card-title>
+      <ion-card-title>Rail id:{{this.data.PARAM.R_DATA.RAID}}</ion-card-title>
+      <ion-card-title>Booking id:{{this.data.PARAM.R_DATA.BOOKING_ID}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+     
+    </ion-card-content>
+  </ion-card>
+</p>
+
+
+<ion-app>
+  <ion-content>
+    <ion-grid>
+      <ion-row class="ion-margin-top ion-padding ion-text-center">
+        <ion-col size-md="12" size-lg="12" size-xl="12" class="ion-padding">
+          <table>
+            <thead>
+              <tr>
+               
+               
+                <th class="padding">
+                  Agent id
+                </th>
+                <th class="padding">
+                  Rail id
+                </th>
+                <th class="padding">
+                  Booking id
+                </th>
+                <th>
+                  Message
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="hvr">
+
+                <td>{{this.data.PARAM.AID}}</td>
+                <td>{{this.data.PARAM.R_DATA.RAID}}</td>
+                <td>{{this.data.PARAM.R_DATA.BOOKING_ID}}</td>
+                <td> {{this.data.RESULT.bookingErrorMessage}}</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </ion-col>
+
+
+      </ion-row>
+    </ion-grid>
+
+  </ion-content>
+</ion-app>

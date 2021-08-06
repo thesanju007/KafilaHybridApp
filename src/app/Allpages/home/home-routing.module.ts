@@ -8,6 +8,8 @@ import { CancellationHistoryComponent } from "../../components/Train/cancellatio
 import { PendingHistoryComponent } from "../../components/Train/pending-history/pending-history.component";
 import { RLAgentListComponent } from "../../components/Train/rlagent-list/rlagent-list.component";
 import { RLRefundHistoryComponent } from "../../components/Train/rlrefund-history/rlrefund-history.component";
+
+
 const routes: Routes = [
   {
     path: '',
@@ -29,8 +31,7 @@ const routes: Routes = [
       {
         path: 'RLAgentAuth',
         component: AgentAuthorizationComponent
-      }
-      ,
+      },
       {
         path: 'RlBookingHistory',
         component: BookingHistoryComponent
