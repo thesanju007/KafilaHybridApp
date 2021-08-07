@@ -30,7 +30,7 @@ export class BookingHistoryComponent implements OnInit {
     }
   }
 
-  dateDis = true
+  dateDis = false
   AgentActive() {
     this.dateDis = true
     this.agtLstGP.reset()
@@ -41,21 +41,31 @@ export class BookingHistoryComponent implements OnInit {
     this.agtLstGP.reset()
     this.btn = true
   }
-  btn = true
+  btn = false
   btnActive() {
     this.btn = false
   }
-
-
+  booleanValue = false
+  evv="p"
+  toggle() {
+    this.booleanValue = !this.booleanValue
+    if (this.booleanValue == true) {
+      this.evv = "D"
+    }
+    else {
+      this.evv = "P"
+    }
+  }
   agtLstGP = new FormGroup({
+
     RAID: new FormControl(),
-    FROM: new FormControl(),
-    TO: new FormControl(),
+    FROM: new FormControl(this.maxDate),
+    TO: new FormControl(this.maxDate),
   })
   AgtSrhBtn(e) {
 
     e.preventDefault();
-    // this.present()
+    this.tService.present()
     this.skeltonShow = true
     this.tabShow = false
     let bknHisData = {
@@ -73,18 +83,18 @@ export class BookingHistoryComponent implements OnInit {
       "MODULE": this.login_Details.MODULE,
       "IP": this.login_Details.IP,
       "TOKEN": this.login_Details.TOKEN,
-      "ENV": "P",
+      "ENV":this.evv,
       "Version": "1.0.0.0.0.0"
     }
     let jbknHisData = JSON.stringify(bknHisData)
-    console.log(jbknHisData)
+    // console.log(jbknHisData)
     this.subscription = this.tService.postTestData("CC", jbknHisData).subscribe(result => {
-      if (result.response !== "0") {
-        this.skeltonShow = false
+      if (result.response !== "") {
+        // this.skeltonShow = false
         this.agtList = JSON.parse(result.response)
-        console.log(this.agtList)
+        // console.log(this.agtList)
         this.tabShow = true
-        // this.dismiss()
+        this.tService.dismiss()
 
       }
 
@@ -145,7 +155,7 @@ export class BookingHistoryComponent implements OnInit {
   PNR(d) {
     this.tService.viewMore(d)
   }
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe()
-  }
+  // ngOnDestroy(): void {
+  //   this.subscription.unsubscribe()
+  // }
 }

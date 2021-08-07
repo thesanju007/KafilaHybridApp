@@ -15,6 +15,7 @@ export class AgentAuthorizationComponent implements OnInit {
   subscription: Subscription
   agtList
   skArr = []
+  lth
   tabShow = false
   ngOnInit() {
     let Json_LD = sessionStorage.getItem("LoginDetails")
@@ -37,14 +38,24 @@ export class AgentAuthorizationComponent implements OnInit {
   btnActive() {
     this.btn = false
   }
-
+  booleanValue = false
+  evv="p"
+  toggle() {
+    this.booleanValue = !this.booleanValue
+    if (this.booleanValue == true) {
+      this.evv = "D"
+    }
+    else {
+      this.evv = "P"
+    }
+  }
   agtLstGP = new FormGroup({
     RAID: new FormControl('', [Validators.pattern("[0-9]")]),
   })
   skeltonShow = false
   AgtSrhBtn(e) {
-    // this.present()
-    this.skeltonShow = true
+    this.tService.present()
+    // this.skeltonShow = true
     this.tabShow = false
     let aBal = {
       "P_TYPE": "CC",
@@ -57,18 +68,20 @@ export class AgentAuthorizationComponent implements OnInit {
       "MODULE": this.login_Details.MODULE,
       "IP": this.login_Details.IP,
       "TOKEN": this.login_Details.TOKEN,
-      "ENV": "D",
+      "ENV":this.evv,
       "Version": "1.0.0.0.0.0"
     }
 
     let jaBal = JSON.stringify(aBal)
+    // console.log(aBal)
     this.subscription = this.tService.postTestData("CC", jaBal).subscribe(result => {
       if (result.response !== "") {
         this.agtList = JSON.parse(result.response)
-        //this.dismiss()
-        this.skeltonShow = false
+        this.tService.dismiss()
+
+        // this.skeltonShow = false
         this.tabShow = true
-        console.log(this.agtList)
+        // console.log(this.agtList)
       }
 
     });
@@ -81,6 +94,21 @@ export class AgentAuthorizationComponent implements OnInit {
   down2 = true
   up3 = false
   down3 = true
+  statusT=false
+  statusF=true
+  sortstatusAsc(){
+    this.statusF = false
+    this.statusT = true
+    return this.agtList.filter((a) => {
+      console.log(a.STATUS)
+    //  return a.STATUS===true
+    });
+    
+  }
+  sortstatuDesc(){
+    this.statusF = true
+    this.statusT = false
+  }
   sortBalAsc() {
     this.down = false
     this.up = true
@@ -140,30 +168,8 @@ export class AgentAuthorizationComponent implements OnInit {
     })
   }
 
-  isLoading = false;
-  async present() {
-    this.isLoading = true;
-    return await this.loadingController.create({
-      message: 'Loading',
-      mode: 'ios',
-      backdropDismiss: false,
-      spinner: 'bubbles',
-      // duration: 2000
-    }).then(a => {
-      a.present().then(() => {
-        console.log('presented');
-        if (!this.isLoading) {
-          a.dismiss().then(() => console.log());
-        }
-      });
-    });
-  }
 
-  async dismiss() {
-    this.isLoading = false;
-    return await this.loadingController.dismiss().then(() => console.log());
-  }
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe()
-  }
+  // ngOnDestroy(): void {
+  //   this.subscription.unsubscribe()
+  // }
 }

@@ -8,11 +8,12 @@ import { CancellationHistoryComponent } from "../../components/Train/cancellatio
 import { PendingHistoryComponent } from "../../components/Train/pending-history/pending-history.component";
 import { RLAgentListComponent } from "../../components/Train/rlagent-list/rlagent-list.component";
 import { RLRefundHistoryComponent } from "../../components/Train/rlrefund-history/rlrefund-history.component";
-
+import { RlfailedHistoryComponent} from '../../components/Train/rlfailed-history/rlfailed-history.component'
+import { RlagencyStatementComponent} from '../../components/Train/rlagency-statement/rlagency-statement.component'
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'RLAgent',
+    redirectTo: 'dashboard',
     pathMatch: 'full'
   },
   {
@@ -56,7 +57,14 @@ const routes: Routes = [
         path: 'RLRefund',
         component: RLRefundHistoryComponent
       },
-      
+      {
+        path: 'RLFailed',
+        component: RlfailedHistoryComponent
+      },
+      {
+        path: 'RLAgencyStatement',
+        component: RlagencyStatementComponent
+      },
       
     ]
   },

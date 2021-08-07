@@ -7,6 +7,8 @@ import { BookingHistoryComponent } from '../booking-history/booking-history.comp
 import { CancellationHistoryComponent } from '../cancellation-history/cancellation-history.component'
 import { PendingHistoryComponent } from '../pending-history/pending-history.component'
 import { RLRefundHistoryComponent } from '../rlrefund-history/rlrefund-history.component'
+import { RlfailedHistoryComponent} from '../rlfailed-history/rlfailed-history.component'
+import { RlagencyStatementComponent} from '../rlagency-statement/rlagency-statement.component'
 import { TicketComponent } from '../ticket/ticket.component'
 import { CurrencyPipe } from '../../../Allpipes/currency.pipe'
 @NgModule({
@@ -18,6 +20,8 @@ import { CurrencyPipe } from '../../../Allpipes/currency.pipe'
     PendingHistoryComponent,
     RLRefundHistoryComponent,
     TicketComponent,
+    RlfailedHistoryComponent,
+    RlagencyStatementComponent,
     CurrencyPipe
   ],
   imports: [
@@ -31,7 +35,9 @@ import { CurrencyPipe } from '../../../Allpipes/currency.pipe'
     CancellationHistoryComponent,
     PendingHistoryComponent,
     RLRefundHistoryComponent,
-    TicketComponent
+    TicketComponent,
+    RlfailedHistoryComponent,
+    RlagencyStatementComponent
   ]
 })
 export class TmoduleModule { }

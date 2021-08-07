@@ -1,0 +1,160 @@
+[
+    {
+        "Group_ID": "1",
+        "active": "false",
+        "title": "Admin",
+        "icon": "person-circle-outline",
+        "showDetails": "false",
+        "subMenu": [
+            {
+                "sid": "1",
+                "active": "false",
+                "title": "",
+                "url": "",
+                "icon": "",
+                "Eicon": "chevron-forward"
+            }
+        ]
+    },
+    {
+        "Group_ID": "2",
+        "active": "false",
+        "title": "Accounts",
+        "icon": "cash-outline",
+        "showDetails": "false",
+        "subMenu": [
+            {
+                "sid": "1",
+                "active": "false",
+                "title": "",
+                "url": "",
+                "icon": "",
+                "Eicon": "chevron-forward"
+            }
+        ]
+    },
+    {
+        "Group_ID": "3",
+        "active": "false",
+        "title": "Sales",
+        "icon": "analytics-outline",
+        "showDetails": "false",
+        "subMenu": [
+            {
+                "sid": "1",
+                "active": "false",
+                "title": "",
+                "url": "",
+                "icon": "",
+                "Eicon": "chevron-forward"
+            }
+        ]
+    },
+    {
+        "Group_ID": "4",
+        "title": "Flight",
+        "active": "false",
+        "icon": "airplane-outline",
+        "showDetails": "false",
+        "subMenu": [
+            {
+                "sid": "1",
+                "active": "false",
+                "title": "",
+                "url": "",
+                "icon": "",
+                "Eicon": "chevron-forward"
+            }
+        ]
+    },
+    {
+        "Group_ID": "5",
+        "title": "Rail",
+        "active": "true",
+        "icon": "train-outline",
+        "showDetails": "false",
+        "subMenu": [
+            {
+                "sid": "1",
+                "active": "false",
+                "title": "BookingHistory",
+                "url": "RlBookingHistory",
+                "icon": "navigate-outline",
+                "Eicon": "chevron-forward"
+            },
+            {
+                "sid": "2",
+                "active": "false",
+                "title": " PendingHistory",
+                "url": "RLPending",
+                "icon": "navigate-outline",
+                "Eicon": "chevron-forward"
+            },
+            {
+                "sid": "3",
+                "active": "false",
+                "title": " RLRefundHistory",
+                "url": "RLRefund",
+                "icon": "navigate-outline",
+                "Eicon": "chevron-forward"
+            },
+            {
+                "sid": "4",
+                "active": "false",
+                "title": "RLAgentList  ",
+                "url": "RLAgent",
+                "icon": "navigate-outline",
+                "Eicon": "chevron-forward"
+            },
+            {
+                "sid": "5",
+                "active": "false",
+                "title": "CancellationHistory",
+                "url": "RLCancel",
+                "icon": "navigate-outline",
+                "Eicon": "chevron-forward"
+            },
+            {
+                "sid": "6",
+                "active": "false",
+                "title": " AgentAuthorization ",
+                "url": "RLAgentAuth",
+                "icon": "navigate-outline",
+                "Eicon": "chevron-forward"
+            },
+            {
+                "sid": "7",
+                "active": "false",
+                "title": " RLFailedHistory ",
+                "url": "RLFailed",
+                "icon": "navigate-outline",
+                "Eicon": "chevron-forward"
+            },
+            {
+                "sid": "8",
+                "active": "false",
+                "title": " RLAgencyStatement ",
+                "url": "RLAgencyStatement",
+                "icon": "navigate-outline",
+                "Eicon": "chevron-forward"
+            }
+        ]
+    },
+    {
+        "Group_ID": "6",
+        "title": "Miscellaneous",
+        "active": "false",
+        "icon": "extension-puzzle-outline",
+        "showDetails": "false",
+        "subMenu": [
+            {
+                "sid": "1",
+                "active": "false",
+                "title": "",
+                "url": "",
+                "icon": "",
+                "Eicon": "chevron-forward"
+            }
+        ]
+    }
+]

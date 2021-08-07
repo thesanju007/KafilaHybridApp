@@ -208,7 +208,7 @@
               <ion-row class="bdr ion-padding">
                 <ion-col size-xs="8" size-sm="8" size-md="10" size-lg="8" size-xs="8">
                   <h3>
-                    Rail Cancellation History
+                    Rail Failed History
                   </h3>
                 </ion-col>
                 <ion-col size-xs="4" size-sm="4" size-md="2" size-lg="4" size-xs="4" class="ion-text-center">
@@ -262,8 +262,8 @@
 
     <ion-card class="ion-padding ion-margin-top" *ngIf="tabShow">
       <span>Total Result = {{agtList.length}}</span>
-      <table class="ion-text-center" >
-        <thead >
+      <table>
+        <thead class="ion-text-center">
           <tr>
             <th class="padding">
               #
@@ -272,8 +272,11 @@
               Booking Id
             </th>
             <th class="padding">
-              Cancellation Id
-             
+              Email Id
+              <ion-icon name="caret-down-outline" *ngIf="down1" (click)="sortMailAsc()"
+                style="cursor: pointer; color: red;"></ion-icon>
+              <ion-icon name="caret-up-outline" *ngIf="up1" (click)="sortMailDesc()"
+                style="cursor: pointer; color: red;"></ion-icon>
             </th>
             <th class="padding">
               FID
@@ -281,61 +284,48 @@
             <th class="padding">
               RID
             </th>
+
             <th class="padding">
-              PNR
+              Amount
+              <ion-icon name="caret-down-outline" *ngIf="down" (click)="sortBalAsc()"
+                style="cursor: pointer; color: red;"></ion-icon>
+              <ion-icon name="caret-up-outline" *ngIf="up" (click)="sortBalDesc()" style="cursor: pointer; color: red;">
+              </ion-icon>
+            </th>
+
+            <th class="padding">
+              Dep Date
             </th>
             <th class="padding">
-              Cancel Charge
-              <ion-icon name="caret-down-outline" *ngIf="down" (click)="sortBalAscC()"
+              Time
+              <ion-icon name="caret-down-outline" *ngIf="down2" (click)="sortDateAsc()"
                 style="cursor: pointer; color: red;"></ion-icon>
-              <ion-icon name="caret-up-outline" *ngIf="up" (click)="sortBalDescC()"
+              <ion-icon name="caret-up-outline" *ngIf="up2" (click)="sortDateDesc()"
                 style="cursor: pointer; color: red;"></ion-icon>
             </th>
             <th class="padding">
-             Refund Amount
-             <ion-icon name="caret-down-outline" *ngIf="down1" (click)="sortBalAscR()"
-             style="cursor: pointer; color: red;"></ion-icon>
-           <ion-icon name="caret-up-outline" *ngIf="up1" (click)="sortBalDescR()"
-             style="cursor: pointer; color: red;"></ion-icon>
+              OI
             </th>
             <th class="padding">
               Status
-              <!-- <ion-icon name="caret-down-outline" *ngIf="down2" (click)="sortBalAscR()"
-              style="cursor: pointer; color: red;"></ion-icon>
-            <ion-icon name="caret-up-outline" *ngIf="up2" (click)="sortBalDescR()"
-              style="cursor: pointer; color: red;"></ion-icon> -->
             </th>
-            <th class="padding">
-              Req Time
-              <ion-icon name="caret-down-outline" *ngIf="down4" (click)="sortDateAsc()"
-                style="cursor: pointer; color: red;"></ion-icon>
-              <ion-icon name="caret-up-outline" *ngIf="up4" (click)="sortDateDesc()"
-                style="cursor: pointer; color: red;"></ion-icon>
-            </th>
-            <th class="padding">
-              Res Time
-              <ion-icon name="caret-down-outline" *ngIf="down4" (click)="sortDateAsc()"
-                style="cursor: pointer; color: red;"></ion-icon>
-              <ion-icon name="caret-up-outline" *ngIf="up4" (click)="sortDateDesc()"
-                style="cursor: pointer; color: red;"></ion-icon>
-            </th>
-            
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let d of agtList, index as i" class="hvr">
-            <td >{{i+1}}</td>
-            <td style="color: red; text-decoration: underline;cursor: pointer" (click)="PNR(d)">{{d.BOOKING_ID}}</td>
-            <td>{{d.CANCELATION_ID}}</td>
-            <td>{{d.FID}}</td>
-            <td >{{d.RID}}</td>
-            <td >{{d.PNR}}</td>
-            <td >{{d.CANCEL_CHARGE | currency:'INR'}}</td>
-            <td >{{d.REFUND_AMT | currency:'INR'}}</td>
-            <td ><span [style.background-color]="d.STATUS==false ? 'red' : 'green'" class="dot"></span></td>
-            <td >{{d.REQ_TIME | date: 'dd/MM/yyyy'}} {{d.REQ_TIME | date:"HH:mm"}}</td>
-            <td >{{d.RES_TIME | date: 'dd/MM/yyyy'}} {{d.RES_TIME | date:"HH:mm"}}</td>
-           
+            <td class="ion-text-center">{{i+1}}</td>
+            <td class="ion-text-center" style="color: red;cursor: pointer" (click)="PNR(d)">{{d.BOOKING_ID}}</td>
+            <td>{{d.EMAIL_ID}}</td>
+            <td class="ion-text-center">{{d.FID}}</td>
+            <td class="ion-text-center">{{d.RID}}</td>
+            <td class="ion-text-center">{{d.AMOUNT | currency:'INR'}}</td>
+            
+            <td class="ion-text-center">{{d.DEP_DATE | date: 'dd/MM/yyyy'}}</td>
+            <td class="ion-text-center">{{d.ETIME | date: 'dd/MM/yyyy'}} {{d.ETIME | date:"HH:mm"}}</td>
+            <td class="ion-text-center">{{d.OI}}</td>
+            <td class="ion-text-center"><span [style.background-color]="d.STATUS==false ? 'red' : 'green'"
+                class="dot"></span></td>
+
           </tr>
         </tbody>
       </table>

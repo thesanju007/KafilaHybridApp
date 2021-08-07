@@ -34,6 +34,7 @@ export class IndexPage implements OnInit {
     });
   }
 
+
   set_cre = new FormGroup({
     cre1: new FormControl('', [Validators.required]),
     cre2: new FormControl('', [Validators.required]),
@@ -45,13 +46,12 @@ export class IndexPage implements OnInit {
   decode(password) {
     this.passwordMd5 = Md5.hashStr(password).toString();
   }
-
   ccGetData(e) {
     this.show = false
     e.preventDefault();
     if (this.set_cre.value.cre1 !== "" && this.set_cre.value.cre2 !== "" && this.set_cre.value.cre3 !== "" && this.set_cre.value.cre4 !== "") {
       this.decode(this.set_cre.value.cre2.toUpperCase() + "|" + this.set_cre.value.cre3.toUpperCase());
-      let ccLoginData = {
+  let ccLoginData = {
         "P_TYPE": "CC",
         "R_TYPE": "MGMT",
         "R_NAME": "GET_LOGIN",
@@ -60,16 +60,18 @@ export class IndexPage implements OnInit {
         "MODULE": this.set_cre.value.cre4,
         "IP": this.ipAddress.ip,
         "TOKEN": this.passwordMd5,
-        "ENV": "D",
+        "ENV": "P",
         "Version": "1.0.0.0.0.0"
       }
       let jccLoginData = JSON.stringify(ccLoginData)
+      console.log(jccLoginData)
       this.tService.postTestData("CC", jccLoginData).subscribe(result => {
         if (result.response !== "") {
+          console.log(result)
           sessionStorage.setItem("LoginDetails", jccLoginData)
           sessionStorage.setItem("Menu", result.response)
           sessionStorage.setItem("Name", this.set_cre.value.cre2)
-          this.rout.navigate(['/cchome'])
+         this.rout.navigate(['/cchome'])
 
         }
 

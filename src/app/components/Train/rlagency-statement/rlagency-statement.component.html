@@ -13,11 +13,11 @@
       <ion-grid>
         <ion-row>
           <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12" class="ion-padding">
-            <form [formGroup]="agtLstGP" (ngSubmit)="AgtSrhBtn($event)">
+            <form [formGroup]="agtLstGP" (ngSubmit)="AgtSrhBtn()">
               <ion-row class="bdr ion-padding">
                 <ion-col size-xs="8" size-sm="8" size-md="10" size-lg="8" size-xs="8">
                   <h3>
-                    Rail Authorization
+                    Rail Agency Statement
                   </h3>
                 </ion-col>
                 <ion-col size-xs="4" size-sm="4" size-md="2" size-lg="4" size-xs="4" class="ion-text-center">
@@ -31,16 +31,27 @@
 
                 </ion-col>
                 <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xs="12">
-                  <ion-radio-group value="None">
-                    <ion-radio value="Id" (click)="agtId()"></ion-radio>
+                  <ion-radio-group value="Date">
+                    <ion-radio value="Id" (click)="AgentActive()"></ion-radio>
                     <ion-label class="R-label">Agent Id</ion-label>
-                    <ion-radio value="None" (click)="none()"></ion-radio>
-                    <ion-label class="R-label">None</ion-label>
+                    <ion-radio value="Date" (click)="DateActive()"></ion-radio>
+                    <ion-label class="R-label">Date Wise</ion-label>
                   </ion-radio-group>
+
+                </ion-col>
+                <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
+                  <fieldset [disabled]="!dateDis">
+                    <input formControlName="RAID" maxlength="8" min="8" placeholder="Agent ID" (keydown)="btnActive()">
+                  </fieldset>
                 </ion-col>
                 <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
                   <fieldset [disabled]="dateDis">
-                    <input formControlName="RAID" maxlength="8" min="8" placeholder="Agent ID" (keydown)="btnActive()">
+                    <input formControlName="FROM" type="date" [max]="maxDate" (change)="btnActive()">
+                  </fieldset>
+                </ion-col>
+                <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
+                  <fieldset [disabled]="dateDis">
+                    <input formControlName="TO" type="date" [max]="maxDate" (change)="btnActive()">
                   </fieldset>
                 </ion-col>
                 <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
@@ -52,45 +63,32 @@
             </form>
 
 
+
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-card>
-
-    <ion-card class="ion-padding ion-margin-top" *ngIf="tabShow">
+    <ion-card *ngIf="tabShow" class="ion-text-center ion-padding">
       <span>Total Result = {{agtList.length}}</span>
       <table>
-        <thead class="ion-text-center">
+        <thead>
           <tr>
             <th class="padding">
               #
             </th>
             <th class="padding">
-              Company Name
-              <ion-icon name="caret-down-outline" *ngIf="down3" (click)="sortCnameAsc()"
-                style="cursor: pointer; color: red;"></ion-icon>
-              <ion-icon name="caret-up-outline" *ngIf="up3" (click)="sortCnameDesc()"
-                style="cursor: pointer; color: red;"></ion-icon>
+              Booking Id
             </th>
             <th class="padding">
-              EmailID
-              <ion-icon name="caret-down-outline" *ngIf="down1" (click)="sortMailAsc()"
-                style="cursor: pointer; color: red;"></ion-icon>
-              <ion-icon name="caret-up-outline" *ngIf="up1" (click)="sortMailDesc()"
-                style="cursor: pointer; color: red;"></ion-icon>
+              ID
             </th>
             <th class="padding">
-              RAID
+              Agent Id
             </th>
             <th class="padding">
-              Rail Id
+              Alias
             </th>
-            <th class="padding">
-              Rail Pwd
-            </th>
-            <th class="padding">
-              Mobile
-            </th>
+
             <th class="padding">
               Balance
               <ion-icon name="caret-down-outline" *ngIf="down" (click)="sortBalAsc()"
@@ -99,11 +97,10 @@
               </ion-icon>
             </th>
             <th class="padding">
-              Status
-              <ion-icon name="caret-down-outline" *ngIf="statusF" (click)="sortstatusAsc()"
-                style="cursor: pointer; color: red;"></ion-icon>
-              <ion-icon name="caret-up-outline" *ngIf="statusT" (click)="sortstatusAsc()"
-                style="cursor: pointer; color: red;"></ion-icon>
+              Credit
+            </th>
+            <th class="padding">
+              Debit
             </th>
             <th class="padding">
               Time
@@ -112,24 +109,38 @@
               <ion-icon name="caret-up-outline" *ngIf="up2" (click)="sortDateDesc()"
                 style="cursor: pointer; color: red;"></ion-icon>
             </th>
+            <th class="padding">
+              Remark
+            </th>
+            <!-- <th class="padding">
+              S Remark
+            </th> -->
+            <th class="padding">
+              Status
+            </th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let d of agtList, index as i" class="hvr">
-            <td class="ion-text-center">{{i+1}}</td>
-            <td>{{d.COMP_NAME}}</td>
-            <td>{{d.EMAIL}}</td>
-            <td class="ion-text-center">{{d.RAID}}</td>
-            <td class="ion-text-center">{{d.RAIL_ID}}</td>
-            <td class="ion-text-center">{{d.RAIL_PWD}}</td>
-            <td class="ion-text-center">{{d.MOBILE}}</td>
-            <td class="ion-text-center">{{d.BALANCE | currency:'INR'}}</td>
-            <td class="ion-text-center"><span [style.background-color]="d.STATUS==false ? 'red' : 'green'"
-                class="dot"></span></td>
-            <td class="ion-text-center">{{d.ETIME | date: 'dd/MM/yyyy'}} {{d.ETIME | date:"HH:mm"}}</td>
+            <td>{{i+1}}</td>
+            <td style="color: red; text-decoration: underline;cursor: pointer" (click)="PNR(d)">{{d.BOOKING_ID}}</td>
+            <td>{{d.ID}}</td>
+            <td>{{d.AGENT_ID}}</td>
+            <td>{{d.ALIAS}}</td>
+            <td>{{d.BALANCE | currency:'INR'}}</td>
+            <td>{{d.CREDIT | currency:'INR'}}</td>
+            <td>{{d.DEBIT | currency:'INR'}}</td>
+            <td>{{d.ETIME | date: 'dd/MM/yyyy'}} {{d.ETIME | date:"HH:mm"}}</td>
+            <td>{{d.REMARK}}</td>
+            <!-- <td >{{d.S_REMARK}}</td> -->
+            <td><span [style.background-color]="d.STATUS==false ? 'red' : 'green'" class="dot"></span></td>
           </tr>
         </tbody>
       </table>
     </ion-card>
+
+
+
+
   </ion-content>
 </ion-app>

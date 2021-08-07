@@ -12,7 +12,7 @@ export class HomePage implements OnInit {
   Menu: any;
   clickEventSubs: Subscription
   bigMenu = false;
-
+  name
   constructor(private route: Router, private tService: TestService) {
     this.clickEventSubs = this.tService.getClickEvent().subscribe(() => {
       this.toggleMenu();
@@ -23,7 +23,7 @@ export class HomePage implements OnInit {
   ngOnInit() {
     let test = sessionStorage.getItem("Menu")
    this.Menu = JSON.parse(test)
-    
+   this.name = sessionStorage.getItem("Name")
      
     //console.log(this.Menu)
   }

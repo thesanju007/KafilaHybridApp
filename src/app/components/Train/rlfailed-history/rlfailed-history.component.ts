@@ -2,31 +2,35 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TestService } from '../../../Services/test.service'
 import { LoadingController } from '@ionic/angular';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 @Component({
-  selector: 'app-pending-history',
-  templateUrl: './pending-history.component.html',
-  styleUrls: ['./pending-history.component.scss'],
+  selector: 'app-rlfailed-history',
+  templateUrl: './rlfailed-history.component.html',
+  styleUrls: ['./rlfailed-history.component.scss'],
 })
-export class PendingHistoryComponent implements OnInit {
+export class RlfailedHistoryComponent implements OnInit {
 
   maxDate = new Date(new Date().getTime()).toISOString().split('T')[0];
-  constructor(private tService: TestService, public loadingController: LoadingController) { }
-  login_Details
-  tabShow = false
-  dateDis = false
-  agtList
-  skArr = []
-  skeltonShow = false
+
   subscription: Subscription
+
+  constructor(private tService: TestService, public loadingController: LoadingController, private route: Router) { }
+  login_Details
+  skArr = []
+  agtList
+  tabShow = false
+  skeltonShow = false
   ngOnInit() {
     let Json_LD = sessionStorage.getItem("LoginDetails")
     this.login_Details = JSON.parse(Json_LD)
+
     for (let i = 0; i <= 30; i++) {
       this.skArr.push(i)
     }
-
   }
+
+  dateDis = false
   AgentActive() {
     this.dateDis = true
     this.agtLstGP.reset()
@@ -42,7 +46,7 @@ export class PendingHistoryComponent implements OnInit {
     this.btn = false
   }
   booleanValue = false
-  evv = "p"
+  evv="p"
   toggle() {
     this.booleanValue = !this.booleanValue
     if (this.booleanValue == true) {
@@ -52,7 +56,9 @@ export class PendingHistoryComponent implements OnInit {
       this.evv = "P"
     }
   }
+
   agtLstGP = new FormGroup({
+
     RAID: new FormControl(),
     FROM: new FormControl(this.maxDate),
     TO: new FormControl(this.maxDate),
@@ -63,39 +69,38 @@ export class PendingHistoryComponent implements OnInit {
     this.tService.present()
     this.skeltonShow = true
     this.tabShow = false
-    let pndHistList = {
+    let bknHisData = {
       "P_TYPE": "CC",
       "R_TYPE": "RAIL",
-      "R_NAME": "RL_PENDING_HISTORY",
+      "R_NAME": "RL_FAILED_HISTORY",
       "R_DATA": {
         "RAID": this.agtLstGP.value.RAID || "",
         "FROM": this.agtLstGP.value.FROM || "",
         "TO": this.agtLstGP.value.TO || "",
         "MODULE": "D",
-        "STATUS": false
+        "STATUS": true
       },
       "AID": this.login_Details.AID,
       "MODULE": this.login_Details.MODULE,
       "IP": this.login_Details.IP,
       "TOKEN": this.login_Details.TOKEN,
-      "ENV": this.evv,
+      "ENV":this.evv,
       "Version": "1.0.0.0.0.0"
     }
-
-    let jPndHistList = JSON.stringify(pndHistList)
-    // console.log(jPndHistList)
-    this.subscription = this.tService.postTestData("CC", jPndHistList).subscribe(result => {
-      if (result.response !== "") {
-        this.tService.dismiss()
+    let jbknHisData = JSON.stringify(bknHisData)
+    // console.log(jbknHisData)
+    this.subscription = this.tService.postTestData("CC", jbknHisData).subscribe(result => {
+      if (result.response !== "0") {
         // this.skeltonShow = false
-        this.tabShow = true
         this.agtList = JSON.parse(result.response)
         // console.log(this.agtList)
+        this.tabShow = true
+        this.tService.dismiss()
+
       }
 
     });
   }
-
   up = false
   down = true
   up1 = false
@@ -146,82 +151,13 @@ export class PendingHistoryComponent implements OnInit {
     });
   }
 
+
+
   PNR(d) {
     this.tService.viewMore(d)
   }
-  checktoirctc(d) {
-
-
-    let pndHistList = {
-      "P_TYPE": "CC",
-      "R_TYPE": "RAIL",
-      "R_NAME": "RL_CHK_BOOKING_IRCTC",
-      "R_DATA": {
-        "RAID": d.RID,
-        "BOOKING_ID": d.BOOKING_ID,
-        "REQUIRED_RESULT": false
-
-      },
-      "AID": this.login_Details.AID,
-      "MODULE": this.login_Details.MODULE,
-      "IP": this.login_Details.IP,
-      "TOKEN": this.login_Details.TOKEN,
-      "ENV": this.evv,
-      "Version": "1.0.0.0.0.0"
-    }
-
-    let jPndHistList = JSON.stringify(pndHistList)
-    console.log(jPndHistList)
-    this.tService.postTestData("CC", jPndHistList).subscribe(result => {
-      localStorage.setItem("chkbooking", result.response)
-      if (result.response !== "") {
-        this.tService.dismiss()
-        this.agtList = JSON.parse(result.response)
-        console.log(this.agtList);
-        window.open("/rlchkbookingirctc", "_blank", 'location=yes,height=770,width=1200,scrollbars=yes,status=yes')
-
-      }
-
-    });
-
-  }
-  refund(d) {
-    this.tService.present()
-
-    let pndHistList = {
-      "P_TYPE": "CC",
-      "R_TYPE": "RAIL",
-      "R_NAME": "RL_REFUND_PROCESS",
-      "R_DATA": {
-        "REFUND_TYPE": "FAILED_BOOKING",
-        "RID": d.RID,
-        "FID": d.FID,
-        "BOOKING_ID": d.BOOKING_ID,
-        "STAFF": "SANJEEV"
-      },
-      "AID": this.login_Details.AID,
-      "MODULE": this.login_Details.MODULE,
-      "IP": this.login_Details.IP,
-      "TOKEN": this.login_Details.TOKEN,
-      "ENV": this.evv,
-      "Version": "1.0.0.0.0.0"
-    }
-
-    let jPndHistList = JSON.stringify(pndHistList)
-    console.log(jPndHistList)
-    this.tService.postTestData("CC", jPndHistList).subscribe(result => {
-      localStorage.setItem("refund", result.response)
-      if (result.response !== "") {
-        this.tService.dismiss()
-        this.agtList = JSON.parse(result.response)
-        console.log(this.agtList);
-        window.open("/refundtoagent", "_blank", 'location=yes,height=770,width=1200,scrollbars=yes,status=yes')
-
-      }
-
-    });
-
-  }
-
+  // ngOnDestroy(): void {
+  //   this.subscription.unsubscribe()
+  // }
 
 }

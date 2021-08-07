@@ -142,7 +142,7 @@ export class TestService {
         this.dismiss()
         console.log(result.response)
         sessionStorage.setItem("ticketInfo", result.response)
-        window.open("RlTicket", "_blank")
+        window.open("RlTicket", "_blank",'location=yes,height=770,width=1200,scrollbars=yes,status=yes')
       }
     });
   }

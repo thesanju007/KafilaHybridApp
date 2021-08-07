@@ -50,6 +50,17 @@ export class RLAgentListComponent implements OnInit {
   btnActive() {
    this.btn=false
   }
+  booleanValue = false
+  evv="p"
+  toggle() {
+    this.booleanValue = !this.booleanValue
+    if (this.booleanValue == true) {
+      this.evv = "D"
+    }
+    else {
+      this.evv = "P"
+    }
+  }
  
   agtLstGP = new FormGroup({
     RAID: new FormControl(),
@@ -57,7 +68,7 @@ export class RLAgentListComponent implements OnInit {
     TO: new FormControl(),
   })
   AgtSrhBtn(e) {
-    // this.present()
+    this.tService.present()
     e.preventDefault();
     this.tabShow=false
     this.skeltonShow = true
@@ -74,18 +85,18 @@ export class RLAgentListComponent implements OnInit {
       "MODULE": this.login_Details.MODULE,
       "IP": this.login_Details.IP,
       "TOKEN": this.login_Details.TOKEN,
-      "ENV": "D",
+      "ENV":this.evv,
       "Version": "1.0.0.0.0.0"
     }
     let jAgtList = JSON.stringify(agtList)
-    console.log(jAgtList)
+    // console.log(jAgtList)
     this.subscription = this.tService.postTestData("CC", jAgtList).subscribe(result => {
       if (result.response !== "") {
-        // this.dismiss()
-        this.skeltonShow = false
+        this.tService.dismiss()
+        // this.skeltonShow = false
         this.tabShow = true
         this.agtList = JSON.parse(result.response)
-        console.log(this.agtList)
+   
       }
 
     });
@@ -138,33 +149,11 @@ export class RLAgentListComponent implements OnInit {
       return <any>new Date(b.ETIME) - <any>new Date(a.ETIME);
     });
   }
-  isLoading = false;
-  async present() {
-    this.isLoading = true;
-    return await this.loadingController.create({
-      message: 'Loading',
-      mode: 'ios',
-      backdropDismiss: false,
-      spinner: 'bubbles',
-      // duration: 2000
-    }).then(a => {
-      a.present().then(() => {
-        console.log('presented');
-        if (!this.isLoading) {
-          a.dismiss().then(() => console.log());
-        }
-      });
-    });
-  }
-
-  async dismiss() {
-    this.isLoading = false;
-    return await this.loadingController.dismiss().then(() => console.log());
-  }
 
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe()
-  }
+
+  // ngOnDestroy(): void {
+  //   this.subscription.unsubscribe()
+  // }
 
 }

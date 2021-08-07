@@ -1,0 +1,333 @@
+<!-- <ion-app>
+  <ion-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12" class="ion-padding">
+          <form [formGroup]="agtLstGP" (ngSubmit)="AgtSrhBtn($event)">
+            <ion-row class="bdr ion-padding">
+              <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xs="12">
+                <ion-radio-group value="Id">
+                  <ion-radio value="Id" (click)="AgentActive()"></ion-radio>
+                  <ion-label class="R-label">Agent Id</ion-label>
+                  <ion-radio value="Date" (click)="DateActive()"></ion-radio>
+                  <ion-label class="R-label">Date Wise</ion-label>
+                </ion-radio-group>
+              </ion-col>
+              <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
+                <fieldset [disabled]="!dateDis">
+                  <input formControlName="RAID" maxlength="8" min="8" placeholder="Agent ID" (keydown)="btnActive()">
+                </fieldset>
+              </ion-col>
+              <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
+                <fieldset [disabled]="dateDis">
+                  <input formControlName="FROM" type="date" [max]="maxDate" (change)="btnActive()">
+                </fieldset>
+              </ion-col>
+              <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
+                <fieldset [disabled]="dateDis">
+                  <input formControlName="TO" type="date" [max]="maxDate" (change)="btnActive()">
+                </fieldset>
+              </ion-col>
+              <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
+                <button class="ccL-btn" type="submit" [disabled]="btn">
+                  <ion-icon slot="start" name="search"></ion-icon> Search Agents
+                </button>
+              </ion-col>
+            </ion-row>
+          </form>
+
+          <table class="ion-text-center" *ngIf="tabShow">
+            <thead>
+              <tr>
+                <th class="padding">
+                  #
+                </th>
+                <th class="padding">
+                  BookingID
+                </th>
+                <th class="padding">
+                  EmailID
+                  <ion-icon name="caret-down-outline" *ngIf="down1" (click)="sortMailAsc()"
+                    style="cursor: pointer; color: red;"></ion-icon>
+                  <ion-icon name="caret-up-outline" *ngIf="up1" (click)="sortMailDesc()"
+                    style="cursor: pointer; color: red;"></ion-icon>
+                </th>
+                <th class="padding">
+                  FID 
+                </th>
+                <th class="padding">
+                  RID
+                </th>
+                <th class="padding">
+                  PNR
+                </th>
+                <th class="padding">
+                  Amount
+                  <ion-icon name="caret-down-outline" *ngIf="down" (click)="sortBalAsc()"
+                    style="cursor: pointer; color: red;"></ion-icon>
+                  <ion-icon name="caret-up-outline" *ngIf="up" (click)="sortBalDesc()"
+                    style="cursor: pointer; color: red;"></ion-icon>
+                </th>
+                <th class="padding">
+                  Status
+                </th>
+                <th class="padding">
+                  Dep Date
+                </th>
+                <th class="padding">
+                  Time
+                  <ion-icon name="caret-down-outline" *ngIf="down2" (click)="sortDateAsc()"
+                    style="cursor: pointer; color: red;"></ion-icon>
+                  <ion-icon name="caret-up-outline" *ngIf="up2" (click)="sortDateDesc()"
+                    style="cursor: pointer; color: red;"></ion-icon>
+                </th>
+                <th class="padding">
+                  Details
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let d of agtList, index as i" class="hvr">
+                <td style="color: #017959;">{{i+1}}</td>
+                <td>{{d.BOOKING_ID}}</td>
+                <td>{{d.EMAIL_ID}}</td>
+                <td>{{d.FID}}</td>
+                <td>{{d.RID}}</td>
+                <td>{{d.PNR}}</td>
+                <td>{{d.AMOUNT | currency:'INR'}}</td>
+                <td><span [style.background-color]="d.STATUS==false ? 'red' : 'green'" class="dot"></span></td>
+                <td>{{d.DEP_DATE | date: 'dd/MM/yyyy'}}</td>
+                <td>{{d.ETIME | date: 'dd/MM/yyyy'}} {{d.ETIME | date:"HH:mm"}}</td>
+                <td *ngIf="d.PNR!==''" style="color: red; text-decoration: underline;cursor: pointer"
+                  (click)="PNR(d)">Pnr Details
+                </td>
+                <td *ngIf="d.PNR==''" style="text-decoration: underline;cursor: pointer" (click)="PNR(d)">
+                  Details
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="ion-text-center" *ngIf="skeltonShow">
+            <thead>
+              <tr>
+                <th class="padding">
+                  #
+                </th>
+                <th class="padding">
+                  BookingID
+                </th>
+                <th class="padding">
+                  EmailID
+                </th>
+                <th class="padding">
+                  FID
+                </th>
+                <th class="padding">
+                  RID
+                </th>
+                <th class="padding">
+                  PNR
+                </th>
+                <th class="padding">
+                  Amount
+                </th>
+                <th class="padding">
+                  Status
+                </th>
+                <th class="padding">
+                  Dep Date
+                </th>
+                <th class="padding">
+                  Time
+                </th>
+                <th class="padding">
+                  Details
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="hvr custom-skeleton" *ngFor="let x of skArr">
+                <td>
+                  <ion-skeleton-text animated style="width: 90%"></ion-skeleton-text>
+                </td>
+                <td>
+                  <ion-skeleton-text animated style="width: 90%"></ion-skeleton-text>
+                </td>
+                <td>
+                  <ion-skeleton-text animated style="width: 90%"></ion-skeleton-text>
+                </td>
+                <td>
+                  <ion-skeleton-text animated style="width: 90%"></ion-skeleton-text>
+                </td>
+                <td>
+                  <ion-skeleton-text animated style="width: 90%"></ion-skeleton-text>
+                </td>
+                <td>
+                  <ion-skeleton-text animated style="width: 90%"></ion-skeleton-text>
+                </td>
+                <td>
+                  <ion-skeleton-text animated style="width: 90%"></ion-skeleton-text>
+                </td>
+                <td>
+                  <ion-skeleton-text animated style="width: 90%"></ion-skeleton-text>
+                </td>
+                <td>
+                  <ion-skeleton-text animated style="width: 90%"></ion-skeleton-text>
+                </td>
+                <td>
+                  <ion-skeleton-text animated style="width: 90%"></ion-skeleton-text>
+                </td>
+                <td>
+                  <ion-skeleton-text animated style="width: 90%"></ion-skeleton-text>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+</ion-app> -->
+<ion-app>
+  <ion-header [translucent]="true">
+    <ion-toolbar class="ion-text-center">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <img alt="logo" id="header_logo" src="../assets/logo.png">
+      <!-- <ion-text> Dashboard</ion-text> -->
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-card class="ion-margin-top">
+      <ion-grid>
+        <ion-row>
+          <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12" class="ion-padding">
+            <form [formGroup]="agtLstGP" (ngSubmit)="AgtSrhBtn($event)">
+              <ion-row class="bdr ion-padding">
+                <ion-col size-xs="8" size-sm="8" size-md="10" size-lg="8" size-xs="8">
+                  <h3>
+                    Rail Refund History
+                  </h3>
+                </ion-col>
+                <ion-col size-xs="4" size-sm="4" size-md="2" size-lg="4" size-xs="4" class="ion-text-center">
+
+                  <ion-item lines="none">
+                    <ion-label class="pdn">Production</ion-label>
+                    <ion-toggle (click)="toggle()"></ion-toggle>
+                    <ion-label>Development</ion-label>
+                  </ion-item>
+
+
+                </ion-col>
+                <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xs="12">
+                  <ion-radio-group value="Date">
+                    <ion-radio value="Id" (click)="AgentActive()"></ion-radio>
+                    <ion-label class="R-label">Agent Id</ion-label>
+                    <ion-radio value="Date" (click)="DateActive()"></ion-radio>
+                    <ion-label class="R-label">Date Wise</ion-label>
+                  </ion-radio-group>
+
+                </ion-col>
+                <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
+                  <fieldset [disabled]="!dateDis">
+                    <input formControlName="RAID" maxlength="8" min="8" placeholder="Agent ID" (keydown)="btnActive()">
+                  </fieldset>
+                </ion-col>
+                <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
+                  <fieldset [disabled]="dateDis">
+                    <input formControlName="FROM" type="date" [max]="maxDate" (change)="btnActive()">
+                  </fieldset>
+                </ion-col>
+                <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
+                  <fieldset [disabled]="dateDis">
+                    <input formControlName="TO" type="date" [max]="maxDate" (change)="btnActive()">
+                  </fieldset>
+                </ion-col>
+                <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
+                  <button class="ccL-btn" type="submit" [disabled]="btn">
+                    <ion-icon slot="start" name="search"></ion-icon> Search
+                  </button>
+                </ion-col>
+              </ion-row>
+            </form>
+
+
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+
+    <ion-card class="ion-padding ion-margin-top" *ngIf="tabShow">
+      <span>Total Result = {{agtList.length}}</span>
+      <table>
+        <thead class="ion-text-center">
+          <tr>
+            <th class="padding">
+              #
+            </th>
+            <th class="padding">
+              Booking Id
+            </th>
+           
+            <th class="padding">
+              FID
+            </th>
+            <th class="padding">
+              RID
+            </th>
+
+            <th class="padding">
+              Amount
+              <ion-icon name="caret-down-outline" *ngIf="down" (click)="sortBalAsc()"
+                style="cursor: pointer; color: red;"></ion-icon>
+              <ion-icon name="caret-up-outline" *ngIf="up" (click)="sortBalDesc()" style="cursor: pointer; color: red;">
+              </ion-icon>
+            </th>
+
+           
+            <th class="padding">
+              Time
+              <ion-icon name="caret-down-outline" *ngIf="down2" (click)="sortDateAsc()"
+                style="cursor: pointer; color: red;"></ion-icon>
+              <ion-icon name="caret-up-outline" *ngIf="up2" (click)="sortDateDesc()"
+                style="cursor: pointer; color: red;"></ion-icon>
+            </th>
+            <th class="padding">
+              OI
+            </th>
+            <th class="padding">
+              Refund Type
+            </th>
+            <th class="padding">
+              Narration
+            </th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let d of agtList, index as i" class="hvr">
+            <td class="ion-text-center">{{i+1}}</td>
+            <td class="ion-text-center" style="color: red;cursor: pointer" (click)="PNR(d)">{{d.BOOKING_ID}}</td>
+           
+            <td class="ion-text-center">{{d.FID}}</td>
+            <td class="ion-text-center">{{d.RID}}</td>
+            <td class="ion-text-center">{{d.AMOUNT | currency:'INR'}}</td>
+            
+          
+            <td class="ion-text-center">{{d.ETIME | date: 'dd/MM/yyyy'}} {{d.ETIME | date:"HH:mm"}}</td>
+            <td class="ion-text-center">{{d.OI}}</td>
+            <td class="ion-text-center">{{d.REFUND_TYPE}}</td>
+            <td class="ion-text-center">{{d.NARRATION}}</td>
+            
+
+          </tr>
+        </tbody>
+      </table>
+
+    </ion-card>
+
+  </ion-content>
+</ion-app>
