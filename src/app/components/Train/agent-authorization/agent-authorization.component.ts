@@ -34,12 +34,13 @@ export class AgentAuthorizationComponent implements OnInit {
     this.dateDis = true
     this.agtLstGP.reset()
   }
+
   btn = false
   btnActive() {
     this.btn = false
   }
   booleanValue = false
-  evv="p"
+  evv = "p"
   toggle() {
     this.booleanValue = !this.booleanValue
     if (this.booleanValue == true) {
@@ -54,7 +55,7 @@ export class AgentAuthorizationComponent implements OnInit {
   })
   skeltonShow = false
   AgtSrhBtn(e) {
-    this.tService.present()
+    this.present()
     // this.skeltonShow = true
     this.tabShow = false
     let aBal = {
@@ -68,7 +69,7 @@ export class AgentAuthorizationComponent implements OnInit {
       "MODULE": this.login_Details.MODULE,
       "IP": this.login_Details.IP,
       "TOKEN": this.login_Details.TOKEN,
-      "ENV":this.evv,
+      "ENV":"P",
       "Version": "1.0.0.0.0.0"
     }
 
@@ -77,7 +78,7 @@ export class AgentAuthorizationComponent implements OnInit {
     this.subscription = this.tService.postTestData("CC", jaBal).subscribe(result => {
       if (result.response !== "") {
         this.agtList = JSON.parse(result.response)
-        this.tService.dismiss()
+        this.dismiss()
 
         // this.skeltonShow = false
         this.tabShow = true
@@ -94,21 +95,34 @@ export class AgentAuthorizationComponent implements OnInit {
   down2 = true
   up3 = false
   down3 = true
-  statusT=false
-  statusF=true
-  sortstatusAsc(){
+  statusT = false
+  statusF = true
+
+  sortstatusAsc() {
     this.statusF = false
     this.statusT = true
-    return this.agtList.filter((a) => {
-      console.log(a.STATUS)
-    //  return a.STATUS===true
+    return this.agtList.sort((a) => {
+      return a.STATUS == true
     });
-    
   }
-  sortstatuDesc(){
+
+  sortstatusDsc() {
+    this.statusF = true
+    this.statusT = false
+    return this.agtList.sort((a) => {
+      if (a.STATUS == false) {
+        console.log(a)
+        return a
+      }
+
+    });
+  }
+
+  sortstatuDesc() {
     this.statusF = true
     this.statusT = false
   }
+
   sortBalAsc() {
     this.down = false
     this.up = true
@@ -124,6 +138,7 @@ export class AgentAuthorizationComponent implements OnInit {
       return b.BALANCE - a.BALANCE;
     });
   }
+
   sortMailAsc() {
     this.down1 = false
     this.up1 = true
@@ -131,6 +146,7 @@ export class AgentAuthorizationComponent implements OnInit {
       return a.EMAIL.localeCompare(b.EMAIL);
     })
   }
+
   sortMailDesc() {
     this.down1 = true
     this.up1 = false
@@ -138,6 +154,7 @@ export class AgentAuthorizationComponent implements OnInit {
       return b.EMAIL.localeCompare(a.EMAIL);
     })
   }
+
   sortDateAsc() {
     this.down2 = false
     this.up2 = true
@@ -145,6 +162,7 @@ export class AgentAuthorizationComponent implements OnInit {
       return <any>new Date(a.ETIME) - <any>new Date(b.ETIME);
     });
   }
+
   sortDateDesc() {
     this.down2 = true
     this.up2 = false
@@ -152,6 +170,7 @@ export class AgentAuthorizationComponent implements OnInit {
       return <any>new Date(b.ETIME) - <any>new Date(a.ETIME);
     });
   }
+
   sortCnameAsc() {
     this.down3 = false
     this.up3 = true
@@ -159,6 +178,7 @@ export class AgentAuthorizationComponent implements OnInit {
       return a.COMP_NAME.localeCompare(b.COMP_NAME);
     })
   }
+
   sortCnameDesc() {
 
     this.down3 = true
@@ -168,7 +188,29 @@ export class AgentAuthorizationComponent implements OnInit {
     })
   }
 
+  isLoading = false;
+  async present() {
+    this.isLoading = true;
+    return await this.loadingController.create({
+      message: 'Loading',
+      mode: 'ios',
+      backdropDismiss: false,
+      spinner: 'bubbles',
+      // duration: 2000
+    }).then(a => {
+      a.present().then(() => {
+        console.log('presented');
+        if (!this.isLoading) {
+          a.dismiss().then(() => console.log());
+        }
+      });
+    });
+  }
 
+  async dismiss() {
+    this.isLoading = false;
+    return await this.loadingController.dismiss().then(() => console.log());
+  }
   // ngOnDestroy(): void {
   //   this.subscription.unsubscribe()
   // }

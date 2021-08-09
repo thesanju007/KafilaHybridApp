@@ -68,6 +68,7 @@ export class IndexPage implements OnInit {
       this.tService.postTestData("CC", jccLoginData).subscribe(result => {
         if (result.response !== "") {
           console.log(result)
+          this.show = true
           sessionStorage.setItem("LoginDetails", jccLoginData)
           sessionStorage.setItem("Menu", result.response)
           sessionStorage.setItem("Name", this.set_cre.value.cre2)

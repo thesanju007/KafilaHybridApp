@@ -68,7 +68,7 @@ export class RLAgentListComponent implements OnInit {
     TO: new FormControl(),
   })
   AgtSrhBtn(e) {
-    this.tService.present()
+    this.present()
     e.preventDefault();
     this.tabShow=false
     this.skeltonShow = true
@@ -85,14 +85,14 @@ export class RLAgentListComponent implements OnInit {
       "MODULE": this.login_Details.MODULE,
       "IP": this.login_Details.IP,
       "TOKEN": this.login_Details.TOKEN,
-      "ENV":this.evv,
+      "ENV":"P",
       "Version": "1.0.0.0.0.0"
     }
     let jAgtList = JSON.stringify(agtList)
     // console.log(jAgtList)
     this.subscription = this.tService.postTestData("CC", jAgtList).subscribe(result => {
       if (result.response !== "") {
-        this.tService.dismiss()
+        this.dismiss()
         // this.skeltonShow = false
         this.tabShow = true
         this.agtList = JSON.parse(result.response)
@@ -150,7 +150,29 @@ export class RLAgentListComponent implements OnInit {
     });
   }
 
+  isLoading = false;
+  async present() {
+    this.isLoading = true;
+    return await this.loadingController.create({
+      message: 'Loading',
+      mode: 'ios',
+      backdropDismiss: false,
+      spinner: 'bubbles',
+      // duration: 2000
+    }).then(a => {
+      a.present().then(() => {
+        console.log('presented');
+        if (!this.isLoading) {
+          a.dismiss().then(() => console.log());
+        }
+      });
+    });
+  }
 
+  async dismiss() {
+    this.isLoading = false;
+    return await this.loadingController.dismiss().then(() => console.log());
+  }
 
   // ngOnDestroy(): void {
   //   this.subscription.unsubscribe()

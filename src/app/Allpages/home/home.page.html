@@ -51,7 +51,7 @@
         </ion-item>
         <ion-list id="inbox-list" *ngFor="let d of Menu,let i = index" lines="none">
 
-          <ion-item *ngIf="d.active" (click)="toggleSubMenu(d)" (ionClick)="d.showDetails=!d.showDetails "
+          <ion-item *ngIf="d.active=='true'" (click)="toggleSubMenu(d)" (ionClick)="d.showDetails=!d.showDetails "
             class="main-tag line-up" lines="none">
             <ion-icon slot="start" name={{d.icon}}></ion-icon>
             <ion-label>{{d.title}}</ion-label>
