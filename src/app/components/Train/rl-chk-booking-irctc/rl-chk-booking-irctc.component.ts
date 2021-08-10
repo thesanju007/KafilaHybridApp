@@ -6,12 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rl-chk-booking-irctc.component.scss'],
 })
 export class RLCHKBOOKINGIRCTCComponent implements OnInit {
-data:any
+  data: any
   constructor() { }
 
-  ngOnInit() {  let test = localStorage.getItem("chkbooking")
-  this.data = JSON.parse(test)
-  console.log(this.data.RESULT.bookingErrorMessage)
-}
+  ngOnInit() {
+
+    let test = localStorage.getItem("chkbooking")
+    this.data = JSON.parse(test)
+    console.log(this.data.RESULT)
+  }
 
 }

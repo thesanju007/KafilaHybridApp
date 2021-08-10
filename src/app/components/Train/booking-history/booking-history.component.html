@@ -1,4 +1,3 @@
-
 <ion-app>
   <ion-header [translucent]="true">
     <ion-toolbar class="ion-text-center">
@@ -16,19 +15,17 @@
           <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12" class="ion-padding">
             <form [formGroup]="agtLstGP" (ngSubmit)="AgtSrhBtn($event)">
               <ion-row class="bdr ion-padding">
-                <ion-col size-xs="8" size-sm="8" size-md="10" size-lg="8" size-xs="8">
+                <ion-col size-xs="4" size-sm="4" size-md="8" size-lg="7" size-xs="7">
                   <h3>
                     Rail Booking History
                   </h3>
                 </ion-col>
-                <ion-col size-xs="4" size-sm="4" size-md="2" size-lg="4" size-xs="4" class="ion-text-center">
+                <ion-col size-xs="8" size-sm="8" size-md="4" size-lg="5" size-xs="5" class="ion-text-center">
 
-                  <ion-item lines="none">
-                    <ion-label class="pdn">Production</ion-label>
-                    <ion-toggle (click)="toggle()"></ion-toggle>
-                    <ion-label>Development</ion-label>
-                  </ion-item>
 
+                  <ion-label class="pdn">Production</ion-label>
+                  <ion-toggle (click)="toggle()"></ion-toggle>
+                  <ion-label>Development</ion-label>
 
                 </ion-col>
                 <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xs="12">
@@ -63,7 +60,6 @@
               </ion-row>
             </form>
 
-<!-- <button (click)="test()"> click</button> -->
 
           </ion-col>
         </ion-row>
@@ -72,7 +68,7 @@
 
     <ion-card class="ion-padding ion-margin-top" *ngIf="tabShow">
       <span>Total Result = {{agtList.length}}</span>
-      <table >
+      <table>
         <thead class="ion-text-center">
           <tr>
             <th class="padding">
@@ -131,13 +127,16 @@
             <td class="ion-text-center">{{d.RID}}</td>
             <td class="ion-text-center">{{d.PNR}}</td>
             <td class="ion-text-center">{{d.AMOUNT | currency:'INR'}}</td>
-            <td class="ion-text-center"><span [style.background-color]="d.STATUS==false ? 'red' : 'green'" class="dot"></span></td>
+            <td class="ion-text-center"><span [style.background-color]="d.STATUS==false ? 'red' : 'green'"
+                class="dot"></span></td>
             <td class="ion-text-center">{{d.DEP_DATE | date: 'dd/MM/yyyy'}}</td>
             <td class="ion-text-center">{{d.ETIME | date: 'dd/MM/yyyy'}} {{d.ETIME | date:"HH:mm"}}</td>
-            <td class="ion-text-center" *ngIf="d.PNR!==''" style="color: red; text-decoration: underline;cursor: pointer" (click)="PNR(d)">Pnr
+            <td class="ion-text-center" *ngIf="d.PNR!==''"
+              style="color: red; text-decoration: underline;cursor: pointer" (click)="PNR(d)">Pnr
               Details
             </td>
-            <td class="ion-text-center" *ngIf="d.PNR==''" style="text-decoration: underline;cursor: pointer" (click)="PNR(d)">
+            <td class="ion-text-center" *ngIf="d.PNR==''" style="text-decoration: underline;cursor: pointer"
+              (click)="PNR(d)">
               Details
             </td>
           </tr>

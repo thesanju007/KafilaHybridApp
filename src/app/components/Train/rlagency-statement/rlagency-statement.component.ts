@@ -89,15 +89,19 @@ export class RlagencyStatementComponent implements OnInit {
       "Version": "1.0.0.0.0.0"
     }
     let jbknHisData = JSON.stringify(bknHisData)
-    // console.log(jbknHisData)
+    console.log(jbknHisData)
     this.subscription = this.tService.postTestData(jbknHisData).subscribe(result => {
-      if (result.response !== "") {
-        // this.skeltonShow = false
+      console.log(result.response.length)
+      if (result.response.length>2) {
         this.agtList = JSON.parse(result.response)
-        // console.log(this.agtList)
+        console.log(this.agtList)
         this.tabShow = true
         this.dismiss()
 
+      }
+      else{
+        alert("No Data Found")
+        this.dismiss()
       }
 
     });
@@ -175,12 +179,16 @@ export class RlagencyStatementComponent implements OnInit {
     let jvObj = JSON.stringify(vObj)
     console.log(jvObj)
     this.tService.postTestData(jvObj).subscribe(result => {
-      if (result.response !== "") {
+      if (result.response!==null) {
 
        this.dismiss()
         console.log(result.response)
         sessionStorage.setItem("ticketInfo", result.response)
         window.open("RlTicket", "_blank")
+      }
+      else{
+        alert("No Data Found")
+        this.dismiss()
       }
     });
   }

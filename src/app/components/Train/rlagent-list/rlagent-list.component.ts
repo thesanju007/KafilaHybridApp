@@ -89,14 +89,16 @@ export class RLAgentListComponent implements OnInit {
       "Version": "1.0.0.0.0.0"
     }
     let jAgtList = JSON.stringify(agtList)
-    // console.log(jAgtList)
     this.subscription = this.tService.postTestData( jAgtList).subscribe(result => {
-      if (result.response !== "") {
+      if (result.response.length>2) {
         this.dismiss()
-        // this.skeltonShow = false
         this.tabShow = true
         this.agtList = JSON.parse(result.response)
    
+      }
+      else{
+        alert("No Data Found")
+        this.dismiss()
       }
 
     });

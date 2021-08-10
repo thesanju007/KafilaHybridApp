@@ -10,22 +10,23 @@ a {
   text-decoration: none;
   color: rgb(228, 68, 68);
   text-align: center;
-  padding: 20px 0;
+  // padding: 25px 0;
 }
 
 .popover__wrapper {
   position: relative;
-  margin-top: 0.5rem;
   display: inline-block;
 }
 .popover__content {
   opacity: 0;
   visibility: hidden;
   position: absolute;
-  padding: 1.0rem;
-  left: -300px;
+  // padding: 1.0rem;
+  left: -250px;
+   top: 60px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
   width: 350px;
+  background-color: #ddd;
 }
 
 .popover__wrapper:hover .popover__content {
@@ -41,7 +42,9 @@ a {
 
 .after_hoverbtn1{width: 45%;margin-left: 10px;}
 
-
+.spl{
+  padding-bottom: 40px;
+}
 
 
 *{
@@ -135,7 +138,7 @@ a {
   }
   td{
   border: 1px solid rgba(221, 221, 221, 0.557);
-  padding: 0px 0px;
+  padding: 10px 0px;
   font-size:13px;
   color:#000;
   // word-spacing: 2px;
@@ -165,12 +168,8 @@ a {
   ion-item{
       border: none;
   }
-  .pdn{
-      padding: 0px 0px 0px 130px;
-
-  }
   ion-toggle{
-      margin-right: 10px;
+    padding: 20px 5px 5px 5px;
   }
   @media only screen and (max-width: 767px) {
     .R-label{

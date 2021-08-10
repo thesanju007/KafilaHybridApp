@@ -15,17 +15,18 @@
           <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12" class="ion-padding">
             <form [formGroup]="agtLstGP" (ngSubmit)="AgtSrhBtn($event)">
               <ion-row class="bdr ion-padding">
-                <ion-col size-xs="8" size-sm="8" size-md="10" size-lg="8" size-xs="8">
+                <ion-col size-xs="4" size-sm="4" size-md="8" size-lg="7" size-xs="7">
                   <h3>
                     Rail Authorization
                   </h3>
                 </ion-col>
-                <ion-col size-xs="4" size-sm="4" size-md="2" size-lg="4" size-xs="4" class="ion-text-center">
-                  <ion-item lines="none">
-                    <ion-label class="pdn">Production</ion-label>
-                    <ion-toggle (click)="toggle()"></ion-toggle>
-                    <ion-label>Development</ion-label>
-                  </ion-item>
+                <ion-col size-xs="8" size-sm="8" size-md="4" size-lg="5" size-xs="5" class="ion-text-center">
+
+
+                  <ion-label class="pdn">Production</ion-label>
+                  <ion-toggle (click)="toggle()"></ion-toggle>
+                  <ion-label>Development</ion-label>
+
                 </ion-col>
                 <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xs="12">
                   <ion-radio-group value="None">

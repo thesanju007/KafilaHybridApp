@@ -3,6 +3,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TestService } from '../../../Services/test.service'
 import { LoadingController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
+import { TicketComponent } from '../ticket/ticket.component'
+import { ModalController } from '@ionic/angular';
+import { RefundToAgentComponent } from '../refund-to-agent/refund-to-agent.component';
+import { RLCHKBOOKINGIRCTCComponent } from '../rl-chk-booking-irctc/rl-chk-booking-irctc.component'
 @Component({
   selector: 'app-pending-history',
   templateUrl: './pending-history.component.html',
@@ -11,7 +15,7 @@ import { Subscription } from 'rxjs';
 export class PendingHistoryComponent implements OnInit {
 
   maxDate = new Date(new Date().getTime()).toISOString().split('T')[0];
-  constructor(private tService: TestService, public loadingController: LoadingController) { }
+  constructor(private tService: TestService, public loadingController: LoadingController, public modalController: ModalController) { }
   login_Details
   tabShow = false
   dateDis = false
@@ -61,7 +65,6 @@ export class PendingHistoryComponent implements OnInit {
 
     e.preventDefault();
     this.present()
-    this.skeltonShow = true
     this.tabShow = false
     let pndHistList = {
       "P_TYPE": "CC",
@@ -83,16 +86,17 @@ export class PendingHistoryComponent implements OnInit {
     }
 
     let jPndHistList = JSON.stringify(pndHistList)
-    // console.log(jPndHistList)
     this.subscription = this.tService.postTestData(jPndHistList).subscribe(result => {
-      if (result.response !== "") {
+      console.log(result.response.length)
+      if (result.response.length > 2) {
         this.dismiss()
-        // this.skeltonShow = false
         this.tabShow = true
         this.agtList = JSON.parse(result.response)
-        // console.log(this.agtList)
       }
-
+      else {
+        alert("No Data Found")
+        this.dismiss()
+      }
     });
   }
 
@@ -165,17 +169,20 @@ export class PendingHistoryComponent implements OnInit {
       "Version": "1.0.0.0.0.0"
     }
     let jvObj = JSON.stringify(vObj)
-    console.log(jvObj)
     this.tService.postTestData(jvObj).subscribe(result => {
-      if (result.response !== "") {
-
+      if (result.response !== null) {
         this.dismiss()
-        console.log(result.response)
         sessionStorage.setItem("ticketInfo", result.response)
-        window.open("RlTicket", "_blank",'location=yes,height=770,width=1200,scrollbars=yes,status=yes')
+        this.presentModal()
+      }
+      else {
+        alert("No Data Found")
+        this.dismiss()
       }
     });
   }
+
+
   checktoirctc(d) {
 
 
@@ -198,23 +205,20 @@ export class PendingHistoryComponent implements OnInit {
     }
 
     let jPndHistList = JSON.stringify(pndHistList)
-    console.log(jPndHistList)
     this.tService.postTestData(jPndHistList).subscribe(result => {
       localStorage.setItem("chkbooking", result.response)
-      if (result.response !== "") {
-        this.dismiss()
-        this.agtList = JSON.parse(result.response)
-        console.log(this.agtList);
-        window.open("/rlchkbookingirctc", "_blank", 'location=yes,height=770,width=1200,scrollbars=yes,status=yes')
+      this.dismiss()
+      console.log(result.response)
+      this.presentModal2(result.response)
 
-      }
 
     });
 
   }
+
+
   refund(d) {
     this.present()
-
     let pndHistList = {
       "P_TYPE": "CC",
       "R_TYPE": "RAIL",
@@ -233,18 +237,13 @@ export class PendingHistoryComponent implements OnInit {
       "ENV": "P",
       "Version": "1.0.0.0.0.0"
     }
-
     let jPndHistList = JSON.stringify(pndHistList)
-
     this.tService.postTestData(jPndHistList).subscribe(result => {
       localStorage.setItem("refund", result.response)
-      if (result.response !== "") {
-        this.dismiss()
-        this.agtList = JSON.parse(result.response)
 
-        window.open("/refundtoagent","_blank",'location=yes,height=770,width=1200,scrollbars=yes,status=yes')
+      this.dismiss()
+      this.presentModal1()
 
-      }
 
     });
 
@@ -272,5 +271,34 @@ export class PendingHistoryComponent implements OnInit {
   async dismiss() {
     this.isLoading = false;
     return await this.loadingController.dismiss().then(() => console.log());
+  }
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: TicketComponent,
+      cssClass: 'popover_setting',
+      showBackdrop: true
+    });
+    return await modal.present();
+  }
+
+
+  async presentModal1() {
+    const modal1 = await this.modalController.create({
+      component: RefundToAgentComponent,
+      cssClass: 'popover_setting',
+      showBackdrop: true
+    });
+    return await modal1.present();
+  }
+
+
+  async presentModal2(obj) {
+    const modal2 = await this.modalController.create({
+      component: RLCHKBOOKINGIRCTCComponent,
+      cssClass: 'popover_setting',
+      showBackdrop: true,
+    });
+    return await modal2.present();
   }
 }

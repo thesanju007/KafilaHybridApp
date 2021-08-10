@@ -22,7 +22,7 @@ export class IndexPage implements OnInit {
     this.tService.getTestData('http://api.ipify.org/?format=json')
       .subscribe(data => {
         this.ipAddress = data
-    }) 
+      })
 
   }
 
@@ -51,7 +51,7 @@ export class IndexPage implements OnInit {
     e.preventDefault();
     if (this.set_cre.value.cre1 !== "" && this.set_cre.value.cre2 !== "" && this.set_cre.value.cre3 !== "" && this.set_cre.value.cre4 !== "") {
       this.decode(this.set_cre.value.cre2.toUpperCase() + "|" + this.set_cre.value.cre3.toUpperCase());
-  let ccLoginData = {
+      let ccLoginData = {
         "P_TYPE": "CC",
         "R_TYPE": "MGMT",
         "R_NAME": "GET_LOGIN",
@@ -64,16 +64,20 @@ export class IndexPage implements OnInit {
         "Version": "1.0.0.0.0.0"
       }
       let jccLoginData = JSON.stringify(ccLoginData)
-      console.log(jccLoginData)
-      this.tService.postTestData( jccLoginData).subscribe(result => {
-        if (result.response !== "") {
-          console.log(result)
+      
+      this.tService.postTestData(jccLoginData).subscribe(result => {
+      
+        if (result.response!==null) {
           this.show = true
           sessionStorage.setItem("LoginDetails", jccLoginData)
           sessionStorage.setItem("Menu", result.response)
           sessionStorage.setItem("Name", this.set_cre.value.cre2)
-         this.rout.navigate(['/cchome'])
+          this.rout.navigate(['/cchome'])
 
+        }
+        else {
+          this.show = true
+          alert("Wrong Credentials")
         }
 
       });

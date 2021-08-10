@@ -4,6 +4,8 @@ import { TestService } from '../../../Services/test.service'
 import { LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { TicketComponent } from '../ticket/ticket.component'
+import { ModalController } from '@ionic/angular';
 @Component({
   selector: 'app-rlfailed-history',
   templateUrl: './rlfailed-history.component.html',
@@ -15,7 +17,7 @@ export class RlfailedHistoryComponent implements OnInit {
 
   subscription: Subscription
 
-  constructor(private tService: TestService, public loadingController: LoadingController, private route: Router) { }
+  constructor(private tService: TestService, public loadingController: LoadingController, private route: Router, public modalController: ModalController) { }
   login_Details
   skArr = []
   agtList
@@ -46,7 +48,7 @@ export class RlfailedHistoryComponent implements OnInit {
     this.btn = false
   }
   booleanValue = false
-  evv="p"
+  evv = "p"
   toggle() {
     this.booleanValue = !this.booleanValue
     if (this.booleanValue == true) {
@@ -77,26 +79,27 @@ export class RlfailedHistoryComponent implements OnInit {
         "RAID": this.agtLstGP.value.RAID || "",
         "FROM": this.agtLstGP.value.FROM || "",
         "TO": this.agtLstGP.value.TO || "",
-        "MODULE":this.evv,
+        "MODULE": this.evv,
         "STATUS": true
       },
       "AID": this.login_Details.AID,
       "MODULE": this.login_Details.MODULE,
       "IP": this.login_Details.IP,
       "TOKEN": this.login_Details.TOKEN,
-      "ENV":"P",
+      "ENV": "P",
       "Version": "1.0.0.0.0.0"
     }
     let jbknHisData = JSON.stringify(bknHisData)
-    // console.log(jbknHisData)
-    this.subscription = this.tService.postTestData( jbknHisData).subscribe(result => {
-      if (result.response !== "0") {
-        // this.skeltonShow = false
+    this.subscription = this.tService.postTestData(jbknHisData).subscribe(result => {
+      if (result.response.length > 2) {
         this.agtList = JSON.parse(result.response)
-        // console.log(this.agtList)
         this.tabShow = true
         this.dismiss()
 
+      }
+      else {
+        alert("No Data Found")
+        this.dismiss()
       }
 
     });
@@ -172,20 +175,18 @@ export class RlfailedHistoryComponent implements OnInit {
       "Version": "1.0.0.0.0.0"
     }
     let jvObj = JSON.stringify(vObj)
-    console.log(jvObj)
     this.tService.postTestData(jvObj).subscribe(result => {
-      if (result.response !== "") {
-this.dismiss()
-       
-        console.log(result.response)
-        sessionStorage.setItem("ticketInfo", result.response)
-        window.open("RlTicket", "_blank",'location=yes,height=770,width=1200,scrollbars=yes,status=yes')
-      }
+      
+        if (result.response !== null) {
+          this.dismiss()
+          sessionStorage.setItem("ticketInfo", result.response)
+          this.presentModal()
+        }
+
+
     });
   }
-  // ngOnDestroy(): void {
-  //   this.subscription.unsubscribe()
-  // }
+
   isLoading = false;
   async present() {
     this.isLoading = true;
@@ -208,5 +209,15 @@ this.dismiss()
   async dismiss() {
     this.isLoading = false;
     return await this.loadingController.dismiss().then(() => console.log());
+  }
+
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: TicketComponent,
+      cssClass: 'popover_setting',
+      showBackdrop: true
+    });
+    return await modal.present();
   }
 }
