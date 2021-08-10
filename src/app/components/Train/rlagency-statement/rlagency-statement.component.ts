@@ -90,7 +90,7 @@ export class RlagencyStatementComponent implements OnInit {
     }
     let jbknHisData = JSON.stringify(bknHisData)
     // console.log(jbknHisData)
-    this.subscription = this.tService.postTestData("CC", jbknHisData).subscribe(result => {
+    this.subscription = this.tService.postTestData(jbknHisData).subscribe(result => {
       if (result.response !== "") {
         // this.skeltonShow = false
         this.agtList = JSON.parse(result.response)
@@ -174,7 +174,7 @@ export class RlagencyStatementComponent implements OnInit {
     }
     let jvObj = JSON.stringify(vObj)
     console.log(jvObj)
-    this.tService.postTestData("CC", jvObj).subscribe(result => {
+    this.tService.postTestData(jvObj).subscribe(result => {
       if (result.response !== "") {
 
        this.dismiss()

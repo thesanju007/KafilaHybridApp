@@ -53,10 +53,9 @@ export class AgentAuthorizationComponent implements OnInit {
   agtLstGP = new FormGroup({
     RAID: new FormControl('', [Validators.pattern("[0-9]")]),
   })
-  skeltonShow = false
   AgtSrhBtn(e) {
     this.present()
-    // this.skeltonShow = true
+
     this.tabShow = false
     let aBal = {
       "P_TYPE": "CC",
@@ -74,17 +73,12 @@ export class AgentAuthorizationComponent implements OnInit {
     }
 
     let jaBal = JSON.stringify(aBal)
-    // console.log(aBal)
-    this.subscription = this.tService.postTestData("CC", jaBal).subscribe(result => {
+    this.subscription = this.tService.postTestData( jaBal).subscribe(result => {
       if (result.response !== "") {
         this.agtList = JSON.parse(result.response)
         this.dismiss()
-
-        // this.skeltonShow = false
         this.tabShow = true
-        // console.log(this.agtList)
       }
-
     });
   }
   up = false

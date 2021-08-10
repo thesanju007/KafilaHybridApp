@@ -90,7 +90,7 @@ export class RLRefundHistoryComponent implements OnInit {
     }
     let jbknHisData = JSON.stringify(bknHisData)
     // console.log(jbknHisData)
-    this.subscription = this.tService.postTestData("CC", jbknHisData).subscribe(result => {
+    this.subscription = this.tService.postTestData(jbknHisData).subscribe(result => {
       if (result.response !== "0") {
         // this.skeltonShow = false
         this.agtList = JSON.parse(result.response)
@@ -174,13 +174,13 @@ export class RLRefundHistoryComponent implements OnInit {
     }
     let jvObj = JSON.stringify(vObj)
     console.log(jvObj)
-    this.tService.postTestData("CC", jvObj).subscribe(result => {
+    this.tService.postTestData(jvObj).subscribe(result => {
       if (result.response !== "") {
 
        this.dismiss()
         console.log(result.response)
         sessionStorage.setItem("ticketInfo", result.response)
-        window.open("RlTicket", "_blank")
+        window.open("RlTicket", "_blank",'location=yes,height=770,width=1200,scrollbars=yes,status=yes')
       }
     });
   }

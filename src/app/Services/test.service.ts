@@ -4,8 +4,9 @@ import { Observable, Subject } from 'rxjs';
 import { throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { LoadingController,PopoverController } from '@ionic/angular';
-import { TicketComponent} from '../components/Train/ticket/ticket.component'
+import { LoadingController, PopoverController } from '@ionic/angular';
+import { TicketComponent } from '../components/Train/ticket/ticket.component'
+import { ModalController } from '@ionic/angular';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,11 +15,13 @@ export class TestService {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       'Accept': '*/*',
+      "Access-Control-Allow-Origin": '*',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
     })
   }
   login_Details
   private subject = new Subject<any>();
-  constructor(private http: HttpClient, private route: Router, public loadingController: LoadingController,  public popoverController: PopoverController) {
+  constructor(private http: HttpClient, private route: Router, public loadingController: LoadingController, public popoverController: PopoverController,public modalController: ModalController) {
     let Json_LD = sessionStorage.getItem("LoginDetails")
     this.login_Details = JSON.parse(Json_LD)
   }
@@ -28,6 +31,7 @@ export class TestService {
       return true
     }
     return false;
+
   }
 
   getTestData(url: any): Observable<any> {
@@ -38,8 +42,8 @@ export class TestService {
   }
 
 
-  postTestData(url: any, data: any): Observable<any> {
-    return this.http.post<any>('https://caller.ksofttechnology.com/api/' + url, data, this.httphead).pipe(
+  postTestData(data: any): Observable<any> {
+    return this.http.post<any>('http://localhost:3000/API/CC', data, this.httphead).pipe(
       retry(2),
       catchError(this.handleError)
     )
@@ -118,7 +122,7 @@ export class TestService {
 
 
   // viewMore(d) {
-   
+
   //   let vObj = {
   //     "P_TYPE": "CC",
   //     "R_TYPE": "RAIL",
@@ -140,7 +144,7 @@ export class TestService {
   //   this.postTestData("CC", jvObj).subscribe(result => {
   //     if (result.response !== "") {
 
-       
+
   //       console.log(result.response)
   //       sessionStorage.setItem("ticketInfo", result.response)
   //       window.open("RlTicket", "_blank",'location=yes,height=770,width=1200,scrollbars=yes,status=yes')
@@ -150,18 +154,26 @@ export class TestService {
 
 
 
-  
-  async presentPopover(ev: any) {
-    const popover = await this.popoverController.create({
+
+  // async presentPopover(ev: any) {
+  //   const popover = await this.popoverController.create({
+  //     component: TicketComponent,
+  //     event: ev,
+  //     cssClass: 'popover_setting',
+  //     translucent: false,
+  //     mode: 'ios',
+  //   });
+  //   popover.onDidDismiss().then(() => {
+  //     alert(" modal working")
+  //   });
+  //   return await popover.present();
+  // }
+
+  async presentModal() {
+    const modal = await this.modalController.create({
       component: TicketComponent,
-      event: ev,
-      cssClass: 'popover_setting',
-      translucent: false,
-      mode: 'ios',
+      cssClass: 'popover_setting'
     });
-    popover.onDidDismiss().then(() => {
-     alert(" modal working")
-    });
-    return await popover.present();
+    return await modal.present();
   }
 }

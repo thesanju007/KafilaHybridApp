@@ -29,7 +29,7 @@ export class IndexPage implements OnInit {
   uType
   onCvalue
   ngOnInit() {
-    this.tService.postTestData("CC", this.u_gp).subscribe(result => {
+    this.tService.postTestData(this.u_gp).subscribe(result => {
       this.uType = JSON.parse(result.response);
     });
   }
@@ -65,7 +65,7 @@ export class IndexPage implements OnInit {
       }
       let jccLoginData = JSON.stringify(ccLoginData)
       console.log(jccLoginData)
-      this.tService.postTestData("CC", jccLoginData).subscribe(result => {
+      this.tService.postTestData( jccLoginData).subscribe(result => {
         if (result.response !== "") {
           console.log(result)
           this.show = true

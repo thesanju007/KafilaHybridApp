@@ -90,7 +90,7 @@ export class RLAgentListComponent implements OnInit {
     }
     let jAgtList = JSON.stringify(agtList)
     // console.log(jAgtList)
-    this.subscription = this.tService.postTestData("CC", jAgtList).subscribe(result => {
+    this.subscription = this.tService.postTestData( jAgtList).subscribe(result => {
       if (result.response !== "") {
         this.dismiss()
         // this.skeltonShow = false

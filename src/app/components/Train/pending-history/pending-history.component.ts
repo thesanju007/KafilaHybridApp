@@ -84,7 +84,7 @@ export class PendingHistoryComponent implements OnInit {
 
     let jPndHistList = JSON.stringify(pndHistList)
     // console.log(jPndHistList)
-    this.subscription = this.tService.postTestData("CC", jPndHistList).subscribe(result => {
+    this.subscription = this.tService.postTestData(jPndHistList).subscribe(result => {
       if (result.response !== "") {
         this.dismiss()
         // this.skeltonShow = false
@@ -166,13 +166,13 @@ export class PendingHistoryComponent implements OnInit {
     }
     let jvObj = JSON.stringify(vObj)
     console.log(jvObj)
-    this.tService.postTestData("CC", jvObj).subscribe(result => {
+    this.tService.postTestData(jvObj).subscribe(result => {
       if (result.response !== "") {
 
         this.dismiss()
         console.log(result.response)
         sessionStorage.setItem("ticketInfo", result.response)
-        window.open("RlTicket", "_blank")
+        window.open("RlTicket", "_blank",'location=yes,height=770,width=1200,scrollbars=yes,status=yes')
       }
     });
   }
@@ -199,7 +199,7 @@ export class PendingHistoryComponent implements OnInit {
 
     let jPndHistList = JSON.stringify(pndHistList)
     console.log(jPndHistList)
-    this.tService.postTestData("CC", jPndHistList).subscribe(result => {
+    this.tService.postTestData(jPndHistList).subscribe(result => {
       localStorage.setItem("chkbooking", result.response)
       if (result.response !== "") {
         this.dismiss()
@@ -236,13 +236,13 @@ export class PendingHistoryComponent implements OnInit {
 
     let jPndHistList = JSON.stringify(pndHistList)
 
-    this.tService.postTestData("CC", jPndHistList).subscribe(result => {
+    this.tService.postTestData(jPndHistList).subscribe(result => {
       localStorage.setItem("refund", result.response)
       if (result.response !== "") {
         this.dismiss()
         this.agtList = JSON.parse(result.response)
 
-        window.open("/refundtoagent")
+        window.open("/refundtoagent","_blank",'location=yes,height=770,width=1200,scrollbars=yes,status=yes')
 
       }
 

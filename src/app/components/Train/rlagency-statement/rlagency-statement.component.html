@@ -68,9 +68,9 @@
         </ion-row>
       </ion-grid>
     </ion-card>
-    <ion-card *ngIf="tabShow" class="ion-text-center ion-padding">
+    <ion-card *ngIf="tabShow" class="ion-padding">
       <span>Total Result = {{agtList.length}}</span>
-      <table>
+      <table class="ion-text-center">
         <thead>
           <tr>
             <th class="padding">
@@ -88,7 +88,6 @@
             <th class="padding">
               Alias
             </th>
-
             <th class="padding">
               Balance
               <ion-icon name="caret-down-outline" *ngIf="down" (click)="sortBalAsc()"
