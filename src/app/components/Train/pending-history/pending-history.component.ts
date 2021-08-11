@@ -20,15 +20,12 @@ export class PendingHistoryComponent implements OnInit {
   tabShow = false
   dateDis = false
   agtList
-  skArr = []
-  skeltonShow = false
+
   subscription: Subscription
   ngOnInit() {
     let Json_LD = sessionStorage.getItem("LoginDetails")
     this.login_Details = JSON.parse(Json_LD)
-    for (let i = 0; i <= 30; i++) {
-      this.skArr.push(i)
-    }
+
 
   }
   AgentActive() {
@@ -194,7 +191,6 @@ export class PendingHistoryComponent implements OnInit {
         "RAID": d.RID,
         "BOOKING_ID": d.BOOKING_ID,
         "REQUIRED_RESULT": false
-
       },
       "AID": this.login_Details.AID,
       "MODULE": this.login_Details.MODULE,
@@ -203,17 +199,13 @@ export class PendingHistoryComponent implements OnInit {
       "ENV": "p",
       "Version": "1.0.0.0.0.0"
     }
-
+    alert("are you sure you want to continue?")
     let jPndHistList = JSON.stringify(pndHistList)
     this.tService.postTestData(jPndHistList).subscribe(result => {
       localStorage.setItem("chkbooking", result.response)
       this.dismiss()
-      console.log(result.response)
       this.presentModal2(result.response)
-
-
     });
-
   }
 
 
@@ -237,16 +229,13 @@ export class PendingHistoryComponent implements OnInit {
       "ENV": "P",
       "Version": "1.0.0.0.0.0"
     }
+    alert("are you sure you want to continue?")
     let jPndHistList = JSON.stringify(pndHistList)
     this.tService.postTestData(jPndHistList).subscribe(result => {
       localStorage.setItem("refund", result.response)
-
       this.dismiss()
       this.presentModal1()
-
-
     });
-
   }
 
   isLoading = false;
@@ -257,10 +246,9 @@ export class PendingHistoryComponent implements OnInit {
       mode: 'ios',
       backdropDismiss: false,
       spinner: 'bubbles',
-      // duration: 2000
     }).then(a => {
       a.present().then(() => {
-        console.log('presented');
+        console.log('');
         if (!this.isLoading) {
           a.dismiss().then(() => console.log());
         }
@@ -286,7 +274,7 @@ export class PendingHistoryComponent implements OnInit {
   async presentModal1() {
     const modal1 = await this.modalController.create({
       component: RefundToAgentComponent,
-      cssClass: 'popover_setting',
+      cssClass: 'popover_setting2',
       showBackdrop: true
     });
     return await modal1.present();
@@ -296,7 +284,7 @@ export class PendingHistoryComponent implements OnInit {
   async presentModal2(obj) {
     const modal2 = await this.modalController.create({
       component: RLCHKBOOKINGIRCTCComponent,
-      cssClass: 'popover_setting',
+      cssClass: 'popover_setting2',
       showBackdrop: true,
     });
     return await modal2.present();

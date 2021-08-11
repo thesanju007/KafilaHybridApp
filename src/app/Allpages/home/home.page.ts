@@ -17,14 +17,16 @@ export class HomePage implements OnInit {
     this.clickEventSubs = this.tService.getClickEvent().subscribe(() => {
       this.toggleMenu();
     })
+
   }
 
 
   ngOnInit() {
+   
     let test = sessionStorage.getItem("Menu")
-   this.Menu = JSON.parse(test)
-   this.name = sessionStorage.getItem("Name")
-     
+    this.Menu = JSON.parse(test)
+    this.name = sessionStorage.getItem("Name")
+
     //console.log(this.Menu)
   }
 
@@ -51,12 +53,7 @@ export class HomePage implements OnInit {
     }
   }
 
-  routing(url) {
-    this.bigMenu = !this.bigMenu
-    this.route.navigate(['cchome/', url]).then(() => {
-      window.location.reload();
-    });
-  }
+
 
   logout() {
     this.route.navigate(['/ccindex']);

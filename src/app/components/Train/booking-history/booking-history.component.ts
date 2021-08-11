@@ -18,17 +18,12 @@ export class BookingHistoryComponent implements OnInit {
 
   constructor(private tService: TestService, public loadingController: LoadingController, private route: Router, public modalController: ModalController) { }
   login_Details
-  skArr = []
   agtList
   tabShow = false
-  skeltonShow = false
   ngOnInit() {
     let Json_LD = sessionStorage.getItem("LoginDetails")
     this.login_Details = JSON.parse(Json_LD)
 
-    for (let i = 0; i <= 30; i++) {
-      this.skArr.push(i)
-    }
   }
 
   dateDis = false
@@ -193,7 +188,7 @@ export class BookingHistoryComponent implements OnInit {
       spinner: 'bubbles',
     }).then(a => {
       a.present().then(() => {
-        console.log('presented');
+        console.log('');
         if (!this.isLoading) {
           a.dismiss().then(() => console.log());
         }
@@ -210,8 +205,8 @@ export class BookingHistoryComponent implements OnInit {
     const modal = await this.modalController.create({
       component: TicketComponent,
       cssClass: 'popover_setting',
-      showBackdrop:true
+
     });
-    return await modal.present();
+    return  modal.present();
   }
 }

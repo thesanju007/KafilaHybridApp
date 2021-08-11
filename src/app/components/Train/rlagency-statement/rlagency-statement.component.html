@@ -28,32 +28,34 @@
                   <ion-label>Development</ion-label>
 
                 </ion-col>
-                <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xs="12">
+                <!-- <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xs="12">
                   <ion-radio-group value="Date">
                     <ion-radio value="Id" (click)="AgentActive()"></ion-radio>
                     <ion-label class="R-label">Agent Id</ion-label>
                     <ion-radio value="Date" (click)="DateActive()"></ion-radio>
                     <ion-label class="R-label">Date Wise</ion-label>
                   </ion-radio-group>
-
+                </ion-col> -->
+                <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
+                  <fieldset>
+                    <input formControlName="RAID" maxlength="8" min="8" placeholder="Agent ID" >
+                  </fieldset>
+                  <ion-text *ngIf="Error.RAID.touched || Error.RAID.dirty">
+                    <span class="err" *ngIf="Error.RAID.errors">* Required Field</span>
+                  </ion-text>
                 </ion-col>
                 <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
-                  <fieldset [disabled]="!dateDis">
-                    <input formControlName="RAID" maxlength="8" min="8" placeholder="Agent ID" (keydown)="btnActive()">
+                  <fieldset >
+                    <input formControlName="FROM" type="date" [max]="maxDate" >
                   </fieldset>
                 </ion-col>
                 <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
-                  <fieldset [disabled]="dateDis">
-                    <input formControlName="FROM" type="date" [max]="maxDate" (change)="btnActive()">
+                  <fieldset>
+                    <input formControlName="TO" type="date" [max]="maxDate" >
                   </fieldset>
                 </ion-col>
                 <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
-                  <fieldset [disabled]="dateDis">
-                    <input formControlName="TO" type="date" [max]="maxDate" (change)="btnActive()">
-                  </fieldset>
-                </ion-col>
-                <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
-                  <button class="ccL-btn" type="submit" [disabled]="btn">
+                  <button class="ccL-btn" type="submit" [disabled]="!agtLstGP.valid" >
                     <ion-icon slot="start" name="search"></ion-icon> Search
                   </button>
                 </ion-col>
@@ -80,9 +82,9 @@
             <th class="padding">
               ID
             </th>
-            <th class="padding">
+            <!-- <th class="padding">
               Agent Id
-            </th>
+            </th> -->
             <th class="padding">
               Alias
             </th>
@@ -121,8 +123,8 @@
           <tr *ngFor="let d of agtList, index as i" class="hvr">
             <td>{{i+1}}</td>
             <td style="color: red; text-decoration: underline;cursor: pointer" (click)="PNR(d)">{{d.BOOKING_ID}}</td>
-            <td>{{d.ID}}</td>
-            <td>{{d.AGENT_ID}}</td>
+            <td class="padding-l">{{d.ID}}</td>
+            <!-- <td class="padding-l">{{d.AGENT_ID}}</td> -->
             <td>{{d.ALIAS}}</td>
             <td>{{d.BALANCE | currency:'INR'}}</td>
             <td>{{d.CREDIT | currency:'INR'}}</td>
@@ -135,9 +137,6 @@
         </tbody>
       </table>
     </ion-card>
-
-
-
 
   </ion-content>
 </ion-app>

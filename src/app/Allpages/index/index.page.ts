@@ -64,15 +64,19 @@ export class IndexPage implements OnInit {
         "Version": "1.0.0.0.0.0"
       }
       let jccLoginData = JSON.stringify(ccLoginData)
-      
+
       this.tService.postTestData(jccLoginData).subscribe(result => {
-      
-        if (result.response!==null) {
+
+        if (result.response !== null) {
           this.show = true
           sessionStorage.setItem("LoginDetails", jccLoginData)
           sessionStorage.setItem("Menu", result.response)
           sessionStorage.setItem("Name", this.set_cre.value.cre2)
-          this.rout.navigate(['/cchome'])
+          // this.rout.navigate(['/cchome'])
+          this.rout.navigate(['cchome/']).then(() => {
+            window.location.reload();
+          });
+
 
         }
         else {

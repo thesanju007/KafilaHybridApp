@@ -20,17 +20,11 @@ export class RLRefundHistoryComponent implements OnInit {
 
   constructor(private tService: TestService, public loadingController: LoadingController, private route: Router, public modalController: ModalController) { }
   login_Details
-  skArr = []
   agtList
   tabShow = false
-  skeltonShow = false
   ngOnInit() {
     let Json_LD = sessionStorage.getItem("LoginDetails")
     this.login_Details = JSON.parse(Json_LD)
-
-    for (let i = 0; i <= 30; i++) {
-      this.skArr.push(i)
-    }
   }
 
   dateDis = false
@@ -70,7 +64,6 @@ export class RLRefundHistoryComponent implements OnInit {
 
     e.preventDefault();
     this.present()
-    this.skeltonShow = true
     this.tabShow = false
     let bknHisData = {
       "P_TYPE": "CC",
@@ -96,13 +89,11 @@ export class RLRefundHistoryComponent implements OnInit {
         this.agtList = JSON.parse(result.response)
         this.tabShow = true
         this.dismiss()
-
       }
       else{
         alert("No Data Found")
         this.dismiss()
       }
-
     });
   }
   up = false
@@ -155,8 +146,6 @@ export class RLRefundHistoryComponent implements OnInit {
     });
   }
 
-
-
   PNR(d) {
     this.present()
     let vObj = {
@@ -195,7 +184,6 @@ export class RLRefundHistoryComponent implements OnInit {
   //   this.subscription.unsubscribe()
   // }
 
-
   isLoading = false;
   async present() {
     this.isLoading = true;
@@ -204,10 +192,9 @@ export class RLRefundHistoryComponent implements OnInit {
       mode: 'ios',
       backdropDismiss: false,
       spinner: 'bubbles',
-      // duration: 2000
     }).then(a => {
       a.present().then(() => {
-        console.log('presented');
+        console.log('');
         if (!this.isLoading) {
           a.dismiss().then(() => console.log());
         }

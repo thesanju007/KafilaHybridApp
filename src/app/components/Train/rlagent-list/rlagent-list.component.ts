@@ -14,16 +14,12 @@ export class RLAgentListComponent implements OnInit {
   login_Details
   tabShow = false
   subscription: Subscription
-  skArr = []
-  skeltonShow = false
   agtList
 
   ngOnInit() {
     let Json_LD = sessionStorage.getItem("LoginDetails")
     this.login_Details = JSON.parse(Json_LD)
-    for (let i = 0; i <= 30; i++) {
-      this.skArr.push(i)
-    }
+  
   }
   dateDis = true
   aidDis = false
@@ -71,7 +67,6 @@ export class RLAgentListComponent implements OnInit {
     this.present()
     e.preventDefault();
     this.tabShow=false
-    this.skeltonShow = true
     let agtList = {
       "P_TYPE": "CC",
       "R_TYPE": "RAIL",
@@ -160,10 +155,9 @@ export class RLAgentListComponent implements OnInit {
       mode: 'ios',
       backdropDismiss: false,
       spinner: 'bubbles',
-      // duration: 2000
     }).then(a => {
       a.present().then(() => {
-        console.log('presented');
+        console.log('');
         if (!this.isLoading) {
           a.dismiss().then(() => console.log());
         }
