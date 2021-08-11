@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ModalController } from '@ionic/angular';
 @Component({
   selector: 'app-ticket',
   templateUrl: './ticket.component.html',
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TicketComponent implements OnInit {
 
-  constructor() { }
+  constructor(public modalController: ModalController) { }
   test
   resParseData
   ngOnInit() {
@@ -15,6 +15,10 @@ export class TicketComponent implements OnInit {
     this.test = JSON.parse(ticket)
     // console.log(this.test)
   }
-
+  m_close() {
+    this.modalController.dismiss({
+      'dismissed': true
+    });
+  }
 
 }

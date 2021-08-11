@@ -1,10 +1,14 @@
 <ion-app>
   <ion-content>
     <ion-grid>
-      <ion-row >
+      <ion-row>
         <!-- <ion-col size-xs="1" size-sm="1" size-md="1" size-lg="1" size-xl="1" class="none"></ion-col> -->
         <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+          <ion-text style="float: right;margin-top: 20px;color: red;cursor: pointer;" (click)="m_close()">
+            <ion-icon name="close-circle-outline"></ion-icon>
+          </ion-text>
           <ion-row class="ion-padding">
+
             <ion-col size-xs="2" size-sm="2" size-md="1" size-lg="1" size-xl="1">
               <img alt="logo" src="../assets/1.png">
             </ion-col>
@@ -18,10 +22,12 @@
               <h3>IRCTC E-Ticketing Service </h3>
             </ion-col>
             <ion-col size-xs="2" size-sm="2" size-md="1" size-lg="1" size-xl="1">
+
               <img alt="logo" src="../assets/irctc_logo.png">
             </ion-col>
             <ion-col size-xs="12" size-sm="12" size-md="5" size-lg="5" size-xl="5" class="ion-text-center web">
               <img alt="logo" src="../assets/logo.png">
+
             </ion-col>
           </ion-row>
 
@@ -80,11 +86,13 @@
                     <tbody>
                       <tr>
                         <td>PNR No : {{test.ITINERARY.PnrNo!="" ? test.ITINERARY.PnrNo: 'XXXXX'}}</td>
-                        <td>Train No. & Name : {{test.ITINERARY.TrainNoName!="" ? test.ITINERARY.TrainNoName: 'XXXXX'}}</td>
+                        <td>Train No. & Name : {{test.ITINERARY.TrainNoName!="" ? test.ITINERARY.TrainNoName: 'XXXXX'}}
+                        </td>
                         <td>Quota : {{test.ITINERARY.Quota}}</td>
                       </tr>
                       <tr>
-                        <td>Transaction ID : {{test.ITINERARY.TransactionId!="" ? test.ITINERARY.TransactionId: 'XXXXX'}}</td>
+                        <td>Transaction ID : {{test.ITINERARY.TransactionId!="" ? test.ITINERARY.TransactionId:
+                          'XXXXX'}}</td>
                         <td>Date & Time of Booking : {{test.ITINERARY.BookingDateTime| date: 'dd/MM/yyyy'}}
                           {{test.ITINERARY.BookingDateTime| date:"HH:mm"}}</td>
                         <td>Class : {{test.ITINERARY.Class!="" ? test.ITINERARY.Class: 'XXXXX'}}</td>
@@ -102,12 +110,14 @@
                       <tr>
                         <td>Scheduled Departure : {{test.ITINERARY.ScheduleDeparture| date:"HH:mm"}}</td>
                         <td>Scheduled Arrival : {{test.ITINERARY.ScheduleArrival| date:"HH:mm"}}</td>
-                        <td>Passenger Mobile No : {{test.ITINERARY.PxMobile!="" ? test.ITINERARY.PxMobile: 'XXXXX'}}</td>
+                        <td>Passenger Mobile No : {{test.ITINERARY.PxMobile!="" ? test.ITINERARY.PxMobile: 'XXXXX'}}
+                        </td>
                       </tr>
                       <tr>
                         <td>Boarding : {{test.ITINERARY.Boarding!="" ? test.ITINERARY.Boarding: 'XXXXX'}}</td>
                         <td>Adult :{{test.ITINERARY.Adult!="" ? test.ITINERARY.Adult: 'XXXXX'}} Child : </td>
-                        <td>Passenger Address : {{test.ITINERARY.PxAddress!="" ? test.ITINERARY.PxAddress: 'XXXXX'}} </td>
+                        <td>Passenger Address : {{test.ITINERARY.PxAddress!="" ? test.ITINERARY.PxAddress: 'XXXXX'}}
+                        </td>
                       </tr>
                       <tr>
                         <td>Date of Boarding : {{test.ITINERARY.DateOfBoarding | date: 'dd/MM/yyyy'}}</td>

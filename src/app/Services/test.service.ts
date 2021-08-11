@@ -20,13 +20,13 @@ export class TestService {
   }
   login_Details
   private subject = new Subject<any>();
+  l_Details
   constructor(private http: HttpClient, private route: Router, public loadingController: LoadingController, public popoverController: PopoverController) {
-    let Json_LD = sessionStorage.getItem("LoginDetails")
-    this.login_Details = JSON.parse(Json_LD)
+   this.l_Details= sessionStorage.getItem("LoginDetails")
+    this.login_Details = JSON.parse(this.l_Details)
   }
   get isLoggedIn(): boolean {
-    let authToken = sessionStorage.getItem('LoginDetails');
-    if (authToken !== null) {
+    if (this.login_Details !== null) {
       return true
     }
     return false;

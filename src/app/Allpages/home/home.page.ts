@@ -13,30 +13,20 @@ export class HomePage implements OnInit {
   clickEventSubs: Subscription
   bigMenu = false;
   name
-  constructor(private route: Router, private tService: TestService) {
-    this.clickEventSubs = this.tService.getClickEvent().subscribe(() => {
-      this.toggleMenu();
-    })
+  Width
+  constructor(private route: Router) {
+   
 
   }
 
 
   ngOnInit() {
-   
     let test = sessionStorage.getItem("Menu")
     this.Menu = JSON.parse(test)
     this.name = sessionStorage.getItem("Name")
-
-    //console.log(this.Menu)
   }
 
 
-  toggleMenu() {
-    if (this.bigMenu == true) {
-      this.bigMenu = !this.bigMenu
-    }
-    this.bigMenu = !this.bigMenu
-  }
 
   toggleSubMenu(p) {
     if (p.showDetails) {
