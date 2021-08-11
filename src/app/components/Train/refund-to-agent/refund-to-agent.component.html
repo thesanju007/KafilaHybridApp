@@ -1,11 +1,12 @@
 <p>
   <ion-row class="ion-margin-top ion-padding ion-text-center">
     <ion-col size-md="12" size-lg="12" size-xl="12" class="ion-padding">
-      <ion-card>
-        <ion-card-content>
-          <h1 class="alert">{{this.data.RESULT}}</h1>
-        </ion-card-content>
-      </ion-card>
+
+      <ion-text style="float: right;color: red;cursor: pointer; font-size: 18px;" (click)="m_close()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-text>
+      <h1 class="alert">{{this.data.RESULT}}</h1>
+
     </ion-col>
   </ion-row>
 </p>

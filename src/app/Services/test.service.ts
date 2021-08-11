@@ -22,11 +22,12 @@ export class TestService {
   private subject = new Subject<any>();
   l_Details
   constructor(private http: HttpClient, private route: Router, public loadingController: LoadingController, public popoverController: PopoverController) {
-   this.l_Details= sessionStorage.getItem("LoginDetails")
-    this.login_Details = JSON.parse(this.l_Details)
+    let Json_LD = sessionStorage.getItem("LoginDetails")
+    this.login_Details = JSON.parse(Json_LD)
   }
   get isLoggedIn(): boolean {
-    if (this.login_Details !== null) {
+    let authToken = sessionStorage.getItem('LoginDetails');
+    if (authToken !== null) {
       return true
     }
     return false;
