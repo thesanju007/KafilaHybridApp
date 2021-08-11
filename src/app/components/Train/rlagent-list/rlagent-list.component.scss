@@ -132,7 +132,15 @@ ion-toggle{
     font-weight: 500;
     font-size: 12px;
   }
-  
+  h3{
+    color: black;
+    text-decoration: underline;
+    color: #3880ff;
+    font-size: 12px;
+  }
+  ion-label{
+    font-size: 12px;
+  }
   input{
     border: 1px solid rgb(111, 111, 111);
     outline: 0;
@@ -178,6 +186,17 @@ ion-toggle{
   cursor: not-allowed;
   opacity: 0.8;
   }
-  
+  th{
+    font-size: 13px;
+    font-weight: 400;
+  }
+  td{
+    border: 1px solid rgba(221, 221, 221, 0.557);
+    padding: 0px 2px;
+    font-size:11px;
+    color:#000;
+    // word-spacing: 2px;
+    cursor: pointer;
+  }
   
 }

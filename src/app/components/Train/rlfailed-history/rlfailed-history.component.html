@@ -15,12 +15,12 @@
           <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12" class="ion-padding">
             <form [formGroup]="agtLstGP" (ngSubmit)="AgtSrhBtn($event)">
               <ion-row class="bdr ion-padding">
-                <ion-col size-xs="4" size-sm="4" size-md="8" size-lg="7" size-xs="7">
+                <ion-col size-xs="5" size-sm="5" size-md="8" size-lg="7" size-xl="7">
                   <h3>
                     Rail Failed History
                   </h3>
                 </ion-col>
-                <ion-col size-xs="8" size-sm="8" size-md="4" size-lg="5" size-xs="5" class="ion-text-center">
+                <ion-col size-xs="7" size-sm="7" size-md="4" size-lg="5" size-xs="5" class="ion-text-center">
 
 
                   <ion-label class="pdn">Production</ion-label>
@@ -28,7 +28,7 @@
                   <ion-label>Development</ion-label>
 
                 </ion-col>
-                <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xs="12">
+                <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
                   <ion-radio-group value="Date">
                     <ion-radio value="Id" (click)="AgentActive()"></ion-radio>
                     <ion-label class="R-label">Agent Id</ion-label>
@@ -67,7 +67,7 @@
       </ion-grid>
     </ion-card>
 
-    <ion-card class="ion-padding ion-margin-top" *ngIf="tabShow">
+    <ion-card class="ion-padding ion-margin-top" *ngIf="tabShow" style="overflow-x:auto;">
       <span>Total Result = {{agtList.length}}</span>
       <table>
         <thead class="ion-text-center">

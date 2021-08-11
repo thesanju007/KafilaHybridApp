@@ -181,61 +181,71 @@ export class PendingHistoryComponent implements OnInit {
 
 
   checktoirctc(d) {
-
-
-    let pndHistList = {
-      "P_TYPE": "CC",
-      "R_TYPE": "RAIL",
-      "R_NAME": "RL_CHK_BOOKING_IRCTC",
-      "R_DATA": {
-        "RAID": d.RID,
-        "BOOKING_ID": d.BOOKING_ID,
-        "REQUIRED_RESULT": false
-      },
-      "AID": this.login_Details.AID,
-      "MODULE": this.login_Details.MODULE,
-      "IP": this.login_Details.IP,
-      "TOKEN": this.login_Details.TOKEN,
-      "ENV": "p",
-      "Version": "1.0.0.0.0.0"
+    this.present()
+    let t = confirm("Are you sure to execute this action?");
+    if (t === true) {
+      let pndHistList = {
+        "P_TYPE": "CC",
+        "R_TYPE": "RAIL",
+        "R_NAME": "RL_CHK_BOOKING_IRCTC",
+        "R_DATA": {
+          "RAID": d.RID,
+          "BOOKING_ID": d.BOOKING_ID,
+          "REQUIRED_RESULT": false
+        },
+        "AID": this.login_Details.AID,
+        "MODULE": this.login_Details.MODULE,
+        "IP": this.login_Details.IP,
+        "TOKEN": this.login_Details.TOKEN,
+        "ENV": "p",
+        "Version": "1.0.0.0.0.0"
+      }
+      let jPndHistList = JSON.stringify(pndHistList)
+      this.tService.postTestData(jPndHistList).subscribe(result => {
+        localStorage.setItem("chkbooking", result.response)
+        this.dismiss()
+        this.presentModal2(result.response)
+      });
     }
-    alert("are you sure you want to continue?")
-    let jPndHistList = JSON.stringify(pndHistList)
-    this.tService.postTestData(jPndHistList).subscribe(result => {
-      localStorage.setItem("chkbooking", result.response)
+    else {
       this.dismiss()
-      this.presentModal2(result.response)
-    });
+    }
   }
 
 
   refund(d) {
     this.present()
-    let pndHistList = {
-      "P_TYPE": "CC",
-      "R_TYPE": "RAIL",
-      "R_NAME": "RL_REFUND_PROCESS",
-      "R_DATA": {
-        "REFUND_TYPE": "FAILED_BOOKING",
-        "RID": d.RID,
-        "FID": d.FID,
-        "BOOKING_ID": d.BOOKING_ID,
-        "STAFF": "SANJEEV"
-      },
-      "AID": this.login_Details.AID,
-      "MODULE": this.login_Details.MODULE,
-      "IP": this.login_Details.IP,
-      "TOKEN": this.login_Details.TOKEN,
-      "ENV": "P",
-      "Version": "1.0.0.0.0.0"
+    let t = confirm("Are you sure to execute this action?");
+    if (t === true) {
+      let pndHistList = {
+        "P_TYPE": "CC",
+        "R_TYPE": "RAIL",
+        "R_NAME": "RL_REFUND_PROCESS",
+        "R_DATA": {
+          "REFUND_TYPE": "FAILED_BOOKING",
+          "RID": d.RID,
+          "FID": d.FID,
+          "BOOKING_ID": d.BOOKING_ID,
+          "STAFF": "SANJEEV"
+        },
+        "AID": this.login_Details.AID,
+        "MODULE": this.login_Details.MODULE,
+        "IP": this.login_Details.IP,
+        "TOKEN": this.login_Details.TOKEN,
+        "ENV": "P",
+        "Version": "1.0.0.0.0.0"
+      }
+
+      let jPndHistList = JSON.stringify(pndHistList)
+      this.tService.postTestData(jPndHistList).subscribe(result => {
+        localStorage.setItem("refund", result.response)
+        this.dismiss()
+        this.presentModal1()
+      });
     }
-    alert("are you sure you want to continue?")
-    let jPndHistList = JSON.stringify(pndHistList)
-    this.tService.postTestData(jPndHistList).subscribe(result => {
-      localStorage.setItem("refund", result.response)
+    else {
       this.dismiss()
-      this.presentModal1()
-    });
+    }
   }
 
   isLoading = false;

@@ -50,8 +50,6 @@ export class RlagencyStatementComponent implements OnInit {
   })
 
   AgtSrhBtn() {
-
-
     this.present()
     this.tabShow = false
     let bknHisData = {
@@ -73,6 +71,7 @@ export class RlagencyStatementComponent implements OnInit {
       "Version": "1.0.0.0.0.0"
     }
     let jbknHisData = JSON.stringify(bknHisData)
+    console.log(jbknHisData)
     this.subscription = this.tService.postTestData(jbknHisData).subscribe(result => {
       if (result.response.length > 2) {
 
