@@ -90,7 +90,7 @@ th{
 }
 td{
   border: 1px solid rgba(221, 221, 221, 0.557);
-  padding: 0px 0px;
+  padding: 5px;
   font-size:13px;
   color:#000;
   // word-spacing: 2px;
@@ -132,14 +132,18 @@ ion-toggle{
     font-weight: 500;
     font-size: 12px;
   }
+  ion-row{
+    padding: 0px;
+  }
   h3{
     color: black;
     text-decoration: underline;
     color: #3880ff;
-    font-size: 12px;
+    font-size: 11px;
+    margin: 0px;
   }
   ion-label{
-    font-size: 12px;
+    font-size: 11px;
   }
   input{
     border: 1px solid rgb(111, 111, 111);

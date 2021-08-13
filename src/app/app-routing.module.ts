@@ -19,19 +19,16 @@ const routes: Routes = [
     path: 'cchome',
     loadChildren: () => import('./Allpages/home/home.module').then(m => m.HomePageModule), canActivate: [AuthenticationGuard]
   },
-  {
-    path: 'error',
-    loadChildren: () => import('./Allpages/error/error.module').then(m => m.ErrorPageModule)
-  },
+ 
 
-  {
-    path: 'header',
-    loadChildren: () => import('./Allpages/header/header.module').then(m => m.HeaderPageModule)
-  },
-  {
-    path: 'footer',
-    loadChildren: () => import('./Allpages/footer/footer.module').then(m => m.FooterPageModule)
-  },
+  // {
+  //   path: 'header',
+  //   loadChildren: () => import('./Allpages/header/header.module').then(m => m.HeaderPageModule)
+  // },
+  // {
+  //   path: 'footer',
+  //   loadChildren: () => import('./Allpages/footer/footer.module').then(m => m.FooterPageModule)
+  // },
   {
     path: 'RlTicket',
     component: TicketComponent
@@ -49,18 +46,15 @@ const routes: Routes = [
     path: '**',
     redirectTo: '/error'
   },
-
-
-
-
-
-
-
+  {
+    path: 'error',
+    loadChildren: () => import('./Allpages/error/error.module').then(m => m.ErrorPageModule)
+  },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules ,useHash: true })
   ],
   exports: [RouterModule]
 })

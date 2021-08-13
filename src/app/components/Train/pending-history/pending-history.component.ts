@@ -59,8 +59,6 @@ export class PendingHistoryComponent implements OnInit {
     TO: new FormControl(this.maxDate),
   })
   AgtSrhBtn(e) {
-
-    e.preventDefault();
     this.present()
     this.tabShow = false
     let pndHistList = {
@@ -204,7 +202,7 @@ export class PendingHistoryComponent implements OnInit {
       this.tService.postTestData(jPndHistList).subscribe(result => {
         localStorage.setItem("chkbooking", result.response)
         this.dismiss()
-        this.presentModal2(result.response)
+        this.presentModal2()
       });
     }
     else {
@@ -287,16 +285,23 @@ export class PendingHistoryComponent implements OnInit {
       cssClass: 'popover_setting2',
       showBackdrop: true
     });
+    modal1.onDidDismiss()
+      .then(() => {
+
+        this.AgtSrhBtn(Event)
+      });
     return await modal1.present();
   }
 
 
-  async presentModal2(obj) {
+  async presentModal2() {
     const modal2 = await this.modalController.create({
       component: RLCHKBOOKINGIRCTCComponent,
       cssClass: 'popover_setting2',
       showBackdrop: true,
     });
+
+
     return await modal2.present();
   }
 }

@@ -84,6 +84,7 @@ export class RlfailedHistoryComponent implements OnInit {
       "Version": "1.0.0.0.0.0"
     }
     let jbknHisData = JSON.stringify(bknHisData)
+    console.log(jbknHisData)
     this.subscription = this.tService.postTestData(jbknHisData).subscribe(result => {
       if (result.response.length > 2) {
         this.agtList = JSON.parse(result.response)

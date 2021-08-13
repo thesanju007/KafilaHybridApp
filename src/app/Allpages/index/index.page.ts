@@ -19,11 +19,6 @@ export class IndexPage implements OnInit {
   }
   passwordMd5
   constructor(public rout: Router, private tService: TestService,) {
-    this.tService.getTestData('http://api.ipify.org/?format=json')
-      .subscribe(data => {
-        this.ipAddress = data
-      })
-
   }
 
   uType
@@ -58,7 +53,7 @@ export class IndexPage implements OnInit {
         "R_DATA": {},
         "AID": this.set_cre.value.cre1,
         "MODULE": this.set_cre.value.cre4,
-        "IP": this.ipAddress.ip,
+        "IP": "182.73.146.154",
         "TOKEN": this.passwordMd5,
         "ENV": "P",
         "Version": "1.0.0.0.0.0"

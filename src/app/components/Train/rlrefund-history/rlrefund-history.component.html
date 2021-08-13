@@ -15,12 +15,12 @@
           <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12" class="ion-padding">
             <form [formGroup]="agtLstGP" (ngSubmit)="AgtSrhBtn($event)">
               <ion-row class="bdr ion-padding">
-                <ion-col size-xs="5" size-sm="5" size-md="8" size-lg="7" size-xl="7">
+                <ion-col size-xs="4" size-sm="4" size-md="8" size-lg="7" size-xl="7">
                   <h3>
                     Rail Refund History
                   </h3>
                 </ion-col>
-                <ion-col size-xs="7" size-sm="7" size-md="4" size-lg="5" size-xs="5" class="ion-text-center">
+                <ion-col size-xs="8" size-sm="8" size-md="4" size-lg="5" size-xs="5" class="ion-text-center">
 
 
                   <ion-label class="pdn">Production</ion-label>
@@ -75,14 +75,12 @@
             <th class="padding">
               Booking Id
             </th>
-
             <th class="padding">
               FID
             </th>
             <th class="padding">
               RID
             </th>
-
             <th class="padding">
               Amount
               <ion-icon name="caret-down-outline" *ngIf="down" (click)="sortBalAsc()"
@@ -90,8 +88,6 @@
               <ion-icon name="caret-up-outline" *ngIf="up" (click)="sortBalDesc()" style="cursor: pointer; color: red;">
               </ion-icon>
             </th>
-
-
             <th class="padding">
               Time
               <ion-icon name="caret-down-outline" *ngIf="down2" (click)="sortDateAsc()"
@@ -108,7 +104,6 @@
             <th class="padding">
               Narration
             </th>
-
           </tr>
         </thead>
         <tbody>
@@ -119,8 +114,6 @@
             <td class="ion-text-center">{{d.FID}}</td>
             <td class="ion-text-center">{{d.RID}}</td>
             <td class="ion-text-center">{{d.AMOUNT | currency:'INR'}}</td>
-
-
             <td class="ion-text-center">{{d.ETIME | date: 'dd/MM/yyyy'}} {{d.ETIME | date:"HH:mm"}}</td>
             <td class="ion-text-center">{{d.OI}}</td>
             <td class="ion-text-center">{{d.REFUND_TYPE}}</td>
