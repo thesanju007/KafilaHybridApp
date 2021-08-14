@@ -64,18 +64,18 @@ export class AgentAuthorizationComponent implements OnInit {
       "MODULE": this.login_Details.MODULE,
       "IP": this.login_Details.IP,
       "TOKEN": this.login_Details.TOKEN,
-      "ENV":"P",
+      "ENV": "P",
       "Version": "1.0.0.0.0.0"
     }
 
     let jaBal = JSON.stringify(aBal)
-    this.subscription = this.tService.postTestData( jaBal).subscribe(result => {
-      if (result.response.length>2) {
+    this.subscription = this.tService.postTestData(jaBal).subscribe(result => {
+      if (result.response.length > 2) {
         this.agtList = JSON.parse(result.response)
         this.dismiss()
         this.tabShow = true
       }
-      else{
+      else {
         alert("No Data Found")
         this.dismiss()
       }

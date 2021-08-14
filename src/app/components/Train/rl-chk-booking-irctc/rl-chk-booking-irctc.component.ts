@@ -13,11 +13,11 @@ export class RLCHKBOOKINGIRCTCComponent implements OnInit {
 
     let test = localStorage.getItem("chkbooking")
     this.data = JSON.parse(test)
-    console.log(this.data.RESULT)
   }
   m_close() {
     this.modalController.dismiss({
-      'dismissed': true
+      'dismissed': true,
+     
     });
   }
 

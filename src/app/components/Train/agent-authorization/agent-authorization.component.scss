@@ -3,6 +3,13 @@
   font-family: serif;
 
 }
+ion-content{
+  --background:white;
+}
+ion-header ion-toolbar{
+  --background:white;
+}
+
 ion-radio { 
   margin: 0px 10px 0px 10px;
 }

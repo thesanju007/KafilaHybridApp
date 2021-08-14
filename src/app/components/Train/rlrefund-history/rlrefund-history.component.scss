@@ -1,3 +1,9 @@
+ion-content{
+  --background:white;
+}
+ion-header ion-toolbar{
+  --background:white;
+}
 
 *{
   font-family: serif;
@@ -90,7 +96,7 @@ th{
 }
 td{
   border: 1px solid rgba(221, 221, 221, 0.557);
-  padding: 0px 0px;
+  padding: 5px 0px;
   font-size:13px;
   color:#000;
   // word-spacing: 2px;

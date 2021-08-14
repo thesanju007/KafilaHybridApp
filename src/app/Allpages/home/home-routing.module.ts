@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomePage } from './home.page';
-import { PaymentComponent } from '../../components/payment/payment.component'
 import { AgentAuthorizationComponent } from "../../components/Train/agent-authorization/agent-authorization.component";
 import { BookingHistoryComponent } from "../../components/Train/booking-history/booking-history.component";
 import { CancellationHistoryComponent } from "../../components/Train/cancellation-history/cancellation-history.component";
@@ -23,10 +22,6 @@ const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren: () => import('../../Allpages/dashboard/dashboard.module').then(m => m.DashboardPageModule)
-      },
-      {
-        path: 'payment',
-        component: PaymentComponent
       },
       {
         path: 'RLAgentAuth',

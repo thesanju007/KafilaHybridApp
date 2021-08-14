@@ -9,6 +9,7 @@ export class ErrorPage implements OnInit {
 
   constructor() { }
 
+  
   ngOnInit() {
   }
 

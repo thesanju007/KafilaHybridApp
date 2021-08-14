@@ -180,34 +180,30 @@ export class PendingHistoryComponent implements OnInit {
 
   checktoirctc(d) {
     this.present()
-    let t = confirm("Are you sure to execute this action?");
-    if (t === true) {
-      let pndHistList = {
-        "P_TYPE": "CC",
-        "R_TYPE": "RAIL",
-        "R_NAME": "RL_CHK_BOOKING_IRCTC",
-        "R_DATA": {
-          "RAID": d.RID,
-          "BOOKING_ID": d.BOOKING_ID,
-          "REQUIRED_RESULT": false
-        },
-        "AID": this.login_Details.AID,
-        "MODULE": this.login_Details.MODULE,
-        "IP": this.login_Details.IP,
-        "TOKEN": this.login_Details.TOKEN,
-        "ENV": "p",
-        "Version": "1.0.0.0.0.0"
-      }
-      let jPndHistList = JSON.stringify(pndHistList)
-      this.tService.postTestData(jPndHistList).subscribe(result => {
-        localStorage.setItem("chkbooking", result.response)
-        this.dismiss()
-        this.presentModal2()
-      });
+
+    let pndHistList = {
+      "P_TYPE": "CC",
+      "R_TYPE": "RAIL",
+      "R_NAME": "RL_CHK_BOOKING_IRCTC",
+      "R_DATA": {
+        "RAID": d.RID,
+        "BOOKING_ID": d.BOOKING_ID,
+        "REQUIRED_RESULT": false
+      },
+      "AID": this.login_Details.AID,
+      "MODULE": this.login_Details.MODULE,
+      "IP": this.login_Details.IP,
+      "TOKEN": this.login_Details.TOKEN,
+      "ENV": "p",
+      "Version": "1.0.0.0.0.0"
     }
-    else {
+    let jPndHistList = JSON.stringify(pndHistList)
+    this.tService.postTestData(jPndHistList).subscribe(result => {
+      localStorage.setItem("chkbooking", result.response)
       this.dismiss()
-    }
+      this.presentModal2()
+    });
+
   }
 
 
@@ -239,6 +235,7 @@ export class PendingHistoryComponent implements OnInit {
         localStorage.setItem("refund", result.response)
         this.dismiss()
         this.presentModal1()
+       
       });
     }
     else {
@@ -286,9 +283,9 @@ export class PendingHistoryComponent implements OnInit {
       showBackdrop: true
     });
     modal1.onDidDismiss()
-      .then(() => {
-
-        this.AgtSrhBtn(Event)
+      .then((d) => {
+        console.log(d.data.Book_ID)
+        this.agtList = this.agtList.filter(Array => Array.BOOKING_ID !== d.data.Book_ID);
       });
     return await modal1.present();
   }
@@ -300,6 +297,7 @@ export class PendingHistoryComponent implements OnInit {
       cssClass: 'popover_setting2',
       showBackdrop: true,
     });
+ 
 
 
     return await modal2.present();
