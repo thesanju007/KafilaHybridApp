@@ -9,18 +9,20 @@
     </ion-toolbar>
   </ion-header>
   <ion-content>
-    <ion-card class="ion-margin-top"  style="background-color: white;">
+    <ion-card class="ion-margin-top" style="background-color: white;">
       <ion-grid>
         <ion-row>
           <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12" class="ion-padding">
             <form [formGroup]="agtLstGP" (ngSubmit)="AgtSrhBtn()">
               <ion-row class="bdr ion-padding">
                 <ion-col size-xs="4" size-sm="4" size-md="8" size-lg="7" size-xl="7">
-                  <h3>
-                    Rail Agency Statement
-                  </h3>
+                  <ion-chip outline color="primary">
+                    <h3>
+                      Rail Agency Statement
+                    </h3>
+                  </ion-chip>
                 </ion-col>
-                <ion-col size-xs="8" size-sm="8" size-md="4" size-lg="5" size-xs="5" class="ion-text-center">
+                <ion-col size-xs="8" size-sm="8" size-md="4" size-lg="5" size-xl="5" class="ion-text-end">
 
 
                   <ion-label class="pdn">Production</ion-label>
@@ -38,38 +40,37 @@
                 </ion-col> -->
                 <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
                   <fieldset>
-                    <input formControlName="RAID" maxlength="8" min="8" placeholder="Agent ID" >
+                    <input formControlName="RAID" maxlength="8" min="8" placeholder="Agent ID">
                   </fieldset>
                   <ion-text *ngIf="Error.RAID.touched || Error.RAID.dirty">
                     <span class="err" *ngIf="Error.RAID.errors">* Required Field</span>
                   </ion-text>
                 </ion-col>
-                <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
-                  <fieldset >
-                    <input formControlName="FROM" type="date" [max]="maxDate" >
-                  </fieldset>
-                </ion-col>
-                <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
+                <ion-col size-xs="6" size-sm="6" size-md="3" size-lg="3" size-xl="3">
                   <fieldset>
-                    <input formControlName="TO" type="date" [max]="maxDate" >
+                    <input formControlName="FROM" type="date" [max]="maxDate">
+                  </fieldset>
+                </ion-col>
+                <ion-col size-xs="6" size-sm="6" size-md="3" size-lg="3" size-xl="3">
+                  <fieldset>
+                    <input formControlName="TO" type="date" [max]="maxDate">
                   </fieldset>
                 </ion-col>
                 <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
-                  <button class="ccL-btn" type="submit" [disabled]="!agtLstGP.valid" >
+                  <button class="ccL-btn" type="submit" [disabled]="!agtLstGP.valid">
                     <ion-icon slot="start" name="search"></ion-icon> Search
                   </button>
                 </ion-col>
               </ion-row>
             </form>
-
-
-
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-card>
+
+    
     <ion-card *ngIf="tabShow" class="ion-padding" style="overflow-x:auto; background-color: white;">
-      <span>Total Result = {{agtList.length}}</span>
+      <ion-badge color="primary">Total Result = {{agtList.length}}</ion-badge>
       <table class="ion-text-center">
         <thead>
           <tr>
@@ -122,14 +123,14 @@
         <tbody>
           <tr *ngFor="let d of agtList, index as i" class="hvr">
             <td>{{i+1}}</td>
-            <td style="color: red; text-decoration: underline;cursor: pointer" (click)="PNR(d)">{{d.BOOKING_ID}}</td>
+            <td style="color: red;cursor: pointer" (click)="PNR(d)">{{d.BOOKING_ID}}</td>
             <td class="padding-l">{{d.ID}}</td>
             <!-- <td class="padding-l">{{d.AGENT_ID}}</td> -->
             <td>{{d.ALIAS}}</td>
-            <td>{{d.BALANCE | currency:'INR'}}</td>
-            <td>{{d.CREDIT | currency:'INR'}}</td>
-            <td>{{d.DEBIT | currency:'INR'}}</td>
-            <td>{{d.ETIME | date: 'dd/MM/yyyy'}} {{d.ETIME | date:"HH:mm"}}</td>
+            <td style="color: green;">{{d.BALANCE | currency:'INR'}}</td>
+            <td style="color: green;">{{d.CREDIT | currency:'INR'}}</td>
+            <td style="color: red;">{{d.DEBIT | currency:'INR'}}</td>
+            <td>{{d.ETIME | date: 'dd/MM/yyyy'}} / {{d.ETIME | date:"HH:mm"}}</td>
             <td>{{d.REMARK}}</td>
             <!-- <td >{{d.S_REMARK}}</td> -->
             <!-- <td><span [style.background-color]="d.STATUS==false ? 'red' : 'green'" class="dot"></span></td> -->

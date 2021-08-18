@@ -9,18 +9,21 @@
     </ion-toolbar>
   </ion-header>
   <ion-content>
-    <ion-card class="ion-margin-top"  style="background-color: white;">
+    <ion-card class="ion-margin-top" style="background-color: white;">
       <ion-grid>
         <ion-row>
           <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12" class="ion-padding">
             <form [formGroup]="agtLstGP" (ngSubmit)="AgtSrhBtn($event)">
               <ion-row class="bdr ion-padding">
                 <ion-col size-xs="4" size-sm="4" size-md="8" size-lg="7" size-xl="7">
-                  <h3>
-                    Rail Failed History
-                  </h3>
+                  <ion-chip outline color="primary">
+                    <h3>
+                      Rail Failed History
+                    </h3>
+                  </ion-chip>
+
                 </ion-col>
-                <ion-col size-xs="8" size-sm="8" size-md="4" size-lg="5" size-xs="5" class="ion-text-center">
+                <ion-col size-xs="8" size-sm="8" size-md="4" size-lg="5" size-xl="5" class="ion-text-end">
 
 
                   <ion-label class="pdn">Production</ion-label>
@@ -42,12 +45,12 @@
                     <input formControlName="RAID" maxlength="8" min="8" placeholder="Agent ID" (keydown)="btnActive()">
                   </fieldset>
                 </ion-col>
-                <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
+                <ion-col size-xs="6" size-sm="6" size-md="3" size-lg="3" size-xl="3">
                   <fieldset [disabled]="dateDis">
                     <input formControlName="FROM" type="date" [max]="maxDate" (change)="btnActive()">
                   </fieldset>
                 </ion-col>
-                <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
+                <ion-col size-xs="6" size-sm="6" size-md="3" size-lg="3" size-xl="3">
                   <fieldset [disabled]="dateDis">
                     <input formControlName="TO" type="date" [max]="maxDate" (change)="btnActive()">
                   </fieldset>
@@ -68,7 +71,7 @@
     </ion-card>
 
     <ion-card class="ion-padding ion-margin-top" *ngIf="tabShow" style="overflow-x:auto; background-color: white;">
-      <span>Total Result = {{agtList.length}}</span>
+      <ion-badge color="primary">Total Result = {{agtList.length}}</ion-badge>
       <table>
         <thead class="ion-text-center">
           <tr>
@@ -125,10 +128,10 @@
             <td>{{d.EMAIL_ID}}</td>
             <td class="ion-text-center">{{d.FID}}</td>
             <td class="ion-text-center">{{d.RID}}</td>
-            <td class="ion-text-center">{{d.AMOUNT | currency:'INR'}}</td>
+            <td class="ion-text-center" style="color: green;">{{d.AMOUNT | currency:'INR'}}</td>
 
             <td class="ion-text-center">{{d.DEP_DATE | date: 'dd/MM/yyyy'}}</td>
-            <td class="ion-text-center">{{d.ETIME | date: 'dd/MM/yyyy'}} {{d.ETIME | date:"HH:mm"}}</td>
+            <td class="ion-text-center">{{d.ETIME | date: 'dd/MM/yyyy'}} / {{d.ETIME | date:"HH:mm"}}</td>
             <td class="ion-text-center">{{d.OI}}</td>
             <!-- <td class="ion-text-center"><span [style.background-color]="d.STATUS==false ? 'red' : 'green'"
                 class="dot"></span></td> -->

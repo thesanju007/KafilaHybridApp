@@ -77,65 +77,65 @@
             {
                 "sid": "1",
                 "active": "false",
-                "title": "BookingHistory",
+                "title": "Booking_History",
                 "url": "RlBookingHistory",
-                "icon": "navigate-outline",
+                "icon": "return-right",
                 "Eicon": "chevron-forward"
             },
             {
                 "sid": "2",
                 "active": "false",
-                "title": " PendingHistory",
+                "title": " Pending_History",
                 "url": "RLPending",
-                "icon": "navigate-outline",
+                "icon": "return-right",
                 "Eicon": "chevron-forward"
             },
             {
                 "sid": "3",
                 "active": "false",
-                "title": " RLRefundHistory",
+                "title": " Refund_History",
                 "url": "RLRefund",
-                "icon": "navigate-outline",
+                "icon": "return-right",
                 "Eicon": "chevron-forward"
             },
             {
                 "sid": "4",
                 "active": "false",
-                "title": "RLAgentList  ",
+                "title": "Agent_List  ",
                 "url": "RLAgent",
-                "icon": "navigate-outline",
+                "icon": "return-right",
                 "Eicon": "chevron-forward"
             },
             {
                 "sid": "5",
                 "active": "false",
-                "title": "CancellationHistory",
+                "title": "Cancellation_History",
                 "url": "RLCancel",
-                "icon": "navigate-outline",
+                "icon": "return-right",
                 "Eicon": "chevron-forward"
             },
             {
                 "sid": "6",
                 "active": "false",
-                "title": " AgentAuthorization ",
+                "title": " Agent_Authorization ",
                 "url": "RLAgentAuth",
-                "icon": "navigate-outline",
+                "icon": "return-right",
                 "Eicon": "chevron-forward"
             },
             {
                 "sid": "7",
                 "active": "false",
-                "title": " RLFailedHistory ",
+                "title": " Failed_History ",
                 "url": "RLFailed",
-                "icon": "navigate-outline",
+                "icon": "return-right",
                 "Eicon": "chevron-forward"
             },
             {
                 "sid": "8",
                 "active": "false",
-                "title": " RLAgencyStatement ",
+                "title": " Agency_Statement ",
                 "url": "RLAgencyStatement",
-                "icon": "navigate-outline",
+                "icon": "return-right",
                 "Eicon": "chevron-forward"
             }
         ]

@@ -2,9 +2,10 @@
 *{
   font-family: serif;
 
+
 }
 ion-content{
-  --background:white;
+  --background:rgba(231, 227, 227, 0.344);
 }
 ion-header ion-toolbar{
   --background:white;
@@ -85,26 +86,28 @@ table{
 }
 
 thead{
-  background-color: rgba(221, 221, 221, 0.557);
+  background-color: rgba(250, 246, 192, 0.412);
   padding: 5px 0px ;
   color: black;
   border: 1px solid rgba(221, 221, 221, 0.557);
 
 }
 th{
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 400;
 }
 td{
   border: 1px solid rgba(221, 221, 221, 0.557);
-  padding: 5px 5px;
-  font-size:13px;
+  padding: 7px 5px;
+  font-size:14px;
   color:#000;
-  // word-spacing: 2px;
-  cursor: pointer;
+  font-weight: 500;
 }
 .hvr{ 
   border: 1px solid rgba(221, 221, 221, 0.557);
+}
+.hvr:nth-child(even){
+  background-color: rgba(250, 246, 192, 0.412);
 }
 
 .hvr:hover {
@@ -123,9 +126,9 @@ td{
 }
 h3{
   color: black;
-  text-decoration: underline;
-  margin-left: 10px;
+  margin: 10px;
   color: #3880ff;
+  font-family: serif;
 }
 ion-item{
   border: none;
@@ -144,10 +147,10 @@ ion-toggle{
   }
   h3{
     color: black;
-    text-decoration: underline;
     color: #3880ff;
     font-size: 11px;
     margin: 0px;
+    font-family: serif;
   }
   ion-label{
     font-size: 11px;
@@ -155,23 +158,40 @@ ion-toggle{
   input{
     border: 1px solid rgb(111, 111, 111);
     outline: 0;
-    width: 90%;
+    width: 100%;
     background-color: white;
     color: black;
     padding: 8px 10px;
     border-radius: 5px;
     box-shadow: 1px 1px 1px 1px #ddd;
-    margin: 12px 0px 0px 0px;
+    margin: 2px 0px 0px 0px;
   }
   input[type=date]{
     border: 1px solid rgb(111, 111, 111);
     outline: 0;
-    width: 90%;
+    width: 100%;
     background-color: white;
     color: black;
     padding: 8px 10px;
     border-radius: 5px;
-    margin: 12px 0px 0px 0px;
+    margin: 2px 0px 0px 0px;
+  }
+  .ccL-btn{
+    opacity: 1;
+    background-color: #3880ff;
+    color: white;
+    width:100%;
+    padding: 8px;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 5px;
+    margin: 10px 0px 0px 0px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px 1px #ddd;
+  }
+  .ccL-btn:disabled{
+  cursor: not-allowed;
+  opacity: 0.8;
   }
   input:disabled {
     cursor: not-allowed;
@@ -180,23 +200,7 @@ ion-toggle{
   fieldset{
     border: none;
   }
-  .ccL-btn{
-    opacity: 1;
-    background-color: #3880ff;
-    color: white;
-    width:90%;
-    padding: 8px;
-    font-size: 20px;
-    font-weight: 500;
-    border-radius: 5px;
-    margin: 17px 0px 0px 0px;
-    cursor: pointer;
-    box-shadow: 1px 1px 1px 1px #ddd;
-  }
-  .ccL-btn:disabled{
-  cursor: not-allowed;
-  opacity: 0.8;
-  }
+
   th{
     font-size: 13px;
     font-weight: 400;
@@ -209,5 +213,6 @@ ion-toggle{
     // word-spacing: 2px;
     cursor: pointer;
   }
+  
   
 }

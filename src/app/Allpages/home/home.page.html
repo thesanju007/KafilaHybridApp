@@ -19,12 +19,13 @@
             <ion-icon name="caret-down-outline" *ngIf="d.showDetails"></ion-icon>
             <ion-icon name="caret-up-outline" *ngIf="!d.showDetails"></ion-icon>
           </ion-item>
+
           <ion-list *ngIf="!d.showDetails" lines="none">
             <ion-item *ngFor="let s_Menu of d.subMenu" [routerLink]="['/','cchome',s_Menu.url]" lines="none"
               class="sb-menu">
-              <ion-icon name={{s_Menu.icon}}></ion-icon>
+              <ion-icon size="small"  name={{s_Menu.icon}}></ion-icon>
               <ion-label> {{s_Menu.title}}</ion-label>
-              <ion-icon name={{s_Menu.Eicon}}></ion-icon>
+              <ion-icon size="small" name={{s_Menu.Eicon}}></ion-icon>
             </ion-item>
           </ion-list>
         </ion-list>

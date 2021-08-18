@@ -15,7 +15,7 @@ export class HomePage implements OnInit {
   name
   Width
   constructor(private route: Router) {
-   
+
 
   }
 
@@ -26,7 +26,12 @@ export class HomePage implements OnInit {
     this.name = sessionStorage.getItem("Name")
   }
 
-
+  // ionViewWillEnter() {
+  //   setTimeout(() => {
+  //     alert("Session Timeout")
+  //     this.logout()
+  //   }, 1 * 60 * 60 * 500);
+  // }
 
   toggleSubMenu(p) {
     if (p.showDetails) {
