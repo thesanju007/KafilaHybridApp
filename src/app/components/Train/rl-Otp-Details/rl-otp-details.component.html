@@ -1,0 +1,51 @@
+<ion-app>
+  <ion-content>
+    <ion-row class="ion-margin-top  ion-text-center">
+      <ion-col size-md="12" size-lg="12" size-xl="12">
+        <ion-text style="float: right;color: red;cursor: pointer; font-size: 18px;" (click)="m_close()">
+          <ion-icon name="close-circle-outline"></ion-icon>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+    <table class="ion-text-center"> 
+      <tbody>
+        <tr>
+          <th>Request</th>
+          <th>Response</th>
+        </tr>
+        <tr>
+          <td>
+            {{data[0].OTP_REQ}}
+          </td>
+          <td>
+            {{data[1].OTP_REQ}}
+          </td>
+        </tr>
+        <tr >
+          <td class="alert">
+            {{p1data.messageInfo}}
+          </td>
+          <td class="alert">
+            {{p2data.messageInfo}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {{data[0].REQ_TIME}}
+          </td>
+          <td>
+            {{data[1].REQ_TIME}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {{data[0].RES_TIME}}
+          </td>
+          <td>
+            {{data[1].RES_TIME}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ion-content>
+</ion-app>

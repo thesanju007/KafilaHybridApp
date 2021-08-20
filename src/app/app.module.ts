@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { TmoduleModule } from '../app/components/Train/tmodule/tmodule.module';
+import { TmoduleModule } from './components/Train/rl-Module/tmodule.module';
 
 @NgModule({
   declarations: [AppComponent],

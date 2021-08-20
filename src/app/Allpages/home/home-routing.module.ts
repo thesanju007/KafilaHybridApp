@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomePage } from './home.page';
-import { AgentAuthorizationComponent } from "../../components/Train/agent-authorization/agent-authorization.component";
-import { BookingHistoryComponent } from "../../components/Train/booking-history/booking-history.component";
-import { CancellationHistoryComponent } from "../../components/Train/cancellation-history/cancellation-history.component";
-import { PendingHistoryComponent } from "../../components/Train/pending-history/pending-history.component";
-import { RLAgentListComponent } from "../../components/Train/rlagent-list/rlagent-list.component";
-import { RLRefundHistoryComponent } from "../../components/Train/rlrefund-history/rlrefund-history.component";
-import { RlfailedHistoryComponent} from '../../components/Train/rlfailed-history/rlfailed-history.component'
-import { RlagencyStatementComponent} from '../../components/Train/rlagency-statement/rlagency-statement.component'
+import { AgentAuthorizationComponent } from "../../components/Train/rl-Agent-authorization/agent-authorization.component";
+import { BookingHistoryComponent } from "../../components/Train/rl-Booking-history/booking-history.component";
+import { CancellationHistoryComponent } from "../../components/Train/rl-Cancellation-history/cancellation-history.component";
+import { PendingHistoryComponent } from "../../components/Train/rl-Pending-history/pending-history.component";
+import { RLAgentListComponent } from "../../components/Train/rl-Agent-list/rlagent-list.component";
+import { RLRefundHistoryComponent } from "../../components/Train/rl-Refund-history/rlrefund-history.component";
+import { RlfailedHistoryComponent } from '../../components/Train/rl-Failed-history/rlfailed-history.component'
+import { RlagencyStatementComponent } from '../../components/Train/rl-Agency-statement/rlagency-statement.component'
+import { RlCancelOtpHistoryComponent } from '../../components/Train/rl-Cancel-Otp-History/rl-cancel-otp-history.component'
 const routes: Routes = [
   {
     path: '',
@@ -24,7 +25,7 @@ const routes: Routes = [
         loadChildren: () => import('../../Allpages/dashboard/dashboard.module').then(m => m.DashboardPageModule)
       },
       {
-        path: 'RLAgentAuth',
+        path: "RlAgentAuthorization ",
         component: AgentAuthorizationComponent
       }
       ,
@@ -34,33 +35,37 @@ const routes: Routes = [
       }
       ,
       {
-        path: 'RLCancel',
+        path: 'RlCancellationHistory',
         component: CancellationHistoryComponent
       }
       ,
       {
-        path: 'RLPending',
+        path: 'RlPendingHistory',
         component: PendingHistoryComponent
       }
       ,
       {
-        path: 'RLAgent',
+        path: 'RlAgentList',
         component: RLAgentListComponent
       }
       ,
       {
-        path: 'RLRefund',
+        path: 'RlRefundHistory',
         component: RLRefundHistoryComponent
       },
       {
-        path: 'RLFailed',
+        path: 'RlFailedHistory',
         component: RlfailedHistoryComponent
       },
       {
-        path: 'RLAgencyStatement',
+        path: 'RlAgencyStatement',
         component: RlagencyStatementComponent
       },
-      
+      {
+        path: 'RlCancelOtpHistory',
+        component: RlCancelOtpHistoryComponent
+      }
+
     ]
   },
 

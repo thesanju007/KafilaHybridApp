@@ -60,7 +60,7 @@ export class IndexPage implements OnInit {
       }
       let jccLoginData = JSON.stringify(ccLoginData)
 
-      this.tService.postTestData(jccLoginData).subscribe(result => {
+      this.tService.postTestData(ccLoginData).subscribe(result => {
 
         if (result.response !== null) {
           this.show = true

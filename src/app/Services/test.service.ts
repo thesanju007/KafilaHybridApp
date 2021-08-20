@@ -43,7 +43,9 @@ export class TestService {
 
 
   postTestData(data: any): Observable<any> {
-    return this.http.post<any>('https://caller.ksofttechnology.com/api/CC', data, this.httphead).pipe(
+    let jObj = JSON.stringify(data)
+
+    return this.http.post<any>('https://caller.ksofttechnology.com/api/CC', jObj, this.httphead).pipe(
       retry(2),
       catchError(this.handleError)
     )
@@ -96,6 +98,6 @@ export class TestService {
   sendData() {
     return this.holdData
   }
-  
+
 
 }

@@ -23,6 +23,7 @@ export class HomePage implements OnInit {
   ngOnInit() {
     let test = sessionStorage.getItem("Menu")
     this.Menu = JSON.parse(test)
+    console.log(this.Menu)
     this.name = sessionStorage.getItem("Name")
   }
 
