@@ -129,9 +129,9 @@
                       <legend>
                         <ion-icon name="calendar-outline"></ion-icon> DEPARTURE DATE
                       </legend>
-                      <input formControlName="D_date" type="text" [min]="todayt" [max]="maxDate"
+                      <input formControlName="D_date" type="date" [min]="todayt" [max]="maxDate"
                         placeholder="{{todayt}}" (change)="returnDate($event.target.value)"
-                        onfocus="(this.type='date')">
+                        >
                     </fieldset>
                     <ion-text *ngIf="Error.D_date.touched || Error.D_date.dirty">
                       <span class="err" *ngIf="Error.D_date.errors">* Required Field</span>
@@ -145,8 +145,8 @@
                       <legend>
                         <ion-icon name="calendar-outline"></ion-icon> RETURN DATE
                       </legend>
-                      <input formControlName="A_date" type="text" [min]="minDate" placeholder="{{todayt}}"
-                        (change)="returnDateMax($event.target.value)" onfocus="(this.type='date')">
+                      <input formControlName="A_date" type="date" [min]="minDate" placeholder="{{todayt}}"
+                        (change)="returnDateMax($event.target.value)" >
                     </fieldset>
                   </ion-col>
                 </ion-row>
@@ -307,8 +307,8 @@
               <ion-col size-sm="12" size-xs="12" size-md="6" size-lg="6" size-xl="6" class="ion-padding-top">
                 <fieldset>
                   <legend>Select Departure Date</legend>
-                  <input formControlName="D_date" type="text" [min]="todayt" [max]="maxDate" placeholder="{{todayt}}"
-                    (change)="returnDate($event.target.value)" onfocus="(this.type='date')">
+                  <input formControlName="D_date" type="date" [min]="todayt" [max]="maxDate" placeholder="{{todayt}}"
+                    (change)="returnDate($event.target.value)" >
                 </fieldset>
               </ion-col>
 
@@ -426,8 +426,8 @@
               <ion-col size-md="6" size-lg="6" size-xs="12">
                 <fieldset>
                   <legend><ion-icon name="calendar-outline"></ion-icon> Select Date</legend>
-                  <input formControlName="DT_date" type="text" [min]="todayt" placeholder="{{todayt}}"
-                    onfocus="(this.type='date')">
+                  <input formControlName="DT_date" type="date" [min]="todayt" placeholder="{{todayt}}"
+                    >
                 </fieldset>
               </ion-col>
               <ion-col size-md="6" size-lg="6" size-xs="12">
@@ -676,4 +676,4 @@
   </ion-grid> -->
 
 </ion-content>
-<app-footer></app-footer>
+<!-- <app-footer></app-footer>  -->

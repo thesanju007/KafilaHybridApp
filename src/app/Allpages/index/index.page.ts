@@ -53,13 +53,14 @@ export class IndexPage implements OnInit {
               this.rout.navigate(['home/dashboard'])
             }
             else {
-              this.presentToast()
-              this.dismiss()
+              // this.presentToast()
+              // this.dismiss()
+
             }
           }
         });
       }
-      else if (modelData.data.cred1 == "" || modelData.data.cred2 == "" || modelData.data.cred3 == "") {
+      else {
         this.dismiss()
         this.blank()
       }
@@ -92,7 +93,7 @@ export class IndexPage implements OnInit {
       mode: 'ios',
       backdropDismiss: false,
       spinner: 'bubbles',
-      duration: 2000
+      // duration: 2000
     }).then(a => {
       a.present().then(() => {
         console.log('presented');
@@ -116,18 +117,18 @@ export class IndexPage implements OnInit {
     window.location.replace('/index')
   }
   aboutus() {
-    // this.rout.navigate(['/aboutus'])
-    //   .then(() => {
-    //     window.location.reload();
-    //   });
-    window.location.replace('/aboutus')
+    this.rout.navigate(['/aboutus'])
+      .then(() => {
+        window.location.reload();
+      });
+    //window.location.replace('/aboutus')
   }
   contactus() {
-    // this.rout.navigate(['/contactus'])
-    //   .then(() => {
-    //     window.location.reload();
-    //   });
-    window.location.replace('/contactus')
+    this.rout.navigate(['/contactus'])
+     .then(() => {
+      window.location.reload();
+     }); 
+    //window.location.replace('/contactus')
   }
 
 }

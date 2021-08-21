@@ -8,14 +8,14 @@
 .top-Head-upper{
   background-color: rgba(255, 255, 255, 0.945);
   font-weight: 500;
-  color: #17745b;
+  color: #0d2c4f;
 }
 
 ion-col{
   padding: 0px;
 }
 ion-toolbar {
-  --background: var(--ion-item-background, var(--ion-background-color, #17745b));
+  --background: var(--ion-item-background, var(--ion-background-color, #0d2c4f));
   color: #fff;
   padding: 0%;
  
@@ -56,13 +56,18 @@ ion-button{
   .c-Header{
     padding: 20px 0px 0px 0px;
     font-weight: 500;
-    color: #17745b;
+    color: #0d2c4f;
     font-size: 24px;
   }
   .c-content{
-    font-size: 18px;
+    font-size: 16px;
     color: red;
     text-align: center;
+  }
+  .cb-content{
+    font-size: 12px;
+    color: black;
+    
   }
   .mss-content{
     font-size: 16px;
@@ -140,14 +145,19 @@ ion-button{
     padding: 10px 0px 0px 0px;
   }
   .c-content{
-    font-size: 16px;
+    font-size: 14px;
     color: red;
     text-align: center;
+  }
+  .cb-content{
+    font-size: 12px;
+    color: black;
+    
   }
   .c-Header{
     padding: 20px 0px 0px 0px;
     font-weight: 500;
-    color: #17745b;
+    color: #0d2c4f;
     font-size: 22px;
   }
   .t-spot{
@@ -239,13 +249,18 @@ ion-button{
   .c-Header{
     padding: 20px 0px 0px 0px;
     font-weight: 500;
-    color: #17745b;
+    color: #0d2c4f;
     font-size: 20px;
   }
   .c-content{
-    font-size: 15px;
+    font-size: 12px;
     color: red;
     text-align: center;
+  }
+  .cb-content{
+    font-size: 12px;
+    color: black;
+    
   }
   .t-spot{
     height: 220px;
@@ -326,13 +341,18 @@ ion-button{
   .c-Header{
     padding: 20px 0px 0px 0px;
     font-weight: 500;
-    color: #17745b;
+    color: #0d2c4f;
     font-size: 18px;
   }
   .c-content{
-    font-size: 13px;
+    font-size: 12px;
     color: red;
     text-align: center;
+  }
+  .cb-content{
+    font-size: 10px;
+    color: black;
+    
   }
   .t-spot{
     height: 160px;
@@ -349,7 +369,7 @@ ion-button{
   .top-Head-upper{
     background-color: rgba(255, 255, 255, 0.945);
     font-weight: 400;
-    color: #17745b;
+    color: #0d2c4f;
   }
  
   ion-col{
@@ -441,13 +461,18 @@ ion-button{
   .c-Header{
     padding: 20px 0px 0px 0px;
     font-weight: 500;
-    color: #17745b;
+    color: #0d2c4f;
     font-size: 18px;
   }
   .c-content{
-    font-size: 11px;
+    font-size: 10px;
     color: red;
     text-align: center;
+  }
+  .cb-content{
+    font-size: 9px;
+    color: black;
+    
   }
   .t-spot{
     height: 120px;
@@ -468,7 +493,7 @@ ion-button{
   .top-Head-upper{
     background-color: rgba(255, 251, 251, 0.945);
     font-weight: 400;
-    color: #17745b;
+    color: #0d2c4f;
   }
  
   ion-col{
@@ -560,13 +585,18 @@ ion-button{
   .c-Header{
     padding: 20px 0px 0px 0px;
     font-weight: 500;
-    color: #17745b;
+    color: #0d2c4f;
     font-size: 18px;
   }
   .c-content{
-    font-size: 15px;
+    font-size: 10px;
     color: red;
     text-align: center;
+  }
+  .cb-content{
+    font-size: 9px;
+    color: black;
+    
   }
   .t-spot{
     height: 120px;
@@ -586,7 +616,7 @@ ion-button{
   .top-Head-upper{
     background-color: rgba(250, 250, 250, 0.945);
     font-weight: 400;
-    color: #17745b;
+    color: #0d2c4f;
   }
  
   ion-col{
@@ -670,6 +700,11 @@ ion-button{
     font-size: 10px;
     color: red;
     text-align: center;
+  }
+  .cb-content{
+    font-size: 8px;
+    color: black;
+    
   }
   .mss-content{
     font-size: 12px;

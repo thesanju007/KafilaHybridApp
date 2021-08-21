@@ -1,11 +1,18 @@
 ion-item{
     border-bottom: 1px solid rgb(189, 189, 189);
 }
+.centre{
+    text-align: center;
+}
 input{
     border: none;
     outline: 0;
     width: 100%;
     background-color: white;
+    padding: 0px;
+}
+input::placeholder{
+    font-size: 13px;
 }
 
 ion-icon{
@@ -18,12 +25,13 @@ ion-icon{
     text-align: center;
 }
 ion-label{
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 500;
     font-family: sans-serif;
-    color: #17745b;
+    color: #0d2c4f;
 }
 .passwordIcon{
+    font-size: 12px;
     position: relative !important;
     top: 7px !important;
     margin: 0 auto !important;

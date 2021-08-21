@@ -3,15 +3,24 @@
 
     <ion-buttons slot="start">
       <ion-menu-button auto-hide="false" (click)="Menu()"></ion-menu-button>
-      <img alt="logo" id="header_logo" height="40" src="../assets/logo.png">
     </ion-buttons>
 
-    <ion-title> KAFILA TOUR AND TRAVELS</ion-title>
-
-    <ion-buttons slot="primary">
+    <ion-title>
+     
+      <ion-grid>
+        <ion-row>
+          <ion-col size-xs="12" size-sm="12" size-md="4" size-lg="4" size-xl="4">
+            <img alt="logo" id="header_logo" height="40" src="../assets/logo.png">
+          </ion-col>
+         
         
+        </ion-row>
+      </ion-grid>
+    </ion-title>
+
+    <!-- <ion-buttons slot="primary">
       <ion-button href="home/dashboard">
-        <ion-icon slot="icon-only" name="home" ></ion-icon>
+        <ion-icon slot="icon-only" name="home"></ion-icon>
       </ion-button>
 
       <ion-button>
@@ -21,12 +30,7 @@
       <ion-button>
         <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
       </ion-button>
-
-    </ion-buttons>
+    </ion-buttons> -->
 
   </ion-toolbar>
-  
 </ion-header>
-
-
-

@@ -1,8 +1,8 @@
 <form [formGroup]="set_cre" (ngSubmit)="closeModel()" class="cred-box">
   <ion-grid>
     <ion-row style="border-bottom: 1px solid black;">
-      <ion-col size-sm="4" size-xs="4" size-md="4" size-lg="4" size-xl="4"></ion-col>
-      <ion-col size-sm="8" size-xs="8" size-md="8" size-lg="8" size-xl="8">
+     
+      <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12"  class="centre">
         <ion-label>Agent Login</ion-label>
       </ion-col>
     </ion-row>
@@ -28,7 +28,7 @@
       </ion-col>
 
       <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
-        <ion-button type="submit" (click)="closeModel()"> Login
+        <ion-button size="small" type="submit" (click)="closeModel()"> Login
           <ion-icon name="log-in-outline"></ion-icon>
         </ion-button>
       </ion-col>

@@ -37,13 +37,14 @@ export class HomePage implements OnInit {
     //     e.preventDefault();
     // };
   }
+  
 
-  ionViewWillEnter() {
-    setTimeout(() => {
-      alert("Session Timeout")
-      this.logout()
-    }, 1 * 60 * 60 * 500);
-  }
+  // ionViewWillEnter() {
+  //   setTimeout(() => {
+  //     alert("Session Timeout")
+  //     this.logout()
+  //   }, 1 * 60 * 60 * 500);
+  // }
 
   logout() {
     this.route.navigate(['/index'])

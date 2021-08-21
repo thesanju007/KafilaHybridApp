@@ -11,6 +11,8 @@ export class FSearchPage implements OnInit {
   ngOnInit() {
     console.log("f-search")
   }
-
+  test(){
+    alert("working")
+  }
   
 }

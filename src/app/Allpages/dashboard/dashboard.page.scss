@@ -21,20 +21,21 @@ input{
   width: 100%;
   padding: 10px;
   background-color: white;
+  color: black;
 }
 input:disabled {
 cursor: not-allowed;
 }
 
 ion-icon {
-  color: #017959;
+  color: #0d2c4f;
 }
 .label{
   font-size: 20px;
   font-weight: 500;
 }
 ion-text {
-  color: #017959;
+  color: #0d2c4f;
   font-weight: 500;
   cursor: pointer;
 }
@@ -43,7 +44,7 @@ ion-text {
   font-size: 14px;
 }
 .FTH {
-  color: #017959;
+  color: #0d2c4f;
   background-color: #fff;
   font-size: 20px;
   text-align: center;
@@ -52,19 +53,19 @@ ion-text {
   font-family: serif;
   padding: 10px 0px 5px 0px;
   cursor: pointer;
-  border-top: 1px  solid #017959;
-  border-left: 1px  solid #017959 ;
+  border-top: 1px  solid #0d2c4f;
+  border-left: 1px  solid #0d2c4f ;
 }
 .FTHActive {
-  background-color: #017959;
+  background-color: #0d2c4f;
   color: #fff;
 }
 .SB {
   background-color: #fff;
-  border-top: 2px solid #017959;
-  border-left: 1px solid #017959;
-  border-right: 1px solid #017959;
-  border-bottom: 1px solid #017959;
+  border-top: 2px solid #0d2c4f;
+  border-left: 1px solid #0d2c4f;
+  border-right: 1px solid #0d2c4f;
+  border-bottom: 1px solid #0d2c4f;
   border-top-right-radius: 1px;
   border-top-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -75,7 +76,7 @@ ion-text {
 .submit-btn {
   width: 100%;
   padding: 16px 0px;
-  background: #017959;
+  background: #0d2c4f;
   color: white;
   font-size: 19px;
   font-family: serif;
@@ -201,7 +202,7 @@ legend{
     }
     .R-label{
       font-weight: 500;
-      font-size: 13px;
+      font-size: 16px;
     }
     .label{
       font-size: 17px;

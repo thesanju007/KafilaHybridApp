@@ -97,17 +97,19 @@ export class AboutUsPage implements OnInit {
     window.location.replace('/index')
   }
   aboutus() {
-    // this.rout.navigate(['/aboutus'])
-    //   .then(() => {
-    //     window.location.reload();
-    //   });
-    window.location.replace('/aboutus')
+    this.rout.navigate(['/aboutus'])
+      .then(() => {
+        window.location.reload();
+      });
+    //window.location.replace('/aboutus')
   }
   contactus() {
-    // this.rout.navigate(['/contactus'])
-    //   .then(() => {
-    //     window.location.reload();
-    //   });
-    window.location.replace('/contactus')
+    this.rout.navigate(['/contactus'])
+     .then(() => {
+      window.location.reload();
+     }); 
+    //window.location.replace('/contactus')
   }
+
+
 }

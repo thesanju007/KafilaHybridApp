@@ -213,7 +213,7 @@ mfArray=["1","2","3",]
       NAME: "GET_FLIGHT",
       STR: [
         {
-          AUTH_TOKEN: "b53e07c1-d094-4a00-b746-1294a3051793",
+          AUTH_TOKEN: "",
           SESSION_ID: "",
           TRIP: this.flightData.value.flighttype,
           SECTOR: "D",
@@ -233,11 +233,11 @@ mfArray=["1","2","3",]
     let js_data = JSON.stringify(data)
     if (this.flightData.value.flighttype == "1") {
       this.tService.getData(js_data)
-      // this.route.navigate(['home/fbookinghistory']);
-      // this.tService.postTestData("/API/FLIGHT", js_data).subscribe((Flight) => {
-      //   console.log(Flight)
+      this.route.navigate(['home/fbookinghistory']);
+      this.tService.postTestData("/API/FLIGHT", js_data).subscribe((Flight) => {
+        console.log(Flight)
 
-      // })
+      })
     }
     else if (this.flightData.value.flighttype == "2") {
       alert("Round Trip")
