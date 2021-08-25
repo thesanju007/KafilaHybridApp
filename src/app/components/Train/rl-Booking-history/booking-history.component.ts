@@ -15,7 +15,7 @@ export class BookingHistoryComponent implements OnInit {
   maxDate = new Date(new Date().getTime()).toISOString().split('T')[0];
 
   subscription: Subscription
- 
+  amt = 0
   constructor(private tService: TestService, public loadingController: LoadingController, private route: Router, public modalController: ModalController) { }
   login_Details
   agtList
@@ -29,7 +29,6 @@ export class BookingHistoryComponent implements OnInit {
   dateDis = false
   AgentActive() {
     this.dateDis = true
-    this.agtLstGP.reset()
     this.btn = true
   }
   DateActive() {
@@ -53,49 +52,93 @@ export class BookingHistoryComponent implements OnInit {
     }
   }
   agtLstGP = new FormGroup({
-
     RAID: new FormControl(),
     FROM: new FormControl(this.maxDate),
     TO: new FormControl(this.maxDate),
   })
 
   AgtSrhBtn(e) {
-    
-    e.preventDefault();
-    this.present()
-    this.tabShow = false
-    let bknHisData = {
-      "P_TYPE": "CC",
-      "R_TYPE": "RAIL",
-      "R_NAME": "RL_BOOKING_HISTORY",
-      "R_DATA": {
-        "RAID": this.agtLstGP.value.RAID || "",
-        "FROM": this.agtLstGP.value.FROM || "",
-        "TO": this.agtLstGP.value.TO || "",
-        "MODULE": this.evv,
-        "STATUS": true
-      },
-      "AID": this.login_Details.AID,
-      "MODULE": this.login_Details.MODULE,
-      "IP": this.login_Details.IP,
-      "TOKEN": this.login_Details.TOKEN,
-      "ENV": "P",
-      "Version": "1.0.0.0.0.0"
+    if (this.dateDis = true) {
+      if (this.agtLstGP.value.RAID != "") {
+        e.preventDefault();
+        this.present()
+        this.tabShow = false
+        let bknHisData = {
+          "P_TYPE": "CC",
+          "R_TYPE": "RAIL",
+          "R_NAME": "RL_BOOKING_HISTORY",
+          "R_DATA": {
+            "RAID": this.agtLstGP.value.RAID || "",
+            "FROM": this.agtLstGP.value.FROM,
+            "TO": this.agtLstGP.value.TO,
+            "MODULE": this.evv,
+            "STATUS": true
+          },
+          "AID": this.login_Details.AID,
+          "MODULE": this.login_Details.MODULE,
+          "IP": this.login_Details.IP,
+          "TOKEN": this.login_Details.TOKEN,
+          "ENV": "P",
+          "Version": "1.0.0.0.0.0"
+        }
+
+        this.subscription = this.tService.postTestData(bknHisData).subscribe(result => {
+          if (result.response.length > 2) {
+            this.agtList = JSON.parse(result.response)
+            this.tabShow = true
+            this.dismiss()
+            this.amt = 0
+            for (let x of this.agtList) {
+              this.amt += parseInt(x.AMOUNT)
+            }
+          }
+          else {
+            alert("No Data Found")
+            this.dismiss()
+          }
+        });
+      }
+    }
+    else {
+      e.preventDefault();
+      this.present()
+      this.tabShow = false
+      let bknHisData = {
+        "P_TYPE": "CC",
+        "R_TYPE": "RAIL",
+        "R_NAME": "RL_BOOKING_HISTORY",
+        "R_DATA": {
+          "RAID": this.agtLstGP.value.RAID || "",
+          "FROM": this.agtLstGP.value.FROM,
+          "TO": this.agtLstGP.value.TO,
+          "MODULE": this.evv,
+          "STATUS": true
+        },
+        "AID": this.login_Details.AID,
+        "MODULE": this.login_Details.MODULE,
+        "IP": this.login_Details.IP,
+        "TOKEN": this.login_Details.TOKEN,
+        "ENV": "P",
+        "Version": "1.0.0.0.0.0"
+      }
+
+      this.subscription = this.tService.postTestData(bknHisData).subscribe(result => {
+        if (result.response.length > 2) {
+          this.agtList = JSON.parse(result.response)
+          this.tabShow = true
+          this.dismiss()
+          this.amt = 0
+          for (let x of this.agtList) {
+            this.amt += parseInt(x.AMOUNT)
+          }
+        }
+        else {
+          alert("No Data Found")
+          this.dismiss()
+        }
+      });
     }
 
-    this.subscription = this.tService.postTestData(bknHisData).subscribe(result => {
-      if (result.response.length>2) {
-       
-        this.agtList = JSON.parse(result.response)
-        this.tabShow = true
-        this.dismiss()
-        
-      }
-      else{
-        alert("No Data Found")
-        this.dismiss()
-      }
-    });
   }
   up = false
   down = true
@@ -168,12 +211,12 @@ export class BookingHistoryComponent implements OnInit {
       "Version": "1.0.0.0.0.0"
     }
     this.tService.postTestData(vObj).subscribe(result => {
-      if (result.response!==null) {
+      if (result.response !== null) {
         this.dismiss()
         this.presentModal()
         sessionStorage.setItem("ticketInfo", result.response)
       }
-      else{
+      else {
         alert("No Data Found")
         this.dismiss()
       }
@@ -209,6 +252,6 @@ export class BookingHistoryComponent implements OnInit {
       cssClass: 'popover_setting',
 
     });
-    return  modal.present();
+    return modal.present();
   }
 }

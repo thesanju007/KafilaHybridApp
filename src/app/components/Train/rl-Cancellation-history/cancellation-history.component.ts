@@ -29,7 +29,6 @@ export class CancellationHistoryComponent implements OnInit {
   dateDis = false
   AgentActive() {
     this.dateDis = true
-    this.agtLstGP.reset()
     this.btn = true
   }
   DateActive() {
@@ -69,8 +68,8 @@ export class CancellationHistoryComponent implements OnInit {
       "R_NAME": "RL_CANCEL_HISTORY",
       "R_DATA": {
         "RAID": this.agtLstGP.value.RAID || "",
-        "FROM": this.agtLstGP.value.FROM || "",
-        "TO": this.agtLstGP.value.TO || "",
+        "FROM": this.agtLstGP.value.FROM,
+        "TO": this.agtLstGP.value.TO ,
         "MODULE":this.evv,
         "STATUS": true
       },

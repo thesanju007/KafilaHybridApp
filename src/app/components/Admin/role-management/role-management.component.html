@@ -1,0 +1,68 @@
+<ion-app>
+  <ion-header [translucent]="true">
+    <ion-toolbar class="ion-text-center">
+      <ion-buttons slot="start">
+        <ion-menu-button style="color: black;"></ion-menu-button>
+      </ion-buttons>
+      <img alt="logo" id="header_logo" src="../assets/logo.png">
+      <!-- <ion-text> Dashboard</ion-text> -->
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12" class="ion-padding">
+          <ion-button (click)="roles()">Get All Roles</ion-button>
+          <!-- <ion-button style="float: right;margin-top: 10px;"  size="small" *ngIf="tabShow"><ion-icon name="add"></ion-icon> Add New Role</ion-button> -->
+        </ion-col>
+        <table class="ion-text-center ion-padding mtable" *ngIf="tabShow" style="overflow-x:auto;">
+          <thead>
+            <tr>
+              <th>Group Id</th>
+              <th>Roles</th>
+              <th>Status</th>
+              <th>submenu</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let d of menu, index as i" class="hvr">
+              <td>{{i+1}}</td>
+              <td style="color: rgb(8, 144, 255);">{{d.title | uppercase}}</td>
+              <td style="color: green">{{d.active}}</td>
+              <td style="color: red; cursor: pointer;">
+                <div class="popover__wrapper">
+                  {{d.subMenu.length}} Submenu
+                  <div class="popover__content" *ngIf="d.subMenu.length>0">
+                    <table>
+                      <thead>
+                        <th>SID</th>
+                        <th>Title</th>
+                        <th>Url</th>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let a of d.subMenu">
+                          <td>{{a.sid}}</td>
+                          <td>{{a.title}}</td>
+                          <td>{{a.url}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <!-- <ion-button size="small" color="success"><ion-icon name="create"></ion-icon> Update</ion-button> -->
+                <ion-button size="small" (click)="addSM(d)">
+                  <ion-icon name="add"></ion-icon> Add Sub Menu
+                </ion-button>
+                <!-- <ion-button color="danger" size="small">Delete</ion-button> -->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+</ion-app>

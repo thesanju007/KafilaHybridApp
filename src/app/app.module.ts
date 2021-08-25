@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { TmoduleModule } from './components/Train/rl-Module/tmodule.module';
-
+import { AModuleModule } from './components/Admin/a-module/a-module.module'
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -17,7 +17,7 @@ import { TmoduleModule } from './components/Train/rl-Module/tmodule.module';
     IonicModule.forRoot(),
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule, TmoduleModule
+    HttpClientModule, TmoduleModule, AModuleModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

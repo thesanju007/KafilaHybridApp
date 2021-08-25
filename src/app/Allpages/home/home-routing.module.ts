@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomePage } from './home.page';
 import { AgentAuthorizationComponent } from "../../components/Train/rl-Agent-authorization/agent-authorization.component";
@@ -10,6 +10,7 @@ import { RLRefundHistoryComponent } from "../../components/Train/rl-Refund-histo
 import { RlfailedHistoryComponent } from '../../components/Train/rl-Failed-history/rlfailed-history.component'
 import { RlagencyStatementComponent } from '../../components/Train/rl-Agency-statement/rlagency-statement.component'
 import { RlCancelOtpHistoryComponent } from '../../components/Train/rl-Cancel-Otp-History/rl-cancel-otp-history.component'
+import {RoleManagementComponent} from '../../components/Admin/role-management/role-management.component'
 const routes: Routes = [
   {
     path: '',
@@ -64,6 +65,10 @@ const routes: Routes = [
       {
         path: 'RlCancelOtpHistory',
         component: RlCancelOtpHistoryComponent
+      }
+      ,{
+        path:'RoleManagement',
+        component:RoleManagementComponent
       }
 
     ]

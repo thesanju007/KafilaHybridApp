@@ -14,6 +14,10 @@ export class AuthenticationGuard implements CanActivate {
 
       window.alert("Access Denied, Login is Required to Access This Page!");
       this.router.navigate(['/ccindex'])
+      localStorage.clear();
+      sessionStorage.clear();
+      console.clear()
+
     }
     return true;
   }

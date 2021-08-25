@@ -13,6 +13,7 @@ ion-list ion-item{
 ion-menu ion-content {
   --background: var(--ion-item-background, var(--ion-background-color, rgb(255, 255, 255)));
 }
+
 ion-menu{
   width:250px;
 }
@@ -57,13 +58,13 @@ ion-menu.md ion-list-header,
 ion-menu.md ion-note {
   padding-left: 10px;
 }
-ion-menu.md ion-list#inbox-list {
-  border-bottom: 1px solid var(--ion-color-step-150, #fff);
-}
+// ion-menu.md ion-list#inbox-list {
+//   border-bottom: 1px solid var(--ion-color-step-150, #fff);
+// }
 ion-menu.md ion-item {
   --padding-start: 10px;
   --padding-end: 10px;
-  border-radius: 4px;
+  background-color: white;
   cursor: pointer;
 }
 ion-menu.md ion-item.selected {

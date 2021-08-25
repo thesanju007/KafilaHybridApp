@@ -1,11 +1,11 @@
 <ion-app class=" for-app">
-  <ion-split-pane contentId="main-content"  >
-    <ion-menu contentId="main-content" class="ion-text-center"  >
-      <ion-avatar  >
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" class="ion-text-center">
+      <ion-avatar>
         <img src="../assets/avatarC.jpg">
       </ion-avatar>
       <ion-note>Hello {{name}}</ion-note>
-      <ion-content  >
+      <ion-content>
         <ion-item lines="none" class="line-up" [routerLink]="['/cchome/dashboard']">
           <ion-icon slot="start" name="home-outline"></ion-icon>
           <ion-label>Dashboard </ion-label>
@@ -23,7 +23,7 @@
           <ion-list *ngIf="!d.showDetails" lines="none">
             <ion-item *ngFor="let s_Menu of d.subMenu" [routerLink]="['/','cchome',s_Menu.url]" lines="none"
               class="sb-menu">
-              <ion-icon size="small"  name={{s_Menu.icon}}></ion-icon>
+              <!-- <ion-icon size="small" name={{s_Menu.icon}}></ion-icon> -->
               <ion-label> {{s_Menu.title}}</ion-label>
               <ion-icon size="small" name={{s_Menu.Eicon}}></ion-icon>
             </ion-item>

@@ -2,7 +2,7 @@
   <ion-header [translucent]="true">
     <ion-toolbar class="ion-text-center">
       <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
+        <ion-menu-button style="color: black;"></ion-menu-button>
       </ion-buttons>
       <img alt="logo" id="header_logo" src="../assets/logo.png">
       <!-- <ion-text> Dashboard</ion-text> -->
@@ -68,27 +68,18 @@
       </ion-grid>
     </ion-card>
 
-    
+
     <ion-card *ngIf="tabShow" class="ion-padding" style="overflow-x:auto; background-color: white;">
       <ion-badge color="primary">Total Result = {{agtList.length}}</ion-badge>
       <table class="ion-text-center">
         <thead>
           <tr>
-            <th class="padding">
-              #
-            </th>
-            <th class="padding">
-              Booking Id
-            </th>
-            <th class="padding">
-              ID
-            </th>
-            <!-- <th class="padding">
-              Agent Id
-            </th> -->
-            <th class="padding">
-              Alias
-            </th>
+            <th class="padding">#</th>
+            <th class="padding">Transaction</th>
+            <th class="padding">Booking Id</th>
+            <th class="padding">ID</th>
+            <!-- <th class="padding">Agent Id</th> -->
+           
             <th class="padding">
               Balance
               <ion-icon name="caret-down-outline" *ngIf="down" (click)="sortBalAsc()"
@@ -96,12 +87,8 @@
               <ion-icon name="caret-up-outline" *ngIf="up" (click)="sortBalDesc()" style="cursor: pointer; color: red;">
               </ion-icon>
             </th>
-            <th class="padding">
-              Credit
-            </th>
-            <th class="padding">
-              Debit
-            </th>
+            <th class="padding">Credit</th>
+            <th class="padding">Debit</th>
             <th class="padding">
               Time
               <ion-icon name="caret-down-outline" *ngIf="down2" (click)="sortDateAsc()"
@@ -109,9 +96,7 @@
               <ion-icon name="caret-up-outline" *ngIf="up2" (click)="sortDateDesc()"
                 style="cursor: pointer; color: red;"></ion-icon>
             </th>
-            <th class="padding">
-              Remark
-            </th>
+            <th class="padding">Remark</th>
             <!-- <th class="padding">
               S Remark
             </th> -->
@@ -123,10 +108,11 @@
         <tbody>
           <tr *ngFor="let d of agtList, index as i" class="hvr">
             <td>{{i+1}}</td>
+            <td>{{d.ALIAS}}</td>
             <td style="color: red;cursor: pointer" (click)="PNR(d)">{{d.BOOKING_ID}}</td>
             <td class="padding-l">{{d.ID}}</td>
             <!-- <td class="padding-l">{{d.AGENT_ID}}</td> -->
-            <td>{{d.ALIAS}}</td>
+           
             <td style="color: green;">{{d.BALANCE | currency:'INR'}}</td>
             <td style="color: green;">{{d.CREDIT | currency:'INR'}}</td>
             <td style="color: red;">{{d.DEBIT | currency:'INR'}}</td>

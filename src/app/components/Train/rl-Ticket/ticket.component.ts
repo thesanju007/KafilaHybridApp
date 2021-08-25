@@ -13,7 +13,7 @@ export class TicketComponent implements OnInit {
   ngOnInit() {
     let ticket = sessionStorage.getItem("ticketInfo")
     this.test = JSON.parse(ticket)
-    // console.log(this.test)
+    console.log(this.test)
   }
   m_close() {
     this.modalController.dismiss({

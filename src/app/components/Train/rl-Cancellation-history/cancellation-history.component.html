@@ -2,7 +2,7 @@
   <ion-header [translucent]="true">
     <ion-toolbar class="ion-text-center">
       <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
+        <ion-menu-button  style="color: black;"></ion-menu-button>
       </ion-buttons>
       <img alt="logo" id="header_logo" src="../assets/logo.png">
       <!-- <ion-text> Dashboard</ion-text> -->
@@ -46,12 +46,12 @@
                   </fieldset>
                 </ion-col>
                 <ion-col size-xs="6" size-sm="6" size-md="3" size-lg="3" size-xl="3">
-                  <fieldset [disabled]="dateDis">
+                  <fieldset>
                     <input formControlName="FROM" type="date" [max]="maxDate" (change)="btnActive()">
                   </fieldset>
                 </ion-col>
                 <ion-col size-xs="6" size-sm="6" size-md="3" size-lg="3" size-xl="3">
-                  <fieldset [disabled]="dateDis">
+                  <fieldset>
                     <input formControlName="TO" type="date" [max]="maxDate" (change)="btnActive()">
                   </fieldset>
                 </ion-col>

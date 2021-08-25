@@ -1,0 +1,69 @@
+<ion-app>
+  <ion-content>
+    <ion-grid style="padding: 0px;">
+      <ion-row style="border-bottom: 1px solid black; padding: 0px;">
+        <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12" class="ion-text-center">
+          <span>Add Submenu in <ion-text *ngIf="g_Id=='1'">Admin</ion-text>
+            <ion-text *ngIf="g_Id=='2'">Accounts</ion-text>
+            <ion-text *ngIf="g_Id=='3'">Sales</ion-text>
+            <ion-text *ngIf="g_Id=='4'">Flight</ion-text>
+            <ion-text *ngIf="g_Id=='5'">Rail</ion-text>
+            <ion-text *ngIf="g_Id=='6'">Miscellaneous</ion-text>
+          </span>
+
+          <ion-text style="float: right;color: red;cursor: pointer; font-size: 18px;"
+            (click)="m_close()">
+            <ion-icon name="close-circle-outline"></ion-icon>
+          </ion-text>
+
+        </ion-col>
+      </ion-row>
+
+      <form [formGroup]="agtLstGP" (ngSubmit)="AddRole()">
+        <ion-row class="ion-padding">
+          <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+            <fieldset>
+              <legend>
+                Submenu Id
+              </legend>
+              <input formControlName="SID">
+            </fieldset>
+            <ion-text *ngIf="Error.SID.touched || Error.SID.dirty">
+              <span class="err" *ngIf="Error.SID.errors">* Required Field</span>
+            </ion-text>
+          </ion-col>
+
+          <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+            <fieldset>
+              <legend>
+                Title Of Submenu
+              </legend>
+              <input formControlName="TITLE">
+            </fieldset>
+            <ion-text *ngIf="Error.TITLE.touched || Error.TITLE.dirty">
+              <span class="err" *ngIf="Error.TITLE.errors">* Required Field</span>
+            </ion-text>
+          </ion-col>
+
+          <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+            <fieldset>
+              <legend>
+                Url of Submenu
+              </legend>
+              <input formControlName="URL">
+            </fieldset>
+            <ion-text *ngIf="Error.URL.touched || Error.URL.dirty">
+              <span class="err" *ngIf="Error.URL.errors">* Required Field</span>
+            </ion-text>
+          </ion-col>
+
+          <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+            <button type="submit" [disabled]="!agtLstGP.valid">
+              <ion-icon name="add"></ion-icon> Add Sub Menu
+            </button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-grid>
+  </ion-content>
+</ion-app>

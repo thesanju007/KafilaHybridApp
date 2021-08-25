@@ -31,7 +31,6 @@ export class RlfailedHistoryComponent implements OnInit {
   dateDis = false
   AgentActive() {
     this.dateDis = true
-    this.agtLstGP.reset()
     this.btn = true
   }
   DateActive() {
@@ -71,8 +70,8 @@ export class RlfailedHistoryComponent implements OnInit {
       "R_NAME": "RL_FAILED_HISTORY",
       "R_DATA": {
         "RAID": this.agtLstGP.value.RAID || "",
-        "FROM": this.agtLstGP.value.FROM || "",
-        "TO": this.agtLstGP.value.TO || "",
+        "FROM": this.agtLstGP.value.FROM ,
+        "TO": this.agtLstGP.value.TO,
         "MODULE": this.evv,
         "STATUS": true
       },
@@ -83,7 +82,7 @@ export class RlfailedHistoryComponent implements OnInit {
       "ENV": "P",
       "Version": "1.0.0.0.0.0"
     }
-
+    console.log(bknHisData)
     this.subscription = this.tService.postTestData(bknHisData).subscribe(result => {
       if (result.response.length > 2) {
         this.agtList = JSON.parse(result.response)

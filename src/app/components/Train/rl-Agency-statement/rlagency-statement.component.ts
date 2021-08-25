@@ -94,7 +94,7 @@ export class RlagencyStatementComponent implements OnInit {
     this.down = false
     this.up = true
     return this.agtList.sort((a, b) => {
-      return a.AMOUNT - b.AMOUNT;
+      return a.BALANCE - b.BALANCE;
     });
   }
 
@@ -102,7 +102,7 @@ export class RlagencyStatementComponent implements OnInit {
     this.down = true
     this.up = false
     return this.agtList.sort((a, b) => {
-      return b.AMOUNT - a.AMOUNT;
+      return b.BALANCE - a.BALANCE;
     });
   }
   sortMailAsc() {

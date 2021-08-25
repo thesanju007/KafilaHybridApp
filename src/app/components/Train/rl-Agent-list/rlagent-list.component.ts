@@ -24,9 +24,9 @@ export class RLAgentListComponent implements OnInit {
   dateDis = true
   aidDis = false
   AgentActive() {
-    this.dateDis = true
+    this.dateDis = false
     this.aidDis = true
-    this.agtLstGP.reset()
+    // this.agtLstGP.reset()
     this.btn=true
   }
   DateActive() {

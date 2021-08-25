@@ -22,6 +22,7 @@ export class RLRefundHistoryComponent implements OnInit {
   login_Details
   agtList
   tabShow = false
+  amt=0
   ngOnInit() {
     let Json_LD = sessionStorage.getItem("LoginDetails")
     this.login_Details = JSON.parse(Json_LD)
@@ -88,6 +89,10 @@ export class RLRefundHistoryComponent implements OnInit {
         this.agtList = JSON.parse(result.response)
         this.tabShow = true
         this.dismiss()
+        this.amt=0
+        for(let x of this.agtList){
+          this.amt+=x.AMOUNT
+        }
       }
       else{
         alert("No Data Found")

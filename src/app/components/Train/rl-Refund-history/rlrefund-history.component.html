@@ -2,7 +2,7 @@
   <ion-header [translucent]="true">
     <ion-toolbar class="ion-text-center">
       <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
+        <ion-menu-button  style="color: black;"></ion-menu-button>
       </ion-buttons>
       <img alt="logo" id="header_logo" src="../assets/logo.png">
       <!-- <ion-text> Dashboard</ion-text> -->
@@ -69,6 +69,7 @@
 
     <ion-card class="ion-padding ion-margin-top" *ngIf="tabShow" style="overflow-x:auto; background-color: white;">
       <ion-badge color="primary">Total Result = {{agtList.length}}</ion-badge>
+      <ion-badge color="danger" style="float: right;">Total Refunded Amount = {{this.amt | currency:'INR'}}</ion-badge>
       <table>
         <thead class="ion-text-center">
           <tr>
@@ -115,11 +116,11 @@
             <td class="ion-text-center" style="color: red;cursor: pointer" (click)="PNR(d)">{{d.BOOKING_ID}}</td>
 
             <td class="ion-text-center">{{d.FID}}</td>
-            <td class="ion-text-center">{{d.RID}}</td>
+            <td class="ion-text-center" style="color:rgb(8, 144, 255); ">{{d.RID}}</td>
             <td class="ion-text-center" style="color: green;">{{d.AMOUNT | currency:'INR'}}</td>
             <td class="ion-text-center">{{d.ETIME | date: 'dd/MM/yyyy'}} / {{d.ETIME | date:"HH:mm"}}</td>
-            <td class="ion-text-center">{{d.OI}}</td>
-            <td class="ion-text-center">{{d.REFUND_TYPE}}</td>
+            <td class="ion-text-center" style="color: rgb(56, 108, 156);">{{d.OI}}</td>
+            <td class="ion-text-center" style="color:palevioletred;">{{d.REFUND_TYPE}}</td>
             <td class="ion-text-center">{{d.NARRATION}}</td>
 
 
