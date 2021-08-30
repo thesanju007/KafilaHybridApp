@@ -2,7 +2,7 @@
   <ion-header [translucent]="true">
     <ion-toolbar class="ion-text-center">
       <ion-buttons slot="start">
-        <ion-menu-button  style="color: black;"></ion-menu-button>
+        <ion-menu-button style="color: black;"></ion-menu-button>
       </ion-buttons>
       <img alt="logo" id="header_logo" src="../assets/logo.png">
       <!-- <ion-text> Dashboard</ion-text> -->
@@ -21,7 +21,6 @@
                       Rail Booking History
                     </h3>
                   </ion-chip>
-
                 </ion-col>
                 <ion-col size-xs="8" size-sm="8" size-md="4" size-lg="5" size-xl="5" class="ion-text-end">
                   <ion-label class="pdn">Production</ion-label>
@@ -35,7 +34,6 @@
                     <ion-radio value="Date" (click)="DateActive()"></ion-radio>
                     <ion-label class="R-label">Date Wise</ion-label>
                   </ion-radio-group>
-
                 </ion-col>
                 <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
                   <fieldset [disabled]="!dateDis">
@@ -43,15 +41,16 @@
                   </fieldset>
                 </ion-col>
                 <ion-col size-xs="6" size-sm="6" size-md="3" size-lg="3" size-xl="3">
-                  <fieldset >
+                  <fieldset>
                     <input formControlName="FROM" type="date" [max]="maxDate" (change)="btnActive()">
                   </fieldset>
                 </ion-col>
                 <ion-col size-xs="6" size-sm="6" size-md="3" size-lg="3" size-xl="3">
-                  <fieldset >
+                  <fieldset>
                     <input formControlName="TO" type="date" [max]="maxDate" (change)="btnActive()">
                   </fieldset>
                 </ion-col>
+
                 <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
                   <button class="ccL-btn" type="submit" [disabled]="btn">
                     <ion-icon slot="start" name="search"></ion-icon> Search
@@ -59,17 +58,20 @@
                 </ion-col>
               </ion-row>
             </form>
-
-
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-card>
 
-    <ion-card class="ion-padding ion-margin-top" *ngIf="tabShow" style="overflow-x:auto; background-color: white;">
-      <ion-badge color="primary">Total Result = {{agtList.length}}</ion-badge> 
-      <ion-badge color="success" style="float: right;">Total Booking Amount = {{this.amt | currency:'INR'}}</ion-badge>
-      <table>
+    <ion-card class="ion-padding ion-margin-top" *ngIf="tabShow"
+      style="overflow-x:auto; background-color: white; padding-bottom: 90px; ">
+      <ion-badge color="primary" class="ionp">Total Result = {{agtList.length}}</ion-badge>
+      <ion-badge color="success" style="margin-left: 20px; " class="ionp">Total Booking Amount = {{this.amt |
+        currency:'INR'}}</ion-badge>
+      <ion-badge color="tertiary" class="ionp" style="cursor: pointer;margin-left: 20px;" (click)="exportexcel()">
+        <img src="https://img.icons8.com/material-outlined/12/ffffff/download--v1.png"/> Download Pdf
+      </ion-badge>
+      <table id="tabl">
         <thead class="ion-text-center">
           <tr>
             <th class="padding">
@@ -114,18 +116,18 @@
               <ion-icon name="caret-up-outline" *ngIf="up2" (click)="sortDateDesc()"
                 style="cursor: pointer; color: red;"></ion-icon>
             </th>
-            <!-- <th class="padding">
-              Details
-            </th> -->
+            <th class="padding">
+              Action
+            </th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let d of agtList, index as i" class="hvr">
             <td class="ion-text-center">{{i+1}}</td>
             <!-- <td class="ion-text-center" style="color: red;cursor: pointer" (click)="PNR(d)">{{d.BOOKING_ID}}</td> -->
-            <td class="ion-text-center" *ngIf="d.PNR!==''" style="color: red; cursor: pointer" (click)="PNR(d)">
+            <td class="ion-text-center" *ngIf="d.PNR!==''" style="color: rgb(255, 0, 0); cursor: pointer"
+              (click)="PNR(d)">
               {{d.BOOKING_ID}}
-
             </td>
             <td class="ion-text-center" *ngIf="d.PNR==''" style="cursor: pointer" (click)="PNR(d)">
               {{d.BOOKING_ID}}
@@ -139,12 +141,30 @@
                 class="dot"></span></td> -->
             <td class="ion-text-center">{{d.DEP_DATE | date: 'dd/MM/yyyy'}}</td>
             <td class="ion-text-center">{{d.ETIME | date: 'dd/MM/yyyy'}} / {{d.ETIME | date:"HH:mm"}}</td>
-
+            <td class="ion-text-center">
+              <div class="popover__wrapper ion-text-center">
+                <ion-button color="primary" size="small">
+                  ACTION
+                </ion-button>
+                <div class="popover__content ">
+                  <button matTooltip="Transaction History" matTooltipPosition="left"
+                    matTooltipClass="example-tooltip-red" class="example-button">
+                    <img src="https://img.icons8.com/small/24/4a90e2/activity-history.png" (click)="tHist(d)" />
+                  </button><br>
+                  <button matTooltip="Pnr Status" matTooltipPosition="left" matTooltipClass="example-tooltip-red"
+                    class="example-button">
+                    <img src="https://img.icons8.com/small/24/fa314a/data-pending.png" (click)="pStatus(d)" />
+                  </button><br>
+                  <button matTooltip="Refund Status" matTooltipPosition="left" matTooltipClass="example-tooltip-red"
+                    class="example-button">
+                    <img src="https://img.icons8.com/color/24/000000/refund.png" (click)="rStatus(d)" />
+                  </button>
+                </div>
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>
-
     </ion-card>
-
   </ion-content>
 </ion-app>

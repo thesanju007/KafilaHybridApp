@@ -33,9 +33,10 @@ export class RoleManagementComponent implements OnInit {
 
     this.tService.postTestData(a).subscribe(result => {
       if (result.response !== null) {
-        console.log(result)
+        // console.log(result)
+        // this.tabShow = true
       }
-      console.log(a)
+      // console.log(a)
 
     })
     this.tService.getTestData("../../../assets/sideMenu.json").subscribe(result => {
@@ -113,15 +114,15 @@ export class RoleManagementComponent implements OnInit {
             },
             {
               "Group_ID": "5", "title": "Rail", "active": "true", "icon": "train-outline", "showDetails": "false", "subMenu": [
-                { "sid": "1", "title": "Agent_List  ", "url": "RlAgentList", "icon": "return-right", "Eicon": "chevron-forward" },
-                { "sid": "2", "title": " Agent_Authorization ", "url": "RlAgentAuthorization ", "icon": "return-right", "Eicon": "chevron-forward" },
-                { "sid": "3", "title": " Agency_Statement ", "url": "RlAgencyStatement", "icon": "return-right", "Eicon": "chevron-forward" },
-                { "sid": "4", "title": "Booking_History", "url": "RlBookingHistory", "icon": "return-right", "Eicon": "chevron-forward" },
-                { "sid": "5", "title": "Cancellation_History", "url": "RlCancellationHistory", "icon": "return-right", "Eicon": "chevron-forward" },
-                { "sid": "6", "title": "Cancellation_Otp_History", "url": "RlCancelOtpHistory", "icon": "return-right", "Eicon": "chevron-forward" },
-                { "sid": "7", "title": " Failed_History ", "url": "RlFailedHistory", "icon": "return-right", "Eicon": "chevron-forward" },
-                { "sid": "8", "title": "Pending_History", "url": "RlPendingHistory", "icon": "return-right", "Eicon": "chevron-forward" },
-                { "sid": "9", "title": " Refund_History", "url": "RlRefundHistory", "icon": "return-right", "Eicon": "chevron-forward" }
+                // { "sid": "1", "title": "Agent_List  ", "url": "RlAgentList", "icon": "return-right", "Eicon": "chevron-forward" },
+                // { "sid": "2", "title": " Agent_Authorization ", "url": "RlAgentAuthorization ", "icon": "return-right", "Eicon": "chevron-forward" },
+                // { "sid": "3", "title": " Agency_Statement ", "url": "RlAgencyStatement", "icon": "return-right", "Eicon": "chevron-forward" },
+                // { "sid": "4", "title": "Booking_History", "url": "RlBookingHistory", "icon": "return-right", "Eicon": "chevron-forward" },
+                // { "sid": "5", "title": "Cancellation_History", "url": "RlCancellationHistory", "icon": "return-right", "Eicon": "chevron-forward" },
+                // { "sid": "6", "title": "Cancellation_Otp_History", "url": "RlCancelOtpHistory", "icon": "return-right", "Eicon": "chevron-forward" },
+                // { "sid": "7", "title": " Failed_History ", "url": "RlFailedHistory", "icon": "return-right", "Eicon": "chevron-forward" },
+                // { "sid": "8", "title": "Pending_History", "url": "RlPendingHistory", "icon": "return-right", "Eicon": "chevron-forward" },
+                // { "sid": "9", "title": " Refund_History", "url": "RlRefundHistory", "icon": "return-right", "Eicon": "chevron-forward" }
               ]
             },
             {
@@ -139,9 +140,7 @@ export class RoleManagementComponent implements OnInit {
         }
         if (d.data.gid == "1") {
           obj.R_DATA[0].subMenu.push(d.data.obj)
-
           this.hitAddSm(obj)
-
         }
         else if (d.data.gid == "2") {
           obj.R_DATA[1].subMenu.push(d.data.obj)
@@ -163,7 +162,6 @@ export class RoleManagementComponent implements OnInit {
           obj.R_DATA[5].subMenu.push(d.data.obj)
           this.hitAddSm(obj)
         }
-
       });
     return modal.present();
   }

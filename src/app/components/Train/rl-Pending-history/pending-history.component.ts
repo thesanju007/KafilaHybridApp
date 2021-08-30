@@ -20,12 +20,13 @@ export class PendingHistoryComponent implements OnInit {
   tabShow = false
   dateDis = false
   agtList
+  name
 
   subscription: Subscription
   ngOnInit() {
     let Json_LD = sessionStorage.getItem("LoginDetails")
     this.login_Details = JSON.parse(Json_LD)
-
+    this.name = sessionStorage.getItem("Name")
 
   }
   AgentActive() {
@@ -81,7 +82,6 @@ export class PendingHistoryComponent implements OnInit {
     }
 
     this.subscription = this.tService.postTestData(pndHistList).subscribe(result => {
-      console.log(result.response.length)
       if (result.response.length > 2) {
         this.dismiss()
         this.tabShow = true
@@ -217,7 +217,7 @@ export class PendingHistoryComponent implements OnInit {
           "RID": d.RID,
           "FID": d.FID,
           "BOOKING_ID": d.BOOKING_ID,
-          "STAFF": "SANJEEV"
+          "STAFF": this.name
         },
         "AID": this.login_Details.AID,
         "MODULE": this.login_Details.MODULE,
@@ -229,7 +229,7 @@ export class PendingHistoryComponent implements OnInit {
       this.tService.postTestData(pndHistList).subscribe(result => {
         localStorage.setItem("refund", result.response)
         this.dismiss()
-        this.presentModal1()
+        this.presentModal1( d.BOOKING_ID)
        
       });
     }
@@ -248,7 +248,7 @@ export class PendingHistoryComponent implements OnInit {
       spinner: 'bubbles',
     }).then(a => {
       a.present().then(() => {
-        console.log('');
+        console.log();
         if (!this.isLoading) {
           a.dismiss().then(() => console.log());
         }
@@ -271,11 +271,14 @@ export class PendingHistoryComponent implements OnInit {
   }
 
 
-  async presentModal1() {
+  async presentModal1(x) {
     const modal1 = await this.modalController.create({
       component: RefundToAgentComponent,
       cssClass: 'popover_setting2',
-      showBackdrop: true
+      showBackdrop: true,
+      componentProps: {
+        "paramID": x,
+      },
     });
     modal1.onDidDismiss()
       .then((d) => {
@@ -292,9 +295,7 @@ export class PendingHistoryComponent implements OnInit {
       cssClass: 'popover_setting2',
       showBackdrop: true,
     });
- 
-
-
+  
     return await modal2.present();
   }
 }

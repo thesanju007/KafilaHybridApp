@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController ,NavParams} from '@ionic/angular';
 @Component({
   selector: 'app-refund',
   templateUrl: './refund-to-agent.component.html',
@@ -7,16 +7,18 @@ import { ModalController } from '@ionic/angular';
 })
 export class RefundToAgentComponent implements OnInit {
   data: any
-  constructor(public modalController: ModalController) { }
-
+  constructor(public modalController: ModalController,private navParams: NavParams) { }
+  b_Id
   ngOnInit() {
     let test = localStorage.getItem("refund")
     this.data = JSON.parse(test)
+    this.b_Id = this.navParams.data.paramID;
+
   }
-  m_close() {
+  close() {
     this.modalController.dismiss({
       'dismissed': true,
-      "Book_ID": this.data.PARAM.R_DATA.BOOKING_ID
+      "Book_ID": this.b_Id
     });
   }
 }

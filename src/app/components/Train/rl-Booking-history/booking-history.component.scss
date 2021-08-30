@@ -4,6 +4,41 @@
 
 
 }
+ion-segment-button{
+  padding: 0px;
+}
+button{
+  background-color: white;
+}
+.ionp{
+  padding: 4px 10px;
+}
+.popover__wrapper {
+  position: relative;
+  display: inline-block;
+}
+.popover__content {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 50px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  width: 80px;
+  background-color: rgb(253, 253, 253);
+}
+
+.popover__wrapper:hover .popover__content {
+  z-index: 10;
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0, -20px);
+  transition: all 0.5s cubic-bezier(0.75, -0.02, 0.2, 0.97);
+}
+.popover__message {
+  text-align: center;
+}
+
+.after_hoverbtn1{width: 45%;margin-left: 10px;}
 ion-content{
   --background:rgba(194, 193, 193, 0.344);
 }
@@ -80,6 +115,11 @@ input[type=date]{
 }
 ion-icon{
   font-size: 19px;
+
+}
+.icon{
+  font-size: 19px;
+  color: black;
 }
 table{
   width: 100%;
@@ -99,7 +139,7 @@ th{
 }
 td{
   border: 1px solid rgba(124, 123, 123, 0.557);
-  padding: 7px 5px;
+  padding: 0px 5px;
   font-size:13px;
   color:#000;
   font-weight: 500;

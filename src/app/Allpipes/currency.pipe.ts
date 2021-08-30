@@ -64,7 +64,7 @@ export class CurrencyPipe implements PipeTransform {
         rupees = words.reverse().join("")
       } else rupees = "";
       if (rupees)
-        rupees = `${rupees} Rupees`
+        rupees = `${rupees} Rupees only`
       if (pointer != "00") {
         digitIndex = 0;
         digit = 0;
@@ -80,10 +80,10 @@ export class CurrencyPipe implements PipeTransform {
           }
         paisa = paisaWords.reverse().join("");
         if (rupees)
-          rupees = `${rupees} and ${paisa} Paisa`
+          rupees = `${rupees} and ${paisa} Paisa Only`
          // rupees = `${rupees}`
         else
-          rupees = `${paisa} Paisa`
+          rupees = `${paisa} Paisa Only`
       }
       return rupees
     }

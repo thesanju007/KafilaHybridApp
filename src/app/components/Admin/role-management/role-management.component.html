@@ -16,7 +16,7 @@
           <ion-button (click)="roles()">Get All Roles</ion-button>
           <!-- <ion-button style="float: right;margin-top: 10px;"  size="small" *ngIf="tabShow"><ion-icon name="add"></ion-icon> Add New Role</ion-button> -->
         </ion-col>
-        <table class="ion-text-center ion-padding mtable" *ngIf="tabShow" style="overflow-x:auto;">
+        <table class="ion-text-center ion-padding mtable" *ngIf="tabShow" style="overflow-x:auto; margin-top: 20px;">
           <thead>
             <tr>
               <th>Group Id</th>
@@ -54,7 +54,7 @@
               </td>
               <td>
                 <!-- <ion-button size="small" color="success"><ion-icon name="create"></ion-icon> Update</ion-button> -->
-                <ion-button size="small" (click)="addSM(d)">
+                <ion-button size="small" (click)="addSM(d)" color="tertiary">
                   <ion-icon name="add"></ion-icon> Add Sub Menu
                 </ion-button>
                 <!-- <ion-button color="danger" size="small">Delete</ion-button> -->

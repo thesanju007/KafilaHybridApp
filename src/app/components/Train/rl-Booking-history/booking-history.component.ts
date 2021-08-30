@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { TicketComponent } from '../rl-Ticket/ticket.component'
 import { ModalController } from '@ionic/angular';
+import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-booking-history',
   templateUrl: './booking-history.component.html',
@@ -13,7 +14,6 @@ import { ModalController } from '@ionic/angular';
 })
 export class BookingHistoryComponent implements OnInit {
   maxDate = new Date(new Date().getTime()).toISOString().split('T')[0];
-
   subscription: Subscription
   amt = 0
   constructor(private tService: TestService, public loadingController: LoadingController, private route: Router, public modalController: ModalController) { }
@@ -23,7 +23,6 @@ export class BookingHistoryComponent implements OnInit {
   ngOnInit() {
     let Json_LD = sessionStorage.getItem("LoginDetails")
     this.login_Details = JSON.parse(Json_LD)
-
   }
 
   dateDis = false
@@ -58,86 +57,46 @@ export class BookingHistoryComponent implements OnInit {
   })
 
   AgtSrhBtn(e) {
-    if (this.dateDis = true) {
-      if (this.agtLstGP.value.RAID != "") {
-        e.preventDefault();
-        this.present()
-        this.tabShow = false
-        let bknHisData = {
-          "P_TYPE": "CC",
-          "R_TYPE": "RAIL",
-          "R_NAME": "RL_BOOKING_HISTORY",
-          "R_DATA": {
-            "RAID": this.agtLstGP.value.RAID || "",
-            "FROM": this.agtLstGP.value.FROM,
-            "TO": this.agtLstGP.value.TO,
-            "MODULE": this.evv,
-            "STATUS": true
-          },
-          "AID": this.login_Details.AID,
-          "MODULE": this.login_Details.MODULE,
-          "IP": this.login_Details.IP,
-          "TOKEN": this.login_Details.TOKEN,
-          "ENV": "P",
-          "Version": "1.0.0.0.0.0"
+
+    e.preventDefault();
+
+    this.present()
+    this.tabShow = false
+    let bknHisData = {
+      "P_TYPE": "CC",
+      "R_TYPE": "RAIL",
+      "R_NAME": "RL_BOOKING_HISTORY",
+      "R_DATA": {
+        "RAID": this.agtLstGP.value.RAID || "",
+        "FROM": this.agtLstGP.value.FROM,
+        "TO": this.agtLstGP.value.TO,
+        "MODULE": this.evv,
+        "STATUS": true
+      },
+      "AID": this.login_Details.AID,
+      "MODULE": this.login_Details.MODULE,
+      "IP": this.login_Details.IP,
+      "TOKEN": this.login_Details.TOKEN,
+      "ENV": "P",
+      "Version": "1.0.0.0.0.0"
+    }
+    this.subscription = this.tService.postTestData(bknHisData).subscribe(result => {
+      if (result.response.length > 2) {
+        this.agtList = JSON.parse(result.response)
+        this.tabShow = true
+        this.dismiss()
+        this.amt = 0
+        for (let x of this.agtList) {
+          this.amt += parseInt(x.AMOUNT)
         }
 
-        this.subscription = this.tService.postTestData(bknHisData).subscribe(result => {
-          if (result.response.length > 2) {
-            this.agtList = JSON.parse(result.response)
-            this.tabShow = true
-            this.dismiss()
-            this.amt = 0
-            for (let x of this.agtList) {
-              this.amt += parseInt(x.AMOUNT)
-            }
-          }
-          else {
-            alert("No Data Found")
-            this.dismiss()
-          }
-        });
       }
-    }
-    else {
-      e.preventDefault();
-      this.present()
-      this.tabShow = false
-      let bknHisData = {
-        "P_TYPE": "CC",
-        "R_TYPE": "RAIL",
-        "R_NAME": "RL_BOOKING_HISTORY",
-        "R_DATA": {
-          "RAID": this.agtLstGP.value.RAID || "",
-          "FROM": this.agtLstGP.value.FROM,
-          "TO": this.agtLstGP.value.TO,
-          "MODULE": this.evv,
-          "STATUS": true
-        },
-        "AID": this.login_Details.AID,
-        "MODULE": this.login_Details.MODULE,
-        "IP": this.login_Details.IP,
-        "TOKEN": this.login_Details.TOKEN,
-        "ENV": "P",
-        "Version": "1.0.0.0.0.0"
+      else {
+        alert("No Data Found")
+        this.dismiss()
       }
+    });
 
-      this.subscription = this.tService.postTestData(bknHisData).subscribe(result => {
-        if (result.response.length > 2) {
-          this.agtList = JSON.parse(result.response)
-          this.tabShow = true
-          this.dismiss()
-          this.amt = 0
-          for (let x of this.agtList) {
-            this.amt += parseInt(x.AMOUNT)
-          }
-        }
-        else {
-          alert("No Data Found")
-          this.dismiss()
-        }
-      });
-    }
 
   }
   up = false
@@ -254,4 +213,72 @@ export class BookingHistoryComponent implements OnInit {
     });
     return modal.present();
   }
+
+  tHist(d) {
+    alert("Working")
+    // let vObj = {
+    //   "P_TYPE": "CC",
+    //   "R_TYPE": "RAIL",
+    //   "R_NAME": "RL_BOOKING_DETAILS",
+    //   "R_DATA": {
+    //     "RAID": d.RID,
+    //     "BOOKING_ID": d.BOOKING_ID,
+    //     "FILTER": true
+    //   },
+    //   "AID": this.login_Details.AID,
+    //   "MODULE": this.login_Details.MODULE,
+    //   "IP": this.login_Details.IP,
+    //   "TOKEN": this.login_Details.TOKEN,
+    //   "ENV": "P",
+    //   "Version": "1.0.0.0.0.0"
+    // }
+  }
+  pStatus(d) {
+    alert("Working")
+    // let vObj = {
+    //   "P_TYPE": "CC",
+    //   "R_TYPE": "RAIL",
+    //   "R_NAME": "RL_BOOKING_DETAILS",
+    //   "R_DATA": {
+    //     "RAID": d.RID,
+    //     "BOOKING_ID": d.BOOKING_ID,
+    //     "FILTER": true
+    //   },
+    //   "AID": this.login_Details.AID,
+    //   "MODULE": this.login_Details.MODULE,
+    //   "IP": this.login_Details.IP,
+    //   "TOKEN": this.login_Details.TOKEN,
+    //   "ENV": "P",
+    //   "Version": "1.0.0.0.0.0"
+    // }
+  }
+  rStatus(d) {
+    alert("Working")
+    // let vObj = {
+    //   "P_TYPE": "CC",
+    //   "R_TYPE": "RAIL",
+    //   "R_NAME": "RL_BOOKING_DETAILS",
+    //   "R_DATA": {
+    //     "RAID": d.RID,
+    //     "BOOKING_ID": d.BOOKING_ID,
+    //     "FILTER": true
+    //   },
+    //   "AID": this.login_Details.AID,
+    //   "MODULE": this.login_Details.MODULE,
+    //   "IP": this.login_Details.IP,
+    //   "TOKEN": this.login_Details.TOKEN,
+    //   "ENV": "P",
+    //   "Version": "1.0.0.0.0.0"
+    // }
+  }
+  fileName = 'BookingReport.xlsx';
+  exportexcel(): void {
+    let element = document.getElementById('tabl');
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+    XLSX.writeFile(wb, this.fileName);
+
+  }
 }
+//  9319296968

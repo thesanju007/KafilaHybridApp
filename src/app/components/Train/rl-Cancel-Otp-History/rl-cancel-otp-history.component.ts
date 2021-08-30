@@ -14,7 +14,7 @@ import {RlOtpDetailsComponent} from "../rl-Otp-Details/rl-otp-details.component"
 })
 export class RlCancelOtpHistoryComponent implements OnInit {
   maxDate = new Date(new Date().getTime()).toISOString().split('T')[0];
-
+  tmaxDate = new Date(new Date().getTime()+ 24 * 60 * 60 * 1000).toISOString().split('T')[0];
   subscription: Subscription
 
   constructor(private tService: TestService, public loadingController: LoadingController, private route: Router, public modalController: ModalController) { }
@@ -57,7 +57,7 @@ export class RlCancelOtpHistoryComponent implements OnInit {
 
     RAID: new FormControl(),
     FROM: new FormControl(this.maxDate),
-    TO: new FormControl(this.maxDate),
+    TO: new FormControl(this.tmaxDate),
   })
 
   AgtSrhBtn(e) {

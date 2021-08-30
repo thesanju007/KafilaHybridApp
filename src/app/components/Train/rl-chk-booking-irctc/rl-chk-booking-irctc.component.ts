@@ -17,7 +17,6 @@ export class RLCHKBOOKINGIRCTCComponent implements OnInit {
   m_close() {
     this.modalController.dismiss({
       'dismissed': true,
-     
     });
   }
 
