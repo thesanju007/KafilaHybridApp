@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { TicketComponent } from '../rl-Ticket/ticket.component'
 import { ModalController } from '@ionic/angular';
+import { Subject } from 'rxjs';
 @Component({
   selector: 'app-rlfailed-history',
   templateUrl: './rlfailed-history.component.html',
@@ -16,8 +17,8 @@ export class RlfailedHistoryComponent implements OnInit {
   maxDate = new Date(new Date().getTime()).toISOString().split('T')[0];
 
   subscription: Subscription
-
-  constructor(private tService: TestService, public loadingController: LoadingController, private route: Router, public modalController: ModalController) { }
+  unsubscribe: Subject<any>;
+  constructor(private tService: TestService, public loadingController: LoadingController, private route: Router, public modalController: ModalController) {  this.unsubscribe = new Subject<any>();}
   login_Details
   agtList
   tabShow = false
@@ -206,5 +207,9 @@ export class RlfailedHistoryComponent implements OnInit {
       showBackdrop: true
     });
     return await modal.present();
+  }
+  ngOnDestroy(): void {
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
   }
 }

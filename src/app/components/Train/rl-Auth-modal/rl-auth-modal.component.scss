@@ -1,0 +1,85 @@
+.err{
+    color: red;
+    font-size: 12px;
+    margin-left: 20px;
+}
+fieldset {
+    margin: 10px 20px;
+    padding: 0 10px 10px;
+    border: 1px solid #666;
+    border-radius: 5px;
+    box-shadow: 0 0 4px rgb(175, 175, 175);
+    padding-top: 10px;
+}
+legend {
+    padding: 2px 4px;
+    background: #fff;
+    font-family: cursive;
+}
+fieldset > legend {
+    float: left;
+    margin-top: -20px;
+}
+fieldset > legend + * {
+    clear: both;
+}
+input{
+    outline: 0;
+    border: none;
+    width: 100%;
+    background-color: white;
+    color: rgb(112, 112, 112);
+}
+span{
+    font-size: 18px;
+    color: brown;
+}
+button{
+    background-color: green;
+    color: white;
+    padding: 10px 0px;
+    width: 92%;
+    margin:0px 20px;
+    border-radius: 5px;
+    font-size: 17px;
+    opacity: .9;
+}
+button:hover{
+    opacity: 1;
+}
+ion-button{
+    width: 92%;
+    margin:0px 20px;
+}
+ion-content{
+    --background:white;
+}
+h2{
+    color: blueviolet;
+    font-family: cursive;
+    text-decoration: underline;
+}
+select{
+    border: none;
+    outline: 0;
+    width: 100%;
+}
+  @media only screen and (max-width: 767px) {
+    span{
+        font-size: 11px;
+        color: brown;
+    }
+    legend{
+        color: black;
+        font-weight: 500;
+        font-size: 11px;
+    }
+    button{
+        background-color: green;
+        color: white;
+        padding: 6px 0px;
+        font-size: 12px;
+        width: 100%;
+        border-radius: 5px;
+    }
+}

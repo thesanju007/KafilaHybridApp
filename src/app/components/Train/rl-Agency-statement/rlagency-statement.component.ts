@@ -6,13 +6,14 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ModalController } from '@ionic/angular';
 import { TicketComponent } from '../rl-Ticket/ticket.component'
+import { Subject } from 'rxjs';
 @Component({
   selector: 'app-rlagency-statement',
   templateUrl: './rlagency-statement.component.html',
   styleUrls: ['./rlagency-statement.component.scss'],
 })
 export class RlagencyStatementComponent implements OnInit {
-
+  unsubscribe: Subject<any>;
   maxDate = new Date(new Date().getTime()).toISOString().split('T')[0];
 
   subscription: Subscription
@@ -20,7 +21,7 @@ export class RlagencyStatementComponent implements OnInit {
   constructor(private tService: TestService,
     public loadingController: LoadingController,
     private route: Router,
-    public modalController: ModalController) { }
+    public modalController: ModalController) {  this.unsubscribe = new Subject<any>();}
   login_Details
   agtList
   tabShow = false
@@ -174,9 +175,10 @@ export class RlagencyStatementComponent implements OnInit {
     }
 
   }
-  // ngOnDestroy(): void {
-  //   this.subscription.unsubscribe()
-  // }
+  ngOnDestroy(): void {
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
+  }
   isLoading = false;
   async present() {
     this.isLoading = true;

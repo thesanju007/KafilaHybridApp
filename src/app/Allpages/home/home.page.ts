@@ -18,21 +18,24 @@ export class HomePage implements OnInit {
 
 
   }
-
+  login_Details
 
   ngOnInit() {
     let test = sessionStorage.getItem("Menu")
     this.Menu = JSON.parse(test)
-    
+
     this.name = sessionStorage.getItem("Name")
+    let Json_LD = sessionStorage.getItem("LoginDetails")
+    this.login_Details = JSON.parse(Json_LD)
   }
 
-  // ionViewWillEnter() {
-  //   setTimeout(() => {
-  //     alert("Session Timeout")
-  //     this.logout()
-  //   }, 1 * 60 * 60 * 500);
-  // }
+  ionViewWillEnter() {
+    setTimeout(() => {
+      alert("Session Timeout")
+      this.logout()
+    }, 1 * 60 * 60 * 1000);
+    
+  }
 
   toggleSubMenu(p) {
     if (p.showDetails) {
@@ -52,10 +55,12 @@ export class HomePage implements OnInit {
 
 
   logout() {
-    this.route.navigate(['/ccindex']);
     localStorage.clear();
     sessionStorage.clear();
     console.clear()
+    this.route.navigate(['/ccindex']);
+
   }
+
 
 }

@@ -2,23 +2,23 @@
   <ion-content>
     <ion-grid style="background-color: #211e2f; height: 789px;">
       <ion-row class="ion-margin-top">
-        <ion-col  size-md="1" size-lg="1" size-xl="2" class="app"></ion-col>
+        <ion-col size-md="1" size-lg="1" size-xl="2" class="app"></ion-col>
         <ion-col size-md="10" size-lg="10" size-xl="8" class="ion-margin-top">
           <ion-card class="ion-margin-top ion-text-center">
-            <ion-row  style="background-color: white;">
-              <ion-col size-md="6" size-lg="6" size-xl="6" style="border-right: 1px solid rgb(192, 192, 192); background-color: white;">
-                <ion-item-divider  style="background-color: white;">
-                  <ion-card-header  style="background-color: white;" class="">
+            <ion-row style="background-color: white;">
+              <ion-col size-md="6" size-lg="6" size-xl="6"
+                style="border-right: 1px solid rgb(192, 192, 192); background-color: white;">
+                <ion-item-divider style="background-color: white;">
+                  <ion-card-header style="background-color: white;" class="">
                     <img alt="logo" id="header_logo" src="../assets/logo.png">
                     <ion-card-title>Kafila Hospitality and Travels Pvt. Ltd. System</ion-card-title>
                   </ion-card-header>
                 </ion-item-divider>
-                <ion-item-divider  style="background-color: white;">
-                  <ion-card-content  style="background-color: white;">
+                <ion-item-divider style="background-color: white;">
+                  <ion-card-content style="background-color: white;">
                     <form [formGroup]="set_cre" (ngSubmit)="ccGetData($event)" class="cred-box">
                       <ion-grid>
                         <ion-row>
-
                           <ion-col>
                             <h2 class="app">
                               Admin Panel Login
@@ -43,7 +43,7 @@
 
                           <ion-col class="bgw ion-margin-top" size-sm="12" size-xs="12" size-md="12" size-lg="12"
                             size-xl="12">
-                            <select formControlName="cre4">
+                            <select formControlName="cre4" *ngIf="sel">
                               <option value="" disabled selected hidden>Select User Type</option>
                               <option *ngFor="let x of uType" [value]="x.Id">{{x.Type}}</option>
                             </select>
@@ -55,8 +55,9 @@
                               <span *ngIf="show">
                                 <ion-icon slot="start" name="log-in"></ion-icon> Login
                               </span>
-                              <ion-spinner *ngIf="!show"></ion-spinner>
-
+                              <span>
+                                <ion-spinner *ngIf="!show"></ion-spinner>
+                              </span>
                             </button>
                           </ion-col>
                         </ion-row>

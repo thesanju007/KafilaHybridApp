@@ -2,7 +2,7 @@
   <ion-header [translucent]="true">
     <ion-toolbar class="ion-text-center">
       <ion-buttons slot="start">
-        <ion-menu-button  style="color: black;"></ion-menu-button>
+        <ion-menu-button style="color: black;"></ion-menu-button>
       </ion-buttons>
       <img alt="logo" id="header_logo" src="../assets/logo.png">
       <!-- <ion-text> Dashboard</ion-text> -->
@@ -15,7 +15,7 @@
           <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12" class="ion-padding">
             <form [formGroup]="agtLstGP" (ngSubmit)="AgtSrhBtn($event)">
               <ion-row class="bdr ion-padding">
-                <ion-col size-xs="4" size-sm="4" size-md="8" size-lg="7" size-xl="7">
+                <ion-col size-xs="5" size-sm="5" size-md="8" size-lg="7" size-xl="7">
                   <ion-chip outline color="primary">
                     <h3>
                       Rail Agent Authorization
@@ -23,7 +23,7 @@
                   </ion-chip>
 
                 </ion-col>
-                <ion-col size-xs="8" size-sm="8" size-md="4" size-lg="5" size-xl="5" class="ion-text-end">
+                <ion-col size-xs="7" size-sm="7" size-md="4" size-lg="5" size-xl="5" class="ion-text-end">
 
 
                   <ion-label class="pdn">Production</ion-label>
@@ -39,12 +39,12 @@
                     <ion-label class="R-label">None</ion-label>
                   </ion-radio-group>
                 </ion-col>
-                <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
+                <ion-col size-xs="12" size-sm="12" size-md="5" size-lg="3" size-xl="3">
                   <fieldset [disabled]="dateDis">
                     <input formControlName="RAID" maxlength="8" min="8" placeholder="Agent ID" (keydown)="btnActive()">
                   </fieldset>
                 </ion-col>
-                <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
+                <ion-col size-xs="12" size-sm="12" size-md="5" size-lg="3" size-xl="3">
                   <button class="ccL-btn" type="submit" [disabled]="btn">
                     <ion-icon slot="start" name="search"></ion-icon> Search
                   </button>
@@ -58,6 +58,11 @@
 
     <ion-card class="ion-padding ion-margin-top" *ngIf="tabShow" style="overflow-x:auto; background-color: white;">
       <ion-badge color="primary">Total Result = {{agtList.length}}</ion-badge>
+      <ion-badge color="success" style="margin-left: 20px; " class="ionp">Total Rail Wallet Amount = {{this.amt |
+        currency:'INR'}}</ion-badge>
+      <ion-badge color="tertiary" class="ionp" style="cursor: pointer;float: right; padding-left: 5px; padding-right: 5px;">
+        Add New
+      </ion-badge>
       <table>
         <thead class="ion-text-center">
           <tr>
@@ -72,17 +77,21 @@
                 style="cursor: pointer; color: red;"></ion-icon>
             </th>
             <th class="padding">
-              EmailID
+              Email Id
               <ion-icon name="caret-down-outline" *ngIf="down1" (click)="sortMailAsc()"
                 style="cursor: pointer; color: red;"></ion-icon>
               <ion-icon name="caret-up-outline" *ngIf="up1" (click)="sortMailDesc()"
                 style="cursor: pointer; color: red;"></ion-icon>
             </th>
             <th class="padding">
-              RAID
+              R Id
             </th>
             <th class="padding">
-              Rail Id
+              User Id
+              <ion-icon name="caret-down-outline" *ngIf="down4" (click)="sortAscRailId()"
+                style="cursor: pointer; color: red;"></ion-icon>
+              <ion-icon name="caret-up-outline" *ngIf="up4" (click)="sortDescscRailId()"
+                style="cursor: pointer; color: red;"></ion-icon>
             </th>
             <th class="padding">
               Rail Pwd
@@ -111,6 +120,9 @@
               <ion-icon name="caret-up-outline" *ngIf="up2" (click)="sortDateDesc()"
                 style="cursor: pointer; color: red;"></ion-icon>
             </th>
+            <th class="padding">
+              Action
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -126,6 +138,9 @@
             <!-- <td class="ion-text-center"><span [style.background-color]="d.STATUS==false ? 'red' : 'green'"
                 class="dot"></span></td> -->
             <td class="ion-text-center">{{d.ETIME | date: 'dd/MM/yyyy'}} / {{d.ETIME | date:"HH:mm"}}</td>
+            <td class="ion-text-center">
+              <ion-icon name="create-outline" style="color: red; cursor: pointer;" (click)="edit(d)"></ion-icon>
+            </td>
           </tr>
         </tbody>
       </table>

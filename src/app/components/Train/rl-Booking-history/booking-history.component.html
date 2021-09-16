@@ -15,7 +15,7 @@
           <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12" class="ion-padding">
             <form [formGroup]="agtLstGP" (ngSubmit)="AgtSrhBtn($event)">
               <ion-row class="bdr ion-padding">
-                <ion-col size-xs="4" size-sm="8" size-md="8" size-lg="7" size-xl="7">
+                <ion-col size-xs="4" size-sm="4" size-md="8" size-lg="7" size-xl="7">
                   <ion-chip outline color="primary">
                     <h3>
                       Rail Booking History
@@ -68,10 +68,10 @@
       <ion-badge color="primary" class="ionp">Total Result = {{agtList.length}}</ion-badge>
       <ion-badge color="success" style="margin-left: 20px; " class="ionp">Total Booking Amount = {{this.amt |
         currency:'INR'}}</ion-badge>
-      <ion-badge color="tertiary" class="ionp" style="cursor: pointer;margin-left: 20px;" (click)="exportexcel()">
+      <ion-badge color="tertiary" class="ionp" style="cursor: pointer;float: right;" (click)="exportexcel()">
         <img src="https://img.icons8.com/material-outlined/12/ffffff/download--v1.png"/> Download Pdf
       </ion-badge>
-      <table id="tabl">
+      <table id="tabl" #content>
         <thead class="ion-text-center">
           <tr>
             <th class="padding">
@@ -127,10 +127,10 @@
             <!-- <td class="ion-text-center" style="color: red;cursor: pointer" (click)="PNR(d)">{{d.BOOKING_ID}}</td> -->
             <td class="ion-text-center" *ngIf="d.PNR!==''" style="color: rgb(255, 0, 0); cursor: pointer"
               (click)="PNR(d)">
-              {{d.BOOKING_ID}}
+              {{d.BOOKING_ID|uppercase}}
             </td>
             <td class="ion-text-center" *ngIf="d.PNR==''" style="cursor: pointer" (click)="PNR(d)">
-              {{d.BOOKING_ID}}
+              {{d.BOOKING_ID|uppercase}}
             </td>
             <td>{{d.EMAIL_ID}}</td>
             <td class="ion-text-center">{{d.FID}}</td>
@@ -143,9 +143,10 @@
             <td class="ion-text-center">{{d.ETIME | date: 'dd/MM/yyyy'}} / {{d.ETIME | date:"HH:mm"}}</td>
             <td class="ion-text-center">
               <div class="popover__wrapper ion-text-center">
-                <ion-button color="primary" size="small">
+                <!-- <ion-button color="primary" size="small">
                   ACTION
-                </ion-button>
+                </ion-button> -->
+                <ion-badge color="primary" class="ionp font">ACTION</ion-badge>
                 <div class="popover__content ">
                   <button matTooltip="Transaction History" matTooltipPosition="left"
                     matTooltipClass="example-tooltip-red" class="example-button">

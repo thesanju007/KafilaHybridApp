@@ -16,6 +16,7 @@ export class TestService {
       'Accept': '*/*',
       "Access-Control-Allow-Origin": '*',
       'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
+      'Cache-Control': 'no-cache'
     })
   }
   login_Details

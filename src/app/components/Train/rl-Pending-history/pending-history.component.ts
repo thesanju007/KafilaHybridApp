@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TestService } from '../../../Services/test.service'
 import { LoadingController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
 import { TicketComponent } from '../rl-Ticket/ticket.component'
 import { ModalController } from '@ionic/angular';
 import { RefundToAgentComponent } from '../rl-Refund-to-agent/refund-to-agent.component';
@@ -15,13 +16,13 @@ import { RLCHKBOOKINGIRCTCComponent } from '../rl-Chk-booking-irctc/rl-chk-booki
 export class PendingHistoryComponent implements OnInit {
 
   maxDate = new Date(new Date().getTime()).toISOString().split('T')[0];
-  constructor(private tService: TestService, public loadingController: LoadingController, public modalController: ModalController) { }
+  constructor(private tService: TestService, public loadingController: LoadingController, public modalController: ModalController) { this.unsubscribe = new Subject<any>(); }
   login_Details
   tabShow = false
   dateDis = false
   agtList
   name
-
+  unsubscribe: Subject<any>;
   subscription: Subscription
   ngOnInit() {
     let Json_LD = sessionStorage.getItem("LoginDetails")
@@ -297,5 +298,11 @@ export class PendingHistoryComponent implements OnInit {
     });
   
     return await modal2.present();
+  }
+
+
+  ngOnDestroy(): void {
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
   }
 }

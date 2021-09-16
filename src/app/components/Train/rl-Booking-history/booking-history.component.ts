@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TestService } from '../../../Services/test.service'
 import { LoadingController } from '@ionic/angular';
@@ -7,6 +7,8 @@ import { Subscription } from 'rxjs';
 import { TicketComponent } from '../rl-Ticket/ticket.component'
 import { ModalController } from '@ionic/angular';
 import * as XLSX from 'xlsx';
+import { Subject } from 'rxjs';
+
 @Component({
   selector: 'app-booking-history',
   templateUrl: './booking-history.component.html',
@@ -16,7 +18,10 @@ export class BookingHistoryComponent implements OnInit {
   maxDate = new Date(new Date().getTime()).toISOString().split('T')[0];
   subscription: Subscription
   amt = 0
-  constructor(private tService: TestService, public loadingController: LoadingController, private route: Router, public modalController: ModalController) { }
+  unsubscribe: Subject<any>;
+  constructor(private tService: TestService, public loadingController: LoadingController, private route: Router, public modalController: ModalController) {
+    this.unsubscribe = new Subject<any>();
+  }
   login_Details
   agtList
   tabShow = false
@@ -56,10 +61,7 @@ export class BookingHistoryComponent implements OnInit {
     TO: new FormControl(this.maxDate),
   })
 
-  AgtSrhBtn(e) {
-
-    e.preventDefault();
-
+  AgtSrhBtn(e: { preventDefault: () => void; }) {
     this.present()
     this.tabShow = false
     let bknHisData = {
@@ -89,15 +91,12 @@ export class BookingHistoryComponent implements OnInit {
         for (let x of this.agtList) {
           this.amt += parseInt(x.AMOUNT)
         }
-
       }
       else {
         alert("No Data Found")
         this.dismiss()
       }
     });
-
-
   }
   up = false
   down = true
@@ -108,50 +107,50 @@ export class BookingHistoryComponent implements OnInit {
   sortBalAsc() {
     this.down = false
     this.up = true
-    return this.agtList.sort((a, b) => {
+    return this.agtList.sort((a: { AMOUNT: number; }, b: { AMOUNT: number; }) => {
       return a.AMOUNT - b.AMOUNT;
     });
   }
-
   sortBalDesc() {
     this.down = true
     this.up = false
-    return this.agtList.sort((a, b) => {
+    return this.agtList.sort((a: { AMOUNT: number; }, b: { AMOUNT: number; }) => {
       return b.AMOUNT - a.AMOUNT;
     });
   }
   sortMailAsc() {
     this.down1 = false
     this.up1 = true
-    return this.agtList.sort((a, b) => {
+    return this.agtList.sort((a: { EMAIL_ID: string; }, b: { EMAIL_ID: any; }) => {
       return a.EMAIL_ID.localeCompare(b.EMAIL_ID);
     })
   }
   sortMailDesc() {
     this.down1 = true
     this.up1 = false
-    return this.agtList.sort((a, b) => {
+    return this.agtList.sort((a: { EMAIL_ID: any; }, b: { EMAIL_ID: string; }) => {
       return b.EMAIL_ID.localeCompare(a.EMAIL_ID);
     })
   }
   sortDateAsc() {
     this.down2 = false
     this.up2 = true
-    return this.agtList.sort((a, b) => {
+    return this.agtList.sort((a: { ETIME: string | number | Date; }, b: { ETIME: string | number | Date; }) => {
       return <any>new Date(a.ETIME) - <any>new Date(b.ETIME);
     });
   }
+  
   sortDateDesc() {
     this.down2 = true
     this.up2 = false
-    return this.agtList.sort((a, b) => {
+    return this.agtList.sort((a: { ETIME: string | number | Date; }, b: { ETIME: string | number | Date; }) => {
       return <any>new Date(b.ETIME) - <any>new Date(a.ETIME);
     });
   }
 
 
 
-  PNR(d) {
+  PNR(d: { RID: any; BOOKING_ID: any; }) {
     this.present()
     let vObj = {
       "P_TYPE": "CC",
@@ -214,7 +213,7 @@ export class BookingHistoryComponent implements OnInit {
     return modal.present();
   }
 
-  tHist(d) {
+  tHist(d: any) {
     alert("Working")
     // let vObj = {
     //   "P_TYPE": "CC",
@@ -233,7 +232,7 @@ export class BookingHistoryComponent implements OnInit {
     //   "Version": "1.0.0.0.0.0"
     // }
   }
-  pStatus(d) {
+  pStatus(d: any) {
     alert("Working")
     // let vObj = {
     //   "P_TYPE": "CC",
@@ -252,7 +251,7 @@ export class BookingHistoryComponent implements OnInit {
     //   "Version": "1.0.0.0.0.0"
     // }
   }
-  rStatus(d) {
+  rStatus(d: any) {
     alert("Working")
     // let vObj = {
     //   "P_TYPE": "CC",
@@ -279,6 +278,10 @@ export class BookingHistoryComponent implements OnInit {
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
     XLSX.writeFile(wb, this.fileName);
 
+  }
+  ngOnDestroy(): void {
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
   }
 }
 //  9319296968

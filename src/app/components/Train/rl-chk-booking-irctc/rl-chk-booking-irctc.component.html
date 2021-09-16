@@ -6,9 +6,12 @@
           <ion-icon name="close-circle-outline"></ion-icon>
         </ion-text>
 
-        <h1 class="alert"> {{this.data.RESULT.bookingErrorMessage}}</h1>
-        <h1 class="alert"> {{this.data.RESULT.errorMessage}}</h1>
-        <!-- <h1 class="alert"> {{this.data.RESULT}}</h1> -->
+        <h1 class="alert">
+          <ion-icon name="warning"></ion-icon> {{this.data.RESULT.bookingErrorMessage}}
+          {{this.data.RESULT.errorMessage}}
+        </h1>
+
+
 
       </ion-col>
     </ion-row>

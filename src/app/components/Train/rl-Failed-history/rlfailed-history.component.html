@@ -24,8 +24,6 @@
 
                 </ion-col>
                 <ion-col size-xs="8" size-sm="8" size-md="4" size-lg="5" size-xl="5" class="ion-text-end">
-
-
                   <ion-label class="pdn">Production</ion-label>
                   <ion-toggle (click)="toggle()"></ion-toggle>
                   <ion-label>Development</ion-label>
@@ -124,7 +122,7 @@
         <tbody>
           <tr *ngFor="let d of agtList, index as i" class="hvr">
             <td class="ion-text-center">{{i+1}}</td>
-            <td class="ion-text-center" style="color: red;cursor: pointer" (click)="PNR(d)">{{d.BOOKING_ID}}</td>
+            <td class="ion-text-center" style="color: red;cursor: pointer" (click)="PNR(d)">{{d.BOOKING_ID|uppercase}}</td>
             <td>{{d.EMAIL_ID}}</td>
             <td class="ion-text-center">{{d.FID}}</td>
             <td class="ion-text-center">{{d.RID}}</td>

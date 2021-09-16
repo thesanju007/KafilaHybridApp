@@ -15,14 +15,14 @@
           <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12" class="ion-padding">
             <form [formGroup]="agtLstGP" (ngSubmit)="AgtSrhBtn()">
               <ion-row class="bdr ion-padding">
-                <ion-col size-xs="4" size-sm="4" size-md="8" size-lg="7" size-xl="7">
+                <ion-col size-xs="5" size-sm="5" size-md="8" size-lg="7" size-xl="7">
                   <ion-chip outline color="primary">
                     <h3>
                       Rail Agency Statement
                     </h3>
                   </ion-chip>
                 </ion-col>
-                <ion-col size-xs="8" size-sm="8" size-md="4" size-lg="5" size-xl="5" class="ion-text-end">
+                <ion-col size-xs="7" size-sm="7" size-md="4" size-lg="5" size-xl="5" class="ion-text-end">
 
 
                   <ion-label class="pdn">Production</ion-label>
@@ -109,7 +109,7 @@
           <tr *ngFor="let d of agtList, index as i" class="hvr">
             <td>{{i+1}}</td>
             <td>{{d.ALIAS}}</td>
-            <td style="color: red;cursor: pointer" (click)="PNR(d)">{{d.BOOKING_ID}}</td>
+            <td style="color: red;cursor: pointer" (click)="PNR(d)">{{d.BOOKING_ID|uppercase}}</td>
             <td class="padding-l">{{d.ID}}</td>
             <!-- <td class="padding-l">{{d.AGENT_ID}}</td> -->
            

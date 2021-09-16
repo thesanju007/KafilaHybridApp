@@ -33,6 +33,13 @@
     transform-origin: left top !important;
     z-index: 10 !important;
 }
+.auth_modal{
+    --min-width:60%!important;
+    --min-height: 60%!important;
+    --ion-text-color: #000;
+    transform-origin: left top !important;
+    z-index: 10 !important;
+}
 @media only screen and (max-width: 767px) {
     .role_Modal{
         --max-width: 50%!important;

@@ -86,20 +86,24 @@
                 style="cursor: pointer; color: red;"></ion-icon>
             </th>
             <th class="padding">
-              EmailID
+              Email Id
               <ion-icon name="caret-down-outline" *ngIf="down1" (click)="sortMailAsc()"
                 style="cursor: pointer; color: red;"></ion-icon>
               <ion-icon name="caret-up-outline" *ngIf="up1" (click)="sortMailDesc()"
                 style="cursor: pointer; color: red;"></ion-icon>
             </th>
             <th class="padding">
-              FAID
+              F Id
             </th>
             <th class="padding">
-              RAID
+              R Id
             </th>
             <th class="padding">
-              Rail Id
+              User Id
+              <ion-icon name="caret-down-outline" *ngIf="down3" (click)="sortAscRailId()"
+                style="cursor: pointer; color: red;"></ion-icon>
+              <ion-icon name="caret-up-outline" *ngIf="up3" (click)="sortDescscRailId()"
+                style="cursor: pointer; color: red;"></ion-icon>
             </th>
             <th class="padding">
               Mobile

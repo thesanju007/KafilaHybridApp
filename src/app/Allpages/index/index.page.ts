@@ -12,6 +12,7 @@ import { Md5 } from 'ts-md5';
 export class IndexPage implements OnInit {
   ipAddress: any;
   show = true
+  sel=false
   u_gp = {
     "P_TYPE": "CC",
     "R_TYPE": "MGMT",
@@ -25,8 +26,10 @@ export class IndexPage implements OnInit {
   onCvalue
   ngOnInit() {
     this.tService.postTestData(this.u_gp).subscribe(result => {
+      this.sel=true
       this.uType = JSON.parse(result.response);
     });
+    this.decode2()
   }
 
 
@@ -67,12 +70,7 @@ export class IndexPage implements OnInit {
           sessionStorage.setItem("LoginDetails", jccLoginData)
           sessionStorage.setItem("Menu", result.response)
           sessionStorage.setItem("Name", this.set_cre.value.cre2)
-          // this.rout.navigate(['/cchome'])
-          this.rout.navigate(['cchome/']).then(() => {
-            window.location.reload();
-          });
-
-
+          this.rout.navigate(['cchome'])
         }
         else {
           this.show = true
@@ -88,5 +86,8 @@ export class IndexPage implements OnInit {
     }
 
   }
-
+  decode2() {
+    let a= Md5.hashStr("PSLV|111000").toString();
+    console.log(a)
+  }
 }

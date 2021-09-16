@@ -1,0 +1,91 @@
+<form [formGroup]="agtLstGP" (ngSubmit)="user_update()">
+  <ion-row class="bdr ion-padding">
+
+    <ion-col class="ion-text-center" size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+      <h2>User Updation Form</h2>
+
+    </ion-col>
+
+    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+      <fieldset>
+        <legend>Company Name</legend>
+        <input formControlName="c_name">
+      </fieldset>
+      <ion-text *ngIf="Error.c_name.touched || Error.c_name.dirty">
+        <span class="err" *ngIf="Error.c_name.errors">* Required Field</span>
+      </ion-text>
+    </ion-col>
+    <ion-col size-xs="6" size-sm="6" size-md="6" size-lg="6" size-xl="6">
+      <fieldset>
+        <legend>Email </legend>
+        <input formControlName="email">
+      </fieldset>
+      <ion-text *ngIf="Error.email.touched || Error.email.dirty">
+        <span class="err" *ngIf="Error.email.errors">* Required Field</span>
+      </ion-text>
+    </ion-col>
+    <ion-col size-xs="6" size-sm="6" size-md="6" size-lg="6" size-xl="6">
+      <fieldset>
+        <legend>Password</legend>
+        <input formControlName="pwd">
+      </fieldset>
+      <ion-text *ngIf="Error.pwd.touched || Error.pwd.dirty">
+        <span class="err" *ngIf="Error.pwd.errors">* Required Field</span>
+      </ion-text>
+    </ion-col>
+    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+      <fieldset>
+        <legend>Rail Id</legend>
+        <input formControlName="raid">
+      </fieldset>
+      <ion-text *ngIf="Error.raid.touched || Error.raid.dirty">
+        <span class="err" *ngIf="Error.raid.errors">* Required Field</span>
+      </ion-text>
+    </ion-col>
+    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+      <fieldset>
+        <legend>User ID</legend>
+        <input formControlName="railId">
+      </fieldset>
+      <ion-text *ngIf="Error.railId.touched || Error.railId.dirty">
+        <span class="err" *ngIf="Error.railId.errors">* Required Field</span>
+      </ion-text>
+    </ion-col>
+    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+      <fieldset>
+        <legend>Mobile no.</legend>
+        <input formControlName="mobile">
+      </fieldset>
+      <ion-text *ngIf="Error.mobile.touched || Error.mobile.dirty">
+        <span class="err" *ngIf="Error.mobile.errors">* Required Field</span>
+      </ion-text>
+    </ion-col>
+    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+      <fieldset>
+        <legend>City</legend>
+        <input formControlName="city">
+      </fieldset>
+      <ion-text *ngIf="Error.city.touched || Error.city.dirty">
+        <span class="err" *ngIf="Error.city.errors">* Required Field</span>
+      </ion-text>
+    </ion-col>
+    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+      <fieldset>
+        <legend>Status</legend>
+        <select (ngModel)="defaultValue" formControlName="status">
+          <option>True</option>
+          <option>False</option>
+        </select>
+
+      </fieldset>
+      
+    </ion-col>
+    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+      <button color="success">SAVE</button>
+    </ion-col>
+    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+      <ion-button color="danger" (click)="close()" >Cancel</ion-button>
+    </ion-col>
+
+  </ion-row>
+</form>

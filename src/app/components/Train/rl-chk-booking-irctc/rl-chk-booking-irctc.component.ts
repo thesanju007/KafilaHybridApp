@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+
 @Component({
   selector: 'app-rl-chk-booking-irctc',
   templateUrl: './rl-chk-booking-irctc.component.html',

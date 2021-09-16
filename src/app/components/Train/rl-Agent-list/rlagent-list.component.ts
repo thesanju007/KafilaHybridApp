@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TestService } from '../../../Services/test.service'
 import { LoadingController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
 @Component({
   selector: 'app-rlagent-list',
   templateUrl: './rlagent-list.component.html',
@@ -10,12 +11,12 @@ import { Subscription } from 'rxjs';
 })
 export class RLAgentListComponent implements OnInit {
   maxDate = new Date(new Date().getTime()).toISOString().split('T')[0];
-  constructor(private tService: TestService, public loadingController: LoadingController) { }
+  constructor(private tService: TestService, public loadingController: LoadingController) { this.unsubscribe = new Subject<any>(); }
   login_Details
   tabShow = false
   subscription: Subscription
   agtList
-
+  unsubscribe: Subject<any>;
   ngOnInit() {
     let Json_LD = sessionStorage.getItem("LoginDetails")
     this.login_Details = JSON.parse(Json_LD)
@@ -103,6 +104,8 @@ export class RLAgentListComponent implements OnInit {
   down1=true
   up2=false
   down2=true
+  up3=false
+  down3=true
   sortCnameAsc() {
     this.down=false
     this.up=true
@@ -145,7 +148,25 @@ export class RLAgentListComponent implements OnInit {
       return <any>new Date(b.ETIME) - <any>new Date(a.ETIME);
     });
   }
-
+  sortAscRailId() {
+    
+    this.down3 = false
+    this.up3 = true
+    return this.agtList.sort((a, b) => {
+     let e= b.RAIL_ID.slice(7)
+     let f= a.RAIL_ID.slice(7)
+      return e-f
+    });
+  }
+  sortDescscRailId() {
+    this.down3 = true
+    this.up3 = false
+    return this.agtList.sort((a, b) => {
+      let e= b.RAIL_ID.slice(7)
+      let f= a.RAIL_ID.slice(7)
+       return f-e
+     });
+  }
   isLoading = false;
   async present() {
     this.isLoading = true;
@@ -169,8 +190,9 @@ export class RLAgentListComponent implements OnInit {
     return await this.loadingController.dismiss().then(() => console.log());
   }
 
-  // ngOnDestroy(): void {
-  //   this.subscription.unsubscribe()
-  // }
+  ngOnDestroy(): void {
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
+  }
 
 }

@@ -125,7 +125,7 @@
         <tbody>
           <tr *ngFor="let d of agtList, index as i" class="hvr">
             <td class="ion-text-center">{{i+1}}</td>
-            <td class="ion-text-center" style="color: red;cursor: pointer" (click)="PNR(d)">{{d.BOOKING_ID}}</td>
+            <td class="ion-text-center" style="color: red;cursor: pointer" (click)="PNR(d)">{{d.BOOKING_ID|uppercase}}</td>
             <td>{{d.EMAIL_ID}}</td>
             <td class="ion-text-center">{{d.FID}}</td>
             <td class="ion-text-center">{{d.RID}}</td>
@@ -136,11 +136,13 @@
             <td class="ion-text-center">{{d.ETIME | date: 'dd/MM/yyyy'}} / {{d.ETIME | date:"HH:mm"}}</td>
             <td class="ion-text-center">
               <div class="popover__wrapper">
-                <ion-button color="primary" size="small">
+                <!-- <ion-button color="primary" size="small">
                   ACTION
-                </ion-button>
+                </ion-button> -->
+                <ion-badge color="primary" class="ionp font">ACTION</ion-badge>
               
                 <div class="popover__content">
+                  
                   <ion-button color="success" size="small" class="after_hoverbtn1" (click)=checktoirctc(d)>CHECK TO IRCTC
                   </ion-button>
                   <ion-button color="danger" size="small" class="after_hoverbtn1" (click)=refund(d)> REFUND TO AGENT</ion-button>

@@ -1,21 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TestService } from '../../../Services/test.service'
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, ModalController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { RlAuthModalComponent } from '../rl-Auth-modal/rl-auth-modal.component'
 @Component({
   selector: 'app-agent-authorization',
   templateUrl: './agent-authorization.component.html',
   styleUrls: ['./agent-authorization.component.scss'],
 })
-export class AgentAuthorizationComponent implements OnInit {
 
-  constructor(private tService: TestService, public loadingController: LoadingController) { }
+export class AgentAuthorizationComponent implements OnInit {
+  private sub: Subscription;
+  constructor(private tService: TestService, public loadingController: LoadingController, public modalController: ModalController) {
+    this.unsubscribe = new Subject<any>();
+  }
   login_Details
-  subscription: Subscription
+  unsubscribe: Subject<any>;
   agtList
   lth
   tabShow = false
+  amt = 0
   ngOnInit() {
     let Json_LD = sessionStorage.getItem("LoginDetails")
     this.login_Details = JSON.parse(Json_LD)
@@ -67,11 +73,16 @@ export class AgentAuthorizationComponent implements OnInit {
       "ENV": "P",
       "Version": "1.0.0.0.0.0"
     }
-    this.subscription = this.tService.postTestData(aBal).subscribe(result => {
+    this.sub = this.tService.postTestData(aBal).subscribe(result => {
       if (result.response.length > 2) {
         this.agtList = JSON.parse(result.response)
+        
         this.dismiss()
         this.tabShow = true
+        this.amt = 0
+        for (let x of this.agtList) {
+          this.amt += parseInt(x.BALANCE)
+        }
       }
       else {
         alert("No Data Found")
@@ -87,6 +98,8 @@ export class AgentAuthorizationComponent implements OnInit {
   down2 = true
   up3 = false
   down3 = true
+  up4 = false
+  down4 = true
   statusT = false
   statusF = true
 
@@ -178,6 +191,27 @@ export class AgentAuthorizationComponent implements OnInit {
       return b.COMP_NAME.localeCompare(a.COMP_NAME);
     })
   }
+  sortAscRailId() {
+
+    this.down4 = false
+    this.up4 = true
+    return this.agtList.sort((a, b) => {
+      let e = b.RAIL_ID.slice(7)
+      let f = a.RAIL_ID.slice(7)
+      return e - f
+    });
+  }
+  sortDescscRailId() {
+    this.down4 = true
+    this.up4 = false
+    return this.agtList.sort((a, b) => {
+      let e = b.RAIL_ID.slice(7)
+      let f = a.RAIL_ID.slice(7)
+      return f - e
+    });
+  }
+
+
 
   isLoading = false;
   async present() {
@@ -201,7 +235,34 @@ export class AgentAuthorizationComponent implements OnInit {
     this.isLoading = false;
     return await this.loadingController.dismiss().then(() => console.log());
   }
-  // ngOnDestroy(): void {
-  //   this.subscription.unsubscribe()
-  // }
+
+  async presentModal(x) {
+    const modal = await this.modalController.create({
+      component: RlAuthModalComponent,
+      componentProps: {
+        "paramID": x,
+      },
+      cssClass: 'auth_modal',
+    });
+    modal.onDidDismiss()
+    .then((d) => {
+      if(d.data.obj!==""){
+        console.log(d.data.obj)
+      }
+      
+    })
+    return modal.present();
+  }
+
+
+  edit(obj) {
+   
+    this.presentModal(obj)
+  }
+
+
+  ngOnDestroy(): void {
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
+  }
 }

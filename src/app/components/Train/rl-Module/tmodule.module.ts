@@ -12,6 +12,7 @@ import { RlagencyStatementComponent} from '../rl-Agency-statement/rlagency-state
 import { TicketComponent } from '../rl-Ticket/ticket.component'
 import { CurrencyPipe } from '../../../Allpipes/currency.pipe'
 import {RlCancelOtpHistoryComponent} from'../rl-Cancel-Otp-History/rl-cancel-otp-history.component'
+import {RlAuthModalComponent} from '../rl-Auth-modal/rl-auth-modal.component'
 @NgModule({
   declarations: [
     RLAgentListComponent,
@@ -24,7 +25,8 @@ import {RlCancelOtpHistoryComponent} from'../rl-Cancel-Otp-History/rl-cancel-otp
     RlfailedHistoryComponent,
     RlagencyStatementComponent,
     CurrencyPipe,
-    RlCancelOtpHistoryComponent
+    RlCancelOtpHistoryComponent,
+    RlAuthModalComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +42,8 @@ import {RlCancelOtpHistoryComponent} from'../rl-Cancel-Otp-History/rl-cancel-otp
     TicketComponent,
     RlfailedHistoryComponent,
     RlagencyStatementComponent,
-    RlCancelOtpHistoryComponent
+    RlCancelOtpHistoryComponent,
+    RlAuthModalComponent
   ]
 })
 export class TmoduleModule { }
