@@ -1,15 +1,15 @@
 <ion-app class=" for-app">
   <ion-split-pane contentId="main-content">
-    <ion-menu contentId="main-content" class="ion-text-center">
+    <ion-menu contentId="main-content" class="ion-text-center" >
       <ion-avatar>
         <img src="../assets/avatarC.jpg">
       </ion-avatar>
       <ion-note>Hello {{name}}</ion-note>
       <h5>{{login_Details.AID}}</h5>
       <ion-content>
-        <ion-item lines="none" class="line-up" [routerLink]="['/cchome/dashboard']">
+        <ion-item lines="none" class="line-up dash-men" [routerLink]="['/cchome/dashboard']" >
           <ion-icon slot="start" name="home-outline"></ion-icon>
-          <ion-label>Dashboard </ion-label>
+          <ion-label style="margin:0px">Dashboard </ion-label>
           <ion-icon name="chevron-forward-outline"></ion-icon>
         </ion-item>
         <ion-list id="inbox-list" *ngFor="let d of Menu,let i = index" lines="none">
@@ -24,7 +24,7 @@
           <ion-list *ngIf="!d.showDetails" lines="none">
             <ion-item *ngFor="let s_Menu of d.subMenu" [routerLink]="['/','cchome',s_Menu.url]" lines="none"
               class="sb-menu">
-              <!-- <ion-icon size="small" name={{s_Menu.icon}}></ion-icon> -->
+              <ion-icon name="arrow-forward"></ion-icon>
              
               <ion-label> {{s_Menu.title}}</ion-label>
               <ion-icon size="small" name={{s_Menu.Eicon}}></ion-icon>
@@ -32,7 +32,7 @@
           </ion-list>
         </ion-list>
       </ion-content>
-      <ion-item (click)="logout()" lines="none" class="line-up">
+      <ion-item (click)="logout()" lines="none" class="line-up dash-men">
         <ion-icon slot="start" name="log-out-outline"></ion-icon>
         <ion-label>Logout </ion-label>
       </ion-item>

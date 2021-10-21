@@ -13,6 +13,8 @@ import { TicketComponent } from '../rl-Ticket/ticket.component'
 import { CurrencyPipe } from '../../../Allpipes/currency.pipe'
 import {RlCancelOtpHistoryComponent} from'../rl-Cancel-Otp-History/rl-cancel-otp-history.component'
 import {RlAuthModalComponent} from '../rl-Auth-modal/rl-auth-modal.component'
+import {RlCertificateModalComponent}from '../rl-Certificate-Modal/rl-certificate-modal.component'
+import { JwPaginationModule } from 'jw-angular-pagination';
 @NgModule({
   declarations: [
     RLAgentListComponent,
@@ -26,11 +28,14 @@ import {RlAuthModalComponent} from '../rl-Auth-modal/rl-auth-modal.component'
     RlagencyStatementComponent,
     CurrencyPipe,
     RlCancelOtpHistoryComponent,
-    RlAuthModalComponent
+    RlAuthModalComponent,
+    RlCertificateModalComponent
   ],
   imports: [
     CommonModule,
-    FormShareModule
+    FormShareModule,
+    JwPaginationModule
+    
   ],
   exports: [
     RLAgentListComponent,
@@ -43,7 +48,8 @@ import {RlAuthModalComponent} from '../rl-Auth-modal/rl-auth-modal.component'
     RlfailedHistoryComponent,
     RlagencyStatementComponent,
     RlCancelOtpHistoryComponent,
-    RlAuthModalComponent
+    RlAuthModalComponent,
+    RlCertificateModalComponent
   ]
 })
 export class TmoduleModule { }

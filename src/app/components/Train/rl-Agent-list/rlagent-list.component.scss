@@ -5,14 +5,15 @@
 
 }
 ion-content{
-  --background:rgba(194, 193, 193, 0.344);
+  --background:rgba(194, 193, 193, 0.583);
 }
 ion-header ion-toolbar{
-  --background:white;
+  --background:#287aff;
 }
 
 ion-radio { 
-  margin: 0px 10px 0px 10px;
+  margin: 1px 10px 0px 10px;
+  color: black;
 }
 ion-radio-group {
   color: black;
@@ -27,19 +28,22 @@ input:disabled {
   cursor: not-allowed;
 
 }
+.ionp{
+  cursor: pointer;
+}
 fieldset{
   border: none;
 }
 .ccL-btn{
   opacity: 1;
-  background-color: #3880ff;
+  background-color: #287aff;
   color: white;
   width:90%;
   padding: 8px;
   font-size: 20px;
   font-weight: 500;
   border-radius: 5px;
-  margin: 17px 0px 0px 0px;
+  margin: 6px 0px 0px 0px;
   cursor: pointer;
   box-shadow: 1px 1px 1px 1px #ddd;
 }
@@ -52,9 +56,11 @@ ion-col{
   padding: 0px;
   margin: 0px;
 }
-h2{
-  margin: 10px 0px 0px 0px;
-  color: #017959;
+.h1{
+  margin: 0px 0px 20px 0px;
+  color: rgb(255, 255, 255);
+  font-family: serif;
+  font-size: 20px;
 }
 
 input{
@@ -66,7 +72,7 @@ input{
   padding: 8px 10px;
   border-radius: 5px;
   box-shadow: 1px 1px 1px 1px #ddd;
-  margin: 12px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
 }
 input[type=date]{
   border: 1px solid rgb(111, 111, 111);
@@ -76,7 +82,7 @@ input[type=date]{
   color: black;
   padding: 8px 10px;
   border-radius: 5px;
-  margin: 12px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
 }
 ion-icon{
   font-size: 19px;
@@ -84,38 +90,38 @@ ion-icon{
 table{
   width: 100%;
 }
-
+ion-icon{
+  margin-top: -1px;
+}
 thead{
-  background-color: rgba(209, 209, 209, 0.412);
-  padding: 5px 0px ;
-  color: black;
-  border: 1px solid rgba(124, 123, 123, 0.557);
-
+  background-color: #287aff;
+  color: rgb(247, 247, 247);
+  text-align: left;
 }
 th{
-  font-size: 16px;
-  font-weight: 400;
-  border: 1px solid rgba(124, 123, 123, 0.557);
+  font-size: 12px;
+  font-weight: 700;
+
 }
 td{
-  border: 1px solid rgba(124, 123, 123, 0.557);
-  padding: 7px 5px;
+  border-top: 1px solid rgba(124, 123, 123, 0.557);
+  padding: 5px 5px;
   font-size:13px;
   color:#000;
   font-weight: 500;
 }
-.hvr{ 
-  border: 1px solid rgba(124, 123, 123, 0.557);
-}
-.hvr:nth-child(even){
-  background-color: rgba(250, 246, 192, 0.412);
-}
+// .hvr{ 
+//   border: 1px solid rgba(124, 123, 123, 0.557);
+// }
+// .hvr:nth-child(even){
+//   background-color: rgba(250, 246, 192, 0.412);
+// }
 
 .hvr:hover {
-  background-color: #afcaf76b;
+  background-color: #e7e3fc6b;
 }
 .padding{
-  padding: 0px 0px;
+  padding: 7px 5px;
 
 }
 .dot {
@@ -217,3 +223,7 @@ ion-toggle{
   
   
 }
+
+
+// pagination
+

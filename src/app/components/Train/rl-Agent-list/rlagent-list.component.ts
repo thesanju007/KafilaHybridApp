@@ -4,6 +4,8 @@ import { TestService } from '../../../Services/test.service'
 import { LoadingController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { Subject } from 'rxjs';
+import { ModalController } from '@ionic/angular';
+import {RlCertificateModalComponent} from '../rl-Certificate-Modal/rl-certificate-modal.component'
 @Component({
   selector: 'app-rlagent-list',
   templateUrl: './rlagent-list.component.html',
@@ -11,7 +13,7 @@ import { Subject } from 'rxjs';
 })
 export class RLAgentListComponent implements OnInit {
   maxDate = new Date(new Date().getTime()).toISOString().split('T')[0];
-  constructor(private tService: TestService, public loadingController: LoadingController) { this.unsubscribe = new Subject<any>(); }
+  constructor(private tService: TestService, public loadingController: LoadingController, public modalController: ModalController) { this.unsubscribe = new Subject<any>(); }
   login_Details
   tabShow = false
   subscription: Subscription
@@ -20,7 +22,7 @@ export class RLAgentListComponent implements OnInit {
   ngOnInit() {
     let Json_LD = sessionStorage.getItem("LoginDetails")
     this.login_Details = JSON.parse(Json_LD)
-  
+    this.der()
   }
   dateDis = true
   aidDis = false
@@ -64,6 +66,7 @@ export class RLAgentListComponent implements OnInit {
     FROM: new FormControl(),
     TO: new FormControl(),
   })
+  
   AgtSrhBtn(e) {
     this.present()
     e.preventDefault();
@@ -89,7 +92,7 @@ export class RLAgentListComponent implements OnInit {
         this.dismiss()
         this.tabShow = true
         this.agtList = JSON.parse(result.response)
-   
+        // console.log(this.agtList)
       }
       else{
         alert("No Data Found")
@@ -97,6 +100,12 @@ export class RLAgentListComponent implements OnInit {
       }
 
     });
+  }
+
+  pageOfItems: Array<any>;
+  onChangePage(pageOfItems: Array<any>) {
+    // update current page of items
+    this.pageOfItems = pageOfItems;
   }
   up=false
   down=true
@@ -109,42 +118,42 @@ export class RLAgentListComponent implements OnInit {
   sortCnameAsc() {
     this.down=false
     this.up=true
-    return this.agtList.sort((a, b) => {
+    return this.pageOfItems.sort((a, b) => {
       return a.COMP_NAME.localeCompare(b.COMP_NAME);
     })
   }
   sortCnameDesc() {
     this.down=true
     this.up=false
-    return this.agtList.sort((a, b) => {
+    return this.pageOfItems.sort((a, b) => {
       return b.COMP_NAME.localeCompare(a.COMP_NAME);
     })
   }
   sortMailAsc() {
     this.down1=false
     this.up1=true
-    return this.agtList.sort((a, b) => {
+    return this.pageOfItems.sort((a, b) => {
       return a.EMAIL.localeCompare(b.EMAIL);
     })
   }
   sortMailDesc() {
     this.down1=true
     this.up1=false
-    return this.agtList.sort((a, b) => {
+    return this.pageOfItems.sort((a, b) => {
       return b.EMAIL.localeCompare(a.EMAIL);
     })
   }
   sortDateAsc() {
     this.down2=false
     this.up2=true
-    return this.agtList.sort((a, b) => {
+    return this.pageOfItems.sort((a, b) => {
       return <any>new Date(a.ETIME) - <any>new Date(b.ETIME);
     });
   }
   sortDateDesc() {
     this.down2=true
     this.up2=false
-    return this.agtList.sort((a, b) => {
+    return this.pageOfItems.sort((a, b) => {
       return <any>new Date(b.ETIME) - <any>new Date(a.ETIME);
     });
   }
@@ -152,7 +161,7 @@ export class RLAgentListComponent implements OnInit {
     
     this.down3 = false
     this.up3 = true
-    return this.agtList.sort((a, b) => {
+    return this.pageOfItems.sort((a, b) => {
      let e= b.RAIL_ID.slice(7)
      let f= a.RAIL_ID.slice(7)
       return e-f
@@ -161,7 +170,7 @@ export class RLAgentListComponent implements OnInit {
   sortDescscRailId() {
     this.down3 = true
     this.up3 = false
-    return this.agtList.sort((a, b) => {
+    return this.pageOfItems.sort((a, b) => {
       let e= b.RAIL_ID.slice(7)
       let f= a.RAIL_ID.slice(7)
        return f-e
@@ -189,10 +198,43 @@ export class RLAgentListComponent implements OnInit {
     this.isLoading = false;
     return await this.loadingController.dismiss().then(() => console.log());
   }
+  send_certificate(d){
+    this.presentModal(d)
+  }
+
+
+  async presentModal(d) {
+    const modal = await this.modalController.create({
+      component: RlCertificateModalComponent,
+      cssClass: 'certificate',
+      showBackdrop: true,
+      componentProps: {
+        "paramID": d,
+      }
+    });
+    return await modal.present();
+  }
 
   ngOnDestroy(): void {
     this.unsubscribe.next();
     this.unsubscribe.complete();
   }
 
+  x=0
+  y:any
+  z:any
+  der(){
+    if(this.x==0){
+      this.y="N/A"
+      this.z="N/A"
+    }
+    else{
+      this.y=this.x*.02
+      this.z=this.y*.05
+    }
+  }
+  
+
+  
+  
 }

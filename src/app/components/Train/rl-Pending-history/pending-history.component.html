@@ -2,10 +2,19 @@
   <ion-header [translucent]="true">
     <ion-toolbar class="ion-text-center">
       <ion-buttons slot="start">
-        <ion-menu-button  style="color: black;"></ion-menu-button>
+        <ion-menu-button style="color: black;"></ion-menu-button>
       </ion-buttons>
-      <img alt="logo" id="header_logo" src="../assets/logo.png">
-      <!-- <ion-text> Dashboard</ion-text> -->
+      <ion-row>
+        <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+         
+          <span class="h1">
+            <ion-icon name="train"></ion-icon>  Rail Pending History
+          </span>
+
+        </ion-col>
+        
+      </ion-row>
+
     </ion-toolbar>
   </ion-header>
   <ion-content>
@@ -15,22 +24,8 @@
           <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12" class="ion-padding">
             <form [formGroup]="agtLstGP" (ngSubmit)="AgtSrhBtn($event)">
               <ion-row class="bdr ion-padding">
-                <ion-col size-xs="4" size-sm="4" size-md="8" size-lg="7" size-xl="7">
-                  <ion-chip outline color="primary">
-                    <h3>
-                      Rail Pending History
-                    </h3>
-                  </ion-chip>
-
-                </ion-col>
-                <ion-col size-xs="8" size-sm="8" size-md="4" size-lg="5" size-xl="5" class="ion-text-end">
-
-
-                  <ion-label class="pdn">Production</ion-label>
-                  <ion-toggle (click)="toggle()"></ion-toggle>
-                  <ion-label>Development</ion-label>
-
-                </ion-col>
+                
+                
                 <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
                   <ion-radio-group value="Date">
                     <ion-radio value="Id" (click)="AgentActive()"></ion-radio>
@@ -40,17 +35,17 @@
                   </ion-radio-group>
 
                 </ion-col>
-                <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
+                <ion-col size-xs="12" size-sm="12" size-md="2" size-lg="2" size-xl="2">
                   <fieldset [disabled]="!dateDis">
                     <input formControlName="RAID" maxlength="8" min="8" placeholder="Agent ID" (keydown)="btnActive()">
                   </fieldset>
                 </ion-col>
-                <ion-col size-xs="6" size-sm="6" size-md="3" size-lg="3" size-xl="3">
+                <ion-col size-xs="6" size-sm="6" size-md="2" size-lg="2" size-xl="2">
                   <fieldset [disabled]="dateDis">
                     <input formControlName="FROM" type="date" [max]="maxDate" (change)="btnActive()">
                   </fieldset>
                 </ion-col>
-                <ion-col size-xs="6" size-sm="6" size-md="3" size-lg="3" size-xl="3">
+                <ion-col size-xs="6" size-sm="6" size-md="2" size-lg="2" size-xl="2">
                   <fieldset [disabled]="dateDis">
                     <input formControlName="TO" type="date" [max]="maxDate" (change)="btnActive()">
                   </fieldset>
@@ -60,6 +55,14 @@
                     <ion-icon slot="start" name="search"></ion-icon> Search
                   </button>
                 </ion-col>
+                <ion-col size-xs="8" size-sm="8" size-md="3" size-lg="3" size-xl="3" class="ion-text-end">
+
+
+                  <ion-label class="pdn">Production</ion-label>
+                  <ion-toggle (click)="toggle()"></ion-toggle>
+                  <ion-label>Development</ion-label>
+
+                </ion-col>
               </ion-row>
             </form>
 
@@ -68,11 +71,15 @@
         </ion-row>
       </ion-grid>
     </ion-card>
+ <ion-row *ngIf="tabShow" style="padding: 0px;">
+      <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+        <ion-badge color="primary" style="margin: 5px 0px 0px 15px;">Total Result = {{agtList.length}}</ion-badge>
+      </ion-col>
+    </ion-row>
 
-
-    <ion-card class="ion-padding ion-margin-top spl" *ngIf="tabShow" style="overflow-x:auto; background-color: white;">
-      <ion-badge color="primary">Total Result = {{agtList.length}}</ion-badge>
-      <table>
+    <ion-card  *ngIf="tabShow" style="overflow-x:auto; background-color: white;">
+      
+      <table style="margin-bottom: 30px;">
         <thead class="ion-text-center">
           <tr>
             <th class="padding">
@@ -125,13 +132,13 @@
         <tbody>
           <tr *ngFor="let d of agtList, index as i" class="hvr">
             <td class="ion-text-center">{{i+1}}</td>
-            <td class="ion-text-center" style="color: red;cursor: pointer" (click)="PNR(d)">{{d.BOOKING_ID|uppercase}}</td>
+            <td class="ion-text-center" style="color: red;cursor: pointer" (click)="PNR(d)"><b>{{d.BOOKING_ID|uppercase}}</b></td>
             <td>{{d.EMAIL_ID}}</td>
             <td class="ion-text-center">{{d.FID}}</td>
             <td class="ion-text-center">{{d.RID}}</td>
             <!-- <td>{{d.PNR}}</td>
             <td>{{d.IP}}</td> -->
-            <td class="ion-text-center" style="color: green;">{{d.AMOUNT| currency:'INR'}}</td>
+            <td class="ion-text-center" style="color: green;"><b>{{d.AMOUNT| currency:'INR'}}</b></td>
             <!-- <td [style.color]="d.STATUS==false ? 'red' : 'green'">{{d.STATUS}}</td> -->
             <td class="ion-text-center">{{d.ETIME | date: 'dd/MM/yyyy'}} / {{d.ETIME | date:"HH:mm"}}</td>
             <td class="ion-text-center">

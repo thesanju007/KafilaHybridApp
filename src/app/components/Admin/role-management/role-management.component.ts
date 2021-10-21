@@ -3,6 +3,7 @@ import { TestService } from '../../../Services/test.service'
 import { LoadingController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { AddRoleModalComponent } from '../add-role-modal/add-role-modal.component'
+import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-role-management',
   templateUrl: './role-management.component.html',
@@ -177,4 +178,32 @@ export class RoleManagementComponent implements OnInit {
 
     this.roles()
   }
+
+
+  // excelToJson = require('convert-excel-to-json');
+  // result = this.excelToJson({
+  //   sourceFile: 'SANJEEV COMMUNICATION PNR Data.xlsx'
+  // });
+
+  onFileChange(ev) {
+    let workBook = null;
+    let jsonData = null;
+    const reader = new FileReader();
+    const file = ev.target.files[0];
+    reader.onload = (event) => {
+      const data = reader.result;
+      workBook = XLSX.read(data, { type: 'binary' });
+      jsonData = workBook.SheetNames.reduce((initial, name) => {
+        const sheet = workBook.Sheets[name];
+        initial[name] = XLSX.utils.sheet_to_json(sheet);
+        return initial;
+      }, {});
+      const dataString = JSON.stringify(jsonData);
+      console.log(dataString)
+
+    }
+    reader.readAsBinaryString(file);
+  }
+  
+  
 }

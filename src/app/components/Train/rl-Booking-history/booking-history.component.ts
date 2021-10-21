@@ -51,6 +51,7 @@ export class BookingHistoryComponent implements OnInit {
     if (this.booleanValue == true) {
       this.evv = "D"
     }
+    
     else {
       this.evv = "P"
     }

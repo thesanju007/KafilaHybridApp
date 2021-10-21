@@ -1,90 +1,133 @@
-<ion-app >
-    <ion-header [translucent]="true"  style="background-color: white;">
-        <ion-toolbar class="ion-text-center"  style="background-color: white;">
-          <ion-buttons slot="start"  style="background-color: white;">
-            <ion-menu-button style="color: black;"></ion-menu-button>
-          </ion-buttons>
-          <img alt="logo" id="header_logo" src="../assets/logo.png">
+<ion-app>
+    <ion-header [translucent]="true">
+        <ion-toolbar class="ion-text-center">
+            <h1 style="color: white; font-family: serif;margin: 0px;"><img
+                    src="https://img.icons8.com/office/30/000000/administrator-male--v1.png" /> Admin Dashboard</h1>
+            <ion-buttons slot="start" style="background-color: white;">
+                <ion-menu-button style="color: black;"></ion-menu-button>
+            </ion-buttons>
         </ion-toolbar>
-      </ion-header>
-    <ion-content >
-        <ion-grid >
+    </ion-header>
+    <ion-content>
+        <ion-grid>
             <ion-row class="ion-text-justify">
-                <ion-col size-xs="6" size-sm="6" size-md="3" size-lg="3"  size-xl="3" >
-                    <ion-card class="ion-padding"  style="background-color: white;">
-                        <ion-img src="../assets/gp1.png" class="ie"></ion-img>
-                       
+                <ion-col size-xs="6" size-sm="6" size-md="3" size-lg="3" size-xl="3">
+                    <ion-card class="ion-padding" style="background-color: green;" *ngIf="tic_len1>0">
+                        <span
+                            style="color: white;margin: 0px;font-family: serif;font-size: 28px; margin-top: 20px;">{{amt1|currency:'INR'}}</span>
+                        <span style="float: right;"><img src="https://img.icons8.com/dotty/56/ffffff/wallet.png"/></span><br>
+                        <h4 style="color: white; font-weight: 500;margin: 0px;font-family: serif;">Total Ticket Bookings
+                            = {{tic_len1}}</h4>
+
+                    </ion-card>
+
+                    <ion-card *ngIf="tic_len1==0" class="ion-text-center">
+                        <!-- <div class="ion-padding custom-skeleton">
+                            EITHER FETCHING OR DATA NOT FOUND
+                            <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+                            <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+                            <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+                        </div> -->
+                        <img src="../../../assets/404.gif" height="90px">
                     </ion-card>
                 </ion-col>
 
                 <ion-col size-xs="6" size-sm="6" size-md="3" size-lg="3" size-xl="3">
-                    <ion-card class="ion-padding"  style="background-color: white;">
-                        <ion-img src="../assets/gp2.png" class="ie"></ion-img>
+                    <ion-card class="ion-padding" style="background-color: rgb(255, 111, 0);" *ngIf="tic_len2>0">
+                        <span
+                            style="color: white;margin: 0px;font-family: serif;font-size: 28px; margin-top: 20px;">{{amt2|currency:'INR'}}</span>
+                        <span style="float: right;"><img
+                                src="https://img.icons8.com/ios/56/ffffff/font-family/data-pending.png" /></span><br>
+                        <h4 style="color: white; font-weight: 500;margin: 0px;font-family: serif;">Total Pending Tickets
+                            = {{tic_len2}}</h4>
+                    </ion-card>
+
+                    <ion-card *ngIf="tic_len2==0" class="ion-text-center">
+                        <!-- <div class="ion-padding custom-skeleton">
+                            EITHER FETCHING OR DATA NOT FOUND
+                            <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+                            <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+                            <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+
+                        </div> -->
+                        <img src="../../../assets/404.gif" height="90px">
                     </ion-card>
                 </ion-col>
 
                 <ion-col size-xs="6" size-sm="6" size-md="3" size-lg="3" size-xl="3">
-                    <ion-card class="ion-padding"  style="background-color: white;">
-                        <ion-img src="../assets/gp3.png" class="ie"></ion-img>
+                    <ion-card class="ion-padding" style="background-color: rgb(0, 145, 255);" *ngIf="tic_len3>0">
+                        <span
+                            style="color: white;margin: 0px;font-family: serif;font-size: 28px; margin-top: 20px;">{{amt3|currency:'INR'}}</span>
+                        <span style="float: right;"><img
+                                src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/56/ffffff/external-failed-chat-flatart-icons-outline-flatarticons.png" /></span><br>
+                        <h4 style="color: white; font-weight: 500;margin: 0px;font-family: serif;">Total Failed Tickets
+                            = {{tic_len3}}</h4>
+                    </ion-card>
+
+                    <ion-card *ngIf="tic_len3==0" class="ion-text-center">
+                        <!-- <div class="ion-padding custom-skeleton">
+                            EITHER FETCHING OR DATA NOT FOUND
+                            <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+                            <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+                            <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+                        </div> -->
+                        <img src="../../../assets/404.gif" height="90px">
                     </ion-card>
                 </ion-col>
 
                 <ion-col size-xs="6" size-sm="6" size-md="3" size-lg="3" size-xl="3">
-                    <ion-card class="ion-padding"  style="background-color: white;">
-                        <ion-img src="../assets/gp4.png" class="ie"></ion-img>
+                    <ion-card class="ion-padding" style="background-color: red;" *ngIf="tic_len4>0">
+                        <span
+                            style="color: white;margin: 0px;font-family: serif;font-size: 28px; margin-top: 20px;">{{amt4|currency:'INR'}}</span>
+                        <span style="float: right;"><img
+                                src="https://img.icons8.com/ios/56/ffffff/refund.png" /></span><br>
+                        <h4 style="color: white; font-weight: 500;margin: 0px;font-family: serif;">Total Refunded
+                            Tickets = {{tic_len4}}</h4>
+                    </ion-card>
+
+                    <ion-card *ngIf="tic_len4==0" class="ion-text-center">
+                        <!-- <div class="ion-padding custom-skeleton">
+                            EITHER FETCHING OR DATA NOT FOUND
+                            <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+                            <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+                            <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+                        </div> -->
+                        <img src="../../../assets/404.gif" height="90px">
                     </ion-card>
                 </ion-col>
             </ion-row>
 
-
-            <ion-row>
+            <ion-row >
                 <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12" class="ion-text-justify">
-                    <ion-card class="ion-padding"  style="background-color: white;">
-                        <ul>
+                    <ion-card class="ion-padding " style="background-color: rgb(255, 255, 255);">
+                        <h4
+                            style="text-align: center; padding-left: 25px; border-bottom: 1px solid red; color: #000;font-size: 18px; font-family: serif;">
+                            General Rules And Regulations For Railway :</h4>
+                        <ul style="color: rgb(10, 10, 10);font-family: serif;">
                             <li>
-                                For details, rules and terms & conditions of E-Ticketing services, please visit www.irctc.co.in.
-
-                                2.Departure time and Arrival Time printed on this ERS and VRM sent through mail are liable to
-                                change. Please Check correct departure, arrival from Railway Station Enquiry, Dial 139 or SMS
-                                RAIL to 139.
+                                Maximum Numbers Of Passengers in 1 ticket<br>
+                                -> General Quota = <b>6</b> Passengers<br>
+                                -> Tatkal Quota = <b>4</b> Passengers
                             </li>
                             <li>
-                                For details, rules and terms & conditions of E-Ticketing services, please visit www.irctc.co.in.
+                                Maximum Numbers Of Infants in 1 ticket<br>
+                                -> <b>2</b> Infants<br>
 
-                                2.Departure time and Arrival Time printed on this ERS and VRM sent through mail are liable to
-                                change. Please Check correct departure, arrival from Railway Station Enquiry, Dial 139 or SMS
-                                RAIL to 139.
                             </li>
                             <li>
-                                For details, rules and terms & conditions of E-Ticketing services, please visit www.irctc.co.in.
+                                Maximum Age For Senior Citizen ( Male )<br>
+                                -> <b>60</b> Yrs<br>
 
-                                2.Departure time and Arrival Time printed on this ERS and VRM sent through mail are liable to
-                                change. Please Check correct departure, arrival from Railway Station Enquiry, Dial 139 or SMS
-                                RAIL to 139.
                             </li>
                             <li>
-                                For details, rules and terms & conditions of E-Ticketing services, please visit www.irctc.co.in.
+                                Maximum Age For Senior Citizen ( Female )<br>
+                                -> <b>58</b> Yrs<br>
 
-                                2.Departure time and Arrival Time printed on this ERS and VRM sent through mail are liable to
-                                change. Please Check correct departure, arrival from Railway Station Enquiry, Dial 139 or SMS
-                                RAIL to 139.
                             </li>
-                            <li>
-                                For details, rules and terms & conditions of E-Ticketing services, please visit www.irctc.co.in.
-
-                                2.Departure time and Arrival Time printed on this ERS and VRM sent through mail are liable to
-                                change. Please Check correct departure, arrival from Railway Station Enquiry, Dial 139 or SMS
-                                RAIL to 139.
-                            </li>
-                          
                         </ul>
-
                     </ion-card>
                 </ion-col>
-
-
             </ion-row>
         </ion-grid>
     </ion-content>
-
 </ion-app>

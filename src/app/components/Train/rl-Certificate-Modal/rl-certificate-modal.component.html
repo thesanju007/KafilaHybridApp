@@ -1,0 +1,137 @@
+<ion-app >
+  <ion-content>
+    <ion-grid>
+      <!-- <button (click)="downloadAsPDF()">Export To PDF</button> -->
+      <!-- CERTIFICATE -->
+      <ion-row >
+        <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12" class=" border ">
+          <ion-row class="ion-margin-top">
+            <ion-col size-xs="2" size-sm="4" size-md="2" size-lg="2" size-xl="2" class="ion-padding ion-text-center">
+              <img src="../assets/lg.png" class="">
+            </ion-col>
+            <ion-col size-xs="4" size-sm="4" size-md="8" size-lg="8" size-xl="8" class="ion-padding ion-text-center">
+              <p class="h-text">AUTHORISED RAIL E-TICKETING CENTRE</p>
+              <p class="h-text">Of</p>
+              <p class="h-text">KAFILA HOSPITALITY AND TRAVELS PRIVATE LIMITED</p>
+            </ion-col>
+            <ion-col size-xs="4" size-sm="4" size-md="2" size-lg="2" size-xl="2" class="ion-padding ion-text-center">
+              <img src="../assets/irctc_logo.png" class="width">
+            </ion-col>
+
+
+
+
+
+            <ion-col size-xs="2" size-sm="4" size-md="3" size-lg="3" size-xl="3" class="ion-padding ion-margin-top ">
+              <p style="padding-left: 10px;">IRCTC Certificate No: KAF0046</p>
+              <p style="padding-left: 10px;">Scheme under: B2B</p>
+            </ion-col>
+            <ion-col size-xs="4" size-sm="4" size-md="7" size-lg="7" size-xl="7"
+              class="ion-padding ion-margin-top ion-text-center">
+
+            </ion-col>
+            <ion-col size-xs="4" size-sm="4" size-md="2" size-lg="2" size-xl="2" class="ion-padding ion-margin-top ">
+              <p>Date of Issue: {{data.ETIME | date: 'dd/MM/yyyy'}}</p>
+            </ion-col>
+
+
+
+
+
+
+
+
+
+            <ion-col size-xs="2" size-sm="4" size-md="2" size-lg="2" size-xl="2"
+              class="ion-padding ion-margin-top ion-text-center"></ion-col>
+            <ion-col size-xs="4" size-sm="4" size-md="8" size-lg="8" size-xl="8"
+              class="ion-padding ion-margin-top ion-text-center">
+              <p class="cert">This is to certify that</p>
+              <p>M/s <b>{{data.COMP_NAME}}</b>, owned by <b>BUTA SINGH</b> located at <b>MEHAL KALAN BUTA SINGH KHIALI
+                  ROAD, MAHAL KALAN, BARNALA PUNJAB 148104</b>
+              is a retailer of <b>KAFILA HOSPITALITY AND TRAVELS PRIVATE LIMITED</b> and is hereby authorized to book
+                Railway E-
+              tickets as per Rail E-Ticketing terms & conditions using <b>{{data.RAIL_ID}}</b> on the <a
+                  href="www.kafilaholidays.in">www.kafilaholidays.in</a> Franchise System Terminal connected to IRCTC
+                system for the general public till <b>(08-08-2022)</b>.</p>
+                <p>Contact No. <b>{{data.MOBILE}}</b> Email: <b>{{data.EMAIL}}</b></p>
+
+            </ion-col>
+            <ion-col size-xs="4" size-sm="4" size-md="2" size-lg="2" size-xl="2"
+              class="ion-padding ion-margin-top ion-text-center"></ion-col>
+
+
+
+
+
+
+
+
+            <ion-col size-xs="4" size-sm="4" size-md="8" size-lg="8" size-xl="8"
+              class=" ion-text-center"></ion-col>
+            <ion-col size-xs="4" size-sm="4" size-md="3" size-lg="3" size-xl="3"
+              class=" ion-text-center">
+              <img src="../assets/sign.png" class="">
+            </ion-col>
+            <ion-col size-xs="4" size-sm="4" size-md="1" size-lg="1" size-xl="1"
+              class=" ion-text-center"></ion-col>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <ion-col size-xs="4" size-sm="4" size-md="12" size-lg="12" size-xl="12" class="red">
+              <h5><b>Statutory Warning:</b> </h5>
+              <p>
+                In case any of the agent is found VIOLATING IRCTC terms and condition both the <b>GURU NANAK
+                  INFOTECH</b> and
+                <b>Kafila Hospitality and Travels Pvt Ltd</b> shall be subjected to permanent<br>  deactivation and
+                Punitive or any
+                other action as per Railways Act 143 and relevant guidelines issued by IRCTC in this regards.
+              </p>
+            </ion-col>
+
+
+
+
+
+            <div class="blue ion-text-center">
+
+              <p>
+                Registered Office: 10185-C, Arya Samaj Road, Karol Bagh, (New Delhi) - 110005
+              </p>
+              <p>
+                Call: +91 8587855513, 011-45022231, 9818406139 | Email: rail@kafilatravel.in
+              </p>
+              <p>
+                Website: http://kafilaholidays.in/
+              </p>
+            </div>
+
+
+
+
+
+
+
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+</ion-app>
