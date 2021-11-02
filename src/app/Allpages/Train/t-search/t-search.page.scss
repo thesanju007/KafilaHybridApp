@@ -1,78 +1,277 @@
+.img-B{
+  background-size:100%;
+  background-repeat:no-repeat;
+  background-image: url("../../../../assets/t_b.JPG");
+  // height: 800px;
+}
+.s-bar{
+  padding: 70px 0px 50px 0px;
+}
+ion-grid{
+  padding: 0px;
+}
 .padding-none {
-    padding: 0px;
+  padding: 0px;
+}
+.rotate-90 {
+  display: inline-block; 
+  transform: rotate(45deg);
+}
+.rotate-0{
+  display: inline-block; 
+  transform: rotate(-45deg);
+}
+.bg-color{
+  --ion-background-color: rgb(245, 245, 245);
+}
+ion-item{
+  --ion-background-color: #fff;
+}
+input{
+  outline: 0;
+  border: none;
+  width: 100%;
+  padding: 10px;
+  background-color: white;
+  color: black;
+}
+input:disabled {
+cursor: not-allowed;
+}
+
+ion-icon {
+  color: #e9182d;
+}
+.label{
+  font-size: 20px;
+  font-weight: 500;
+}
+ion-text {
+  color: #445f99;
+  font-weight: 500;
+  cursor: pointer;
+}
+.R-label{
+  font-weight: 500;
+  font-size: 14px;
+}
+.FTH {
+  color: #445f99;
+  background-color: #fff;
+  font-size: 14px;
+  text-align: center;
+  // border-top-right-radius: 10px;
+  // border-top-left-radius: 10px;
+  font-family: serif;
+  padding: 10px 0px 5px 0px;
+  cursor: pointer;
+  border-top: 1px  solid #445f99;
+  border-left: 1px  solid #445f99 ;
+}
+.FTHActive {
+  background-color: #445f99;
+  color: #fff;
+}
+.side{
+  border-right: 1px  solid #445f99 ;
+}
+.round-l{
+  border-top-left-radius: 5px;
+  border-left: 1px  solid #445f99;
+}
+.round-r{
+  border-top-right-radius: 5px;
+}
+.SB {
+  background-color: #fff;
+  border-top: 2px solid #e9182d;
+  border-left: 1px solid #e9182d;
+  border-right: 1px solid #e9182d;
+  border-bottom: 1px solid #e9182d;
+  border-top-right-radius: 1px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  z-index: 9999;
+  margin: 0px;
+}
+.submit-btn {
+  width: 100%;
+  padding: 16px 0px;
+  background: #e9182d;
+  color: white;
+  font-size: 19px;
+  font-family: serif;
+  border: none;
+  font-weight: 500;
+  opacity: .8;
+  box-shadow: 1px 1px 1px 1px lightgrey;
+  border-radius: 5px;
+  margin: 10px 0px 0px 0px;
+  letter-spacing: 2px;
+}
+
+.submit-btn:hover{
+  opacity: 1;
+}
+.tp_mgn{
+  padding: 20px 0px 0px 0px;
+}
+
+
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 0;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+}
+ion-radio {
+  margin: 10px 10px 0px 10px;
+}
+ion-radio-group {
+  color: black;
+  padding: 20px 0px 0px 0px; 
+}
+ion-slides{
+  padding: 30px 0px 0px 0px;
+}
+.err{
+  padding: 20px 0px 0px 15px;
+  color:red;
+  font-size: 11px;
+}
+// .for-app {
+//   padding: 60px 20px 80px 20px;
+// }
+
+ul {
+  
+  // top: 6px!important;
+  left: 0px!important;
+  margin: 0px 0px 0px 20px!important;
+  padding: 0px 0px 0px 0px!important;
+  width: 90%;
+  position: absolute;
+  overflow: auto;
+  box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
+  z-index: 9999;
+  list-style: none;
+  li {
+   
+    border-radius:2px!important;
+    padding:4px 10px ;
+    border: 1px solid rgb(173, 173, 173);
+    font-family: serif;
+    background-color: #fff;
+    font-size: 15px;   
+    
+        
+      span{
+      color: rgb(82, 82, 82);
+      }
+      strong{
+        float: right;
+        color: black;
+      }
+    
+  }
+  li:hover{
+    background-color:rgb(207, 207, 207) ;
+    cursor: pointer;
+  }
+}
+// .img{
+//   background-image: url('../../../assets/bgFlight.jpg');
+// }
+fieldset {
+ border-radius: 5px;
+border-radius: 5px;
+border: 1px solid rgb(207, 207, 207);
+padding: 0px 15px;
+ }
+legend{
+  color: #000;
+  font-weight: 400;
+}
+.border{
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  border-radius: 50%;
+  padding: 7px 0px 0px 0px;
+  margin: 18px 0px 0px 40px;
+  cursor: pointer;
+  border: 1px solid #445f99;
+}
+
+@media only screen and(max-width:3000px){
+ 
+}
+  @media only screen and (max-width: 767px ) {
+    .none{
+      display: none;
+    }
+    .border{
+
+      text-align: center;
+  border-radius: 50%;
+  padding: 5px 0px 0px 0px;
+  margin: 18px 0px 0px 0px;
+  cursor: pointer;
+  border: 1px solid #0d2c4f;
+    }
+    .p-margin{
+      margin: 0px 0px 0px 150px;
+    }
+    .R-label{
+      font-weight: 500;
+      font-size: 16px;
+    }
+    .label{
+      font-size: 17px;
+      font-weight: 500;
+    }
+    input::placeholder{
+      font-size: 14px;
+    }
+    .FTH {
+  
+      font-size: 14px;
+  
+    }
+    .for-app {
+      padding: 60px 10px 80px 10px;
+    }
+  
+  }
+
+@media only screen and (max-width: 425px ) {
+  .R-label{
+    font-weight: 500;
+    font-size: 13px;
+  }
+  .label{
+    font-size: 17px;
+    font-weight: 500;
+  }
+  input::placeholder{
+    font-size: 14px;
   }
   .FTH {
-    color: #dd2c00;
-    background-color: #fff;
-    border: 1px solid #dd2c00;
-    font-size: 20px;
-    text-align: center;
-    border-top-right-radius: 20px;
-    border-top-left-radius: 20px;
-    font-family: serif;
-    padding: 10px 0px 0px 0px;
-    cursor: pointer;
+
+    font-size: 16px;
+
   }
-  .FTHActive {
-    background-color: #dd2c00;
-    color: #fff;
-    font-size: 20px;
-    text-align: center;
-    border-top-right-radius: 20px;
-    border-top-left-radius: 20px;
-    font-family: serif;
-    padding: 10px 0px 0px 0px;
-    cursor: pointer;
+  .for-app {
+    padding: 60px 10px 80px 10px;
   }
-  .SB {
-    background-color: #fff;
-    border-top: 3px solid #dd2c00;
-    border-left: 1px solid #dd2c00;
-    border-right: 1px solid #dd2c00;
-    border-bottom: 1px solid #dd2c00;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    z-index: 9999;
-    margin: 0px;
-  }
-  .submit-btn {
-    width: 100%;
-    padding: 10px;
-    background: #dd2c00;
-    color: white;
-    font-size: 19px;
-    font-family: serif;
-    border: none;
-    font-weight: 600;
-    opacity: 1;
-    box-shadow: 1px 1px 1px 1px lightgrey;
-  }
-  
-  .material-icons {
-    font-family: "Material Icons";
-    font-weight: normal;
-    font-style: normal;
-    font-size: 18px;
-    line-height: 0;
-    letter-spacing: normal;
-    text-transform: none;
-    display: inline-block;
-    white-space: nowrap;
-    word-wrap: normal;
-    direction: ltr;
-    -webkit-font-smoothing: antialiased;
-  }
-  ion-radio {
-    margin: 0px 10px 0px 10px;
-  }
-  ion-radio-group {
-    color: black;
-  }
-  
-  @media only screen and (min-width: 769px) {
-    .for-app {
-      padding: 80px 0px 0px 0px;
-    }
-  }
-  
+
+}

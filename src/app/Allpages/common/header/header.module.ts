@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { HeaderPageRoutingModule } from './header-routing.module';
 import { HeaderPage } from './header.page';
-import { FormShareModule } from '../../form-share/form-share.module';
+import { FormShareModule } from '../../../form-share/form-share.module';
 
 @NgModule({
   imports: [

@@ -1,70 +1,189 @@
-<ion-content  class="padding-none">
-    <ion-grid  class="ion-padding for-app">
-      <ion-row color="primary" justify-content-center class="padding-none">
-        <ion-col size-md="10" size-lg="9" size-xs="12" class="padding-none">
-          
-  
-        
-  
-  
-  
-  
-          <ion-card class="SB">
-            <form>
-              <ion-row color="primary" justify-content-center class="ion-padding">
-                <ion-col size-md="12" size-lg="12" size-xs="12">
-                  <ion-radio-group>
-                    <ion-radio value="1" (click)="show==0?show=0:show=0"></ion-radio>
-                    <ion-label>One way</ion-label>
-                    <ion-radio value="2" (click)="show==1?show=1:show=1"></ion-radio>
-                    <ion-label>Round Trip</ion-label>
-                    <ion-radio value="3" (click)="show==1?show=1:show=1"></ion-radio>
-                    <ion-label>Multi Trip</ion-label>
-                  </ion-radio-group>
-                </ion-col>
-              </ion-row>
-  
-              <ion-row color="primary" justify-content-center  >
-                <ion-col size-md="6" size-lg="6" size-xs="12">
-                  <ion-item>
-                    <ion-label position="floating">Select Departure City</ion-label>
-                    <ion-input></ion-input>
-                  </ion-item>
-                </ion-col>
-                <ion-col size-md="6" size-lg="6" size-xs="12">
-                  <ion-item>
-                    <ion-label position="floating">Select Arrival City</ion-label>
-                    <ion-input></ion-input>
-                  </ion-item>
-                </ion-col>
-            
-  
-             
-                <ion-col size-md="6" size-lg="6" size-xs="12">
-                  <ion-item>
-                    <ion-label position="floating">Select Departure Date</ion-label>
-                    <ion-datetime></ion-datetime>
-                  </ion-item>
-                </ion-col>
-                <ion-col size-md="6" size-lg="6" size-xs="12">
-                  
-                </ion-col>
-              
-                <ion-col size-md="7" size-lg="6" size-xs="12">
-                  <button class="submit-btn" type="submit"><span class="material-icons">search</span> Search
-                    Train</button>
-                </ion-col>
-              </ion-row>
-            </form>
-          </ion-card>
-  
-  
-  
-  
-         
-  
-  
-        </ion-col>
-      </ion-row> 
-    </ion-grid>
-  </ion-content>
+<ion-content class="padding-none bg-color">
+  <ion-grid class=" for-app img">
+    <ion-row color="primary" justify-content-center class="s-bar img-B">
+
+      <ion-col size-md="1" size-lg="1" size-xl="1" class="ion-padding-top">
+      </ion-col>
+      <ion-col size-sm="12" size-xs="12" size-md="8" size-lg="7" size-xl="5" class="padding-none">
+
+        <ion-row color="primary" justify-content-center>
+          <ion-col class="none" size-md="3" size-lg="3" size-xl="4"></ion-col>
+          <ion-col size-sm="4" size-xs="4" size-md="3" size-lg="3" size-xl="2" class="FTH round-l" (click)="R_train()"
+            [ngClass]="[isAfterOW?'FTHActive':'!FTHActive']">
+            <!-- <span class="material-icons rotate-90">flight</span> Flight -->Search Train
+          </ion-col>
+          <ion-col size-sm="4" size-xs="4" size-md="3" size-lg="3" size-xl="2" class="FTH " (click)="R_check_PNR()"
+            [ngClass]="[ isAfterRT?'FTHActive':'!FTHActive']">
+            <!-- <span class="material-icons">train</span>Trains -->Check PNR
+          </ion-col>
+          <ion-col size-sm="4" size-xs="4" size-md="3" size-lg="3" size-xl="2" class=" FTH "
+            (click)="R_live_trains_status()" [ngClass]="[ isAfterMT?'FTHActive':'!FTHActive']">
+            <!-- <span class="material-icons">local_hotel</span> Hotels -->Trains Status
+          </ion-col>
+          <ion-col size-sm="4" size-xs="4" size-md="3" size-lg="3" size-xl="2" class=" FTH round-r side" (click)="R_live_station()"
+            [ngClass]="[ isAfterRS?'FTHActive':'!FTHActive']">
+            <!-- <span class="material-icons">local_hotel</span> Hotels -->Live Station
+          </ion-col>
+
+        </ion-row>
+
+
+
+
+        <ion-card class="SB ion-padding">
+          <form [formGroup]="trainData" (ngSubmit)="checkTrains()">
+
+
+            <!-- TRAIN SEARCH ROW -->
+            <ion-row color="primary" justify-content-center *ngIf="s_Trains" class="ion-padding-top">
+              <ion-col size-md="5" size-lg="5" size-xl="5" class="ion-padding-top">
+                <fieldset>
+                  <legend>
+                    <ion-icon name="train-outline"></ion-icon> Select Departure Station
+                  </legend>
+                  <input formControlName="D_station" placeholder="NDLS, Delhi, India">
+                </fieldset>
+              </ion-col>
+
+
+              <ion-col class="p-margin none" size-sm="4" size-xs="4" size-md="2" size-lg="2" size-xl="2">
+                <div class="border">
+                  <ion-icon size="small" name="swap-horizontal-outline"></ion-icon>
+                </div>
+              </ion-col>
+
+
+              <ion-col size-md="5" size-lg="5" size-xl="5" class="ion-padding-top">
+                <fieldset>
+                  <legend>
+                    <ion-icon name="train-outline"></ion-icon> Select Arrival Station
+                  </legend>
+                  <input formControlName="A_station" placeholder="MMCT, Mumbai, India">
+                </fieldset>
+              </ion-col>
+
+              <ion-col size-md="5" size-lg="5" size-xl="5" class="ion-padding-top">
+                <fieldset>
+                  <legend>
+                    <ion-icon name="calendar-outline"></ion-icon> Select Date
+                  </legend>
+                  <input formControlName="DT_date" type="date" [min]="todayt" placeholder="{{todayt}}">
+                </fieldset>
+              </ion-col>
+              <ion-col class="" size-sm="4" size-xs="4" size-md="2" size-lg="2" size-xl="2">
+               
+              </ion-col>
+              <ion-col size-md="5" size-lg="5" size-xl="5" class="ion-padding-top">
+                <fieldset [disabled]="dis">
+                  <legend>
+                    <ion-icon name="train-outline"></ion-icon> Select Class
+                  </legend>
+                  <input formControlName="A_station" placeholder="All Classes">
+                </fieldset>
+              </ion-col>
+
+
+
+              <ion-col size-md="5" size-lg="5" size-xl="5" class="ion-padding-top">
+                <fieldset [disabled]="dis">
+                  <legend>
+                    <ion-icon name="train-outline"></ion-icon> Quata
+                  </legend>
+                  <input formControlName="A_station" placeholder="General">
+                </fieldset>
+              </ion-col>
+
+              <ion-col class="p-margin none" size-sm="4" size-xs="4" size-md="2" size-lg="2" size-xl="2">
+               
+              </ion-col>
+
+
+
+              <ion-col size-md="5" size-lg="5" size-xl="5" class="ion-padding-top">
+                <button class="submit-btn" type="submit"><span class="material-icons">search</span> Search
+                  Train</button>
+
+              </ion-col>
+            </ion-row>
+
+
+
+
+            <!-- PNR CHECK ROW -->
+            <ion-row color="primary" justify-content-center *ngIf="check_PNR" class="ion-padding-top">
+              <ion-col size-md="6" size-lg="6" size-xs="12" class="ion-padding-top">
+                <fieldset>
+                  <legend>Enter PNR </legend>
+                  <input formControlName="PNR" placeholder="XXX XXX XX">
+                </fieldset>
+              </ion-col>
+              <ion-col size-md="6" size-lg="6" size-xs="12" class="ion-padding-top">
+                <button class="submit-btn" type="submit"><span class="material-icons">search</span>
+                  Check PNR status</button>
+              </ion-col>
+            </ion-row>
+
+
+
+            <!-- LIVE TRAIN ROW -->
+            <ion-row color="primary" justify-content-center *ngIf="live_trains" class="ion-padding-top">
+              <ion-col size-md="6" size-lg="6" size-xs="12" class="ion-padding-top">
+                <fieldset>
+                  <legend>Enter Train Name / no. </legend>
+                  <input formControlName="LiveTrain" placeholder="XXX XXX XX">
+                </fieldset>
+              </ion-col>
+              <ion-col size-md="6" size-lg="6" size-xs="12" class="ion-padding-top">
+                <button class="submit-btn" type="submit"><span class="material-icons">search</span> Search
+                  Live Train</button>
+              </ion-col>
+            </ion-row>
+
+
+            <!-- LIVE STATION ROW -->
+            <ion-row color="primary" justify-content-center *ngIf="live_station" class="ion-padding-top">
+              <ion-col size-md="6" size-lg="6" size-xs="12" class="ion-padding-top">
+                <fieldset>
+                  <legend>Enter Station Name </legend>
+                  <input formControlName="LiveTrain" placeholder="XXX XXX XX">
+                </fieldset>
+              </ion-col>
+              <ion-col size-md="6" size-lg="6" size-xs="12" class="ion-padding-top">
+                <button class="submit-btn" type="submit"><span class="material-icons">search</span> Search
+                  Station</button>
+              </ion-col>
+            </ion-row>
+
+
+          </form>
+        </ion-card>
+
+
+      </ion-col>
+    </ion-row>
+    <ion-slides [options]="slideOpts" pager="true">
+      <ion-slide>
+        <img src="https://kafilaholidays.in/upload/1.jpg?ver=1624949818190">
+      </ion-slide>
+      <ion-slide>
+        <img src="https://kafilaholidays.in/upload/2.jpg?ver=1624949818190">
+      </ion-slide>
+      <ion-slide>
+        <img src="https://kafilaholidays.in/upload/3.jpg?ver=1624949818190">
+      </ion-slide>
+      <ion-slide>
+        <img src="https://kafilaholidays.in/upload/4.jpg?ver=1624949818190">
+      </ion-slide>
+      <ion-slide>
+        <img src="https://kafilaholidays.in/upload/5.jpg?ver=1624949818190">
+      </ion-slide>
+      <ion-slide>
+        <img src="https://kafilaholidays.in/upload/6.jpg?ver=1624949818190">
+      </ion-slide>
+      <ion-slide>
+        <img src="https://kafilaholidays.in/upload/7.jpg?ver=1624949818190">
+      </ion-slide>
+    </ion-slides>
+  </ion-grid>
+
+</ion-content>

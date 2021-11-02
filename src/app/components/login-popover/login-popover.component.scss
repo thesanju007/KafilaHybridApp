@@ -1,6 +1,9 @@
 ion-item{
     border-bottom: 1px solid rgb(189, 189, 189);
 }
+ion-col{
+    padding: 0px;
+}
 .centre{
     text-align: center;
 }
@@ -10,6 +13,7 @@ input{
     width: 100%;
     background-color: white;
     padding: 0px;
+    font-size: 13px;
 }
 input::placeholder{
     font-size: 13px;

@@ -4,7 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { HomePageRoutingModule } from './home-routing.module';
 import { HomePage } from './home.page';
 
-import { HeaderPage } from '../header/header.page';
+import { HeaderPage } from '../common/header/header.page';
 import { FormShareModule } from '../../form-share/form-share.module';
 @NgModule({
   imports: [
@@ -15,6 +15,6 @@ import { FormShareModule } from '../../form-share/form-share.module';
     
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  declarations: [HomePage,HeaderPage]
+  declarations: [HomePage,HeaderPage,]
 })
 export class HomePageModule {}

@@ -1,0 +1,280 @@
+<ion-content>
+  <ion-grid>
+    <ion-row class="ion-padding-top s-bar">
+      <ion-col size-sm="12" size-xs="12" size-md="2" size-lg="2" size-xl="2">
+        <fieldset>
+          <legend>
+            <ion-icon class="rotate-0" name="airplane-outline"></ion-icon> FROM
+          </legend>
+          <input placeholder="DEL, Delhi, India">
+        </fieldset>
+
+
+      </ion-col>
+
+      <ion-col class="p-margin none" size-sm="4" size-xs="4" size-md="1" size-lg="1" size-xl="1">
+        <div class="border">
+          <ion-icon size="small" name="swap-horizontal-outline"></ion-icon>
+        </div>
+      </ion-col>
+
+      <ion-col size-sm="12" size-xs="12" size-md="2" size-lg="2" size-xl="2">
+        <fieldset>
+          <legend>
+            <ion-icon class="rotate-90" name="airplane-outline"></ion-icon> TO
+          </legend>
+          <input placeholder="Bom, Mumbai, India">
+        </fieldset>
+
+      </ion-col>
+
+
+
+      <ion-col size-sm="12" size-xs="12" size-md="2" size-lg="2" size-xl="2">
+        <fieldset>
+          <legend>
+            <ion-icon name="calendar-outline"></ion-icon> DEPARTURE DATE
+          </legend>
+          <input type="date">
+        </fieldset>
+
+      </ion-col>
+
+
+
+      <ion-col size-sm="12" size-xs="12" size-md="2" size-lg="2" size-xl="2">
+        <fieldset>
+          <legend>
+            <ion-icon name="calendar-outline"></ion-icon> RETURN DATE
+          </legend>
+          <input type="date">
+        </fieldset>
+      </ion-col>
+
+      <ion-col size-sm="12" size-xs="12" size-md="3" size-lg="3" size-xl="3">
+        <button class="submit-btn" type="submit">
+          <span class="material-icons">search</span> Search Flight
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-padding-top">
+      <ion-col size-sm="12" size-xs="12" size-md="1" size-lg="1" size-xl="1"></ion-col>
+
+      <ion-col size-sm="12" size-xs="12" size-md="10" size-lg="10" size-xl="10" class="ion-padding-top">
+        <ion-row>
+          <ion-col size-md="3" size-lg="3" size-xl="3">
+
+          </ion-col>
+          <ion-col size-md="9" size-lg="9" size-xl="9">
+            <ion-card>
+              <ion-row class="">
+                <ion-col size-md="2" size-lg="2" size-xl="2" class="ion-text-center">
+                  <span class="head-cmn">
+                    <ion-icon name="airplane"></ion-icon> Flights
+                  </span>
+                </ion-col>
+
+
+                <ion-col size-md="2" size-lg="2" size-xl="2" class="ion-text-center"><span class="head-cmn">
+                    <ion-icon class="rotate-0" name="airplane"></ion-icon> Time
+                  </span>
+                </ion-col>
+
+
+                <ion-col size-md="2" size-lg="2" size-xl="2" class="ion-text-center"><span class="head-cmn">
+                    <ion-icon name="timer"></ion-icon> Duration
+                  </span>
+
+                </ion-col>
+
+
+                <ion-col size-md="2" size-lg="2" size-xl="2" class="ion-text-center"><span class="head-cmn">
+                    <ion-icon class="rotate-90" name="airplane"></ion-icon> Time
+                  </span>
+                </ion-col>
+
+
+
+
+                <ion-col size-md="2" size-lg="2" size-xl="2" class="ion-text-center"><span class="head-cmn">
+                    <ion-icon name="cash"></ion-icon> Price<ion-icon name="caret-down-outline" *ngIf="down1"
+                      (click)="sortBalAsc()" style="cursor: pointer; color: red;"></ion-icon>
+                    <ion-icon name="caret-up-outline" *ngIf="up1" (click)="sortBalDesc()"
+                      style="cursor: pointer; color: red;"></ion-icon>
+                  </span>
+                </ion-col>
+                <ion-col size-md="2" size-lg="2" size-xl="2" class="ion-text-center">
+                  <span class="head-cmn">Total Result = {{arr_data.length}}</span>
+                </ion-col>
+              </ion-row>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+
+
+
+        <ion-row>
+          <ion-col size-md="3" size-lg="3" size-xl="3">
+            <ion-card>
+              <ion-row>
+                <ion-col size-md="12" size-lg="12" size-xl="12" class="ion-text-center">
+                  <span class="F_NAME">Filters</span>
+                </ion-col>
+
+                <ion-col size-md="12" size-lg="12" size-xl="12" class="ion-text-start">
+                  <ion-label class="f-label">
+                    One Way Price :
+                  </ion-label>
+                  <ion-item lines="none">
+                    <ion-range dualKnobs="false" min="{{min_amt}}" max="{{max_amt}}" pin  step="500" snaps="false" color="primary">
+                      <span slot="start">Rs {{min_amt}}</span>
+                      <span slot="end">Rs {{max_amt}}</span>
+
+                    </ion-range>
+                  </ion-item>
+                </ion-col>
+
+                <ion-col size-md="12" size-lg="12" size-xl="12" class="ion-text-start">
+                  <ion-label class="f-label">
+                    Stops :
+                  </ion-label>
+                  <ion-item *ngFor="let entry of STOPS" lines="none">
+                    <ion-label class="f-b-label">{{entry.val}}</ion-label>
+                    <ion-checkbox slot="end" [(ngModel)]="entry.isChecked"></ion-checkbox>
+                  </ion-item>
+
+
+
+                </ion-col>
+
+
+                <ion-col size-md="12" size-lg="12" size-xl="12" class="ion-text-start">
+                  <ion-label class="f-label">
+                    Departure Time :
+                  </ion-label>
+                  <ion-item *ngFor="let entry of DEP_TIME" lines="none">
+                    <ion-label class="f-b-label">{{entry.val}}</ion-label>
+                    <ion-checkbox slot="end" [(ngModel)]="entry.isChecked"></ion-checkbox>
+                  </ion-item>
+                </ion-col>
+
+
+                <ion-col size-md="12" size-lg="12" size-xl="12" class="ion-text-start">
+                  <ion-label class="f-label">
+                    Arrival Time :
+                  </ion-label>
+                  <ion-item *ngFor="let entry of ARR_TIME" lines="none">
+                    <ion-label class="f-b-label">{{entry.val}}</ion-label>
+                    <ion-checkbox slot="end" [(ngModel)]="entry.isChecked"></ion-checkbox>
+                  </ion-item>
+                </ion-col>
+
+
+                <ion-col size-md="12" size-lg="12" size-xl="12" class="ion-text-start">
+                  <ion-label class="f-label">
+                    Airlines :
+                  </ion-label>
+                  <ion-item *ngFor="let entry of Come_FLIGHTS" lines="none">
+                    <ion-label class="f-b-label">{{entry.val}}</ion-label>
+                    <ion-checkbox slot="end" [(ngModel)]="entry.isChecked"></ion-checkbox>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+
+
+            </ion-card>
+          </ion-col>
+
+
+
+          <!-- <ion-col size-md="1" size-lg="1" size-xl="1"></ion-col> -->
+          <ion-col size-md="9" size-lg="9" size-xl="9">
+            <ion-card *ngFor="let y of arr_data">
+              <ion-row class="ion-padding-top ion-padding-bottom">
+                <ion-col size-md="2" size-lg="2" size-xl="2" class="ion-text-center">
+                  <div [style.background-position]="y.F_LOGO" class="fltLogo"></div> <span
+                    class="F_NAME">{{y.F_NAME}}</span>
+                </ion-col>
+
+
+                <ion-col size-md="2" size-lg="2" size-xl="2" class="ion-text-center"><span
+                    class="D_TIME">{{y.D_TIME}}</span><br><span class="D_NAME">{{y.D_NAME}}</span></ion-col>
+
+
+                <ion-col size-md="2" size-lg="2" size-xl="2" class="ion-text-center"><span class="DUR">{{y.DUR
+                    }}</span><br>
+                  <span *ngIf="y.STOP=='0'" class="STOP">
+
+                    <span class="circle"></span>
+                    <div class="SIZE-DIV"></div>
+                    <span class="circle"></span>
+
+                    Non Stop
+                  </span>
+                  <span *ngIf="y.STOP=='1'" class="STOP">
+                    <span class="circle"></span>
+                    <div class="SIZE-DIV1"></div>
+                    <span class="circle"></span>
+                    <div class="SIZE-DIV1"></div>
+                    <span class="circle"></span>
+                    One Stop
+                  </span>
+                  <span *ngIf="y.STOP=='2'" class="STOP">
+                    <span class="circle"></span>
+                    <div class="SIZE-DIV2"></div>
+                    <span class="circle"></span>
+                    <div class="SIZE-DIV2"></div>
+                    <span class="circle"></span>
+                    <div class="SIZE-DIV2"></div>
+                    <span class="circle"></span>
+                    Two Stop</span>
+                 
+                </ion-col>
+
+
+                <ion-col size-md="2" size-lg="2" size-xl="2" class="ion-text-center"><span
+                    class="D_TIME">{{y.A_TIME}}</span><br><span class="D_NAME">{{y.A_NAME}}</span></ion-col>
+
+
+                <!-- <ion-col size-md="2" size-lg="2" size-xl="2" class="ion-text-center">Class {{y.F_CLASS}} <br>Seats
+                  {{y.SEAT}}
+                </ion-col> -->
+
+                <ion-col size-md="2" size-lg="2" size-xl="2" class="ion-text-center"><span class="AMT">Rs
+                    {{y.AMT}}</span><br> <span class="DETAILS" (click)="Details()">View Details
+                  </span>
+                </ion-col>
+                <ion-col size-md="2" size-lg="2" size-xl="2" class="ion-text-center">
+                  <button class="BOOKNOW">
+                    Book Now
+                  </button>
+                </ion-col>
+              </ion-row>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+<!-- 
+
+
+
+CON_DETAILS: ""
+
+FLIGHT_INFO: "REFUNDABLE|1,1|Baggage:Cabin=7Kg,Checkin=15 KG|Cancellation=ASAP Airlines,Reschedule=ASAP Airlines|CLASS=Y0IP"
+
+F_CODE: "6E"
+
+F_NO: " 171"
+F_TYPE: "R"
+ID: "0"
+NET_FARE: "14364"
+OI: "1D"
+PCC: "6EOTI026D~MAIN"
+SEAT: "21"
+ -->

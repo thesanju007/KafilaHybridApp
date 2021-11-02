@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
 import { TestService } from '../../../Services/test.service'
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 @Component({
   selector: 'app-t-search',
   templateUrl: './t-search.page.html',
@@ -8,68 +11,122 @@ import { TestService } from '../../../Services/test.service'
 })
 export class TSearchPage implements OnInit {
  
-  constructor() {}
-  ngOnInit() {}
-  isAfterF=true;
-  isAfterT=false;
-  isAfterH=false;
-  flight_comp=true
-  train_comp=false
-  hotel_comp=false
-  today:any = new Date();
-  dd:any = String(this.today.getDate()).padStart(2, '0');
-  mm:any = String(this.today.getMonth() + 1).padStart(2, '0'); //January is 0!
-  yyyy:any = this.today.getFullYear();
-  Today =   this.yyyy+  '-' +this.mm + '-' +this.dd; 
-  min = new Date();
-  max = new Date(this.min.getFullYear(), this.min.getMonth() + 6, this.min.getDate());
-
+  todayt = new Date(new Date().getTime()).toISOString().split('T')[0];
+  minDate = new Date(new Date().getTime()).toISOString().split('T')[0];
+  maxDate: any
   
-  minSelectableDate=this.Today;
-  maxSelectableDate=this.Today;
-  quantity:any; 
-  flight(){
-    this.flight_comp=true
-    this.hotel_comp=false
-    this.train_comp=false
-    this.isAfterF=true;
-    this.isAfterT=false;
-    this.isAfterH=false;
+  
+ dis=true
+
+
+  constructor(private tService: TestService, private route: Router, private fb: FormBuilder) { }
+  ngOnInit() {
+
+
   }
-  train(){
-    this.flight_comp=false
-    this.hotel_comp=false
-    this.train_comp=true
-    this.isAfterT=true
-    this.isAfterF=false;
-    this.isAfterH=false;
-  }
-  hotel(){
-    this.flight_comp=false
-    this.hotel_comp=true
-    this.train_comp=false
-    this.isAfterH=true
-    this.isAfterF=false;
-    this.isAfterT=false;
-  }
-  flightData = new FormGroup({
-    flighttype: new FormControl('', [Validators.required]),
-    D_airport : new FormControl('', [Validators.required]),
-    A_airport : new FormControl('', [Validators.required]),
-    D_date    : new FormControl('', [Validators.required]),
-    A_date    : new FormControl('', [Validators.required]),
-    PClass    : new FormControl('', [Validators.required]),
-    PFlight   : new FormControl('', [Validators.required]),
-    Adults    : new FormControl('', [Validators.required]),
-    Childs    : new FormControl('', [Validators.required]),
-    Infants   : new FormControl('', [Validators.required]),
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+  s_Trains = true
+  check_PNR = false
+  live_trains = false
+  live_station = false
+
+  trainData = new FormGroup({
+    radiotype: new FormControl('', [Validators.required]),
+    D_station: new FormControl('', [Validators.required]),
+    A_station: new FormControl('', [Validators.required]),
+    DT_date: new FormControl('', [Validators.required]),
+    PNR: new FormControl(''),
+    LiveTrain: new FormControl(''),
+
   })
-  checkFlight() {
-   
-    console.log(this.flightData.value)
+  R_train() {
+    this.s_Trains = true
+    this.check_PNR = false
+    this.live_trains = false
+    this.live_station = false
   }
-   
-         
+  R_check_PNR() {
+    this.check_PNR = true
+    this.s_Trains = false
+    this.live_trains = false
+    this.live_station = false
+  }
+  R_live_trains_status() {
+    this.live_trains = true
+    this.s_Trains = false
+    this.check_PNR = false
+    this.live_station = false
+
+  }
+  R_live_station() {
+    this.live_station = true
+    this.s_Trains = false
+    this.check_PNR = false
+    this.live_trains = false
+  }
+  checkTrains() {
+
+    if (this.trainData.value.radiotype == 1) {
+      alert("FLIGHT SEARCH")
+      let trainData = {
+        "TYPE": "RAIL",
+        "NAME": "GET_TRAIN",
+        "STR": [
+          {
+            "TOKEN_TYPE": "SLF",
+            "AUTH_TOKEN": "",
+            "SESSION_ID": "",
+            "SRC": this.trainData.value.D_station,
+            "DES": this.trainData.value.A_station,
+            "DEP_DATE": this.trainData.value.DT_date,
+            "OI": "",
+            "HS": "D"
+          }
+        ]
+      }
+      console.log(trainData)
+    }
+
+    if (this.trainData.value.radiotype == 2) {
+      alert("CHECK PNR")
+      console.log(this.trainData.value.PNR)
+    }
+
+    if (this.trainData.value.radiotype == 3) {
+      alert("SEARCHING LIVE TRAIN")
+      console.log(this.trainData.value.LiveTrain)
+    }
+
+  }
+
+  // get Error() {
+  //   return this.flightData.controls;
+  // }
+
+
+
+
+
  
 
 }

@@ -4,7 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { DashboardPageRoutingModule } from './dashboard-routing.module';
 import { DashboardPage } from './dashboard.page';
 import { FormShareModule } from '../../form-share/form-share.module';
-import { FooterPage } from '../footer/footer.page';
+import { FooterPage } from '../common/footer/footer.page';
 import { AirportFilterPipe} from '../../Allpipes/airport-filter.pipe'
 @NgModule({
   imports: [

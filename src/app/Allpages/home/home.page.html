@@ -1,87 +1,13 @@
-<!-- <app-header></app-header>
-<ion-app class=" for-app">
-  <ion-split-pane contentId="main-content">
-    <ion-menu contentId="main-content" type="push" *ngIf="bigMenu" swipeGesture="false">
-      <ion-content>
-        <ion-item lines="none" class="line-up" [routerLink]="['/home/dashboard']">
-          <ion-icon slot="start" name="home-outline"></ion-icon>
-          <ion-label>Dashboard </ion-label>
-          <ion-icon name="chevron-forward-outline"></ion-icon>
-        </ion-item>
-        <ion-list id="inbox-list" *ngFor="let d of Menu,let i = index" lines="none">
 
-
-
-        
-          <ion-item *ngIf="!d.subMenu" [routerLink]="['/','home',d.url]" (click)="myAccount()" class="main-tag "
-            routerDirection="forward">
-            <ion-icon slot="start" name={{d.icon}}></ion-icon>
-            <ion-label>{{d.title}} </ion-label>
-          </ion-item>
-
-
-
-
-          
-          <ion-item *ngIf="d.active" (click)="toggleSubMenu(d)" (ionClick)="d.showDetails=!d.showDetails "
-            class="main-tag">
-            <ion-icon slot="start" name={{d.icon}}></ion-icon>
-            <ion-label>{{d.title}}</ion-label>
-            <ion-icon name="caret-down-outline" *ngIf="d.showDetails"></ion-icon>
-            <ion-icon name="caret-up-outline" *ngIf="!d.showDetails"></ion-icon>
-          </ion-item>
-
-          <ion-list *ngIf="!d.showDetails">
-            <ion-item *ngFor="let s_Menu of d.subMenu" [routerLink]="['/','home',s_Menu.url]"
-              (click)="bigMenu=!bigMenu"  class="sb-menu">
-              <ion-icon slot="start" name={{s_Menu.icon}}></ion-icon>
-              <ion-label>{{s_Menu.title}}</ion-label>
-              <ion-icon slot="end" name={{s_Menu.Eicon}}></ion-icon>
-            </ion-item>
-          </ion-list>
-
-        </ion-list>
-
-
-        <ion-list id="inbox-list" lines="none">
-          <ion-item *ngIf="moreOption" (click)="credTrue=!credTrue" class="main-tag">
-            <ion-icon slot="start" name="list"></ion-icon>
-            <ion-label>More</ion-label>
-            <ion-icon name="caret-down-outline" *ngIf="!credTrue"></ion-icon>
-            <ion-icon name="caret-up-outline" *ngIf="credTrue"></ion-icon>
-          </ion-item>
-
-          <form [formGroup]="set_cre" (ngSubmit)="checkCredentials()" *ngIf="credTrue" class="cred-box">
-            <ion-item class="cred">
-              <ion-label position="floating">Enter Password</ion-label>
-              <ion-input formControlName="cre1"></ion-input>
-            </ion-item>
-            <ion-button type="submit">check</ion-button>
-          </form>
-        </ion-list>
-
-      </ion-content>
-
-      <ion-item (click)="logout()" lines="none" class="line-up">
-        <ion-icon slot="start" name="log-out-outline"></ion-icon>
-        <ion-label>Logout </ion-label>
-      </ion-item>
-
-
-    </ion-menu>
-    <ion-router-outlet id="main-content"></ion-router-outlet>
-  </ion-split-pane>
-
-</ion-app> -->
 <app-header></app-header>
 <ion-app class=" for-app">
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay" class="ion-text-center" *ngIf="bigMenu" swipeGesture="false">
       <ion-content>
-        <ion-item lines="none" class="line-up" [routerLink]="['/home/dashboard']">
-          <ion-icon slot="start" name="home-outline"></ion-icon>
+        <ion-item lines="none" class="line-up" [routerLink]="['/home/dashboard']" >
+          <ion-icon slot="start" name="home"></ion-icon>
           <ion-label>Dashboard </ion-label>
-          <ion-icon name="chevron-forward-outline"></ion-icon>
+          <!-- <ion-icon name="chevron-forward"></ion-icon> -->
         </ion-item>
         <ion-list id="inbox-list" *ngFor="let d of Menu,let i = index" lines="none">
           <ion-item *ngIf="d.active=='true'" (click)="toggleSubMenu(d)" (ionClick)="d.showDetails=!d.showDetails "
@@ -97,11 +23,11 @@
               class="sb-menu">
               <ion-icon size="small" name={{s_Menu.icon}}></ion-icon>
               <ion-label> {{s_Menu.title}}</ion-label>
-              <ion-icon size="small" name={{s_Menu.Eicon}}></ion-icon>
+              <!-- <ion-icon size="small" name={{s_Menu.Eicon}}></ion-icon> -->
             </ion-item>
           </ion-list>
 
-          <ion-item *ngIf="!d.subMenu" [routerLink]="['/','home',d.url]" (click)="myAccount()" class="main-tag "
+          <ion-item *ngIf="!d.subMenu" [routerLink]="['/','home',d.url]" (click)="myAccount()" class="main-tag line-up"
             routerDirection="forward">
             <ion-icon slot="start" name={{d.icon}}></ion-icon>
             <ion-label>{{d.title}} </ion-label>

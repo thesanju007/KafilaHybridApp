@@ -1,3 +1,138 @@
-<ion-content>
-  <h1>THE HOTEL SEARCHING WORKS</h1>
+<ion-content class="padding-none bg-color">
+  <ion-grid class=" for-app img">
+    <ion-row color="primary" justify-content-center class="s-bar img-B">
+      <ion-col size-md="1" size-lg="1" size-xl="1" class="ion-padding-top">
+      </ion-col>
+      <ion-col size-sm="12" size-xs="12" size-md="8" size-lg="7" size-xl="5" class="padding-none">
+
+        <ion-row color="primary" justify-content-center>
+          <ion-col class="none" size-md="3" size-lg="3" size-xl="2"></ion-col>
+          <ion-col size-sm="4" size-xs="4" size-md="3" size-lg="3" size-xl="2" class="FTH round-l" (click)="One_Star()"
+            [ngClass]="[isAfterOW?'FTHActive':'!FTHActive']">
+            <ion-icon name="star" class="s-icon"></ion-icon> 1 Star
+          </ion-col>
+          <ion-col size-sm="4" size-xs="4" size-md="3" size-lg="3" size-xl="2" class="FTH " (click)="Two_Star()"
+            [ngClass]="[ isAfterRT?'FTHActive':'!FTHActive']">
+            <ion-icon name="star" class="s-icon"></ion-icon> 2 Star
+          </ion-col>
+          <ion-col size-sm="4" size-xs="4" size-md="3" size-lg="3" size-xl="2" class=" FTH " (click)="Three_Star()"
+            [ngClass]="[ isAfterMT?'FTHActive':'!FTHActive']">
+            <ion-icon name="star" class="s-icon"></ion-icon> 3 Star
+          </ion-col>
+          <ion-col size-sm="4" size-xs="4" size-md="3" size-lg="3" size-xl="2" class=" FTH " (click)="Four_Star()"
+            [ngClass]="[ isAfterRS?'FTHActive':'!FTHActive']">
+            <ion-icon name="star" class="s-icon"></ion-icon> 4 Star
+          </ion-col>
+          <ion-col size-sm="4" size-xs="4" size-md="3" size-lg="3" size-xl="2" class=" FTH side round-r"
+            (click)="Five_Star()" [ngClass]="[ isAfterAT?'FTHActive':'!FTHActive']">
+            <ion-icon name="star" class="s-icon"></ion-icon> 5 Star
+          </ion-col>
+        </ion-row>
+
+
+
+
+
+
+
+
+        <!-- HOTEL CARD-->
+        <ion-card class="SB ion-padding">
+          <form>
+            <ion-row class="ion-padding-top">
+              <ion-col size-md="6" size-lg="6" size-xl="6" class="ion-padding-top">
+                <fieldset>
+                  <legend>
+                    <ion-icon name="location-outline"></ion-icon> Enter City Name
+                  </legend>
+                  <input placeholder="NDLS, Delhi, India">
+                </fieldset>
+
+              </ion-col>
+              <ion-col size-md="6" size-lg="6" size-xl="6" class="ion-padding-top">
+                <fieldset>
+                  <legend>
+                    <ion-icon name="calendar-outline"></ion-icon> Select Check-in Date
+                  </legend>
+                  <input type="text" [min]="todayt" placeholder="{{todayt}}" onfocus="(this.type='date')">
+                </fieldset>
+              </ion-col>
+
+              <ion-col size-md="6" size-lg="6" size-xl="6">
+                <fieldset>
+                  <legend>
+                    <ion-icon name="calendar-outline"></ion-icon> Select Check-out Date
+                  </legend>
+                  <input type="text" [min]="todayt" placeholder="{{todayt}}" onfocus="(this.type='date')">
+                </fieldset>
+              </ion-col>
+             
+
+              <ion-col size-md="6" size-lg="6" size-xl="6">
+                <fieldset [disabled]="!round_trip">
+                  <legend>
+                    <ion-icon name="globe-outline"></ion-icon> Select Nationality
+                  </legend>
+                  <input placeholder="India">
+                </fieldset>
+              </ion-col>
+
+              <ion-col size-md="6" size-lg="6" size-xl="6">
+                <fieldset [disabled]="!round_trip">
+                  <legend>
+                    <ion-icon name="home-outline"></ion-icon> Select Residence
+                  </legend>
+                  <input placeholder="India">
+                </fieldset>
+              </ion-col>
+           
+
+              <ion-col size-md="6" size-lg="6" size-xl="6">
+                <button class="submit-btn" type="submit"><span class="material-icons">search</span> Search
+                  Hotel</button>
+              </ion-col>
+
+              <ion-col size-md="12" size-lg="12" size-xl="12" class="ion-text-center">
+                <ion-text class="note">
+                  Note: Maximum <b>6</b> guests are allowed in one room
+                </ion-text>
+
+              </ion-col>
+            </ion-row>
+
+
+          </form>
+        </ion-card>
+
+
+
+      </ion-col>
+    </ion-row>
+    <ion-slides [options]="slideOpts" pager="true">
+      <ion-slide>
+        <img src="https://kafilaholidays.in/upload/1.jpg?ver=1624949818190">
+      </ion-slide>
+      <ion-slide>
+        <img src="https://kafilaholidays.in/upload/2.jpg?ver=1624949818190">
+      </ion-slide>
+      <ion-slide>
+        <img src="https://kafilaholidays.in/upload/3.jpg?ver=1624949818190">
+      </ion-slide>
+      <ion-slide>
+        <img src="https://kafilaholidays.in/upload/4.jpg?ver=1624949818190">
+      </ion-slide>
+      <ion-slide>
+        <img src="https://kafilaholidays.in/upload/5.jpg?ver=1624949818190">
+      </ion-slide>
+      <ion-slide>
+        <img src="https://kafilaholidays.in/upload/6.jpg?ver=1624949818190">
+      </ion-slide>
+      <ion-slide>
+        <img src="https://kafilaholidays.in/upload/7.jpg?ver=1624949818190">
+      </ion-slide>
+    </ion-slides>
+  </ion-grid>
+
+ 
 </ion-content>
+<!-- <app-footer></app-footer>  -->

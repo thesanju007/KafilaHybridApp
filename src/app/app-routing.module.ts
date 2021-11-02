@@ -18,29 +18,30 @@ const routes: Routes = [
   },
   {
     path: 'error',
-    loadChildren: () => import('./Allpages/error/error.module').then(m => m.ErrorPageModule)
+    loadChildren: () => import('./Allpages/common/error/error.module').then(m => m.ErrorPageModule)
   },
  
   {
     path: 'header',
-    loadChildren: () => import('./Allpages/header/header.module').then(m => m.HeaderPageModule)
+    loadChildren: () => import('./Allpages/common/header/header.module').then(m => m.HeaderPageModule)
   },
   {
     path: 'footer',
-    loadChildren: () => import('./Allpages/footer/footer.module').then(m => m.FooterPageModule)
+    loadChildren: () => import('./Allpages/common/footer/footer.module').then(m => m.FooterPageModule)
   },
   {
     path: 'aboutus',
-    loadChildren: () => import('./Allpages/about-us/about-us.module').then(m => m.AboutUsPageModule)
+    loadChildren: () => import('./Allpages/common/about-us/about-us.module').then(m => m.AboutUsPageModule)
   },
   {
     path: 'contactus',
-    loadChildren: () => import('./Allpages/contact-us/contact-us.module').then(m => m.ContactUsPageModule)
+    loadChildren: () => import('./Allpages/common/contact-us/contact-us.module').then(m => m.ContactUsPageModule)
   },
   { 
     path: '**', 
     redirectTo: '/error' 
   },
+  
 
 
 

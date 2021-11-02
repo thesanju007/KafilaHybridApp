@@ -23,7 +23,6 @@ import { LoginPopoverModule } from '../app/components/login-popover/login-popove
    // PaymentModule,
    LoginPopoverModule,
 
-    
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

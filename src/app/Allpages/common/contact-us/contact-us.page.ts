@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PopoverController, ToastController, LoadingController } from '@ionic/angular';
-import { LoginPopoverComponent } from '../../components/login-popover/login-popover.component';
+import { LoginPopoverComponent } from '../../../components/login-popover/login-popover.component';
 @Component({
   selector: 'app-contact-us',
   templateUrl: './contact-us.page.html',

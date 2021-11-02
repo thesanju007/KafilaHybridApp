@@ -73,7 +73,7 @@
 }
 @media only screen and (min-width:769px) {
   .for-app{
-    margin:63px 0px 0px 0px;
+    margin:70px 0px 0px 0px;
   }
 }
 
@@ -155,13 +155,13 @@ ion-menu.md ion-item.selected ion-icon {
   color: var(--ion-color-primary);
 }
 ion-menu.md ion-item ion-icon {
-  color: rgb(68, 68, 68);
+  color: #e9182d;
   font-size: 18px;
 }
 
 ion-menu.md ion-item ion-label {
   font-weight: 500;
-  color: rgb(68, 68, 68);
+  color: #445f99;
   font-family: serif;
 }
 ion-menu.ios ion-content {
@@ -181,7 +181,7 @@ ion-menu.ios ion-item.selected ion-icon {
 }
 ion-menu.ios ion-item ion-icon {
   font-size: 19px;
-  color: #000;
+  color: #445f99;
 }
 ion-menu.ios ion-list-header,
 ion-menu.ios ion-note {
@@ -205,7 +205,7 @@ ion-item.selected {
 }
 ion-text{
   font-size:19px;
-  color: #000;
+  color: #445f99;
 }
 .line-up{
   border-top: 1px solid #ddd;

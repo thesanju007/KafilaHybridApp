@@ -1,26 +1,45 @@
+<ion-content>
+  <ion-row class="ion-padding-top s-bar">
+
+
+    <ion-col size-sm="12" size-xs="12" size-md="2" size-lg="2" size-xl="2">
+
+
+    </ion-col>
+
+    <ion-col size-sm="12" size-xs="12" size-md="8" size-lg="8" size-xl="8">
+      <ion-row style="border-left: 2px solid #445f99; border-bottom: 2px solid #445f99; border-right: 2px solid #445f99; padding-top: 10px;">
+        <ion-col size-sm="12" size-xs="12" size-md="4" size-lg="4" size-xl="4">
+          <fieldset>
+            <legend>
+              <ion-icon name="calendar-outline"></ion-icon> From
+            </legend>
+            <input type="date">
+          </fieldset>
+
+        </ion-col>
+
+        <ion-col size-sm="12" size-xs="12" size-md="4" size-lg="4" size-xl="4">
+          <fieldset>
+            <legend>
+              <ion-icon name="calendar-outline"></ion-icon> To
+            </legend>
+            <input type="date">
+          </fieldset>
+        </ion-col>
+
+        <ion-col size-sm="12" size-xs="12" size-md="4" size-lg="4" size-xl="4">
+          <button class="submit-btn" type="submit">
+            <span class="material-icons">search</span> Search Transaction History
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-col>
 
 
 
-<ion-content class="ion-margin">
-  <ion-grid class="ion-margin">
-    <ion-row>
-      <ion-col>S.No</ion-col>
-      <ion-col>First Name</ion-col>
-      <ion-col>Last Name</ion-col>
-      <ion-col>Photo</ion-col>
-    </ion-row>
-    <ion-row *ngFor="let x of this.results; index as i">
-      <ion-col>{{ i + 1 }}</ion-col>
-      <ion-col>{{ x.first_name }}</ion-col>
-      <ion-col>{{ x.last_name }}</ion-col>
-      <ion-col>
-        <ion-avatar>
-          <img src="x.avatar" alt=" img"/>
-        </ion-avatar>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
 
 
+
+  </ion-row>
 </ion-content>
-

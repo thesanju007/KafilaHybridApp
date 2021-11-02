@@ -3,7 +3,7 @@
         "id": "1",
         "active": "true",
         "title": "Flight",
-        "icon": "Airplane-outline",
+        "icon": "Airplane",
         "showDetails": "false",
         "subMenu": [
             {
@@ -60,7 +60,7 @@
         "id": "2",
         "active": "true",
         "title": "Train",
-        "icon": "train-outline",
+        "icon": "train",
         "showDetails": "false",
         "subMenu": [
             {
@@ -117,7 +117,7 @@
         "id": "3",
         "active": "true",
         "title": "Hotel",
-        "icon": "home-outline",   
+        "icon": "business",   
         "showDetails": "false",
         "subMenu": [
             {
@@ -174,10 +174,16 @@
         "id": "4",
         "title": "My Account",
         "url": "myaccount",
-        "icon": "person-circle-outline"
+        "icon": "person-circle"
     },
     {
         "id": "5",
+        "title": "Payment Upload",
+        "url": "p_upload",
+        "icon": "cash"
+    },
+    {
+        "id": "6",
         "title": "Settings",
         "active": "true",
         "showDetails": "false",

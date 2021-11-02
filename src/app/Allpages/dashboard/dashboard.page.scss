@@ -1,3 +1,16 @@
+.img-B{
+  background-size:100%;
+  background-repeat:no-repeat;
+  background-image: url("../../../assets/fliht.JPG");
+  // height: 800px;
+}
+
+.s-bar{
+  padding: 70px 0px 50px 0px;
+}
+ion-grid{
+  padding: 0px;
+}
 .padding-none {
   padding: 0px;
 }
@@ -28,14 +41,14 @@ cursor: not-allowed;
 }
 
 ion-icon {
-  color: #0d2c4f;
+  color: #e9182d;
 }
 .label{
   font-size: 20px;
   font-weight: 500;
 }
 ion-text {
-  color: #0d2c4f;
+  color: #445f99;
   font-weight: 500;
   cursor: pointer;
 }
@@ -44,28 +57,37 @@ ion-text {
   font-size: 14px;
 }
 .FTH {
-  color: #0d2c4f;
+  color: #445f99;
   background-color: #fff;
-  font-size: 20px;
+  font-size: 14px;
   text-align: center;
   // border-top-right-radius: 10px;
   // border-top-left-radius: 10px;
   font-family: serif;
   padding: 10px 0px 5px 0px;
   cursor: pointer;
-  border-top: 1px  solid #0d2c4f;
-  border-left: 1px  solid #0d2c4f ;
+  border-top: 1px  solid #445f99;
+  border-left: 1px  solid #445f99 ;
 }
 .FTHActive {
-  background-color: #0d2c4f;
+  background-color: #445f99;
   color: #fff;
+}
+.side{
+  border-right: 1px  solid #445f99 ;
+}
+.round-l{
+  border-top-left-radius: 5px;
+}
+.round-r{
+  border-top-right-radius: 5px;
 }
 .SB {
   background-color: #fff;
-  border-top: 2px solid #0d2c4f;
-  border-left: 1px solid #0d2c4f;
-  border-right: 1px solid #0d2c4f;
-  border-bottom: 1px solid #0d2c4f;
+  border-top: 2px solid #e9182d;
+  border-left: 1px solid #e9182d;
+  border-right: 1px solid #e9182d;
+  border-bottom: 1px solid #e9182d;
   border-top-right-radius: 1px;
   border-top-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -76,19 +98,27 @@ ion-text {
 .submit-btn {
   width: 100%;
   padding: 16px 0px;
-  background: #0d2c4f;
+  background: #e9182d;
   color: white;
   font-size: 19px;
   font-family: serif;
   border: none;
-  font-weight: 600;
-  opacity: 1;
+  font-weight: 500;
+  opacity: .8;
   box-shadow: 1px 1px 1px 1px lightgrey;
   border-radius: 5px;
   margin: 10px 0px 0px 0px;
+  letter-spacing: 2px;
+}
+
+.submit-btn:hover{
+  opacity: 1;
 }
 .tp_mgn{
   padding: 20px 0px 0px 0px;
+}
+.tp_mgn2{
+  padding: 18px 0px 0px 0px;
 }
 
 
@@ -119,10 +149,11 @@ ion-slides{
 .err{
   padding: 20px 0px 0px 15px;
   color:red;
+  font-size: 11px;
 }
-.for-app {
-  padding: 60px 20px 80px 20px;
-}
+// .for-app {
+//   padding: 60px 20px 80px 20px;
+// }
 
 ul {
   
@@ -160,9 +191,9 @@ ul {
     cursor: pointer;
   }
 }
-.img{
-  background-image: url('../../../assets/bgFlight.jpg');
-}
+// .img{
+//   background-image: url('../../../assets/bgFlight.jpg');
+// }
 fieldset {
  border-radius: 5px;
 border-radius: 5px;
@@ -170,16 +201,18 @@ border: 1px solid rgb(207, 207, 207);
 padding: 0px 15px;
  }
 legend{
-  color: black;
-  font-weight: 500;
+  color: #000;
+  font-weight: 400;
 }
 .border{
-
+  height: 30px;
+  width: 30px;
   text-align: center;
   border-radius: 50%;
-  padding: 10px 0px 0px 0px;
-  margin: 18px 0px 0px 0px;
+  padding: 7px 0px 0px 0px;
+  margin: 18px 0px 0px 40px;
   cursor: pointer;
+  border: 1px solid #445f99;
 }
 
 @media only screen and(max-width:3000px){
@@ -192,10 +225,11 @@ legend{
     .border{
 
       text-align: center;
-      border-radius: 50%;
-      height: 30px;
-      width: 30px;
-      cursor: pointer;
+  border-radius: 50%;
+  padding: 5px 0px 0px 0px;
+  margin: 18px 0px 0px 0px;
+  cursor: pointer;
+  border: 1px solid #0d2c4f;
     }
     .p-margin{
       margin: 0px 0px 0px 150px;
@@ -213,7 +247,7 @@ legend{
     }
     .FTH {
   
-      font-size: 16px;
+      font-size: 14px;
   
     }
     .for-app {
@@ -244,3 +278,19 @@ legend{
   }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

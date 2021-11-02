@@ -20,7 +20,7 @@ export class IndexPage implements OnInit {
   slideOpts = {
     autoplay: true,
     initialSlide: 0,
-    speed: 500,
+    speed: 1000,
     effect: 'flip',
   };
   ngOnInit() { }
@@ -46,22 +46,34 @@ export class IndexPage implements OnInit {
     popover.onDidDismiss().then((modelData) => {
       if (modelData.data.cred1 !== "" && modelData.data.cred2 !== "" && modelData.data.cred3 !== "") {
         this.present()
-        this.tService.getTestData("../../../assets/credentials.json").subscribe(result => {
-          for (let x of result) {
-            if (modelData.data.cred1 == x.AgentId && modelData.data.cred2 == x.AgentUsername && modelData.data.cred3 == x.Password) {
-              this.dismiss()
-              this.rout.navigate(['home/dashboard'])
+        let obj = {
+          "TYPE": "AUTH",
+          "NAME": "GET_AUTH_TOKEN",
+          "STR": [
+            {
+              "A_ID": modelData.data.cred1,
+              "U_ID": modelData.data.cred2,
+              "PWD": modelData.data.cred3,
+              "MODULE": "B2B",
+              "HS": "D"
             }
-            else {
-              // this.presentToast()
-              // this.dismiss()
-
-            }
+          ]
+        }
+        this.tService.postTestData("http://nauth.ksofttechnology.com/API/AUTH", obj).subscribe(result => {
+          if (result.STATUS == "SUCCESS") {
+            this.rout.navigate(['home/dashboard'])
+            localStorage.setItem("Token",result.RESULT)
+           
+            this.dismiss()
           }
+          else{
+            this.dismiss()
+            alert("Something Bad Happens Pls Try Again !!!!")
+          }
+         
         });
       }
       else {
-        this.dismiss()
         this.blank()
       }
     });
@@ -96,9 +108,9 @@ export class IndexPage implements OnInit {
       // duration: 2000
     }).then(a => {
       a.present().then(() => {
-        console.log('presented');
+        console.log('');
         if (!this.isLoading) {
-          a.dismiss().then(() => console.log('abort presenting'));
+          a.dismiss().then(() => console.log(''));
         }
       });
     });
@@ -106,7 +118,7 @@ export class IndexPage implements OnInit {
 
   async dismiss() {
     this.isLoading = false;
-    return await this.loadingController.dismiss().then(() => console.log('dismissed'));
+    return await this.loadingController.dismiss().then(() => console.log(''));
   }
 
   index() {
@@ -125,9 +137,9 @@ export class IndexPage implements OnInit {
   }
   contactus() {
     this.rout.navigate(['/contactus'])
-     .then(() => {
-      window.location.reload();
-     }); 
+      .then(() => {
+        window.location.reload();
+      });
     //window.location.replace('/contactus')
   }
 

@@ -1,0 +1,17 @@
+ion-toolbar {
+    --background: var(--ion-item-background, var(--ion-background-color, #ffffff));
+
+    // color: #017959;
+    border-bottom: 2px solid #445f99;
+}
+.acc{
+    font-size: 14px;
+}
+.pd{
+    padding: 10px 1px;
+    color: #445f99;
+    cursor: pointer;
+}
+.m_p{
+    padding: 0px 10px;
+}

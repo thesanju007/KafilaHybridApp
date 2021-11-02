@@ -98,6 +98,14 @@ const routes: Routes = [
         path:'payment',
         component:PaymentComponent
       },
+  
+      {
+        path: 'fshowflight',
+        loadChildren: () => import('../Flight/f-show-flight/f-show-flight.module').then( m => m.FShowFlightPageModule)
+      },
+    
+  
+
     ]
   },
 
