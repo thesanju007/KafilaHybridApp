@@ -2,7 +2,7 @@
   <ion-content>
     <ion-header>
 
-      <ion-row class="top-Head-upper">
+      <ion-row class="top-Head-upper none1 none2 none3">
         <ion-col size-xs="1" size-sm="4" size-md="1" size-lg="1" size-xl="1"></ion-col>
         <ion-col class="mail" size-sm="2" size-md="2" size-lg="2" size-xl="2">
           <ion-label class="top-Head-upper-r">
@@ -36,18 +36,18 @@
               </ion-label>
             </li>
 
-            <li class="top-Head-upper-li mail" style="border-right: 1px solid #0c7939;">
+            <li class="top-Head-upper-li " style="border-right: 1px solid #0c7939;">
               <ion-label class=" top-Head-upper-r">
                 <img alt="logo" class="INR" src="../assets/rupee.png"> INR
               </ion-label>
             </li>
 
-            <li class="top-Head-upper-li mail" style="border-right: 1px solid #0c7939;">
+            <li class="top-Head-upper-li " style="border-right: 1px solid #0c7939;">
               <ion-label class=" top-Head-upper-r">
                 <img alt="country" src="https://img.icons8.com/color/22/000000/india.png" />
               </ion-label>
             </li>
-            <li class="top-Head-upper-li mail" style="border-right: 1px solid #0c7939;">
+            <li class="top-Head-upper-li " style="border-right: 1px solid #0c7939;">
               <ion-label class=" top-Head-upper-r">
                 <ion-icon name="help"></ion-icon> Help
               </ion-label>
@@ -61,29 +61,29 @@
         <ion-row class="mid-Head-Row">
           <ion-col size-xs="1" size-sm="1" size-md="1" size-lg="1" size-xl="1"></ion-col>
 
-          <ion-col size-xs="3" size-sm="2" size-md="3" size-lg="3 " size-xl="3">
-            <!-- <img alt="logo" class="logo-img" src="../assets/logo.png" (click)="index()"> -->
-            <h2 style="font-family: cursive;">Kafila Tour And Travels</h2>
+          <ion-col size-xs="3" size-sm="2" size-md="1" size-lg="3 " size-xl="3">
+            <img alt="logo" class="logo-img" src="../assets/logo.png" (click)="index()">
+            <!-- <h2 style="font-family: cursive;">Kafila Tour And Travels</h2> -->
           </ion-col>
 
-          <ion-col size-xs="8" size-sm="9" size-md="8" size-lg="7" size-xl="7">
+          <ion-col size-xs="8" size-sm="9" size-md="10" size-lg="7" size-xl="7">
             <ul>
               <li>
-                <ion-label class=" s-app mail">
+                <ion-label class=" s-app mail none">
 
                   India Tours
                   <ion-icon name="caret-down-outline"></ion-icon>
                 </ion-label>
               </li>
               <li>
-                <ion-label class=" s-app mail" (click)="presentPopover($event)">
+                <ion-label class=" s-app mail none" (click)="presentPopover($event)">
 
                   International Tours
                   <ion-icon name="caret-down-outline"></ion-icon>
                 </ion-label>
               </li>
               <li>
-                <ion-label class=" s-app mail" (click)="presentPopover($event)">
+                <ion-label class=" s-app mail none" (click)="presentPopover($event)">
 
                   Destinations
                   <ion-icon name="caret-down-outline"></ion-icon>
@@ -355,7 +355,7 @@
               </ion-card>
             </ion-col>
 
-            <ion-col size-xs="6" size-sm="6" size-md="4" size-lg="4" size-xl="4">
+            <ion-col size-xs="6" size-sm="6" size-md="4" size-lg="4" size-xl="4" class=" none2 none3">
               <ion-card>
                 <ion-card-content class="justify c-content" style="cursor: pointer;">
                   <img alt="logo" class="t-spot" src="../assets/acaia.jfif">
@@ -399,33 +399,15 @@
 
               <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12" class="ion-padding-top">
                 <ion-row class="ion-padding-top" style="padding-top: 50px;">
-                  <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                  <ion-col size-xs="4" size-sm="4" size-md="6" size-lg="6" size-xl="6" class="ion-text-centre">
                     <img alt="logo" class="t-spot" src="../assets/flightimg.jpg" >
-
-                  </ion-col>
-                  <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6" class="ion-text-centre"
-                    style="padding-top: 30px;">
                     <p>Flight Ticketing
                     </p>
-                    <p>
-                      The popular airlines include <b>Vistara </b>, <b>GoAir</b> ,<b> Air India </b>, <b> SpiceJet
-                      </b>, <b> AirAsia </b>and<b> IndiGo </b>. For
-                      instance, if you want to do a web check-in with GoAir, you can click on the GoAir web
-                      check-in link. This will lead you to the web check-in button which will open up on GoAir’s
-                      official website where you can enter your airline PNR, and last name or email id and begin
-                      the check-in process.
-                    </p>
                   </ion-col>
-                </ion-row>
-
-              </ion-col>
-              <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12" class="ion-padding-top">
-                <ion-row class="ion-padding-top" style="padding-top: 50px;">
-
-                  <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6" class="ion-text-centre"
+                  <ion-col size-xs="8" size-sm="8" size-md="6" size-lg="6" size-xl="6" class="ion-text-centre"
                     style="padding-top: 30px;">
-                    <p>Train Ticketing
-                    <p>
+                   
+                    <p class="s-text">
                       The popular airlines include <b>Vistara </b>, <b>GoAir</b> ,<b> Air India </b>, <b> SpiceJet
                       </b>, <b> AirAsia </b>and<b> IndiGo </b>. For
                       instance, if you want to do a web check-in with GoAir, you can click on the GoAir web
@@ -434,25 +416,43 @@
                       the check-in process.
                     </p>
                   </ion-col>
-                  <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
-                    <img alt="logo" class="t-spot" src="../assets/trainimage.jpg" >
+                </ion-row>
 
+              </ion-col>
+              <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12" class="ion-padding-top">
+                <ion-row class="ion-padding-top" style="padding-top: 50px;">
+
+                  <ion-col size-xs="8" size-sm="8" size-md="6" size-lg="6" size-xl="6" class="ion-text-centre"
+                    style="padding-top: 30px;">
+                  
+                    <p class="s-text">
+                      The popular airlines include <b>Vistara </b>, <b>GoAir</b> ,<b> Air India </b>, <b> SpiceJet
+                      </b>, <b> AirAsia </b>and<b> IndiGo </b>. For
+                      instance, if you want to do a web check-in with GoAir, you can click on the GoAir web
+                      check-in link. This will lead you to the web check-in button which will open up on GoAir’s
+                      official website where you can enter your airline PNR, and last name or email id and begin
+                      the check-in process.
+                    </p>
+                  </ion-col>
+                  <ion-col size-xs="4" size-sm="4" size-md="6" size-lg="6" size-xl="6"  class="ion-text-centre">
+                    <img alt="logo" class="t-spot" src="../assets/trainimage.jpg" >
+                    <p>Train Ticketing</p>
                   </ion-col>
                 </ion-row>
 
               </ion-col>
               <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12" class="ion-padding-top">
                 <ion-row class="ion-padding-top" style="padding-top: 50px;">
-                  <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                  <ion-col size-xs="4" size-sm="4" size-md="6" size-lg="6" size-xl="6"  class="ion-text-centre">
                     <img alt="logo" class="t-spot" 
                       src="https://c4.wallpaperflare.com/wallpaper/360/515/601/night-in-las-vegas-bellagio-luxury-hotel-casino-hd-wallpapers-for-mobile-phones-laptops-and-pc-1920%C3%971080-wallpaper-preview.jpg">
-
+                      <p>Hotels Booking
+                      </p>
                   </ion-col>
-                  <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6" class="ion-text-centre"
+                  <ion-col size-xs="8" size-sm="8" size-md="6" size-lg="6" size-xl="6" class="ion-text-centre"
                     style="padding-top: 30px;">
-                    <p>Hotels Booking
-                    </p>
-                    <p>
+                    
+                    <p class="s-text">
                       The popular airlines include <b>Vistara </b>, <b>GoAir</b> ,<b> Air India </b>, <b> SpiceJet
                       </b>, <b> AirAsia </b>and<b> IndiGo </b>. For
                       instance, if you want to do a web check-in with GoAir, you can click on the GoAir web
@@ -467,11 +467,10 @@
               <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12" class="ion-padding-top">
                 <ion-row class="ion-padding-top" style="padding-top: 50px;">
 
-                  <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6" class="ion-text-centre"
+                  <ion-col size-xs="8" size-sm="8" size-md="6" size-lg="6" size-xl="6" class="ion-text-centre"
                     style="padding-top: 30px;">
-                    <p>API
-                    </p>
-                    <p>
+                    
+                    <p class="s-text">
                       The popular airlines include <b>Vistara </b>, <b>GoAir</b> ,<b> Air India </b>, <b> SpiceJet
                       </b>, <b> AirAsia </b>and<b> IndiGo </b>. For
                       instance, if you want to do a web check-in with GoAir, you can click on the GoAir web
@@ -481,9 +480,10 @@
                     </p>
 
                   </ion-col>
-                  <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                  <ion-col size-xs="4" size-sm="4" size-md="6" size-lg="6" size-xl="6"  class="ion-text-centre">
                     <img alt="logo" class="t-spot" src="../assets/apiimage.jpg" >
-
+                    <p>API
+                    </p>
                   </ion-col>
                 </ion-row>
 
@@ -647,7 +647,7 @@
                 </ion-list>
               </ion-col>
 
-              <ion-col size-xs="6" size-sm="6" size-md="4" size-lg="4" size-xl="4" style="margin-top:50px;">
+              <ion-col size-xs="6" size-sm="6" size-md="4" size-lg="4" size-xl="4" style="margin-top:50px;" class=" none2 none3">
                 <ion-list lines="none">
                   <ion-item>
                     <ion-label>
@@ -746,16 +746,16 @@
     <!-- FOOTER -->
     <ion-row class="foot">
       <ion-col size-xs="1" size-sm="1" size-md="1" size-lg="1" size-xl="1"></ion-col>
-      <ion-col size-xs="12" size-sm="12" size-md="11" size-lg="11" size-xl="11">
+      <ion-col size-xs="11" size-sm="11" size-md="10" size-lg="10" size-xl="10">
         <ion-row>
-          <ion-col size-sm="3" size-xs="6" size-md="3" size-lg="3" size-xl="3">
+          <ion-col size-sm="12" size-xs="12" size-md="3" size-lg="3" size-xl="3">
 
 
             <h1 class="name">
               Kafila Tours & Travels
             </h1>
 
-            <ion-label class="justify">
+            <ion-label class="mss-content-2">
               <ion-icon name="locate"></ion-icon>
               10185-C, Arya Samaj Road, Karol Bagh, New Delhi - 110005.
             </ion-label>
@@ -766,7 +766,7 @@
 
 
           
-          <ion-col size-sm="3" size-xs="6" size-md="3" size-lg="3" size-xl="3">
+          <ion-col size-sm="6" size-xs="6" size-md="3" size-lg="3" size-xl="3">
 
             <ion-row class="ion-padding">
               <ion-col class="main-footer-head" size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
@@ -807,7 +807,7 @@
 
           </ion-col>
 
-          <ion-col size-sm="3" size-xs="6" size-md="3" size-lg="3" size-xl="3">
+          <ion-col size-sm="6" size-xs="6" size-md="3" size-lg="3" size-xl="3">
 
             <ion-row class="ion-padding">
               <ion-col class="main-footer-head" size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
@@ -834,12 +834,12 @@
 
 
 
-          <ion-col size-sm="3" size-xs="6" size-md="3" size-lg="3" size-xl="3">
+          <ion-col size-sm="12" size-xs="12" size-md="3" size-lg="3" size-xl="3">
             <ion-row class="ion-padding">
-              <ion-col class="main-footer-min" size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
+              <ion-col class="main-footer-min none2 none3" size-sm="6" size-xs="6" size-md="12" size-lg="12" size-xl="12">
                <input class="subs-ipt"><button class="subs-btn">Subscribe</button>
               </ion-col>
-              <ion-col class="main-footer-min" size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
+              <ion-col class="main-footer-min" size-sm="6" size-xs="6" size-md="12" size-lg="12" size-xl="12">
                 Folllow Us On :
                 <ion-icon class="logo" name="logo-facebook"></ion-icon>
                 <ion-icon class="logo" name="logo-twitter"></ion-icon>

@@ -10,24 +10,24 @@
       <ion-col size-sm="12" size-xs="12" size-md="8" size-lg="7" size-xl="5" class="padding-none">
 
         <ion-row color="primary" justify-content-center>
-          <ion-col class="none" size-md="3" size-lg="3" size-xl="2"></ion-col>
-          <ion-col size-sm="4" size-xs="4" size-md="3" size-lg="3" size-xl="2" class="FTH round-l" (click)="R_Onw_Way()"
+          <ion-col size-sm="9" size-xs="9 "  size-md="3" size-lg="3" size-xl="2"></ion-col>
+          <ion-col size-sm="3" size-xs="3" size-md="3" size-lg="3" size-xl="2" class="FTH round-l round-r2" (click)="R_Onw_Way()"
             [ngClass]="[isAfterOW?'FTHActive':'!FTHActive']">
             <!-- <span class="material-icons rotate-90">flight</span> Flight -->One Way
           </ion-col>
-          <ion-col size-sm="4" size-xs="4" size-md="3" size-lg="3" size-xl="2" class="FTH " (click)="R_Round_Trip()"
+          <ion-col size-sm="3" size-xs="3" size-md="3" size-lg="3" size-xl="2" class="FTH " (click)="R_Round_Trip()"
             [ngClass]="[ isAfterRT?'FTHActive':'!FTHActive']">
             <!-- <span class="material-icons">train</span>Trains -->Round Trip
           </ion-col>
-          <ion-col size-sm="4" size-xs="4" size-md="3" size-lg="3" size-xl="2" class=" FTH " (click)="R_Multi_Trip()"
+          <ion-col size-sm="3" size-xs="3" size-md="3" size-lg="3" size-xl="2" class=" FTH " (click)="R_Multi_Trip()"
             [ngClass]="[ isAfterMT?'FTHActive':'!FTHActive']">
             <!-- <span class="material-icons">local_hotel</span> Hotels -->Multi Trip
           </ion-col>
-          <ion-col size-sm="4" size-xs="4" size-md="3" size-lg="3" size-xl="2" class=" FTH " (click)="R_Round_Special()"
+          <ion-col size-sm="3" size-xs="3" size-md="3" size-lg="3" size-xl="2" class=" FTH " (click)="R_Round_Special()"
             [ngClass]="[ isAfterRS?'FTHActive':'!FTHActive']">
             <!-- <span class="material-icons">local_hotel</span> Hotels -->Round Special
           </ion-col>
-          <ion-col size-sm="4" size-xs="4" size-md="3" size-lg="3" size-xl="2" class=" FTH side round-r"
+          <ion-col size-sm="3" size-xs="3" size-md="3" size-lg="3" size-xl="2" class=" FTH side round-r "
             (click)="R_Advance_Trip()" [ngClass]="[ isAfterAT?'FTHActive':'!FTHActive']">
             <!-- <span class="material-icons">local_hotel</span> Hotels -->Advance Trip
           </ion-col>
@@ -115,7 +115,7 @@
 
 
 
-              <ion-col size-xs="3" size-sm="3" size-md="4" size-lg="4" size-xl="4">
+              <ion-col size-xs="4" size-sm="4" size-md="4" size-lg="4" size-xl="4">
                 <fieldset>
                   <legend>Adults</legend>
                   <ion-select formControlName="Adults" [(ngModel)]="d_Adult" interface="popover" mode="ios">
@@ -128,7 +128,7 @@
 
               <!-- <ion-col size-md="1" size-lg="1" size-xl="1"></ion-col> -->
 
-              <ion-col size-xs="3" size-sm="3" size-md="3" size-lg="4" size-xl="4">
+              <ion-col size-xs="4" size-sm="4" size-md="4" size-lg="4" size-xl="4">
                 <fieldset>
                   <legend>Childs</legend>
                   <ion-select formControlName="Childs" [(ngModel)]="d_Child" interface="popover" mode="ios">
@@ -142,7 +142,7 @@
 
               <!-- <ion-col size-md="1" size-lg="1" size-xl="1"></ion-col> -->
 
-              <ion-col size-xs="3" size-sm="3" size-md="4" size-lg="4" size-xl="4">
+              <ion-col size-xs="4" size-sm="4" size-md="4" size-lg="4" size-xl="4">
                 <fieldset>
                   <legend>Infants</legend>
                   <ion-select formControlName="Infants" [(ngModel)]="d_Infants" interface="popover" mode="ios">
@@ -153,8 +153,8 @@
 
               </ion-col>
 
-              <ion-col size-sm="4" size-xs="7" size-md="8" size-lg="8" size-xl="9"> </ion-col>
-              <ion-col size-sm="8" size-xs="5" size-md="4" size-lg="4" size-xl="3">
+              <ion-col size-sm="6" size-xs="6" size-md="8" size-lg="8" size-xl="9"> </ion-col>
+              <ion-col size-sm="6" size-xs="6" size-md="4" size-lg="4" size-xl="3">
                 <ion-text (click)="moreFields=!moreFields" style=" color: #445f99;">
                   More Options
                 </ion-text>
@@ -187,7 +187,7 @@
               </ion-col>
 
               <ion-col size-md="4" size-lg="4" size-xl="4"></ion-col>
-              <ion-col size-md="4" size-lg="4" size-xl="4">
+              <ion-col size-sm="12" size-xs="12" size-md="4" size-lg="4" size-xl="4">
                 <button class="submit-btn" type="submit">
                   <span class="material-icons">search</span> Search Flight
                 </button>
@@ -410,5 +410,5 @@
       </ion-slide>
     </ion-slides>
   </ion-grid>
-  <app-footer></app-footer>
+  <!-- <app-footer></app-footer> -->
 </ion-content>

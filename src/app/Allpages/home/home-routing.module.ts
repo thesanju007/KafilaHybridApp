@@ -6,7 +6,7 @@ import { PaymentComponent } from '../../components/payment/payment.component'
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'fsearch',
     pathMatch: 'full'
   },
   {

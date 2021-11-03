@@ -61,7 +61,7 @@ export class IndexPage implements OnInit {
         }
         this.tService.postTestData("http://nauth.ksofttechnology.com/API/AUTH", obj).subscribe(result => {
           if (result.STATUS == "SUCCESS") {
-            this.rout.navigate(['home/dashboard'])
+            this.rout.navigate(['home/fsearch'])
             localStorage.setItem("Token",result.RESULT)
            
             this.dismiss()

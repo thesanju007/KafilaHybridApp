@@ -8,7 +8,7 @@
         "subMenu": [
             {
                 "sid": "1",
-                "active": "false",
+                "active": "true",
                 "title": "Search",
                 "url": "fsearch",
                 "icon": "search",
