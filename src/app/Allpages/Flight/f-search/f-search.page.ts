@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { PopoverController, ToastController, LoadingController } from '@ionic/angular';
+import { DatePipe } from '@angular/common';
+import { AlertPopoverComponent } from '../../../components/alert-popover/alert-popover.component';
 @Component({
   selector: 'app-f-search',
   templateUrl: './f-search.page.html',
@@ -36,7 +38,7 @@ export class FSearchPage implements OnInit {
   d_Adult = "1";
   d_Child = "0";
   d_Infants = "0";
-  streets;
+
   F_class = [
     "First",
     "Bussiness",
@@ -50,10 +52,10 @@ export class FSearchPage implements OnInit {
   Token: any
   constructor(private tService: TestService, private route: Router, private fb: FormBuilder, public popoverController: PopoverController,
     public toastController: ToastController,
-    public loadingController: LoadingController,) { }
+    public loadingController: LoadingController, public datepipe: DatePipe) { }
   ngOnInit() {
     this.tService.getTestData("../../../assets/airport.json").subscribe(result => {
-      this.streets = result.city
+
       this.arp = result
       this.arp_new = result
     });
@@ -66,11 +68,13 @@ export class FSearchPage implements OnInit {
 
 
   returnDate(d) {
-    this.minDate = d
+    let latest_date = this.datepipe.transform(d, 'yyyy-MM-dd');
+
+    this.minDate = latest_date
   }
   returnDateMax(d) {
-
-    this.maxDate = d
+    let latest_date = this.datepipe.transform(d, 'yyyy-MM-dd');
+    this.maxDate = latest_date
   }
 
   slideOpts = {
@@ -152,49 +156,180 @@ export class FSearchPage implements OnInit {
     this.multi_trip = true
   }
 
-  mfArray = ["1", "2", "3",]
+  mfArray = ["1", "2"]
   showw = false
   showwR = false
   searcharp
   s: any;
-  showArpList() {
-    this.showw = true
-  }
-  airValue(arpt) {
-    this.d_DepCity = arpt.code + " , " + arpt.city + " , " + arpt.country
-    this.showw = false
-    this.removeAirport(arpt.code)
-  }
-  removeAirport(arrApt) {
-    this.arp_new = this.arp.filter(Array => Array.code !== arrApt);
-  }
-  search(val: any) {
-    this.s = val.target.value;
+  // showArpList() {
+  //   this.showw = true
+  // }
+  // airValue(arpt) {
+  //   this.d_DepCity = arpt.code + " , " + arpt.city + " , " + arpt.country
+  //   this.showw = false
+  //   this.removeAirport(arpt.code)
+  // }
+  // removeAirport(arrApt) {
 
-  }
+  //   if (arrApt !== "") {
+  //     let depApt1 = arrApt.substring(0, 3);
+  //     this.d_DepCity = depApt1
+  //     console.log(depApt1)
+  //     this.arp_new = this.arp.filter(Array => Array.code !== depApt1);
+  //   }
+
+  // }
+  // search(val: any) {
+  //   this.s = val.target.value;
+
+  // }
 
   //Return Airport
   r
-  searchRet(val: any) {
-    this.r = val.target.value;
-  }
-  showArpListRet() {
-    this.showwR = true
+  // searchRet(val: any) {
+  //   this.r = val.target.value;
+  // }
+  // showArpListRet() {
+  //   this.showwR = true
+  // }
+
+  // airValueRet(arpt) {
+  //   this.d_ArrCity = arpt.code + " , " + arpt.city + " , " + arpt.country
+  //   this.showwR = false
+  //   this.removeAirportDep(arpt.code)
+  // }
+
+  // removeAirportDep(depApt) {
+  //   let depApt1 = depApt.substring(0, 3);
+  //   this.d_ArrCity = depApt1
+  //   console.log(depApt1)
+  //   // let arrApt = this.flightData.value.A_airport.substring(0, 3);
+  //   this.arp = this.arp_new.filter(Array => Array.code !== depApt1);
+  // }
+
+
+
+
+  depARP = ""
+  arrARP = ""
+
+  swap_city() {
+    console.log(this.depARP, this.arrARP)
+    let t = this.depARP
+    this.depARP = this.arrARP
+    this.arrARP = t
   }
 
-  airValueRet(arpt) {
-    this.d_ArrCity = arpt.code + " , " + arpt.city + " , " + arpt.country
-    this.showwR = false
-    this.removeAirportDep(arpt.code)
-  }
 
-  removeAirportDep(depApt) {
-    this.arp = this.arp_new.filter(Array => Array.code !== depApt);
-  }
+
 
 
   flightData = this.fb.group({
-    flighttype: new FormControl('', [Validators.required]),
+    flighttype: new FormControl(''),
+    D_airport: new FormControl('', [Validators.required]),
+    A_airport: new FormControl('', [Validators.required]),
+    D_date: new FormControl(this.todayt, [Validators.required]),
+    A_date: new FormControl(''),
+    PClass: new FormControl(''),
+    PFlight: new FormControl(''),
+    Adults: new FormControl(''),
+    Childs: new FormControl(''),
+    Infants: new FormControl(''),
+  })
+
+
+  foods = 9
+
+
+  checkFlight() {
+
+    let depApt = this.flightData.value.D_airport.substring(0, 3);
+    let arrApt = this.flightData.value.A_airport.substring(0, 3);
+    if (depApt != arrApt) {
+      this.present(1)
+      let latest_date = this.datepipe.transform(this.flightData.value.D_date, 'yyyy-MM-dd');
+      let ret_latest_date = this.datepipe.transform(this.flightData.value.A_date, 'yyyy-MM-dd');
+      let data: any = {
+        TYPE: "AIR",
+        NAME: "GET_FLIGHT",
+        STR: [
+          {
+            AUTH_TOKEN: this.Token,
+            SESSION_ID: "",
+            TRIP: this.trip_val,
+            SECTOR: "D",
+            SRC: depApt,
+            DES: arrApt,
+            DEP_DATE: latest_date,
+            RET_DATE: ret_latest_date,
+            ADT: this.flightData.value.Adults || this.d_Adult,
+            CHD: this.flightData.value.Childs || this.d_Child,
+            INF: this.flightData.value.Infants || this.d_Infants,
+            PC: this.flightData.value.PClass || "",
+            PF: this.flightData.value.PFlight || "",
+            HS: "D"
+          }
+        ]
+      }
+      let js_data = JSON.stringify(data)
+      console.log(js_data)
+      this.tService.postTestData("http://stageapi.ksofttechnology.com/API/FLIGHT", js_data).subscribe((Flight) => {
+        let size = Object.keys(Flight).length;
+        if (size > 0) {
+          let js_f = JSON.stringify(Flight)
+          this.DismissClick()
+          this.route.navigate(['home/fshowflight'])
+          sessionStorage.setItem("All_Flight", js_f)
+        }
+        else {
+
+          this.DismissClick()
+          this.present(2)
+        }
+      })
+    }
+    else {
+      alert("SAME SECTOR CAN'T BE SEARCH")
+    }
+
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // MULTI TRIP
+
+  flightDataM = this.fb.group({
+    flighttype: new FormControl(''),
     D_airport: new FormControl('', [Validators.required]),
     A_airport: new FormControl('', [Validators.required]),
     D_date: new FormControl('', [Validators.required]),
@@ -209,7 +344,7 @@ export class FSearchPage implements OnInit {
   })
 
   quantities(): FormArray {
-    return this.flightData.get("quantities") as FormArray
+    return this.flightDataM.get("quantities") as FormArray
   }
 
   newQuantity(): FormGroup {
@@ -217,6 +352,9 @@ export class FSearchPage implements OnInit {
       MD_airport: new FormControl('', [Validators.required]),
       MA_airport: new FormControl('', [Validators.required]),
       MD_date: new FormControl('', [Validators.required]),
+      Adults: new FormControl(''),
+      Childs: new FormControl(''),
+      Infants: new FormControl(''),
     })
   }
 
@@ -227,12 +365,11 @@ export class FSearchPage implements OnInit {
   removeQuantity(i: number) {
     this.quantities().removeAt(i);
   }
-
-
-  checkFlight() {
-    this.present()
-    let depApt = this.flightData.value.D_airport.substring(0, 3);
-    let arrApt = this.flightData.value.A_airport.substring(0, 3);
+  checkFlightM() {
+    this.present(1)
+    let depApt = this.flightDataM.value.D_airport.substring(0, 3);
+    let arrApt = this.flightDataM.value.A_airport.substring(0, 3);
+    let latest_date = this.datepipe.transform(this.flightDataM.value.D_date, 'yyyy-MM-dd');
     let data: any = {
       TYPE: "AIR",
       NAME: "GET_FLIGHT",
@@ -240,145 +377,73 @@ export class FSearchPage implements OnInit {
         {
           AUTH_TOKEN: this.Token,
           SESSION_ID: "",
-          TRIP: this.trip_val,
+          TRIP: "3",
           SECTOR: "D",
           SRC: depApt,
           DES: arrApt,
-          DEP_DATE: this.flightData.value.D_date,
-          RET_DATE: this.flightData.value.A_date,
-          ADT: this.flightData.value.Adults || this.d_Adult,
-          CHD: this.flightData.value.Childs || this.d_Child,
-          INF: this.flightData.value.Infants || this.d_Infants,
-          PC: this.flightData.value.PClass || "",
-          PF: this.flightData.value.PFlight || "",
+          DEP_DATE: latest_date,
+          RET_DATE: "",
+          ADT: this.flightDataM.value.Adults || this.d_Adult,
+          CHD: this.flightDataM.value.Childs || this.d_Child,
+          INF: this.flightDataM.value.Infants || this.d_Infants,
+          PC: "",
+          PF: "",
           HS: "D"
         }
       ]
     }
     let js_data = JSON.stringify(data)
-    this.tService.postTestData("http://stageapi.ksofttechnology.com/API/FLIGHT", js_data).subscribe((Flight) => {
-      let size = Object.keys(Flight).length;
-      if(size>0){
-        let js_f = JSON.stringify(Flight)
-        this.dismiss()
-        this.route.navigate(['home/fshowflight'])
-        sessionStorage.setItem("All_Flight",js_f)
-      }
-     else{
-      alert("Flight Not Found")
-      this.dismiss()
-     }
-    })
+    console.log(js_data)
+    // this.tService.postTestData("http://stageapi.ksofttechnology.com/API/FLIGHT", js_data).subscribe((Flight) => {
+    //   let size = Object.keys(Flight).length;
+    //   if(size>0){
+    //     let js_f = JSON.stringify(Flight)
+    //     this.DismissClick()
+    //     this.route.navigate(['home/fshowflight'])
+    //     sessionStorage.setItem("All_Flight",js_f)
+    //   }
+    //  else{
+    //   alert("Flight Not Found")
+    //   this.DismissClick()
+    //  }
+    // })
 
 
   }
 
-
-  //tain Data
-
-
-
-
-  s_Trains = true
-  check_PNR = false
-  live_trains = false
-  live_station = false
-
-  trainData = new FormGroup({
-    radiotype: new FormControl('', [Validators.required]),
-    D_station: new FormControl('', [Validators.required]),
-    A_station: new FormControl('', [Validators.required]),
-    DT_date: new FormControl('', [Validators.required]),
-    PNR: new FormControl(''),
-    LiveTrain: new FormControl(''),
-
-  })
-  R_train() {
-    this.s_Trains = true
-    this.check_PNR = false
-    this.live_trains = false
-    this.live_station = false
-  }
-  R_check_PNR() {
-    this.check_PNR = true
-    this.s_Trains = false
-    this.live_trains = false
-    this.live_station = false
-  }
-  R_live_trains_status() {
-    this.live_trains = true
-    this.s_Trains = false
-    this.check_PNR = false
-    this.live_station = false
-
-  }
-  R_live_station() {
-    this.live_station = true
-    this.s_Trains = false
-    this.check_PNR = false
-    this.live_trains = false
-  }
-  checkTrains() {
-
-    if (this.trainData.value.radiotype == 1) {
-      alert("FLIGHT SEARCH")
-      let trainData = {
-        "TYPE": "RAIL",
-        "NAME": "GET_TRAIN",
-        "STR": [
-          {
-            "TOKEN_TYPE": "SLF",
-            "AUTH_TOKEN": "",
-            "SESSION_ID": "",
-            "SRC": this.trainData.value.D_station,
-            "DES": this.trainData.value.A_station,
-            "DEP_DATE": this.trainData.value.DT_date,
-            "OI": "",
-            "HS": "D"
-          }
-        ]
-      }
-      console.log(trainData)
-    }
-
-    if (this.trainData.value.radiotype == 2) {
-      alert("CHECK PNR")
-      console.log(this.trainData.value.PNR)
-    }
-
-    if (this.trainData.value.radiotype == 3) {
-      alert("SEARCHING LIVE TRAIN")
-      console.log(this.trainData.value.LiveTrain)
-    }
-
-  }
 
   get Error() {
     return this.flightData.controls;
   }
   isLoading = false;
-  async present() {
+  async present(id) {
     this.isLoading = true;
-    return await this.loadingController.create({
-      message: 'Please wait...',
-      mode: 'ios',
+    const popover = await this.popoverController.create({
+      component: AlertPopoverComponent,
+      cssClass: 'alert-popover_setting',
+      translucent: true,
+      // mode: 'ios',
       backdropDismiss: false,
-      spinner: 'bubbles',
-      // duration: 2000
-    }).then(a => {
-      a.present().then(() => {
-        console.log('');
-        if (!this.isLoading) {
-          a.dismiss().then(() => console.log(''));
-        }
-      });
-    });
+      componentProps: {
+        "paramID": id,
+      },
+    })
+    return await popover.present();
+
   }
+
+
+  async DismissClick() {
+    await this.popoverController.dismiss();
+  }
+
+
 
   async dismiss() {
     this.isLoading = false;
     return await this.loadingController.dismiss().then(() => console.log(''));
   }
 
-  
+
+
 }

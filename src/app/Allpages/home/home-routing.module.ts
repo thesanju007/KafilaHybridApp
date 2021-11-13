@@ -13,10 +13,7 @@ const routes: Routes = [
     path: '',
     component: HomePage,
     children:[
-      {
-        path: 'dashboard',
-        loadChildren: () => import('../../Allpages/dashboard/dashboard.module').then( m => m.DashboardPageModule)
-      },
+      
       {
         path: 'fsearch',
         loadChildren: () => import('../Flight/f-search/f-search.module').then( m => m.FSearchPageModule)

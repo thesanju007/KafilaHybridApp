@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormShareModule } from '../../form-share/form-share.module';
-import { LoginPopoverComponent } from './login-popover.component'
 
+import { AlertPopoverComponent } from '../alert-popover/alert-popover.component'
 
 @NgModule({
-  declarations: [LoginPopoverComponent],
+  declarations: [AlertPopoverComponent],
   imports: [
     CommonModule,
     FormShareModule,
 
   ],
-  exports: [LoginPopoverComponent],
+  exports: [AlertPopoverComponent],
 
 })
-export class LoginPopoverModule {
-
+export class AlertPopoverModule {
+   
 }

@@ -1,18 +1,15 @@
 <ion-content class="padding-none bg-color">
+ 
   <ion-grid class=" for-app img">
     <ion-row color="primary" justify-content-center class="s-bar img-B">
 
-      <ion-col size-md="1" size-lg="1" size-xl="1" class="ion-padding-top">
-
-
-
-      </ion-col>
+      <ion-col size-md="1" size-lg="1" size-xl="1" class="ion-padding-top"></ion-col>
       <ion-col size-sm="12" size-xs="12" size-md="8" size-lg="7" size-xl="5" class="padding-none">
 
         <ion-row color="primary" justify-content-center>
-          <ion-col size-sm="9" size-xs="9 "  size-md="3" size-lg="3" size-xl="2"></ion-col>
-          <ion-col size-sm="3" size-xs="3" size-md="3" size-lg="3" size-xl="2" class="FTH round-l round-r2" (click)="R_Onw_Way()"
-            [ngClass]="[isAfterOW?'FTHActive':'!FTHActive']">
+          <ion-col size-sm="9" size-xs="9 " size-md="3" size-lg="3" size-xl="2"></ion-col>
+          <ion-col size-sm="3" size-xs="3" size-md="3" size-lg="3" size-xl="2" class="FTH round-l round-r2"
+            (click)="R_Onw_Way()" [ngClass]="[isAfterOW?'FTHActive':'!FTHActive']">
             <!-- <span class="material-icons rotate-90">flight</span> Flight -->One Way
           </ion-col>
           <ion-col size-sm="3" size-xs="3" size-md="3" size-lg="3" size-xl="2" class="FTH " (click)="R_Round_Trip()"
@@ -45,7 +42,7 @@
                       <legend>
                         <ion-icon class="rotate-0" name="airplane-outline"></ion-icon> FROM
                       </legend>
-                      <input formControlName="D_airport" list="D_airport" (change)="removeAirport($event.target.value)"
+                      <input formControlName="D_airport" list="D_airport"  [(ngModel)]="depARP"
                         placeholder="DEL, Delhi, India">
                     </fieldset>
 
@@ -58,7 +55,7 @@
                   </ion-col>
 
                   <ion-col class="p-margin none" size-sm="4" size-xs="4" size-md="2" size-lg="2" size-xl="2">
-                    <div class="border">
+                    <div class="border" (click)="swap_city()">
                       <ion-icon size="small" name="swap-horizontal-outline"></ion-icon>
                     </div>
                   </ion-col>
@@ -68,8 +65,8 @@
                       <legend>
                         <ion-icon class="rotate-90" name="airplane-outline"></ion-icon> TO
                       </legend>
-                      <input formControlName="A_airport" list="A_airport"
-                        (change)="removeAirportDep($event.target.value)" placeholder="Bom, Mumbai, India">
+                      <input formControlName="A_airport" list="A_airport" [(ngModel)]="arrARP"
+                        placeholder="Bom, Mumbai, India">
                     </fieldset>
                     <datalist id="A_airport">
                       <option *ngFor="let arpt_new of arp_new">{{arpt_new.code}} , {{arpt_new.city}} ,
@@ -80,15 +77,13 @@
                     </ion-text>
                   </ion-col>
 
-
-
                   <ion-col size-sm="12" size-xs="12" size-md="5" size-lg="5" size-xl="5">
                     <fieldset>
                       <legend>
                         <ion-icon name="calendar-outline"></ion-icon> DEPARTURE DATE
                       </legend>
-                      <input style="width: 80%;" matInput [min]="todayt" [matDatepicker]="picker"
-                        formControlName="D_date" placeholder="{{todayt}}" (change)="returnDate($event.target.value)">
+                      <input style="width: 80%;" matInput [min]="todayt" [matDatepicker]="picker" (click)="picker.open()"
+                        formControlName="D_date" placeholder="{{todayt}}" (dateChange)="returnDate($event.target.value)" [max]=" maxDate">
                       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                       <mat-datepicker #picker></mat-datepicker>
                     </fieldset>
@@ -100,30 +95,36 @@
                   <ion-col size-md="2" size-lg="2" size-xl="2"></ion-col>
 
                   <ion-col size-sm="12" size-xs="12" size-md="5" size-lg="5" size-xl="5">
-                    <fieldset [disabled]="!round_trip">
+                    <fieldset >
                       <legend>
                         <ion-icon name="calendar-outline"></ion-icon> RETURN DATE
                       </legend>
-                      <input formControlName="A_date" type="date" [min]="minDate" placeholder="{{todayt}}"
-                        (change)="returnDateMax($event.target.value)">
+                      <input style="width: 80%;" matInput formControlName="A_date"  [min]="minDate" (click)="picker1.open()"
+                        placeholder="{{todayt}}" [matDatepicker]="picker1"
+                        (dateChange)="returnDateMax($event.target.value)" [disabled]="!round_trip">
+                      <mat-datepicker-toggle matSuffix [for]="picker1" ></mat-datepicker-toggle>
+                      <mat-datepicker #picker1></mat-datepicker>
                     </fieldset>
                   </ion-col>
                 </ion-row>
               </ion-col>
 
-
-
-
-
               <ion-col size-xs="4" size-sm="4" size-md="4" size-lg="4" size-xl="4">
                 <fieldset>
                   <legend>Adults</legend>
-                  <ion-select formControlName="Adults" [(ngModel)]="d_Adult" interface="popover" mode="ios">
-                    <ion-select-option *ngFor="let adt of adult">{{adt}}</ion-select-option>
-                  </ion-select>
+                  <mat-select formControlName="Adults" value="1" [(ngModel)]="d_Adult">
+                    <mat-option value="1" >
+                     1
+                    </mat-option>
+                    <mat-option value="2">
+                     2
+                    </mat-option>
+                    <mat-option value="3">
+                     3
+                    </mat-option> 
+                  </mat-select>
                 </fieldset>
                 <span style="margin-left: 10px;font-size: 10px; color: #445f99;">Age 12 above</span>
-
               </ion-col>
 
               <!-- <ion-col size-md="1" size-lg="1" size-xl="1"></ion-col> -->
@@ -131,12 +132,19 @@
               <ion-col size-xs="4" size-sm="4" size-md="4" size-lg="4" size-xl="4">
                 <fieldset>
                   <legend>Childs</legend>
-                  <ion-select formControlName="Childs" [(ngModel)]="d_Child" interface="popover" mode="ios">
-                    <ion-select-option *ngFor="let chd of childrens">{{chd}}</ion-select-option>
-                  </ion-select>
+                  <mat-select formControlName="Childs" value="0" [(ngModel)]="d_Child">
+                    <mat-option value="0">
+                     0
+                    </mat-option>
+                    <mat-option value="1">
+                     1
+                    </mat-option>
+                    <mat-option value="2">
+                     2
+                    </mat-option> 
+                  </mat-select>
                 </fieldset>
                 <span style="margin-left: 10px;font-size: 10px; color: #445f99;">Age 2 - 12 </span>
-
               </ion-col>
 
 
@@ -145,12 +153,19 @@
               <ion-col size-xs="4" size-sm="4" size-md="4" size-lg="4" size-xl="4">
                 <fieldset>
                   <legend>Infants</legend>
-                  <ion-select formControlName="Infants" [(ngModel)]="d_Infants" interface="popover" mode="ios">
-                    <ion-select-option *ngFor="let inf of infants">{{inf}}</ion-select-option>
-                  </ion-select>
+                  <mat-select formControlName="Infants" value="0" [(ngModel)]="d_Infants">
+                    <mat-option value="0">
+                     0
+                    </mat-option>
+                    <mat-option value="1">
+                     1
+                    </mat-option>
+                    <mat-option value="2">
+                     2
+                    </mat-option> 
+                  </mat-select>
                 </fieldset>
                 <span style="margin-left: 10px;font-size: 10px; color: #445f99;">Age 0 - 2</span>
-
               </ion-col>
 
               <ion-col size-sm="6" size-xs="6" size-md="8" size-lg="8" size-xl="9"> </ion-col>
@@ -162,7 +177,6 @@
                 <ion-icon name="caret-up-outline" *ngIf="moreFields" style=" color: #445f99;"></ion-icon>
               </ion-col>
 
-
               <ion-col size-sm="12" size-xs="12" size-md="6" size-lg="6" size-xl="6" *ngIf="moreFields">
                 <fieldset>
                   <legend>Select Preferred Class</legend>
@@ -171,9 +185,7 @@
                 <datalist id="p_class">
                   <option *ngFor="let class_all of F_class">{{class_all}}</option>
                 </datalist>
-
               </ion-col>
-
 
               <ion-col size-sm="12" size-xs="12" size-md="6" size-lg="6" size-xl="6" *ngIf="moreFields">
                 <fieldset>
@@ -183,12 +195,11 @@
                 <datalist id="p_flight">
                   <option *ngFor="let pflight of F_flights">{{pflight}}</option>
                 </datalist>
-
               </ion-col>
 
               <ion-col size-md="4" size-lg="4" size-xl="4"></ion-col>
               <ion-col size-sm="12" size-xs="12" size-md="4" size-lg="4" size-xl="4">
-                <button class="submit-btn" type="submit">
+                <button class="submit-btn" type="submit"  [disabled]="!flightData.valid">
                   <span class="material-icons">search</span> Search Flight
                 </button>
               </ion-col>
@@ -236,8 +247,8 @@
 
           <form [formGroup]="flightData" (ngSubmit)="checkFlightM()">
             <!-- MULTI TRIP -->
-            <ion-row color="primary"  justify-content-center  *ngIf="!multi_trip" >
-              <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12" >
+            <ion-row color="primary" justify-content-center *ngIf="!multi_trip">
+              <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
 
                 <ion-row style="border-bottom:2px solid red">
                   <ion-col size-sm="4" size-xs="4" size-md="2" size-lg="2" size-xl="2" *ngFor="let x of mfArray">
@@ -250,7 +261,7 @@
                   </ion-col>
                 </ion-row>
 
-                <ion-row  class="tp_mgn2" *ngFor="let course of quantities.controls; index as i">
+                <ion-row class="tp_mgn2" *ngFor="let course of quantities.controls; index as i">
                   <ion-col size-sm="12" size-xs="12" size-md="5" size-lg="5" size-xl="5">
                     <fieldset>
                       <legend>

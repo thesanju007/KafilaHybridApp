@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginPopoverModule } from '../app/components/login-popover/login-popover.module';
 // import { AirportFilterPipe } from './Allpipes/airport-filter.pipe'
 //import { PaymentModule } from './components/payment/payment.module';
-
+import {AlertPopoverModule} from '../app/components/alert-popover/alert-popover.module'
 @NgModule({
    declarations: [AppComponent],
   entryComponents: [],
@@ -22,6 +22,7 @@ import { LoginPopoverModule } from '../app/components/login-popover/login-popove
     HttpClientModule,
    // PaymentModule,
    LoginPopoverModule,
+   AlertPopoverModule
 
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

@@ -19,6 +19,7 @@ export class HomePage implements OnInit {
     this.clickEventSubs = this.tService.getClickEvent().subscribe(() => {
       this.toggleMenu();
     })
+    console.clear()
 
   }
 

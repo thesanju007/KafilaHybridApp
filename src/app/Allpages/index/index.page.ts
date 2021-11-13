@@ -68,7 +68,7 @@ export class IndexPage implements OnInit {
           }
           else{
             this.dismiss()
-            alert("Something Bad Happens Pls Try Again !!!!")
+            this.presentToast()
           }
          
         });

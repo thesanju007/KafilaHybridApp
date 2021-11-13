@@ -10,6 +10,15 @@
         background-color: rgb(255, 255, 255);
       
     }
+    .alert-popover_setting .popover-content{
+        --min-width: 30% !important;
+       
+        --ion-text-color: #000;
+        z-index: 10 !important;
+        transform-origin: left top !important;
+        top: 100px !important;
+        background-color: rgb(255, 255, 255);
+    }
     
 }
 
