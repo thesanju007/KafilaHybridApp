@@ -14,7 +14,7 @@ import { ModalController } from '@ionic/angular';
 })
 export class RLRefundHistoryComponent implements OnInit {
 
-
+  dog=false
   maxDate = new Date(new Date().getTime()).toISOString().split('T')[0];
 
   subscription: Subscription
@@ -90,13 +90,14 @@ export class RLRefundHistoryComponent implements OnInit {
         this.agtList = JSON.parse(result.response)
         this.tabShow = true
         this.dismiss()
+        this.dog=false
         this.amt=0
         for(let x of this.agtList){
           this.amt+=x.AMOUNT
         }
       }
       else{
-        alert("No Data Found")
+        this.dog=true
         this.dismiss()
       }
     });

@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "Admin_panel",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

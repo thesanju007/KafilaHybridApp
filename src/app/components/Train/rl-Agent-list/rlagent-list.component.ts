@@ -66,7 +66,7 @@ export class RLAgentListComponent implements OnInit {
     FROM: new FormControl(),
     TO: new FormControl(),
   })
-  
+  dog=false
   AgtSrhBtn(e) {
     this.present()
     e.preventDefault();
@@ -92,10 +92,10 @@ export class RLAgentListComponent implements OnInit {
         this.dismiss()
         this.tabShow = true
         this.agtList = JSON.parse(result.response)
-        // console.log(this.agtList)
+        this.dog=false
       }
       else{
-        alert("No Data Found")
+        this.dog=true
         this.dismiss()
       }
 

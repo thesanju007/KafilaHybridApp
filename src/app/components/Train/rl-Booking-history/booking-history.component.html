@@ -1,9 +1,9 @@
 <ion-app>
   <ion-header [translucent]="true">
     <ion-toolbar class="ion-text-center">
-      <ion-buttons slot="start">
-        <ion-menu-button style="color: black;"></ion-menu-button>
-      </ion-buttons>
+      <ion-buttons slot="start" style="background-color: #287aff;">
+        <ion-menu-button style="color: rgb(255, 255, 255);"></ion-menu-button>
+    </ion-buttons>
       <ion-row>
         <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
           <span class="h1">
@@ -78,7 +78,7 @@
       style="overflow-x:auto; background-color: white; padding-bottom: 90px; ">
    
       <table id="tabl" #content>
-        <thead class="ion-text-center">
+        <thead >
           <tr>
             <th class="padding">
               #
@@ -129,9 +129,9 @@
         </thead>
         <tbody>
           <tr *ngFor="let d of agtList, index as i" class="hvr">
-            <td class="ion-text-center">{{i+1}}</td>
+            <td >{{i+1}}</td>
             <!-- <td class="ion-text-center" style="color: red;cursor: pointer" (click)="PNR(d)">{{d.BOOKING_ID}}</td> -->
-            <td class="ion-text-center" *ngIf="d.PNR!==''" style="color: rgb(255, 0, 0); cursor: pointer"
+            <td  *ngIf="d.PNR!==''" style="color: rgb(255, 0, 0); cursor: pointer"
               (click)="PNR(d)">
               <b>{{d.BOOKING_ID|uppercase}}</b>
             </td>
@@ -139,16 +139,16 @@
               {{d.BOOKING_ID|uppercase}}
             </td> -->
             <td>{{d.EMAIL_ID}}</td>
-            <td class="ion-text-center" style="color: rgb(57, 47, 241);">{{d.FID}}</td>
-            <td class="ion-text-center" style="color: rgb(196, 47, 241);">{{d.RID}}</td>
-            <td class="ion-text-center" style="color: rgb(8, 144, 255);"><b>{{d.PNR}}</b></td>
-            <td class="ion-text-center" style="color: green;"><b>{{d.AMOUNT | currency:'INR'}}</b></td>
+            <td  style="color: rgb(57, 47, 241);">{{d.FID}}</td>
+            <td  style="color: rgb(196, 47, 241);">{{d.RID}}</td>
+            <td  style="color: rgb(8, 144, 255);"><b>{{d.PNR}}</b></td>
+            <td  style="color: green;"><b>{{d.AMOUNT | currency:'INR'}}</b></td>
             <!-- <td class="ion-text-center"><span [style.background-color]="d.STATUS==false ? 'red' : 'green'"
                 class="dot"></span></td> -->
             <!-- <td class="ion-text-center">{{d.DEP_DATE | date: 'dd/MM/yyyy'}}</td> -->
-            <td class="ion-text-center">{{d.ETIME | date: 'dd/MM/yyyy'}} / {{d.ETIME | date:"HH:mm"}}</td>
-            <td class="ion-text-center">
-              <div class="popover__wrapper ion-text-center">
+            <td >{{d.ETIME | date: 'dd/MM/yyyy'}} / {{d.ETIME | date:"HH:mm"}}</td>
+            <td class="">
+              <div class="popover__wrapper ">
                 <!-- <ion-button color="primary" size="small">
                   ACTION
                 </ion-button> -->
@@ -171,7 +171,11 @@
             </td>
           </tr>
         </tbody>
-      </table>
+      </table>    
+    </ion-card>
+
+    <ion-card *ngIf="dog" class="ion-text-center"  style="background-color: #ffffff;">
+      <img src="../../../assets/404.gif">
     </ion-card>
   </ion-content>
 </ion-app>

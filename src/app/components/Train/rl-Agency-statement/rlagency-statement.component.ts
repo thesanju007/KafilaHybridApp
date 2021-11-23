@@ -49,7 +49,7 @@ export class RlagencyStatementComponent implements OnInit {
     FROM: new FormControl(this.maxDate, Validators.required),
     TO: new FormControl(this.maxDate, Validators.required),
   })
-
+dog=false
   AgtSrhBtn() {
     this.present()
     this.tabShow = false
@@ -78,9 +78,10 @@ export class RlagencyStatementComponent implements OnInit {
         console.log(this.agtList)
         this.tabShow = true
         this.dismiss()
+        this.dog=false
       }
       else {
-        alert("No Data Found")
+        this.dog=true
         this.dismiss()
       }
     });

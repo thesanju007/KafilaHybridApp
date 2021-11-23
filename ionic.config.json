@@ -1,5 +1,8 @@
 {
-  "name": "kafilaionic",
-  "integrations": {},
+  "name": "Admin_panel",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
   "type": "angular"
 }

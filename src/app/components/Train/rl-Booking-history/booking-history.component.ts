@@ -61,7 +61,7 @@ export class BookingHistoryComponent implements OnInit {
     FROM: new FormControl(this.maxDate),
     TO: new FormControl(this.maxDate),
   })
-
+dog=false
   AgtSrhBtn(e: { preventDefault: () => void; }) {
     this.present()
     this.tabShow = false
@@ -92,9 +92,10 @@ export class BookingHistoryComponent implements OnInit {
         for (let x of this.agtList) {
           this.amt += parseInt(x.AMOUNT)
         }
+        this.dog=false
       }
       else {
-        alert("No Data Found")
+        this.dog=true
         this.dismiss()
       }
     });

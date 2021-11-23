@@ -8,10 +8,11 @@
       <h5>{{login_Details.AID}}</h5>
       <ion-content>
         <ion-item lines="none" class="line-up dash-men" [routerLink]="['/cchome/dashboard']" >
-          <ion-icon slot="start" name="home-outline"></ion-icon>
+          <ion-icon slot="start" name="home"></ion-icon>
           <ion-label style="margin:0px">Dashboard </ion-label>
           <ion-icon name="chevron-forward-outline"></ion-icon>
         </ion-item>
+       
         <ion-list id="inbox-list" *ngFor="let d of Menu,let i = index" lines="none">
           <ion-item *ngIf="d.active=='true'" (click)="toggleSubMenu(d)" (ionClick)="d.showDetails=!d.showDetails "
             class="main-tag line-up" lines="none">
@@ -31,6 +32,11 @@
             </ion-item>
           </ion-list>
         </ion-list>
+        <!-- <ion-item lines="none" class="line-up dash-men" [routerLink]="['/cchome/dashboard']" >
+          <ion-icon slot="start"  name="logo-apple-ar"></ion-icon>
+          <ion-label style="margin:0px">Developer </ion-label>
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </ion-item> -->
       </ion-content>
       <ion-item (click)="logout()" lines="none" class="line-up dash-men">
         <ion-icon slot="start" name="log-out-outline"></ion-icon>

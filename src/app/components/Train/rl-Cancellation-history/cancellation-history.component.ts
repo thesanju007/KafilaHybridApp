@@ -58,6 +58,7 @@ export class CancellationHistoryComponent implements OnInit {
     FROM: new FormControl(this.maxDate),
     TO: new FormControl(this.maxDate),
   })
+  dog=false
   AgtSrhBtn(e) {
 
     e.preventDefault();
@@ -86,10 +87,10 @@ export class CancellationHistoryComponent implements OnInit {
         this.agtList = JSON.parse(result.response)
         this.tabShow = true
         this.dismiss()
-
+        this.dog=false
       }
       else{
-        alert("No Data Found")
+        this.dog=true
         this.dismiss()
       }
 

@@ -22,6 +22,7 @@ export class RlfailedHistoryComponent implements OnInit {
   login_Details
   agtList
   tabShow = false
+  dog=false
   ngOnInit() {
     let Json_LD = sessionStorage.getItem("LoginDetails")
     this.login_Details = JSON.parse(Json_LD)
@@ -89,9 +90,10 @@ export class RlfailedHistoryComponent implements OnInit {
         this.agtList = JSON.parse(result.response)
         this.tabShow = true
         this.dismiss()
+        this.dog=false
       }
       else {
-        alert("No Data Found")
+        this.dog=true
         this.dismiss()
       }
     });

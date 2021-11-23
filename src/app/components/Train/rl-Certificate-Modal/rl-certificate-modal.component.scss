@@ -32,3 +32,33 @@ p{
     font-weight: 600;
     padding-bottom: 20px;
   }
+
+@media only screen and (max-width: 767px) {
+  .h-text{
+    font-size: 13px;
+    font-weight: 600;
+    color: black;
+  }
+  .cert{
+    font-family: Edwardian Script ITC;
+    font-size: 28px;
+    font-weight: 600;
+    padding-bottom: 20px;
+  }
+  .warnin{
+    font-size: 9px;
+  }
+  .img{
+    width: 60px;
+    height: 60px;
+  }
+  .width{
+    width: 60px;
+    height: 60px;
+  }
+  .tags{
+    font-size: 11px;
+    font-weight: 400;
+    color: black;
+  }
+}

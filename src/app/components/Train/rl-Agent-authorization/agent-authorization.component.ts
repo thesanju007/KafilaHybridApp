@@ -22,6 +22,7 @@ export class AgentAuthorizationComponent implements OnInit {
   lth
   tabShow = false
   amt = 0
+  dog=false
   ngOnInit() {
     let Json_LD = sessionStorage.getItem("LoginDetails")
     this.login_Details = JSON.parse(Json_LD)
@@ -79,13 +80,14 @@ export class AgentAuthorizationComponent implements OnInit {
         
         this.dismiss()
         this.tabShow = true
+        this.dog=false
         this.amt = 0
         for (let x of this.agtList) {
           this.amt += parseInt(x.BALANCE)
         }
       }
       else {
-        alert("No Data Found")
+        this.dog=true
         this.dismiss()
       }
     });

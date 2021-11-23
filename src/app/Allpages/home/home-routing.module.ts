@@ -11,7 +11,7 @@ import { RlfailedHistoryComponent } from '../../components/Train/rl-Failed-histo
 import { RlagencyStatementComponent } from '../../components/Train/rl-Agency-statement/rlagency-statement.component'
 import { RlCancelOtpHistoryComponent } from '../../components/Train/rl-Cancel-Otp-History/rl-cancel-otp-history.component'
 import {RoleManagementComponent} from '../../components/Admin/role-management/role-management.component'
-
+import {RlLogComponent} from'../../components/Developer/rl-log/rl-log.component'
 const routes: Routes = [
   {
     path: '',
@@ -70,6 +70,10 @@ const routes: Routes = [
       ,{
         path:'RoleManagement',
         component:RoleManagementComponent
+      },
+      {
+        path:'RlLog',
+        component:RlLogComponent
       }
       
     ]

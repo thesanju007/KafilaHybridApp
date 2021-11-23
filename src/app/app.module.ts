@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { TmoduleModule } from './components/Train/rl-Module/tmodule.module';
 import { AModuleModule } from './components/Admin/a-module/a-module.module'
-
+import{DevModuleModule}from'./components/Developer/dev-module/dev-module.module'
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -18,9 +18,12 @@ import { AModuleModule } from './components/Admin/a-module/a-module.module'
     IonicModule.forRoot(),
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule, TmoduleModule, AModuleModule
+    HttpClientModule, TmoduleModule, AModuleModule,DevModuleModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule { 
+  
+
+}

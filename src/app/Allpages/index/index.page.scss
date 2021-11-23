@@ -92,9 +92,15 @@ ion-label{
 .ad-img{
  background-image: url('../../../assets/ad.jpg');
 }
+.web{
+  background-color: #211e2f; height: 789px;
+}
 
 @media only screen and (max-width: 767px) {
- 
+  .web{
+    background-color: #211e2f; 
+    height: 1000px;
+  }
   input{
     //border: none;
     border: 1px solid #211e2f;

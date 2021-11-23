@@ -16,7 +16,7 @@
     },
     {
         "Group_ID": "2",
-        "active": "true",
+        "active": "false",
         "title": "Accounts",
         "icon": "cash-outline",
         "showDetails": "false",
@@ -26,7 +26,7 @@
     },
     {
         "Group_ID": "3",
-        "active": "true",
+        "active": "false",
         "title": "Sales",
         "icon": "analytics-outline",
         "showDetails": "false",
@@ -48,7 +48,7 @@
         "Group_ID": "5",
         "title": "Rail",
         "active": "true",
-        "icon": "train-outline",
+        "icon": "train",
         "showDetails": "false",
         "subMenu": [
             {
@@ -110,11 +110,26 @@
     {
         "Group_ID": "6",
         "title": "Miscellaneous",
-        "active": "true",
-        "icon": "extension-puzzle-outline",
+        "active": "false",
+        "icon": "extension-puzzle",
         "showDetails": "false",
         "subMenu": [
             
+        ]
+    },
+    {
+        "Group_ID": "7",
+        "title": "Developer",
+        "active": "true",
+        "icon": "logo-apple-ar",
+        "showDetails": "false",
+        "subMenu": [
+            {
+                "sid": "1",
+                "title": "Rail Log  ",
+                "url": "RlLog",
+                "Eicon": "chevron-forward"
+            }
         ]
     }
 ]

@@ -60,6 +60,7 @@ export class PendingHistoryComponent implements OnInit {
     FROM: new FormControl(this.maxDate),
     TO: new FormControl(this.maxDate),
   })
+  dog=false
   AgtSrhBtn(e) {
     this.present()
     this.tabShow = false
@@ -87,9 +88,10 @@ export class PendingHistoryComponent implements OnInit {
         this.dismiss()
         this.tabShow = true
         this.agtList = JSON.parse(result.response)
+        this.dog=false
       }
       else {
-        alert("No Data Found")
+        this.dog=true
         this.dismiss()
       }
     });

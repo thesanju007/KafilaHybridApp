@@ -1,0 +1,110 @@
+<ion-app>
+  <ion-header [translucent]="true">
+    <ion-toolbar class="ion-text-center">
+      <ion-buttons slot="start" style="background-color: #287aff;">
+        <ion-menu-button style="color: rgb(255, 255, 255);"></ion-menu-button>
+      </ion-buttons>
+      <ion-row>
+        <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+          <span class="h1">
+            <ion-icon name="train"></ion-icon> Rail Log
+          </span>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content style="background-color: white;">
+    <ion-card class="ion-margin-top" style="background-color: white;">
+      <ion-grid>
+        <ion-row>
+          <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12" class="ion-padding">
+            <form [formGroup]="agtLstGP" (ngSubmit)="AgtSrhBtn($event)">
+              <ion-row class="bdr ion-padding">
+
+
+                <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
+                  <fieldset>
+                    <input formControlName="RAID" maxlength="8" min="8" placeholder="Agent ID">
+                  </fieldset>
+
+                </ion-col>
+                <ion-col size-xs="6" size-sm="6" size-md="3" size-lg="3" size-xl="3">
+                  <fieldset>
+                    <input formControlName="FROM" type="date" [max]="maxDate">
+                  </fieldset>
+                </ion-col>
+
+
+                <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
+                  <button class="ccL-btn" type="submit">
+                    <ion-icon slot="start" name="search"></ion-icon> Search
+                  </button>
+                </ion-col>
+
+                <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3" class="ion-text-end">
+                  <ion-label class="pdn">Production</ion-label>
+                  <ion-toggle (click)="toggle()"></ion-toggle>
+                  <ion-label>Development</ion-label>
+                </ion-col>
+              </ion-row>
+            </form>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+   
+    <ion-card *ngIf="allDataList">
+      <ion-grid>
+        <h1>All Agent Data</h1>
+        <ion-row>
+
+          <ion-col size-xs="3" size-sm="3" size-md="3" size-lg="3" size-xl="3" *ngFor="let d of agtList, index as i">
+            <span><b >{{d}} </b>  <span style="color: red; text-decoration: underline; cursor: pointer; padding-left: 10px;"  (click)="getLogFiles(d)">check log</span></span>
+            <!-- {{i+1}} -->
+            <!-- <ion-chip outline color="primary" (click)="getLogFiles(d)">
+              <ion-label color="dark"> {{d}}</ion-label>
+            </ion-chip> -->
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-card>
+
+
+
+   
+      <ion-card *ngIf="gtFls">
+        <table >
+          <thead class="ion-text-center">
+            <tr>
+              <th class="padding">
+                #
+              </th>
+              <th class="padding">
+                Log List Of {{this.aID}}
+              </th>
+              <th class="padding">
+                Get
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let d of logFiles, index as i" class="hvr">
+              <td class="ion-text-center">{{i+1}}</td>
+              <td class="ion-text-center"  (click)="PNR(d)"><b>{{d|uppercase}}</b>
+              </td>
+              <td class="ion-text-center"><ion-badge color="primary"  class="ionp font" (click)="getRecFileWise(d)">Check</ion-badge></td>
+
+            </tr>
+          </tbody>
+        </table>
+      </ion-card>
+   
+
+
+
+    <ion-card *ngIf="dog" class="ion-text-center" style="background-color: #ffffff;">
+      <img src="../../../assets/404.gif">
+    </ion-card>
+  </ion-content>
+</ion-app>

@@ -1,0 +1,212 @@
+<ion-app>
+  <ion-content>
+    <ion-row class="ion-margin-top ion-padding ion-text-center">
+      <ion-col size-md="12" size-lg="12" size-xl="12" class="ion-padding">
+        <ion-text style="float: right;color: red;cursor: pointer; font-size: 18px;" (click)="close()">
+          <ion-icon name="close-circle-outline"></ion-icon>
+        </ion-text>
+      </ion-col>
+
+
+
+
+      <ion-col size-md="12" size-lg="12" size-xl="12" class="ion-padding" *ngIf="size<'500'">
+        <p class="alert">
+          {{b_Id}}
+        </p>
+      </ion-col>
+
+      <ion-col size-md="12" size-lg="12" size-xl="12" class="ion-padding" *ngIf="size>'500'">
+        {{pb_Id|json}}
+        <table *ngIf="pb_Id.psgnDtlList.length>'0'">
+          <tr>
+            <td>arrivalTime : {{pb_Id.arrivalTime}}</td>
+            <td>avlForVikalp : {{pb_Id.avlForVikalp}}</td>
+            <td>boardingDate : {{pb_Id.boardingDate}}</td>
+          </tr>
+          <tr>
+            <td>boardingStn : {{pb_Id.boardingStn}}</td>
+            <td>boardingStnName : {{pb_Id.boardingStnName}}</td>
+            <td>bookedQuota : {{pb_Id.bookedQuota}}</td>
+          </tr>
+          <tr>
+            <td>bookingDate : {{pb_Id.bookingDate}}</td>
+            <td>canSpouseFlag : {{pb_Id.canSpouseFlag}}</td>
+            <td>cateringCharge : {{pb_Id.cateringCharge}}</td>
+          </tr>
+          <tr>
+            <td>clientTransactionId : {{pb_Id.clientTransactionId}}</td>
+            <td>complaintFlag : {{pb_Id.complaintFlag}}</td>
+            <td>departureTime : {{pb_Id.departureTime}}</td>
+          </tr>
+          <tr>
+            <td>destArrvDate : {{pb_Id.destArrvDate}}</td>
+            <td>destStn : {{pb_Id.destStn}}</td>
+            <td>distance : {{pb_Id.distance}}</td>
+          </tr>
+          <tr>
+            <td>fromStn : {{pb_Id.fromStn}}</td>
+            <td>fromStnName : {{pb_Id.fromStnName}}</td>
+            <td>fuelAmount : {{pb_Id.fuelAmount}}</td>
+          </tr>
+          <tr>
+            <td>gstFlag : {{pb_Id.gstFlag}}</td>
+            <td>insuranceCharge : {{pb_Id.insuranceCharge}}</td>
+            <td>insuredPsgnCount : {{pb_Id.insuredPsgnCount}}</td>
+          </tr>
+          <tr>
+            <td>journeyClass : {{pb_Id.journeyClass}}</td>
+            <td>journeyDate : {{pb_Id.journeyDate}}</td>
+            <td>journeyLap : {{pb_Id.journeyLap}}</td>
+          </tr>
+          <tr>
+            <td>journeyQuota : {{pb_Id.journeyQuota}}</td>
+            <td>lapNumber : {{pb_Id.lapNumber}}</td>
+            <td>mahakalFlag : {{pb_Id.mahakalFlag}}</td>
+          </tr>
+          <tr>
+            <td>mealChoiceEnable : {{pb_Id.mealChoiceEnable}}</td>
+            <td>mlJourneyType : {{pb_Id.mlJourneyType}}</td>
+            <td>mlReservationStatus : {{pb_Id.mlReservationStatus}}</td>
+          </tr>
+          <tr>
+            <td>mlTimeDiff : {{pb_Id.mlTimeDiff}}</td>
+            <td>mlTransactionStatus : {{pb_Id.mlTransactionStatus}}</td>
+            <td>mlUserId : {{pb_Id.mlUserId}}</td>
+          </tr>
+          <tr>
+            <td>monthBkgTicket : {{pb_Id.monthBkgTicket}}</td>
+            <td>multiLapFlag : {{pb_Id.multiLapFlag}}</td>
+            <td>numberOfAdults : {{pb_Id.numberOfAdults}}</td>
+          </tr>
+          <tr>
+            <td>numberOfChilds : {{pb_Id.numberOfChilds}}</td>
+            <td>numberOfpassenger : {{pb_Id.numberOfpassenger}}</td>
+            <td>otpAuthenticationFlag : {{pb_Id.otpAuthenticationFlag}}</td>
+          </tr>
+          <tr>
+            <td>pnrNumber : {{pb_Id.pnrNumber}}</td>
+            <td>reasonIndex : {{pb_Id.reasonIndex}}</td>
+            <td>reasonType : {{pb_Id.reasonType}}</td>
+          </tr>
+          <tr>
+            <td>reservationCharge : {{pb_Id.reservationCharge}}</td>
+            <td>reservationId : {{pb_Id.reservationId}}</td>
+            <td>resvnUptoStn : {{pb_Id.resvnUptoStn}}</td>
+          </tr>
+          <tr>
+            <td>resvnUptoStnName : {{pb_Id.resvnUptoStnName}}</td>
+            <td>rrHbFlag : {{pb_Id.rrHbFlag}}</td>
+            <td>sai : {{pb_Id.sai}}</td>
+          </tr>
+          <tr>
+            <td>scheduleArrivalFlag : {{pb_Id.scheduleArrivalFlag}}</td>
+            <td>scheduleDepartureFlag : {{pb_Id.scheduleDepartureFlag}}</td>
+            <td>sectorId : {{pb_Id.sectorId}}</td>
+          </tr>
+          <tr>
+            <td>serverId : {{pb_Id.serverId}}</td>
+            <td>serviceChargeTotal : {{pb_Id.serviceChargeTotal}}</td>
+            <td>serviceTax : {{pb_Id.serviceTax}}</td>
+          </tr>
+          <tr>
+            <td>superfastCharge : {{pb_Id.superfastCharge}}</td>
+            <td>tatkalFare : {{pb_Id.tatkalFare}}</td>
+            <td>ticketType : {{pb_Id.ticketType}}</td>
+          </tr>
+          <tr>
+            <td>timeDiff : {{pb_Id.timeDiff}}</td>
+            <td>timeStamp : {{pb_Id.timeStamp}}</td>
+            <td>timeTableFlag : {{pb_Id.timeTableFlag}}</td>
+          </tr>
+          <tr>
+            <td>totalCollectibleAmount : {{pb_Id.totalCollectibleAmount}}</td>
+            <td>totalFare : {{pb_Id.totalFare}}</td>
+            <td>trainName : {{pb_Id.trainName}}</td>
+          </tr>
+          <tr>
+            <td>trainNumber : {{pb_Id.trainNumber}}</td>
+            <td>wpServiceCharge : {{pb_Id.wpServiceCharge}}</td>
+            <td>wpServiceTax : {{pb_Id.wpServiceTax}}</td>
+          </tr>
+          <tr>
+            <td colspan="1">gstCharge</td>
+            <td colspan="2">
+              <tr>
+                <td>irctcCgstCharge : {{pb_Id.gstCharge.irctcCgstCharge}}</td>
+                <td>irctcIgstCharge : {{pb_Id.gstCharge.irctcIgstCharge}}</td>
+                <td>irctcSgstCharge : {{pb_Id.gstCharge.irctcSgstCharge}}</td>
+
+
+              </tr>
+              <tr>
+                <td>irctcUgstCharge : {{pb_Id.gstCharge.irctcUgstCharge}}</td>
+                <td>totalIrctcGst : {{pb_Id.gstCharge.totalIrctcGst}}</td>
+                <td>totalPRSGst : {{pb_Id.gstCharge.totalPRSGst}}</td>
+              </tr>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <tr>
+                <td colspan="12">psgnDtlList</td>
+
+              </tr>
+              <tr *ngFor="let x of pb_Id.psgnDtlList, index as i">
+                <td colspan="1">
+                  Psg {{i+1}}
+                </td>
+                <td>
+                  <tr>
+                    <td>bookingBerthNo : {{x.bookingBerthNo}}</td>
+                    <td>bookingStatus : {{x.bookingStatus}}</td>
+                    <td>bookingStatusIndex : {{x.bookingStatusIndex}}</td>
+                    <td>childBerthFlag : {{x.childBerthFlag}}</td>
+                    <td>currentBerthNo : {{x.currentBerthNo}}</td>
+                    <td>insuranceIssued : {{x.insuranceIssued}}</td>
+                  </tr>
+                  <tr>
+                    <td>passengerAge : {{x.passengerAge}}</td>
+                    <td>passengerGender : {{x.passengerGender}}</td>
+                    <td>passengerName : {{x.passengerName}}</td>
+                    <td>passengerNetFare : {{x.passengerNetFare}}</td>
+                    <td>bookingCoachId : {{x.bookingCoachId}}</td>
+                    <td>childBerthFlag : {{x.childBerthFlag}}</td>
+                  </tr>
+                  <tr>
+                    <td>currentCoachId : {{x.currentCoachId}}</td>
+                    <td>currentStatus : {{x.currentStatus}}</td>
+                    <td>currentStatusIndex : {{x.currentStatusIndex}}</td>
+                    <td>dropWaitlistFlag : {{x.dropWaitlistFlag}}</td>
+                    <td>fareChargedPercentage : {{x.fareChargedPercentage}}</td>
+                    <td>passengerBedrollChoice : {{x.passengerBedrollChoice}}</td>
+                  </tr>
+                  <tr>
+                    <td>passengerConcession : {{x.passengerConcession}}</td>
+                    <td>passengerIcardFlag : {{x.passengerIcardFlag}}</td>
+                    <td>passengerNationality : {{x.passengerNationality}}</td>
+                    <td>passengerSerialNumber : {{x.passengerSerialNumber}}</td>
+                    <td>psgnwlType : {{x.psgnwlType}}</td>
+                    <td>validationFlag : {{x.validationFlag}}</td>
+                  </tr>
+                </td>
+               
+                
+              
+              </tr>
+             
+            </td>
+          </tr>
+        </table>
+      </ion-col>
+    </ion-row>
+  </ion-content>
+</ion-app>
+
+<!-- 
+38729
+
+
+21718381   127
+52294590  122
+ -->
