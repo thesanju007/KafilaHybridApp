@@ -1,8 +1,0 @@
-{
-  "name": "Admin_panel",
-  "integrations": {
-    "capacitor": {},
-    "cordova": {}
-  },
-  "type": "angular"
-}
