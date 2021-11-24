@@ -14,11 +14,11 @@ export class LogModalComponent implements OnInit {
   ngOnInit() {
     this.b_Id = this.navParams.data.param;
     console.log(this.b_Id)
-    this.size = Object.keys(this.b_Id).length;
-    if(this.size>200){
+    // this.size = Object.keys(this.b_Id).length;
+    // if(this.size>500){
       this.pb_Id=JSON.parse(this.b_Id)
       console.log(this.pb_Id)
-    }
+    // }
   }
 
 

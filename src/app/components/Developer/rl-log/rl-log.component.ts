@@ -29,39 +29,10 @@ export class RlLogComponent implements OnInit {
   ngOnInit() {
     let Json_LD = sessionStorage.getItem("LoginDetails")
     this.login_Details = JSON.parse(Json_LD)
-    this.allData()
+    console.clear()
  
   }
-  allData() {
-    let log = {
-      "P_TYPE": "CC",
-      "R_TYPE": "DEV",
-      "R_NAME": "LOG",
-      "R_DATA": {
-        "ACTION": "RETRIVE",
-        "LOG_PRODUCT": "RAIL",
-        "RAIL_ID": "",
-        "DATE": this.str_Date,
-        "FILE_NAME": ""
-      },
-      "AID": this.login_Details.AID,
-      "MODULE": this.login_Details.MODULE,
-      "IP": this.login_Details.IP,
-      "TOKEN": this.login_Details.TOKEN,
-      "ENV": "D",
-      "Version": "1.0.0.0.0.0"
-    }
 
-    this.tService.postTestData(log).subscribe(result => {
-      if (result.response.length > 2) {
-        this.agtList = result.response
-        this.dog = false
-      }
-      else {
-        this.dog = true
-      }
-    });
-  }
 
 
   dateDis = false
@@ -78,19 +49,15 @@ export class RlLogComponent implements OnInit {
     }
   }
   agtLstGP = new FormGroup({
-    RAID: new FormControl(''),
+    RAID: new FormControl('',[Validators.required, Validators.minLength(8)]),
     FROM: new FormControl(this.maxDate),
 
   })
   dog = false
 
-
-
-
   AgtSrhBtn() {
     this.present()
-    this.allDataList = true
-    this.gtFls = false
+    this.aID=this.agtLstGP.value.RAID
     let log = {
       "P_TYPE": "CC",
       "R_TYPE": "DEV",
@@ -98,7 +65,7 @@ export class RlLogComponent implements OnInit {
       "R_DATA": {
         "ACTION": "RETRIVE",
         "LOG_PRODUCT": "RAIL",
-        "RAIL_ID": "",
+        "RAIL_ID": this.agtLstGP.value.RAID,
         "DATE": this.str_Date,
         "FILE_NAME": ""
       },
@@ -112,13 +79,13 @@ export class RlLogComponent implements OnInit {
 
     this.tService.postTestData(log).subscribe(result => {
       if (result.response.length > 2) {
-        this.agtList = result.response
-
+        this.logFiles = result.response
+        this.gtFls=true
         this.dismiss()
         this.dog = false
       }
       else {
-        this.dog = false
+        this.dog = true
         this.dismiss()
       }
     });
@@ -134,49 +101,11 @@ export class RlLogComponent implements OnInit {
   gtFls = false
   logFiles: any
   aID: any
-  getLogFiles(d) {
-    this.aID = d
-    this.present()
-    this.allDataList = false
-    this.gtFls = true
-    let log = {
-      "P_TYPE": "CC",
-      "R_TYPE": "DEV",
-      "R_NAME": "LOG",
-      "R_DATA": {
-        "ACTION": "RETRIVE",
-        "LOG_PRODUCT": "RAIL",
-        "RAIL_ID": this.aID,
-        "DATE": this.str_Date,
-        "FILE_NAME": ""
-      },
-      "AID": this.login_Details.AID,
-      "MODULE": this.login_Details.MODULE,
-      "IP": this.login_Details.IP,
-      "TOKEN": this.login_Details.TOKEN,
-      "ENV": "D",
-      "Version": "1.0.0.0.0.0"
-    }
-    this.tService.postTestData(log).subscribe(result => {
-      if (result.response.length > 2) {
-        this.logFiles = result.response
-        this.dog = false
-        this.dismiss()
-      }
-      else {
-        this.dismiss()
-        this.dog = false
-      }
-    });
-  }
-
 
 
 
   getRecFileWise(d) {
     this.present()
-    this.allDataList = false
-    this.gtFls = true
     let log = {
       "P_TYPE": "CC",
       "R_TYPE": "DEV",
@@ -198,15 +127,16 @@ export class RlLogComponent implements OnInit {
     this.tService.postTestData(log).subscribe(result => {
       if (result.response.length > 2) {
         this.presentModal1(result.response)
-        this.dog = false
         this.dismiss()
       }
       else {
         this.dismiss()
-        this.dog = false
       }
     });
   }
+
+
+
 
   isLoading = false;
   async present() {
@@ -243,15 +173,11 @@ export class RlLogComponent implements OnInit {
       component: LogModalComponent,
       cssClass: 'logModal',
       showBackdrop: true,
+      backdropDismiss: false, 
       componentProps: {
         "param": x,
       },
     });
-    // modal1.onDidDismiss()
-    //   .then((d) => {
-    //     console.log(d.data.Book_ID)
-    //     this.agtList = this.agtList.filter(Array => Array.BOOKING_ID !== d.data.Book_ID);
-    //   });
     return await modal1.present();
   }
 
@@ -259,6 +185,7 @@ export class RlLogComponent implements OnInit {
 
 
 
+ 
   get Error() {
     return this.agtLstGP.controls;
   }

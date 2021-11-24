@@ -14,10 +14,7 @@ export class HomePage implements OnInit {
   bigMenu = false;
   name
   Width
-  constructor(private route: Router) {
-
-
-  }
+  constructor(private route: Router) {}
   login_Details
 
   ngOnInit() {
@@ -33,8 +30,7 @@ export class HomePage implements OnInit {
     setTimeout(() => {
       alert("Session Timeout")
       this.logout()
-    }, 1 * 60 * 60 * 1000);
-    
+    }, 1 * 60 * 60 * 1000);    
   }
 
   toggleSubMenu(p) {

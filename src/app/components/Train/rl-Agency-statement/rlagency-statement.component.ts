@@ -75,7 +75,6 @@ dog=false
       if (result.response.length > 2) {
 
         this.agtList = JSON.parse(result.response)
-        console.log(this.agtList)
         this.tabShow = true
         this.dismiss()
         this.dog=false

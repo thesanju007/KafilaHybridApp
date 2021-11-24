@@ -1,17 +1,24 @@
-.alert{color: red;}
-ion-content{
-    --background:white;
-  }
+.alert {
+  color: rgb(0, 0, 0);
+  font-size: 14px;
+  font-weight: 500;
+  font-family: serif;
+  letter-spacing: 1px;
+  line-height: 150%;
+}
+ion-content {
+  --background: white;
+}
 
-  table{
-    width: 100%;
-    text-align: left;
-  }
+table {
+  width: 100%;
+  text-align: left;
+}
 
-  td{
-    border: 1px solid rgba(124, 123, 123, 0.557);
-    padding: 5px 5px;
-    font-size:13px;
-    color:#000;
-    font-weight: 400;
-  }
+td {
+  border: 1px solid rgba(124, 123, 123, 0.557);
+  padding: 5px 5px;
+  font-size: 13px;
+  color: #000;
+  font-weight: 400;
+}

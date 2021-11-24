@@ -95,7 +95,13 @@ ion-label{
 .web{
   background-color: #211e2f; height: 789px;
 }
-
+.passwordIcon{
+  font-size: 12px;
+  position: relative !important;
+  top: 7px !important;
+  margin: 0 auto !important;
+  cursor: pointer;
+}
 @media only screen and (max-width: 767px) {
   .web{
     background-color: #211e2f; 

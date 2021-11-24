@@ -86,6 +86,12 @@ export class IndexPage implements OnInit {
     }
 
   }
+
+
+
+
+
+
   decode2() {
     let a= Md5.hashStr("PSLV|111000").toString();
     console.log(a)
