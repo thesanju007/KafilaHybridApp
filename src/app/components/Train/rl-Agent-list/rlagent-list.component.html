@@ -70,9 +70,13 @@
       </ion-grid>
     </ion-card>
     <ion-row *ngIf="tabShow" style="padding: 0px;">
-      <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
-        <ion-badge color="primary" style="margin: 5px 0px 0px 15px;">Total Result = {{agtList.length}}</ion-badge>
+      <ion-col size-xs="6" size-sm="6" size-md="6" size-lg="6" size-xl="6" style="padding: 0px;">
+        <ion-badge color="primary" style="margin: 25px 0px 0px 15px;">Total Result = {{agtList.length}}</ion-badge>
       </ion-col>
+      <ion-col size-xs="6" size-sm="6" size-md="6" size-lg="6" size-xl="6" style="padding: 0px;">
+        <jw-pagination [items]="agtList" (changePage)="onChangePage($event)"  [pageSize]="50"></jw-pagination>
+      </ion-col>
+    
     </ion-row>
     <ion-card  *ngIf="tabShow" style="overflow-x:auto; background-color: white;">
       <table>
@@ -143,7 +147,7 @@
         </tbody>
       </table>
 
-      <jw-pagination [items]="agtList" (changePage)="onChangePage($event)"  [pageSize]="50"></jw-pagination>
+     
     </ion-card>
     <ion-card *ngIf="dog" class="ion-text-center"  style="background-color: #ffffff;">
       <img src="../../../assets/404.gif">

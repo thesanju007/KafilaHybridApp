@@ -13,15 +13,19 @@ import { LogModalComponent } from '../log-modal/log-modal.component'
 export class RlLogComponent implements OnInit {
 
   maxDate = new Date(new Date().getTime()).toISOString().split('T')[0];
-   currentDate = new Date()
-   day = this.currentDate.getDate()
-   month = this.currentDate.getMonth() + 1
-   year = this.currentDate.getFullYear()
-   twoDigitYear = this.year.toString().substr(-2);
+  currentDate = new Date()
+  day = this.currentDate.toLocaleDateString('en-US', { day: '2-digit' });
+  month = this.currentDate.getMonth() + 1
+  year = this.currentDate.getFullYear()
+  twoDigitYear = this.year.toString().substr(-2);
+  str_Date: any
 
-  str_Date=this.day + "" + this.month + "" + this.twoDigitYear
   constructor(private tService: TestService, public loadingController: LoadingController, private route: Router, public modalController: ModalController) {
 
+    this.str_Date = this.day + "" + this.month + "" + this.twoDigitYear
+
+
+   
   }
   login_Details
   agtList
@@ -30,7 +34,7 @@ export class RlLogComponent implements OnInit {
     let Json_LD = sessionStorage.getItem("LoginDetails")
     this.login_Details = JSON.parse(Json_LD)
     console.clear()
- 
+    console.log(this.str_Date)
   }
 
 
@@ -49,7 +53,7 @@ export class RlLogComponent implements OnInit {
     }
   }
   agtLstGP = new FormGroup({
-    RAID: new FormControl('',[Validators.required, Validators.minLength(8)]),
+    RAID: new FormControl('', [Validators.required, Validators.minLength(8)]),
     FROM: new FormControl(this.maxDate),
 
   })
@@ -57,7 +61,7 @@ export class RlLogComponent implements OnInit {
 
   AgtSrhBtn() {
     this.present()
-    this.aID=this.agtLstGP.value.RAID
+    this.aID = this.agtLstGP.value.RAID
     let log = {
       "P_TYPE": "CC",
       "R_TYPE": "DEV",
@@ -76,11 +80,12 @@ export class RlLogComponent implements OnInit {
       "ENV": "D",
       "Version": "1.0.0.0.0.0"
     }
-
+    console.log(log)
     this.tService.postTestData(log).subscribe(result => {
       if (result.response.length > 2) {
+        console.log(result)
         this.logFiles = result.response
-        this.gtFls=true
+        this.gtFls = true
         this.dismiss()
         this.dog = false
       }
@@ -137,7 +142,6 @@ export class RlLogComponent implements OnInit {
 
 
 
-
   isLoading = false;
   async present() {
     this.isLoading = true;
@@ -173,7 +177,7 @@ export class RlLogComponent implements OnInit {
       component: LogModalComponent,
       cssClass: 'logModal',
       showBackdrop: true,
-      backdropDismiss: false, 
+      backdropDismiss: false,
       componentProps: {
         "param": x,
       },
@@ -185,7 +189,7 @@ export class RlLogComponent implements OnInit {
 
 
 
- 
+
   get Error() {
     return this.agtLstGP.controls;
   }

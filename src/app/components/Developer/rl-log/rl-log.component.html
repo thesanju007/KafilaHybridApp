@@ -18,9 +18,8 @@
       <ion-grid>
         <ion-row>
           <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12" class="ion-padding">
-            <form [formGroup]="agtLstGP" (ngSubmit)="AgtSrhBtn($event)">
+            <form [formGroup]="agtLstGP" (ngSubmit)="AgtSrhBtn()">
               <ion-row class="bdr ion-padding">
-
 
                 <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
                   <fieldset>
@@ -54,39 +53,37 @@
         </ion-row>
       </ion-grid>
     </ion-card>
-   
 
 
+    <ion-card *ngIf="gtFls">
+      <table>
+        <thead class="ion-text-center">
+          <tr>
+            <th class="padding">
+              #
+            </th>
+            <th class="padding">
+              Log List Of
+            </th>
+            <th class="padding">
+              Get
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let d of logFiles, index as i" class="hvr">
+            <td class="ion-text-center">{{i+1}}</td>
+            <td class="ion-text-center"><b>{{d}}</b>
+            </td>
+            <td class="ion-text-center">
+              <ion-badge color="primary" class="ionp font" (click)="getRecFileWise(d)">Check</ion-badge>
+            </td>
 
+          </tr>
+        </tbody>
+      </table>
+    </ion-card>
 
-   
-      <ion-card *ngIf="gtFls">
-        <table >
-          <thead class="ion-text-center">
-            <tr>
-              <th class="padding">
-                #
-              </th>
-              <th class="padding">
-                Log List Of 
-              </th>
-              <th class="padding">
-                Get
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let d of logFiles, index as i" class="hvr">
-              <td class="ion-text-center">{{i+1}}</td>
-              <td class="ion-text-center"  ><b>{{d}}</b>
-              </td>
-              <td class="ion-text-center"><ion-badge color="primary"  class="ionp font" (click)="getRecFileWise(d)">Check</ion-badge></td>
-
-            </tr>
-          </tbody>
-        </table>
-      </ion-card>
-   
 
 
 

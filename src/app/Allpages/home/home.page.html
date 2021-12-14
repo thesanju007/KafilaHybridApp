@@ -26,12 +26,16 @@
             <ion-item *ngFor="let s_Menu of d.subMenu" [routerLink]="['/','cchome',s_Menu.url]" lines="none"
               class="sb-menu">
               <ion-icon name="arrow-forward"></ion-icon>
-             
               <ion-label> {{s_Menu.title}}</ion-label>
               <ion-icon size="small" name={{s_Menu.Eicon}}></ion-icon>
             </ion-item>
           </ion-list>
         </ion-list>
+        <ion-item lines="none" class="line-up dash-men" [routerLink]="['/cchome/RlLog']" >
+          <ion-icon slot="start" name="train"></ion-icon>
+          <ion-label style="margin:0px">Rail Log </ion-label>
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </ion-item>
         <!-- <ion-item lines="none" class="line-up dash-men" [routerLink]="['/cchome/dashboard']" >
           <ion-icon slot="start"  name="logo-apple-ar"></ion-icon>
           <ion-label style="margin:0px">Developer </ion-label>
