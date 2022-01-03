@@ -14,7 +14,7 @@ export class HomePage implements OnInit {
   bigMenu = false;
   name
   Width
-  constructor(private route: Router) {}
+  constructor(private route: Router) {}  
   login_Details
 
   ngOnInit() {

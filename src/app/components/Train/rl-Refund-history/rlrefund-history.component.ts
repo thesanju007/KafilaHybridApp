@@ -88,6 +88,7 @@ export class RLRefundHistoryComponent implements OnInit {
     this.subscription = this.tService.postTestData(bknHisData).subscribe(result => {
       if (result.response.length>2) {
         this.agtList = JSON.parse(result.response)
+        console.log(this.agtList)
         this.tabShow = true
         this.dismiss()
         this.dog=false
@@ -107,6 +108,7 @@ export class RLRefundHistoryComponent implements OnInit {
   up1 = false
   down1 = true
   up2 = false
+  
   down2 = true
   sortBalAsc() {
     this.down = false
