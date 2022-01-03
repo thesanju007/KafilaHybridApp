@@ -59,6 +59,9 @@ export class FSearchPage implements OnInit {
       this.arp = result
       this.arp_new = result
     });
+    this.gaugeTitleForm = this.fb.group({
+      gaugeTitles: this.fb.array([this.createItem(),this.createItem()])
+    });
 
     this.Token = localStorage.getItem("Token")
 
@@ -127,7 +130,7 @@ export class FSearchPage implements OnInit {
     // this.one_way = false
     this.round_trip = false
     this.multi_trip = false
-
+    
   }
 
   R_Round_Special() {
@@ -156,7 +159,7 @@ export class FSearchPage implements OnInit {
     this.multi_trip = true
   }
 
-  mfArray = ["1", "2"]
+
   showw = false
   showwR = false
   searcharp
@@ -246,7 +249,7 @@ export class FSearchPage implements OnInit {
     let depApt = this.flightData.value.D_airport.substring(0, 3);
     let arrApt = this.flightData.value.A_airport.substring(0, 3);
     if (depApt != arrApt) {
-      this.present(1)
+      this.present(1, depApt, arrApt)
       let latest_date = this.datepipe.transform(this.flightData.value.D_date, 'yyyy-MM-dd');
       let ret_latest_date = this.datepipe.transform(this.flightData.value.A_date, 'yyyy-MM-dd');
       let data: any = {
@@ -280,11 +283,12 @@ export class FSearchPage implements OnInit {
           this.DismissClick()
           this.route.navigate(['home/fshowflight'])
           sessionStorage.setItem("All_Flight", js_f)
+          sessionStorage.setItem("srh_sctr", js_data)
         }
         else {
 
           this.DismissClick()
-          this.present(2)
+          this.present(2, depApt, arrApt)
         }
       })
     }
@@ -314,109 +318,74 @@ export class FSearchPage implements OnInit {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
   // MULTI TRIP
+  ind: any
+  gaugeTitleForm: FormGroup;
+  gaugeTitles: FormArray;
 
-  flightDataM = this.fb.group({
-    flighttype: new FormControl(''),
-    D_airport: new FormControl('', [Validators.required]),
-    A_airport: new FormControl('', [Validators.required]),
-    D_date: new FormControl('', [Validators.required]),
-    A_date: new FormControl(''),
-    PClass: new FormControl(''),
-    PFlight: new FormControl(''),
-    Adults: new FormControl(''),
-    Childs: new FormControl(''),
-    Infants: new FormControl(''),
-    quantities: this.fb.array([])
 
-  })
-
-  quantities(): FormArray {
-    return this.flightDataM.get("quantities") as FormArray
-  }
-
-  newQuantity(): FormGroup {
+  createItem() {
     return this.fb.group({
-      MD_airport: new FormControl('', [Validators.required]),
-      MA_airport: new FormControl('', [Validators.required]),
-      MD_date: new FormControl('', [Validators.required]),
-      Adults: new FormControl(''),
-      Childs: new FormControl(''),
-      Infants: new FormControl(''),
-    })
-  }
+      D_airport: new FormControl('', [Validators.required]),
+      A_airport: new FormControl('', [Validators.required]),
+      D_date: new FormControl(this.todayt, [Validators.required]),
 
-  addQuantity() {
-    this.quantities().push(this.newQuantity());
+     
+    });
   }
-
-  removeQuantity(i: number) {
-    this.quantities().removeAt(i);
-  }
-  checkFlightM() {
-    this.present(1)
-    let depApt = this.flightDataM.value.D_airport.substring(0, 3);
-    let arrApt = this.flightDataM.value.A_airport.substring(0, 3);
-    let latest_date = this.datepipe.transform(this.flightDataM.value.D_date, 'yyyy-MM-dd');
-    let data: any = {
-      TYPE: "AIR",
-      NAME: "GET_FLIGHT",
-      STR: [
-        {
-          AUTH_TOKEN: this.Token,
-          SESSION_ID: "",
-          TRIP: "3",
-          SECTOR: "D",
-          SRC: depApt,
-          DES: arrApt,
-          DEP_DATE: latest_date,
-          RET_DATE: "",
-          ADT: this.flightDataM.value.Adults || this.d_Adult,
-          CHD: this.flightDataM.value.Childs || this.d_Child,
-          INF: this.flightDataM.value.Infants || this.d_Infants,
-          PC: "",
-          PF: "",
-          HS: "D"
-        }
-      ]
+  addItem(): void {
+    this.gaugeTitles = this.gaugeTitleForm.get('gaugeTitles') as FormArray;
+    if (this.gaugeTitles.length < 5) {
+      this.gaugeTitles.push(this.createItem());
     }
-    let js_data = JSON.stringify(data)
-    console.log(js_data)
-    // this.tService.postTestData("http://stageapi.ksofttechnology.com/API/FLIGHT", js_data).subscribe((Flight) => {
-    //   let size = Object.keys(Flight).length;
-    //   if(size>0){
-    //     let js_f = JSON.stringify(Flight)
-    //     this.DismissClick()
-    //     this.route.navigate(['home/fshowflight'])
-    //     sessionStorage.setItem("All_Flight",js_f)
-    //   }
-    //  else{
-    //   alert("Flight Not Found")
-    //   this.DismissClick()
-    //  }
-    // })
 
+    this.ind = this.gaugeTitles.length
 
   }
+  removeRow(index) {
+   
+
+
+      (<FormArray>this.gaugeTitleForm.get("gaugeTitles")).removeAt(index);
+
+      console.log(index)
+
+  }
+  onSubmit() {
+    console.log(this.gaugeTitleForm.value)
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   get Error() {
     return this.flightData.controls;
   }
   isLoading = false;
-  async present(id) {
+  async present(id, src, des) {
     this.isLoading = true;
     const popover = await this.popoverController.create({
       component: AlertPopoverComponent,
@@ -426,6 +395,8 @@ export class FSearchPage implements OnInit {
       backdropDismiss: false,
       componentProps: {
         "paramID": id,
+        "s": src,
+        "d": des
       },
     })
     return await popover.present();

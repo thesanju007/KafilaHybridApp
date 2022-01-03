@@ -3,6 +3,7 @@
     background-size: 100%;
     background-repeat: no-repeat;
     background-image: url("../../../../assets/fliht.JPG");
+    height: auto;
   }
   .content {
     /* this is needed or the background will be offset by a few pixels at the top */
@@ -142,6 +143,22 @@
   .submit-btn:disabled {
     opacity: 0.8;
     cursor:not-allowed;
+  }
+  .span-btn{
+    width: 100%;
+    padding: 15px 10px;
+    background: #ffffff;
+    color: #e9182d;
+    font-size: 14px;
+    font-family: serif;
+    border: 1px solid #e9182d;
+    opacity: 1;
+    box-shadow: 1px 1px 1px 1px lightgrey;
+    border-radius: 5px;
+    margin: 10px 0px 0px 0px !important;
+    letter-spacing: 2px;
+    text-align: center;
+    cursor: pointer;
   }
   .tp_mgn {
     padding: 20px 0px 0px 0px;

@@ -9,9 +9,12 @@ export class AlertPopoverComponent implements OnInit {
 
   constructor(public popoverController: PopoverController, private navParams: NavParams) { }
   Id: any
+  src:any
+  des:any
   ngOnInit() {
     this.Id = this.navParams.data.paramID;
-
+    this.src=this.navParams.data.s
+    this.des=this.navParams.data.d
   }
 
   async navigate() {
