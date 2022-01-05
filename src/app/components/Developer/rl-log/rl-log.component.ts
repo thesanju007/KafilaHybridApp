@@ -15,7 +15,7 @@ export class RlLogComponent implements OnInit {
   maxDate = new Date(new Date().getTime()).toISOString().split('T')[0];
   currentDate = new Date()
   day = this.currentDate.toLocaleDateString('en-US', { day: '2-digit' });
-  month = this.currentDate.getMonth() + 1
+  month =this.currentDate.toLocaleDateString('en-US', { month: '2-digit' }) 
   year = this.currentDate.getFullYear()
   twoDigitYear = this.year.toString().substr(-2);
   str_Date: any

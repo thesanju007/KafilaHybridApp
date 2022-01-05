@@ -8,6 +8,8 @@ import { TicketComponent } from '../rl-Ticket/ticket.component'
 import { ModalController } from '@ionic/angular';
 import * as XLSX from 'xlsx';
 import { Subject } from 'rxjs';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 @Component({
   selector: 'app-booking-history',
@@ -19,6 +21,7 @@ export class BookingHistoryComponent implements OnInit {
   subscription: Subscription
   amt = 0
   unsubscribe: Subject<any>;
+
   constructor(private tService: TestService, public loadingController: LoadingController, private route: Router, public modalController: ModalController) {
     this.unsubscribe = new Subject<any>();
   }
@@ -51,7 +54,7 @@ export class BookingHistoryComponent implements OnInit {
     if (this.booleanValue == true) {
       this.evv = "D"
     }
-    
+
     else {
       this.evv = "P"
     }
@@ -61,7 +64,9 @@ export class BookingHistoryComponent implements OnInit {
     FROM: new FormControl(this.maxDate),
     TO: new FormControl(this.maxDate),
   })
-dog=false
+  dog = false
+
+  pdfData:any
   AgtSrhBtn(e: { preventDefault: () => void; }) {
     this.present()
     this.tabShow = false
@@ -87,15 +92,17 @@ dog=false
       if (result.response.length > 2) {
         this.agtList = JSON.parse(result.response)
         this.tabShow = true
+        // console.log(this.agtList)
         this.dismiss()
         this.amt = 0
+        this.pdfData = this.agtList.map(Object.values);
         for (let x of this.agtList) {
           this.amt += parseInt(x.AMOUNT)
         }
-        this.dog=false
+        this.dog = false
       }
       else {
-        this.dog=true
+        this.dog = true
         this.dismiss()
       }
     });
@@ -141,7 +148,7 @@ dog=false
       return <any>new Date(a.ETIME) - <any>new Date(b.ETIME);
     });
   }
-  
+
   sortDateDesc() {
     this.down2 = true
     this.up2 = false
@@ -281,9 +288,37 @@ dog=false
     XLSX.writeFile(wb, this.fileName);
 
   }
+
+
+  openPDF(): void {
+    var doc = new jsPDF('l', 'mm',[512, 392]);
+
+    
+    doc.setFontSize(5);
+    doc.setTextColor(100);
+
+
+    (doc as any).autoTable({
+      head:[['FID', 'RID', 'Email Id', 'Booking Id','Amount', 'PNR', 'DEP Date', 'ETIME','Status', 'OI', 'IP']],
+      body: this.pdfData,
+ 
+    })
+
+    // below line for Open PDF document in new tab
+    doc.output('dataurlnewwindow')
+
+    // below line for Download PDF document  
+    doc.save('bookingData'+this.maxDate+'.pdf');
+  }
+
+
+
+
+
+
+
   ngOnDestroy(): void {
     this.unsubscribe.next();
     this.unsubscribe.complete();
   }
 }
-//  9319296968

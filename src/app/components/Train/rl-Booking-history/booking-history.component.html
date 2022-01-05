@@ -70,14 +70,20 @@
         <ion-badge color="success" style="margin-left: 20px; " class="ionp">Total Booking Amount = {{this.amt |
           currency:'INR'}}</ion-badge>
         <ion-badge color="tertiary" class="ionp" style="cursor: pointer;float: right;margin: 5px 20px 0px 0px;" (click)="exportexcel()">
+          <img src="https://img.icons8.com/material-outlined/12/ffffff/download--v1.png" /> Download Excel
+        </ion-badge>
+        <ion-badge color="danger" class="ionp" style="cursor: pointer;float: right;margin: 5px 20px 0px 0px;" (click)="openPDF()">
           <img src="https://img.icons8.com/material-outlined/12/ffffff/download--v1.png" /> Download Pdf
+        </ion-badge>
+        <ion-badge color="secondary" class="ionp" style="cursor: pointer;float: right;margin: 5px 20px 0px 0px;" (click)="exportexcel()">
+          <img src="https://img.icons8.com/material-outlined/12/ffffff/download--v1.png" /> Download Text
         </ion-badge>
       </ion-col>
     </ion-row>
     <ion-card class="" *ngIf="tabShow"
       style="overflow-x:auto; background-color: white; padding-bottom: 90px; ">
    
-      <table id="tabl" #content>
+      <table id="tabl" #tabl>
         <thead >
           <tr>
             <th class="padding">
