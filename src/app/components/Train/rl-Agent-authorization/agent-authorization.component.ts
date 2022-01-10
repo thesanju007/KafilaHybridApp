@@ -92,12 +92,12 @@ export class AgentAuthorizationComponent implements OnInit {
       }
     });
   }
-
-  pageOfItems: Array<any>;
-  onChangePage(pageOfItems: Array<any>) {
-    // update current page of items
-    this.pageOfItems = pageOfItems;
-  }
+  // pageOfItems: Array<any>;
+  // onChangePage(pageOfItems: Array<any>) {
+  //   // update current page of items
+  //   this.pageOfItems = pageOfItems;
+  // }
+ 
   up = false
   down = true
   up1 = false
@@ -115,7 +115,7 @@ export class AgentAuthorizationComponent implements OnInit {
   sortBalAsc() {
     this.down = false
     this.up = true
-    return this.pageOfItems.sort((a, b) => {
+    return this.agtList.sort((a, b) => {
       return a.BALANCE - b.BALANCE;
     });
   }
@@ -123,7 +123,7 @@ export class AgentAuthorizationComponent implements OnInit {
   sortBalDesc() {
     this.down = true
     this.up = false
-    return this.pageOfItems.sort((a, b) => {
+    return this.agtList.sort((a, b) => {
       return b.BALANCE - a.BALANCE;
     });
   }
@@ -131,7 +131,7 @@ export class AgentAuthorizationComponent implements OnInit {
   sortMailAsc() {
     this.down1 = false
     this.up1 = true
-    return this.pageOfItems.sort((a, b) => {
+    return this.agtList.sort((a, b) => {
       return a.EMAIL.localeCompare(b.EMAIL);
     })
   }
@@ -139,7 +139,7 @@ export class AgentAuthorizationComponent implements OnInit {
   sortMailDesc() {
     this.down1 = true
     this.up1 = false
-    return this.pageOfItems.sort((a, b) => {
+    return this.agtList.sort((a, b) => {
       return b.EMAIL.localeCompare(a.EMAIL);
     })
   }
@@ -147,7 +147,7 @@ export class AgentAuthorizationComponent implements OnInit {
   sortDateAsc() {
     this.down2 = false
     this.up2 = true
-    return this.pageOfItems.sort((a, b) => {
+    return this.agtList.sort((a, b) => {
       return <any>new Date(a.ETIME) - <any>new Date(b.ETIME);
     });
   }
@@ -155,7 +155,7 @@ export class AgentAuthorizationComponent implements OnInit {
   sortDateDesc() {
     this.down2 = true
     this.up2 = false
-    return this.pageOfItems.sort((a, b) => {
+    return this.agtList.sort((a, b) => {
       return <any>new Date(b.ETIME) - <any>new Date(a.ETIME);
     });
   }
@@ -163,7 +163,7 @@ export class AgentAuthorizationComponent implements OnInit {
   sortCnameAsc() {
     this.down3 = false
     this.up3 = true
-    return this.pageOfItems.sort((a, b) => {
+    return this.agtList.sort((a, b) => {
       return a.COMP_NAME.localeCompare(b.COMP_NAME);
     })
   }
@@ -172,7 +172,7 @@ export class AgentAuthorizationComponent implements OnInit {
 
     this.down3 = true
     this.up3 = false
-    return this.pageOfItems.sort((a, b) => {
+    return this.agtList.sort((a, b) => {
       return b.COMP_NAME.localeCompare(a.COMP_NAME);
     })
   }
@@ -180,7 +180,7 @@ export class AgentAuthorizationComponent implements OnInit {
 
     this.down4 = false
     this.up4 = true
-    return this.pageOfItems.sort((a, b) => {
+    return this.agtList.sort((a, b) => {
       let e = b.RAIL_ID.slice(7)
       let f = a.RAIL_ID.slice(7)
       return e - f
@@ -189,7 +189,7 @@ export class AgentAuthorizationComponent implements OnInit {
   sortDescscRailId() {
     this.down4 = true
     this.up4 = false
-    return this.pageOfItems.sort((a, b) => {
+    return this.agtList.sort((a, b) => {
       let e = b.RAIL_ID.slice(7)
       let f = a.RAIL_ID.slice(7)
       return f - e

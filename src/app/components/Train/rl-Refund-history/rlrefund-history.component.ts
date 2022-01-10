@@ -7,12 +7,6 @@ import { Subscription } from 'rxjs';
 import { Subject } from 'rxjs';
 import { TicketComponent } from '../rl-Ticket/ticket.component'
 import { ModalController } from '@ionic/angular';
-// import {ViewChild, ElementRef } from '@angular/core';
-// import jsPDF from 'jspdf';
-// import pdfMake from 'pdfmake/build/pdfmake';
-// import pdfFonts from 'pdfmake/build/vfs_fonts';
-// pdfMake.vfs = pdfFonts.pdfMake.vfs;
-// import htmlToPdfmake from 'html-to-pdfmake';
 @Component({
   selector: 'app-rlrefund-history',
   templateUrl: './rlrefund-history.component.html',
@@ -25,7 +19,9 @@ export class RLRefundHistoryComponent implements OnInit {
 
   subscription: Subscription
   unsubscribe: Subject<any>;
-  constructor(private tService: TestService, public loadingController: LoadingController, private route: Router, public modalController: ModalController) { this.unsubscribe = new Subject<any>(); }
+  constructor(private tService: TestService, public loadingController: LoadingController, private route: Router, public modalController: ModalController) { 
+    this.unsubscribe = new Subject<any>(); 
+  }
   login_Details
   agtList
   tabShow = false
@@ -228,22 +224,4 @@ export class RLRefundHistoryComponent implements OnInit {
     });
     return await modal.present();
   }
-
-
-
-  // @ViewChild('pdfTable') pdfTable: ElementRef;
-   
-  // public downloadAsPDF() {
-  //   const doc = new jsPDF('l', 'mm',[512, 392]);
-    
-  //   const pdfTable = this.pdfTable.nativeElement;
-    
-  //   var html = htmlToPdfmake(pdfTable.innerHTML);
-      
-  //   const documentDefinition = { content: html };
-  //   pdfMake.createPdf(documentDefinition).open(); 
-      
-  // }
-
-
 }

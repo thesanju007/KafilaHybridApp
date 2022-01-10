@@ -88,6 +88,7 @@ export class PendingHistoryComponent implements OnInit {
         this.dismiss()
         this.tabShow = true
         this.agtList = JSON.parse(result.response)
+       
         this.dog=false
       }
       else {
@@ -200,6 +201,7 @@ export class PendingHistoryComponent implements OnInit {
     }
     this.tService.postTestData(pndHistList).subscribe(result => {
       localStorage.setItem("chkbooking", result.response)
+     
       this.dismiss()
       this.presentModal2()
     });

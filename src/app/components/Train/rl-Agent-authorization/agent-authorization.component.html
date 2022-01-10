@@ -64,9 +64,9 @@
           + Add New Agent
         </ion-badge>
       </ion-col>
-      <ion-col size-xs="6" size-sm="6" size-md="6" size-lg="6" size-xl="6" style="padding: 0px;">
+      <!-- <ion-col size-xs="6" size-sm="6" size-md="6" size-lg="6" size-xl="6" style="padding: 0px;">
         <jw-pagination [items]="agtList" (changePage)="onChangePage($event)"  [pageSize]="50"></jw-pagination>
-      </ion-col>
+      </ion-col> -->
     </ion-row>
     <ion-card *ngIf="tabShow" style="overflow-x:auto; background-color: white;">
 
@@ -127,7 +127,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let d of pageOfItems, index as i" class="hvr">
+          <tr *ngFor="let d of agtList, index as i" class="hvr">
             <td class="">{{i+1}}</td>
             <td class="">{{d.COMP_NAME}}</td>
             <td class="">{{d.EMAIL}}</td>

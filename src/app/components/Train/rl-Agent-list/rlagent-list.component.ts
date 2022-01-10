@@ -102,11 +102,11 @@ export class RLAgentListComponent implements OnInit {
     });
   }
 
-  pageOfItems: Array<any>;
-  onChangePage(pageOfItems: Array<any>) {
-    // update current page of items
-    this.pageOfItems = pageOfItems;
-  }
+  // agtList: Array<any>;
+  // onChangePage(agtList: Array<any>) {
+  //   // update current page of items
+  //   this.agtList = agtList;
+  // }
   up=false
   down=true
   up1=false
@@ -118,42 +118,42 @@ export class RLAgentListComponent implements OnInit {
   sortCnameAsc() {
     this.down=false
     this.up=true
-    return this.pageOfItems.sort((a, b) => {
+    return this.agtList.sort((a, b) => {
       return a.COMP_NAME.localeCompare(b.COMP_NAME);
     })
   }
   sortCnameDesc() {
     this.down=true
     this.up=false
-    return this.pageOfItems.sort((a, b) => {
+    return this.agtList.sort((a, b) => {
       return b.COMP_NAME.localeCompare(a.COMP_NAME);
     })
   }
   sortMailAsc() {
     this.down1=false
     this.up1=true
-    return this.pageOfItems.sort((a, b) => {
+    return this.agtList.sort((a, b) => {
       return a.EMAIL.localeCompare(b.EMAIL);
     })
   }
   sortMailDesc() {
     this.down1=true
     this.up1=false
-    return this.pageOfItems.sort((a, b) => {
+    return this.agtList.sort((a, b) => {
       return b.EMAIL.localeCompare(a.EMAIL);
     })
   }
   sortDateAsc() {
     this.down2=false
     this.up2=true
-    return this.pageOfItems.sort((a, b) => {
+    return this.agtList.sort((a, b) => {
       return <any>new Date(a.ETIME) - <any>new Date(b.ETIME);
     });
   }
   sortDateDesc() {
     this.down2=true
     this.up2=false
-    return this.pageOfItems.sort((a, b) => {
+    return this.agtList.sort((a, b) => {
       return <any>new Date(b.ETIME) - <any>new Date(a.ETIME);
     });
   }
@@ -161,7 +161,7 @@ export class RLAgentListComponent implements OnInit {
     
     this.down3 = false
     this.up3 = true
-    return this.pageOfItems.sort((a, b) => {
+    return this.agtList.sort((a, b) => {
      let e= b.RAIL_ID.slice(7)
      let f= a.RAIL_ID.slice(7)
       return e-f
@@ -170,7 +170,7 @@ export class RLAgentListComponent implements OnInit {
   sortDescscRailId() {
     this.down3 = true
     this.up3 = false
-    return this.pageOfItems.sort((a, b) => {
+    return this.agtList.sort((a, b) => {
       let e= b.RAIL_ID.slice(7)
       let f= a.RAIL_ID.slice(7)
        return f-e
