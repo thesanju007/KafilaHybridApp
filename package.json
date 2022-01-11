@@ -29,7 +29,6 @@
     "html2canvas": "^1.4.0",
     "jspdf": "^2.5.0",
     "jspdf-autotable": "^3.5.23",
-    "jw-angular-pagination": "^1.2.0",
     "pdfmake": "^0.2.4",
     "rxjs": "~6.6.0",
     "ts-md5": "^1.2.9",

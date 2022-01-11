@@ -114,10 +114,10 @@
             <td class="ion-text-center">{{i+1}}</td>
             <!-- <td class="ion-text-center" style="color: red;cursor: pointer" (click)="PNR(d)">{{d.BOOKING_ID}}</td> -->
             <td class="ion-text-center" *ngIf="d.PNR!==''" style="color: red; cursor: pointer" (click)="PNR(d)">
-              <b>{{d.BOOKING_ID|uppercase}}</b>
+              <b>{{d.BOOKING_ID}}</b>
             </td>
             <td class="ion-text-center" *ngIf="d.PNR==''" style="cursor: pointer" (click)="PNR(d)">
-              <b>{{d.BOOKING_ID|uppercase}}</b>
+              <b>{{d.BOOKING_ID}}</b>
             </td>
             <td class="ion-text-center" style="color: rgb(8, 144, 255);">{{d.CANCELATION_ID}}</td>
             <td class="ion-text-center">{{d.FID}}</td>

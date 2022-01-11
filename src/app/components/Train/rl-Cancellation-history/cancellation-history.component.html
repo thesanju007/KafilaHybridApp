@@ -144,8 +144,8 @@
         <tbody>
           <tr *ngFor="let d of agtList, index as i" class="hvr">
             <td>{{i+1}}</td>
-            <td style="color: red; cursor: pointer" (click)="PNR(d)"><b>{{d.BOOKING_ID|uppercase}}</b></td>
-            <td style="color: rgb(168, 121, 245);" >{{d.CANCELATION_ID|uppercase}}</td>
+            <td style="color: red; cursor: pointer" (click)="PNR(d)"><b>{{d.BOOKING_ID}}</b></td>
+            <td style="color: rgb(168, 121, 245);" >{{d.CANCELATION_ID}}</td>
             <td>{{d.FID}}</td>
             <td>{{d.RID}}</td>
             <td style="color: rgb(8, 144, 255);"><b>{{d.PNR}}</b></td>

@@ -132,7 +132,7 @@
         <tbody>
           <tr *ngFor="let d of agtList, index as i" class="hvr">
             <td class="ion-text-center">{{i+1}}</td>
-            <td class="ion-text-center" style="color: red;cursor: pointer" (click)="PNR(d)"><b>{{d.BOOKING_ID|uppercase}}</b></td>
+            <td class="ion-text-center" style="color: red;cursor: pointer" (click)="PNR(d)"><b>{{d.BOOKING_ID}}</b></td>
             <td>{{d.EMAIL_ID}}</td>
             <td class="ion-text-center">{{d.FID}}</td>
             <td class="ion-text-center">{{d.RID}}</td>

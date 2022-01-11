@@ -125,13 +125,13 @@
           <tr *ngFor="let d of agtList, index as i" class="hvr">
             <td class="ion-text-center">{{i+1}}</td>
             <td class="ion-text-center" style="color: red;cursor: pointer" (click)="PNR(d)">
-              <b>{{d.BOOKING_ID|uppercase}}</b></td>
+              <b>{{d.BOOKING_ID}}</b></td>
 
             <td class="ion-text-center">{{d.FID}}</td>
             <td class="ion-text-center" style="color:rgb(8, 144, 255); ">{{d.RID}}</td>
             <td class="ion-text-center" style="color: green;"><b>{{d.AMOUNT | currency:'INR'}}</b></td>
             <td class="ion-text-center">{{d.ETIME | date: 'dd/MM/yyyy'}} / {{d.ETIME | date:"HH:mm"}}</td>
-            <td class="ion-text-center" style="color: rgb(56, 108, 156);"><b>{{d.OI|uppercase}}</b></td>
+            <td class="ion-text-center" style="color: rgb(56, 108, 156);"><b>{{d.OI}}</b></td>
             <td class="ion-text-center" style="color:palevioletred;">{{d.REFUND_TYPE}}</td>
             <td class="ion-text-center">{{d.NARRATION}}</td>
 
