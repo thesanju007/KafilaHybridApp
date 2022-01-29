@@ -60,7 +60,7 @@ export class PendingHistoryComponent implements OnInit {
     FROM: new FormControl(this.maxDate),
     TO: new FormControl(this.maxDate),
   })
-  dog=false
+  dog = false
   AgtSrhBtn(e) {
     this.present()
     this.tabShow = false
@@ -82,17 +82,18 @@ export class PendingHistoryComponent implements OnInit {
       "ENV": "P",
       "Version": "1.0.0.0.0.0"
     }
-
+    // console.log(pndHistList)
     this.subscription = this.tService.postTestData(pndHistList).subscribe(result => {
       if (result.response.length > 2) {
+        // console.log(result.response)
         this.dismiss()
         this.tabShow = true
         this.agtList = JSON.parse(result.response)
-       
-        this.dog=false
+
+        this.dog = false
       }
       else {
-        this.dog=true
+        this.dog = true
         this.dismiss()
       }
     });
@@ -201,7 +202,6 @@ export class PendingHistoryComponent implements OnInit {
     }
     this.tService.postTestData(pndHistList).subscribe(result => {
       localStorage.setItem("chkbooking", result.response)
-     
       this.dismiss()
       this.presentModal2()
     });
@@ -234,8 +234,8 @@ export class PendingHistoryComponent implements OnInit {
       this.tService.postTestData(pndHistList).subscribe(result => {
         localStorage.setItem("refund", result.response)
         this.dismiss()
-        this.presentModal1( d.BOOKING_ID)
-       
+        this.presentModal1(d.BOOKING_ID)
+
       });
     }
     else {
@@ -300,7 +300,7 @@ export class PendingHistoryComponent implements OnInit {
       cssClass: 'popover_setting2',
       showBackdrop: true,
     });
-  
+
     return await modal2.present();
   }
 

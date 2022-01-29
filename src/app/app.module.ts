@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TmoduleModule } from './components/Train/rl-Module/tmodule.module';
 import { AModuleModule } from './components/Admin/a-module/a-module.module'
 import{DevModuleModule}from'./components/Developer/dev-module/dev-module.module'
+import{FModuleModule} from './components/Flight/f-module/f-module.module'
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -18,7 +19,7 @@ import{DevModuleModule}from'./components/Developer/dev-module/dev-module.module'
     IonicModule.forRoot(),
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule, TmoduleModule, AModuleModule,DevModuleModule
+    HttpClientModule, TmoduleModule, AModuleModule,DevModuleModule,FModuleModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

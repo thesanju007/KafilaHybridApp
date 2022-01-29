@@ -7,7 +7,7 @@
 *.tmp
 *.tmp.*
 *.sublime-project
-*.sublime-workspace
+*.sublime-workspace 
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate

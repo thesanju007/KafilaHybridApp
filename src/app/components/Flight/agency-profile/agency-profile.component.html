@@ -1,0 +1,821 @@
+<ion-app>
+  <ion-header [translucent]="true">
+    <ion-toolbar class="ion-text-center">
+      <ion-buttons slot="start" style="background-color: #5ebba5;">
+        <ion-menu-button style="color: rgb(255, 255, 255);"></ion-menu-button>
+      </ion-buttons>
+      <ion-row>
+        <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+          <!-- <img src="https://img.icons8.com/fluency/32/000000/train.png" /> -->
+          <span class="h1">
+            <ion-icon name="train"></ion-icon> Agency Profile
+          </span>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-header>
+
+
+
+  <ion-content>
+    <!-- <ion-button>CLICK</ion-button> -->
+    <ion-card *ngIf="!fShow">
+      <ion-grid>
+        <ion-row>
+          <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12" >
+            <form #cForm="ngForm" (ngSubmit)="srhAgt(cForm)">
+              <ion-row class="bdr ion-padding">
+                <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
+
+                  <input name="aId" ngModel class="ipt" placeholder="Agent ID">
+
+
+                </ion-col>
+
+                <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3" size-xl="3">
+                  <button class="ccL-btn" type="submit">
+                    <ion-icon slot="start" name="search"></ion-icon> Search
+                  </button>
+                </ion-col>
+                <ion-col size-xs="7" size-sm="7" size-md="3" size-lg="3" size-xl="3" class="ion-text-end">
+
+                </ion-col>
+              </ion-row>
+            </form>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+
+    <ion-row *ngIf="fShow">
+
+      <ion-col size-xs="1" size-sm="1" size-md="1" size-lg="2" size-xl="2">
+      </ion-col>
+      <ion-col size-xs="10" size-sm="10" size-md="10" size-lg="8" size-xl="8">
+        <ion-card class="ion-margin-top" style="background-color: white;" *ngIf="isForm">
+          <ion-grid>
+            <ion-row>
+              <ion-col *ngIf="fShow">
+                <button (click)="canAll()" type="submit" class="sv-btn"
+                  style="cursor: pointer;float: right;margin: 5px 20px 0px 0px;">
+                  <img src="https://img.icons8.com/color/24/000000/cancel--v1.png" />
+                </button>
+
+              </ion-col>
+
+
+
+              <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12" >
+                <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
+
+                  <ion-row class="bdr ion-padding">
+                    <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+
+
+                      <img *ngIf="edit_column" (click)="editForm()"
+                        style="cursor: pointer;float: right;margin: 0px 20px 0px 0px;"
+                        src="https://img.icons8.com/external-becris-lineal-becris/24/ff1700/external-edit-mintab-for-ios-becris-lineal-becris.png" />
+
+                      <button *ngIf="!edit_column" type="submit" class="sv-btn"
+                        style="cursor: pointer;float: right;margin: 0px 20px 0px 0px;">
+                        <img src="https://img.icons8.com/ios-filled/24/2ecc71/save--v1.png" />
+                      </button>
+
+                      <button (click)="cancelForm()" *ngIf="!edit_column" type="submit" class="sv-btn"
+                        style="cursor: pointer;float: right;margin: 0px 20px 0px 0px;">
+                        <img src="https://img.icons8.com/color/24/000000/cancel--v1.png" />
+                      </button>
+
+                    </ion-col>
+                    <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+                      <p class="h_name_f">Agent Details</p>
+                    </ion-col>
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                      <fieldset>
+                        <legend>
+                          Id
+                        </legend>
+                        <input type="text" name="Id" [(ngModel)]="contact.Id" [disabled]="dis_column">
+                      </fieldset>
+                    </ion-col>
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                      <fieldset>
+                        <legend>
+                          Company Name
+                        </legend>
+                        <input type="text" name="CompName" [(ngModel)]="contact.CompName" [disabled]="dis_column">
+                      </fieldset>
+                    </ion-col>
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                      <fieldset>
+                        <legend>
+                          Email
+                        </legend>
+                        <input type="text" name="Email" [(ngModel)]="contact.Email" [disabled]="edit_column">
+                      </fieldset>
+                    </ion-col>
+
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                      <fieldset>
+                        <legend>
+                          Alt Email
+                        </legend>
+                        <input type="text" name="AltEmail" [(ngModel)]="contact.AltEmail" [disabled]="edit_column">
+                      </fieldset>
+                    </ion-col>
+
+
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                      <fieldset>
+                        <legend>
+                          Mobile no.
+                        </legend>
+                        <input type="text" name="Mobile" [(ngModel)]="contact.Mobile" [disabled]="edit_column">
+                      </fieldset>
+                    </ion-col>
+
+
+
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                      <fieldset>
+                        <legend>
+                          Alt Mobile no.
+                        </legend>
+                        <input type="text" name="AltMobile" [(ngModel)]="contact.AltMobile" [disabled]="edit_column">
+                      </fieldset>
+                    </ion-col>
+
+
+
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                      <fieldset>
+                        <legend>
+                          Pan no.
+                        </legend>
+                        <input type="text" name="PanNo" [(ngModel)]="contact.PanNo" [disabled]="edit_column">
+                      </fieldset>
+                    </ion-col>
+
+
+
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                      <fieldset>
+                        <legend>
+                          Adhar no.
+                        </legend>
+                        <input type="text" name="AdharNo" [(ngModel)]="contact.AdharNo" [disabled]="edit_column">
+                      </fieldset>
+                    </ion-col>
+
+
+
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                      <fieldset>
+                        <legend>
+                          GST no.
+                        </legend>
+                        <input type="text" name="GstNo" [(ngModel)]="contact.GstNo" [disabled]="edit_column">
+                      </fieldset>
+                    </ion-col>
+
+
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                      <fieldset>
+                        <legend>
+                          TDS Percentage
+                        </legend>
+                        <input type="text" name="TDS" [(ngModel)]="contact.TDS" [disabled]="edit_column">
+                      </fieldset>
+                    </ion-col>
+
+
+
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                      <fieldset>
+                        <legend>
+                          Agent Type
+                        </legend>
+                        <input type="text" name="AgencyType" [(ngModel)]="contact.AgencyType" [disabled]="edit_column">
+                      </fieldset>
+                    </ion-col>
+
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                      <fieldset>
+                        <legend>
+                          Reference
+                        </legend>
+                        <input type="text" name="Reference" [(ngModel)]="contact.Reference" [disabled]="edit_column">
+                      </fieldset>
+                    </ion-col>
+
+
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                      <fieldset>
+                        <legend>
+                          Last Verfied
+                        </legend>
+                        <input type="text" name="LastVerfied" [(ngModel)]="contact.LastVerfied"
+                          [disabled]="edit_column">
+                      </fieldset>
+                    </ion-col>
+
+
+
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                      <fieldset>
+                        <legend>
+                          Registration Time
+                        </legend>
+                        <input type="text" name="RegistrationTime" [(ngModel)]="contact.RegistrationTime"
+                          [disabled]="edit_column">
+                      </fieldset>
+                    </ion-col>
+
+
+
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                      <fieldset>
+                        <legend>
+                          Last Update Time
+                        </legend>
+                        <input type="text" name="lastUpdateTime" [(ngModel)]="contact.lastUpdateTime"
+                          [disabled]="edit_column">
+                      </fieldset>
+                    </ion-col>
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+
+                    </ion-col>
+
+
+                    <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+                      <p class="h_name_f">Address</p>
+                    </ion-col>
+
+
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                      <fieldset>
+                        <legend>
+                          First Name
+                        </legend>
+                        <input type="text" name="FirstName" [(ngModel)]="contact.Address.FirstName"
+                          [disabled]="edit_column">
+                      </fieldset>
+                    </ion-col>
+
+
+
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                      <fieldset>
+                        <legend>
+                          Last Name
+                        </legend>
+                        <input type="text" name="LastName" [(ngModel)]="contact.Address.LastName"
+                          [disabled]="edit_column">
+                      </fieldset>
+                    </ion-col>
+
+
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                      <fieldset>
+                        <legend>
+                          Address1
+                        </legend>
+                        <input type="text" name="Address1" [(ngModel)]="contact.Address.Address1"
+                          [disabled]="edit_column">
+                      </fieldset>
+                    </ion-col>
+
+
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                      <fieldset>
+                        <legend>
+                          Address2
+                        </legend>
+                        <input type="text" name="Address2" [(ngModel)]="contact.Address.Address2"
+                          [disabled]="edit_column">
+                      </fieldset>
+                    </ion-col>
+
+
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                      <fieldset>
+                        <legend>
+                          City
+                        </legend>
+                        <input type="text" name="City" [(ngModel)]="contact.Address.City" [disabled]="edit_column">
+                      </fieldset>
+                    </ion-col>
+
+
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                      <fieldset>
+                        <legend>
+                          State
+                        </legend>
+                        <input type="text" name="State" [(ngModel)]="contact.Address.State" [disabled]="edit_column">
+                      </fieldset>
+                    </ion-col>
+
+
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                      <fieldset>
+                        <legend>
+                          Pin
+                        </legend>
+                        <input type="text" name="Pin" [(ngModel)]="contact.Address.Pin" [disabled]="edit_column">
+                      </fieldset>
+                    </ion-col>
+
+
+
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                      <fieldset>
+                        <legend>
+                          Country
+                        </legend>
+                        <input type="text" name="Country" [(ngModel)]="contact.Address.Country"
+                          [disabled]="edit_column">
+                      </fieldset>
+                    </ion-col>
+                    <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+                      <p class="h_name_f">Credentials</p>
+                    </ion-col>
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                      <fieldset>
+                        <legend>
+                          Agent Id
+                        </legend>
+                        <input type="text" name="AgentId" [(ngModel)]="contact.Credential.AgentId"
+                          [disabled]="edit_column">
+                      </fieldset>
+                    </ion-col>
+
+
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                      <fieldset>
+                        <legend>
+                          User Id
+                        </legend>
+                        <input type="text" name="Uid" [(ngModel)]="contact.Credential.Uid" [disabled]="edit_column">
+                      </fieldset>
+                    </ion-col>
+
+
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                      <fieldset>
+                        <legend>
+                          Password
+                        </legend>
+                        <input type="text" name="Pwd" [(ngModel)]="contact.Credential.Pwd" [disabled]="edit_column">
+                      </fieldset>
+                    </ion-col>
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                      <span class="m_names">
+                        <span class="mod_radio">Active :</span><br>
+                        <ion-row>
+                          <ion-col size-xs="6" size-sm="6" size-md="4" size-lg="4" size-xl="4"> <input type="radio"
+                              value="true" name="aIsActive" [(ngModel)]="aIsActive" [disabled]="edit_column"> Enabled
+                          </ion-col>
+                          <ion-col size-xs="6" size-sm="6" size-md="4" size-lg="4" size-xl="4"> <input type="radio"
+                              value="false" name="aIsActive" [(ngModel)]="aIsActive" [disabled]="edit_column"> Disabled
+                          </ion-col>
+                        </ion-row>
+
+                      </span>
+                    </ion-col>
+
+                    <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+                      <p class="h_name_f">KYC Documents</p>
+                    </ion-col>
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                      <fieldset>
+                        <legend>
+                          Owner Photo
+                        </legend>
+                        <img [src]="contact.KycDetails.AgencyLogo" alt="">
+                      </fieldset>
+                    </ion-col>
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                      <fieldset>
+                        <legend>
+                          Agency Logo
+                        </legend>
+                        <!-- <input formControlName="AgencyLogo" type="image"> -->
+                        <img [src]="contact.KycDetails.AgencyLogo" alt="">
+                      </fieldset>
+                    </ion-col>
+
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                      <fieldset>
+                        <legend>
+                          Pan Card Image
+                        </legend>
+                        <img [src]="contact.KycDetails.AgencyLogo" alt="">
+                      </fieldset>
+                    </ion-col>
+
+
+
+                    <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                      <fieldset>
+                        <legend>
+                          Adhar Card Image
+                        </legend>
+                        <img [src]="contact.KycDetails.AgencyLogo" alt="">
+                      </fieldset>
+                    </ion-col>
+
+
+
+
+
+                    <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+                      <p class="h_name_f">Products</p>
+                    </ion-col>
+
+                    <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+                      <mat-accordion class="example-headers-align" multi>
+                        <mat-expansion-panel>
+                          <mat-expansion-panel-header>
+                            <mat-panel-title class="mod_radio">
+                              Flight
+                            </mat-panel-title>
+
+                          </mat-expansion-panel-header>
+                          <ion-row>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2">Active :</ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"> <input type="radio"
+                                value="true" name="fIsActive" [(ngModel)]="fIsActive" [disabled]="edit_column"> Enabled
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"><input type="radio"
+                                value="false" name="fIsActive" [(ngModel)]="fIsActive" [disabled]="edit_column">
+                              Disabled
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2">Search :</ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"> <input type="radio"
+                                value="true" name="fSearch" [(ngModel)]="fSearch" [disabled]="edit_column">
+                              Enabled
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"><input type="radio"
+                                value="false" name="fSearch" [(ngModel)]="fSearch" [disabled]="edit_column">
+                              Disabled
+                            </ion-col>
+                          </ion-row>
+
+
+                          <ion-row>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2">Fare Check :
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"> <input type="radio"
+                                value="true" name="fFareChk" [(ngModel)]="fFareChk" [disabled]="edit_column"> Enabled
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"><input type="radio"
+                                value="false" name="fFareChk" [(ngModel)]="fFareChk" [disabled]="edit_column"> Disabled
+                            </ion-col>
+                          </ion-row>
+
+
+
+                          <ion-row>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"> PNR creation :
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"> <input type="radio"
+                                value="true" name="fPnrCre" [(ngModel)]="fPnrCre" [disabled]="edit_column"> Enabled
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"><input type="radio"
+                                value="false" name="fPnrCre" [(ngModel)]="fPnrCre" [disabled]="edit_column">Disabled
+                            </ion-col>
+                          </ion-row>
+
+
+                          <ion-row>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2">Ticket Number :
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"> <input type="radio"
+                                value="true" name="fTicktnum" [(ngModel)]="fTicktnum" [disabled]="edit_column"> Enabled
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"> <input type="radio"
+                                value="false" name="fTicktnum" [(ngModel)]="fTicktnum" [disabled]="edit_column">
+                              Disabled
+                            </ion-col>
+                          </ion-row>
+
+                        </mat-expansion-panel>
+
+
+                        <mat-expansion-panel>
+                          <mat-expansion-panel-header>
+                            <mat-panel-title class="mod_radio">
+                              Rail
+                            </mat-panel-title>
+                          </mat-expansion-panel-header>
+                          <ion-row>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2">Active :</ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"> <input type="radio"
+                                value="true" name="rIsActive" [(ngModel)]="rIsActive" [disabled]="edit_column"> Enabled
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"><input type="radio"
+                                value="false" name="rIsActive" [(ngModel)]="rIsActive" [disabled]="edit_column">
+                              Disabled
+                            </ion-col>
+                          </ion-row>
+
+
+                          <ion-row>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2">Search :</ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"> <input type="radio"
+                                value="true" name="rSearch" [(ngModel)]="rSearch" [disabled]="edit_column"> Enabled
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"><input type="radio"
+                                value="false" name="rSearch" [(ngModel)]="rSearch" [disabled]="edit_column"> Disabled
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2">Fare Check :
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"> <input type="radio"
+                                value="true" name="rFareChk" [(ngModel)]="rFareChk" [disabled]="edit_column"> Enabled
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"><input type="radio"
+                                value="false" name="rFareChk" [(ngModel)]="rFareChk" [disabled]="edit_column"> Disabled
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2">PNR creation :
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"> <input type="radio"
+                                value="true" name="rPnrCre" [(ngModel)]="rPnrCre" [disabled]="edit_column"> Enabled
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"><input type="radio"
+                                value="false" name="rPnrCre" [(ngModel)]="rPnrCre" [disabled]="edit_column"> Disabled
+                            </ion-col>
+                          </ion-row>
+                        </mat-expansion-panel>
+
+
+                        <mat-expansion-panel>
+                          <mat-expansion-panel-header>
+                            <mat-panel-title class="mod_radio">
+                              Bus
+                            </mat-panel-title>
+                          </mat-expansion-panel-header>
+                          <ion-row>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2">Active :</ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"> <input type="radio"
+                                value="true" name="bIsActive" [(ngModel)]="bIsActive" [disabled]="edit_column"> Enabled
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"><input type="radio"
+                                value="false" name="bIsActive" [(ngModel)]="bIsActive" [disabled]="edit_column">
+                              Disabled
+                            </ion-col>
+                          </ion-row>
+
+
+
+                          <ion-row>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2">Search :</ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"> <input type="radio"
+                                value="true" name="bSearch" [(ngModel)]="bSearch" [disabled]="edit_column"> Enabled
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"><input type="radio"
+                                value="false" name="bSearch" [(ngModel)]="bSearch" [disabled]="edit_column"> Disabled
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2">AVLT Check :
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"> <input type="radio"
+                                value="true" name="bFareChk" [(ngModel)]="bFareChk" [disabled]="edit_column"> Enabled
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"><input type="radio"
+                                value="false" name="bFareChk" [(ngModel)]="bFareChk" [disabled]="edit_column"> Disabled
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2">A PNR creationctive :
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"> <input type="radio"
+                                value="true" name="bPnrCre" [(ngModel)]="bPnrCre" [disabled]="edit_column"> Enabled
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"><input type="radio"
+                                value="false" name="bPnrCre" [(ngModel)]="bPnrCre" [disabled]="edit_column"> Disabled
+                            </ion-col>
+                          </ion-row>
+                        </mat-expansion-panel>
+
+
+                        <mat-expansion-panel>
+                          <mat-expansion-panel-header>
+                            <mat-panel-title class="mod_radio">
+                              Hotel
+                            </mat-panel-title>
+
+                          </mat-expansion-panel-header>
+                          <ion-row>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2">Active :</ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"> <input type="radio"
+                                value="true" name="hIsActive" [(ngModel)]="hIsActive" [disabled]="edit_column"> Enabled
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"><input type="radio"
+                                value="false" name="hIsActive" [(ngModel)]="hIsActive" [disabled]="edit_column">
+                              Disabled
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2">Search :</ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"> <input type="radio"
+                                value="true" name="hSearch" [(ngModel)]="hSearch" [disabled]="edit_column"> Enabled
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"><input type="radio"
+                                value="false" name="hSearch" [(ngModel)]="hSearch" [disabled]="edit_column"> Disabled
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2">AVLT Check :
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"> <input type="radio"
+                                value="true" name="hFareChk" [(ngModel)]="hFareChk" [disabled]="edit_column"> Enabled
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"><input type="radio"
+                                value="false" name="hFareChk" [(ngModel)]="hFareChk" [disabled]="edit_column"> Disabled
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2">PNR creation :
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"> <input type="radio"
+                                value="true" name="hPnrCre" [(ngModel)]="hPnrCre" [disabled]="edit_column"> Enabled
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"><input type="radio"
+                                value="false" name="hPnrCre" [(ngModel)]="hPnrCre" [disabled]="edit_column"> Disabled
+                            </ion-col>
+                          </ion-row>
+
+                        </mat-expansion-panel>
+
+
+                        <mat-expansion-panel>
+                          <mat-expansion-panel-header>
+                            <mat-panel-title class="mod_radio">
+                              Packages
+                            </mat-panel-title>
+
+                          </mat-expansion-panel-header>
+                          <ion-row>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2">Active :</ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"> <input type="radio"
+                                value="true" name="pIsActive" [(ngModel)]="pIsActive" [disabled]="edit_column"> Enabled
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"><input type="radio"
+                                value="false" name="pIsActive" [(ngModel)]="pIsActive" [disabled]="edit_column">
+                              Disabled
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2">Search :</ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"> <input type="radio"
+                                value="true" name="pSearch" [(ngModel)]="pSearch" [disabled]="edit_column"> Enabled
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"><input type="radio"
+                                value="false" name="pSearch" [(ngModel)]="pSearch" [disabled]="edit_column"> Disabled
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2">AVLT Check :
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"> <input type="radio"
+                                value="true" name="pFareChk" [(ngModel)]="pFareChk" [disabled]="edit_column"> Enabled
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"><input type="radio"
+                                value="false" name="pFareChk" [(ngModel)]="pFareChk" [disabled]="edit_column"> Disabled
+                            </ion-col>
+                          </ion-row>
+
+
+                          <ion-row>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2">PNR creation :
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"> <input type="radio"
+                                value="true" name="pPnrCre" [(ngModel)]="pPnrCre" [disabled]="edit_column"> Enabled
+                            </ion-col>
+                            <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"><input type="radio"
+                                value="false" name="pPnrCre" [(ngModel)]="pPnrCre" [disabled]="edit_column"> Disabled
+                            </ion-col>
+                          </ion-row>
+
+                        </mat-expansion-panel>
+                      </mat-accordion>
+                    </ion-col>
+
+
+                    <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+                      <p class="h_name_f">Modules</p>
+                    </ion-col>
+
+                    <ion-col style="margin: 15px 0px 0px 0px;" size-xs="12" size-sm="12" size-md="12" size-lg="12"
+                      size-xl="12">
+                      <ion-row>
+                        <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2">
+                          <span class="mod_radio m_names">API :</span>
+                        </ion-col>
+                        <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2">
+                          <input type="radio" value="true" name="isApi" [(ngModel)]="isApi" [disabled]="edit_column">
+                          Enabled
+                        </ion-col>
+                        <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2">
+                          <input type="radio" value="false" name="isApi" [(ngModel)]="isApi" [disabled]="edit_column">
+                          Disabled
+                        </ion-col>
+                      </ion-row>
+                    </ion-col>
+
+                    <ion-col style="margin: 15px 0px 0px 0px;" size-xs="12" size-sm="12" size-md="12" size-lg="12"
+                      size-xl="12">
+                      <ion-row>
+                        <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"> <span
+                            class="mod_radio m_names">B2B
+                            :</span> :</ion-col>
+                        <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"> <input type="radio"
+                            value="true" name="isB2b" [(ngModel)]="isB2b" [disabled]="edit_column"> Enabled
+                        </ion-col>
+                        <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"><input type="radio"
+                            value="false" name="isB2b" [(ngModel)]="isB2b" [disabled]="edit_column"> Disabled
+                        </ion-col>
+                      </ion-row>
+                    </ion-col>
+
+
+                    <ion-col style="margin: 15px 0px 0px 0px;" size-xs="12" size-sm="12" size-md="12" size-lg="12"
+                      size-xl="12">
+                      <ion-row>
+                        <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"><span
+                            class="mod_radio m_names">B2C
+                            :</span></ion-col>
+                        <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"> <input type="radio"
+                            value="true" name="isB2c" [(ngModel)]="isB2c" [disabled]="edit_column"
+                            style="background-color: green;"> Enabled
+                        </ion-col>
+                        <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="2" size-xl="2"><input type="radio"
+                            value="false" name="isB2c" [(ngModel)]="isB2c" [disabled]="edit_column"
+                            style="background-color: red;"> Disabled
+                        </ion-col>
+                      </ion-row>
+
+                    </ion-col>
+
+                  </ion-row>
+                </form>
+              </ion-col>
+
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+
+  </ion-content>
+</ion-app>

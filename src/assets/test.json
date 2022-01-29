@@ -1,0 +1,80 @@
+[
+    {
+        "Id": "",
+        "CompName": "Next Holidays",
+        "Email": "rohittiwari@nextholidaysindia.com",
+        "AltEmail": "",
+        "Mobile": "9811682685",
+        "AltMobile": "",
+        "PanNo": "DZCPK5412",
+        "AdharNo": "4586478596",
+        "GstNo": "",
+        "TDS": "5",
+        "AgencyType": "D",
+        "Reference": "",
+        "LastVerfied": "",
+        "RegistrationTime": "",
+        "lastUpdateTime": "",
+        "Address": {
+            "FirstName": "Rohit",
+            "LastName": "Tiwari",
+            "Address1": "271A/14 Balbir Nagar Ext.",
+            "Address2": "",
+            "City": "New delhi",
+            "State": "delhi",
+            "Pin": "110032",
+            "Country": ""
+        },
+        "Credential": {
+            "ISACTIVE": false,
+            "AgentId": "8184474",
+            "Uid": "nextholidays",
+            "Pwd": "tanya5621"
+        },
+        "KycDetails": {
+            "OwnerPhoto": "",
+            "PanCardLink": "",
+            "AdharCardLink": "",
+            "AgencyLogo": "http://kafilaholidays.in//upload/_1500298376409_dummy_logo.jpg",
+            "Other": ""
+        },
+        "Product": {
+            "Flight": {
+                "ISACTIVE": true,
+                "SEARCH": true,
+                "FARE_CHK": true,
+                "PNR_CREATION": true,
+                "TICKET_NUMBER": false
+            },
+            "Rail": {
+                "ISACTIVE": false,
+                "SEARCH": true,
+                "FARE_CHK": true,
+                "PNR_CREATION": true
+            },
+            "Bus": {
+                "ISACTIVE": false,
+                "SEARCH": true,
+                "AVLT_CHK": true,
+                "PNR_CREATION": true
+            },
+            "Hotel": {
+                "ISACTIVE": false,
+                "SEARCH": true,
+                "AVLT_CHK": true,
+                "PNR_CREATION": true
+            },
+            "Packages": {
+                "ISACTIVE": false,
+                "SEARCH": true,
+                "AVLT_CHK": true,
+                "PNR_CREATION": true
+            }
+        },
+        "ActiveModule": {
+            "API": false,
+            "B2B": true,
+            "B2C": false
+        }
+    }
+]

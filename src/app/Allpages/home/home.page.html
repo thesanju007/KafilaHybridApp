@@ -1,18 +1,18 @@
 <ion-app class=" for-app">
   <ion-split-pane contentId="main-content">
-    <ion-menu contentId="main-content" class="ion-text-center" >
+    <ion-menu contentId="main-content" class="ion-text-center">
       <ion-avatar>
         <img src="../assets/avatarC.jpg">
       </ion-avatar>
       <ion-note>Hello {{name}}</ion-note>
       <h5>{{login_Details.AID}}</h5>
       <ion-content>
-        <ion-item lines="none" class="line-up dash-men" [routerLink]="['/cchome/dashboard']" >
+        <ion-item lines="none" class="line-up dash-men" [routerLink]="['/cchome/dashboard']">
           <ion-icon slot="start" name="home"></ion-icon>
           <ion-label style="margin:0px">Dashboard </ion-label>
           <ion-icon name="chevron-forward-outline"></ion-icon>
         </ion-item>
-      
+
         <ion-list id="inbox-list" *ngFor="let d of Menu,let i = index" lines="none">
           <ion-item *ngIf="d.active=='true'" (click)="toggleSubMenu(d)" (ionClick)="d.showDetails=!d.showDetails "
             class="main-tag line-up" lines="none">
@@ -31,11 +31,11 @@
             </ion-item>
           </ion-list>
         </ion-list>
-        <!-- <ion-item lines="none" class="line-up dash-men" [routerLink]="['/cchome/RlLog']" >
-          <ion-icon slot="start" name="train"></ion-icon>
-          <ion-label style="margin:0px">Rail Log </ion-label>
+        <ion-item lines="none" class="line-up dash-men" [routerLink]="['/cchome/AgencyProfile']">
+          <ion-icon slot="start" name="man"></ion-icon>
+          <ion-label style="margin:0px">Agency Profile </ion-label>
           <ion-icon name="chevron-forward-outline"></ion-icon>
-        </ion-item> -->
+        </ion-item>
         <!-- <ion-item lines="none" class="line-up dash-men" [routerLink]="['/cchome/dashboard']" >
           <ion-icon slot="start"  name="logo-apple-ar"></ion-icon>
           <ion-label style="margin:0px">Developer </ion-label>

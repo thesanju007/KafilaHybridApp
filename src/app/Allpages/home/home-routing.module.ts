@@ -12,6 +12,7 @@ import { RlagencyStatementComponent } from '../../components/Train/rl-Agency-sta
 import { RlCancelOtpHistoryComponent } from '../../components/Train/rl-Cancel-Otp-History/rl-cancel-otp-history.component'
 import {RoleManagementComponent} from '../../components/Admin/role-management/role-management.component'
 import {RlLogComponent} from'../../components/Developer/rl-log/rl-log.component'
+import{AgencyProfileComponent} from '../../components/Flight/agency-profile/agency-profile.component'
 const routes: Routes = [
   {
     path: '',
@@ -74,6 +75,10 @@ const routes: Routes = [
       {
         path:'RlLog',
         component:RlLogComponent
+      },
+      {
+        path:'AgencyProfile',
+        component:AgencyProfileComponent
       }
       
     ]
