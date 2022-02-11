@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PopoverController, ToastController, LoadingController } from '@ionic/angular';
 import { LoginPopoverComponent } from '../../components/login-popover/login-popover.component';
-import { TestService } from '../../Services/test.service'
+import { PostService } from 'src/app/Services/post.service';
+import { CommonService } from 'src/app/Services/common.service';
 @Component({
   selector: 'app-index',
   templateUrl: './index.page.html',
@@ -15,7 +16,8 @@ export class IndexPage implements OnInit {
     public popoverController: PopoverController,
     public toastController: ToastController,
     public loadingController: LoadingController,
-    private tService: TestService,
+    private post_service:PostService,
+    private common_service:CommonService
   ) { }
   slideOpts = {
     autoplay: true,
@@ -59,11 +61,10 @@ export class IndexPage implements OnInit {
             }
           ]
         }
-        this.tService.postTestData("http://nauth.ksofttechnology.com/API/AUTH", obj).subscribe(result => {
+        this.post_service.POST("http://nauth.ksofttechnology.com/API/AUTH", obj).subscribe(result => {
           if (result.STATUS == "SUCCESS") {
             this.rout.navigate(['home/fsearch'])
-            localStorage.setItem("Token",result.RESULT)
-           
+            sessionStorage.setItem("Token",result.RESULT)
             this.dismiss()
           }
           else{
@@ -108,9 +109,9 @@ export class IndexPage implements OnInit {
       // duration: 2000
     }).then(a => {
       a.present().then(() => {
-        console.log('');
+       
         if (!this.isLoading) {
-          a.dismiss().then(() => console.log(''));
+          a.dismiss()
         }
       });
     });
@@ -118,7 +119,7 @@ export class IndexPage implements OnInit {
 
   async dismiss() {
     this.isLoading = false;
-    return await this.loadingController.dismiss().then(() => console.log(''));
+    return await this.loadingController.dismiss()
   }
 
   index() {

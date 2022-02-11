@@ -8,8 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class HRefundHistoryPage implements OnInit {
 
   constructor() { }
-
+  result: any
+  arr: any = []
+  obj: object
+  newarr: any = []
+  x: any
   ngOnInit() {
+    
+
   }
 
 }

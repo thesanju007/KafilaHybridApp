@@ -1,9 +1,10 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
-import { TestService } from '../../Services/test.service'
 import { Subscription } from 'rxjs'
 import { Platform } from '@ionic/angular';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { GetService } from 'src/app/Services/get.service';
+import { CommonService } from 'src/app/Services/common.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -15,18 +16,16 @@ export class HomePage implements OnInit {
   bigMenu = false;
   credTrue = false
   moreOption = true
-  constructor(private route: Router, private tService: TestService, public platform: Platform,) {
-    this.clickEventSubs = this.tService.getClickEvent().subscribe(() => {
+  constructor(private route: Router,public platform: Platform,private get_service:GetService,private common_service:CommonService) {
+    this.clickEventSubs = this.common_service.getClickEvent().subscribe(() => {
       this.toggleMenu();
     })
-    console.clear()
-
   }
 
   dataFromBackend = [{ "id": 1 }, { "id": 3 }]
 
   ngOnInit() {
-    this.tService.getTestData("../../../assets/sideMenu.json").subscribe(result => {
+    this.get_service.GET("../../../assets/sideMenu.json").subscribe(result => {
       this.Menu = result
       result[4].active = false
     });

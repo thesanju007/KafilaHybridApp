@@ -39,6 +39,10 @@ const routes: Routes = [
         loadChildren: () => import('../Flight/f-transactions/f-transactions.module').then( m => m.FTransactionsPageModule)
       },
       {
+        path: 'fpax',
+        loadChildren: () => import('../Flight/f-pax/f-pax.module').then( m => m.FPaxPageModule)
+      },
+      {
         path: 'tsearch',
         loadChildren: () => import('../Train/t-search/t-search.module').then( m => m.TSearchPageModule)
       },
@@ -62,6 +66,15 @@ const routes: Routes = [
         path: 'ttransactions',
         loadChildren: () => import('../Train/t-transactions/t-transactions.module').then( m => m.TTransactionsPageModule)
       },
+      {
+        path: 'tshow',
+        loadChildren: () => import('../Train/t-show/t-show.module').then( m => m.TShowPageModule)
+      },
+      {
+        path: 'tpax',
+        loadChildren: () => import('../Train/t-pax/t-pax.module').then( m => m.TPaxPageModule)
+      },
+     
       
       {
         path: 'hsearch',

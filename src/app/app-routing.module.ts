@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './Gaurd/auth.guard';
 const routes: Routes = [
   {
     path: '',
@@ -14,7 +15,7 @@ const routes: Routes = [
  
   {
     path: 'home',
-    loadChildren: () => import('./Allpages/home/home.module').then(m => m.HomePageModule)
+    loadChildren: () => import('./Allpages/home/home.module').then(m => m.HomePageModule),canActivate:[AuthGuard]
   },
   {
     path: 'error',
@@ -24,10 +25,6 @@ const routes: Routes = [
   {
     path: 'header',
     loadChildren: () => import('./Allpages/common/header/header.module').then(m => m.HeaderPageModule)
-  },
-  {
-    path: 'footer',
-    loadChildren: () => import('./Allpages/common/footer/footer.module').then(m => m.FooterPageModule)
   },
   {
     path: 'aboutus',
@@ -41,6 +38,7 @@ const routes: Routes = [
     path: '**', 
     redirectTo: '/error' 
   },
+ 
   
 
 

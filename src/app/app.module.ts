@@ -22,7 +22,8 @@ import {AlertPopoverModule} from '../app/components/alert-popover/alert-popover.
     HttpClientModule,
    // PaymentModule,
    LoginPopoverModule,
-   AlertPopoverModule
+   AlertPopoverModule,
+
 
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

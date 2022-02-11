@@ -31,9 +31,9 @@
         </ion-row>
 
         <ion-card class="SB ion-padding">
-          <form [formGroup]="flightData" (ngSubmit)="checkFlight()">
+          <form [formGroup]="flightData" (ngSubmit)="checkFlight_one()">
 
-            <!-- ONE WAY    ROUND TRIP ADVANCE TRIP  -->
+            <!-- ONE WAY    ROUND TRIP ADVANCE TRIP -->
             <ion-row color="primary" justify-content-center class="tp_mgn" *ngIf="multi_trip">
               <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
                 <ion-row>
@@ -249,33 +249,32 @@
 
 
 
-
+          <!-- MULTI TRIP -->
           <ion-row color="primary" justify-content-center *ngIf="!multi_trip">
             <form [formGroup]="gaugeTitleForm" (ngSubmit)="onSubmit()">
               <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
 
                 <ion-row style="border-bottom:1px solid red">
                   <ion-col size-sm="4" size-xs="4" size-md="10" size-lg="10" size-xl="10">
-                    
+
                   </ion-col>
                   <ion-col size-sm="4" size-xs="4" size-md="2" size-lg="2" size-xl="2">
                     <ion-text (click)="addItem()">Add Flight <ion-icon name="add-circle-outline"></ion-icon>
                     </ion-text>
                   </ion-col>
                 </ion-row>
-                
+
 
                 <ion-row formArrayName="gaugeTitles"
-                  *ngFor="let item of gaugeTitleForm.get('gaugeTitles').controls; let i = index;" >
+                  *ngFor="let item of gaugeTitleForm.get('gaugeTitles').controls; let i = index;">
                   <ion-row [formGroupName]="i">
-                    
+
                     <ion-col size-sm="12" size-xs="12" size-md="6" size-lg="6" size-xl="6">
                       <fieldset>
                         <legend>
                           <ion-icon class="rotate-0" name="airplane-outline"></ion-icon> FROM
                         </legend>
-                        <input formControlName="D_airport" list="D_airport"
-                          placeholder="DEL, Delhi, India">
+                        <input formControlName="D_airport" list="D_airport" placeholder="DEL, Delhi, India">
                       </fieldset>
 
                       <datalist id="D_airport">
@@ -293,8 +292,7 @@
                         <legend>
                           <ion-icon class="rotate-90" name="airplane-outline"></ion-icon> TO
                         </legend>
-                        <input formControlName="A_airport" list="A_airport"
-                           placeholder="Bom, Mumbai, India">
+                        <input formControlName="A_airport" list="A_airport" placeholder="Bom, Mumbai, India">
                       </fieldset>
                       <datalist id="A_airport">
                         <option *ngFor="let arpt_new of arp_new">{{arpt_new.code}} , {{arpt_new.city}} ,
@@ -313,7 +311,7 @@
                           <ion-icon name="calendar-outline"></ion-icon> DEPARTURE DATE
                         </legend>
                         <input style="width: 70%;" matInput [min]="todayt" [matDatepicker]="picker"
-                          formControlName="D_date" placeholder="{{todayt}}" >
+                          formControlName="D_date" placeholder="{{todayt}}">
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                       </fieldset>
@@ -322,14 +320,14 @@
                       </ion-text>
                     </ion-col>
 
-                  
+
                     <ion-col size-sm="12" size-xs="12" size-md="6" size-lg="4" size-xl="3" *ngIf="i>'1'">
                       <p class="span-btn" (click)="removeRow(i)">
-                        Remove Flight 
+                        Remove Flight
                       </p>
                     </ion-col>
 
-                   
+
                   </ion-row>
                 </ion-row>
 
@@ -435,5 +433,4 @@
       </ion-slide>
     </ion-slides>
   </ion-grid>
-  <app-footer></app-footer>
 </ion-content>

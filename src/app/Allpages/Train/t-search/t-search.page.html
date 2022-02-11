@@ -9,19 +9,19 @@
         <ion-row color="primary" justify-content-center>
           <ion-col class="none" size-md="3" size-lg="3" size-xl="4"></ion-col>
           <ion-col size-sm="4" size-xs="4" size-md="3" size-lg="3" size-xl="2" class="FTH round-l" (click)="R_train()"
-            [ngClass]="[isAfterOW?'FTHActive':'!FTHActive']">
+            [ngClass]="[s_Trains?'FTHActive':'!FTHActive']">
             <!-- <span class="material-icons rotate-90">flight</span> Flight -->Search Train
           </ion-col>
           <ion-col size-sm="4" size-xs="4" size-md="3" size-lg="3" size-xl="2" class="FTH " (click)="R_check_PNR()"
-            [ngClass]="[ isAfterRT?'FTHActive':'!FTHActive']">
+            [ngClass]="[ check_PNR?'FTHActive':'!FTHActive']">
             <!-- <span class="material-icons">train</span>Trains -->Check PNR
           </ion-col>
           <ion-col size-sm="4" size-xs="4" size-md="3" size-lg="3" size-xl="2" class=" FTH "
-            (click)="R_live_trains_status()" [ngClass]="[ isAfterMT?'FTHActive':'!FTHActive']">
+            (click)="R_live_trains_status()" [ngClass]="[ live_trains?'FTHActive':'!FTHActive']">
             <!-- <span class="material-icons">local_hotel</span> Hotels -->Trains Status
           </ion-col>
           <ion-col size-sm="4" size-xs="4" size-md="3" size-lg="3" size-xl="2" class=" FTH round-r side" (click)="R_live_station()"
-            [ngClass]="[ isAfterRS?'FTHActive':'!FTHActive']">
+            [ngClass]="[ live_station?'FTHActive':'!FTHActive']">
             <!-- <span class="material-icons">local_hotel</span> Hotels -->Live Station
           </ion-col>
 

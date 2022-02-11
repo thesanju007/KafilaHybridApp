@@ -1,0 +1,288 @@
+<ion-content class="padding-none bg-color">
+  <form [formGroup]="pax_all_obj" (ngSubmit)="onSubmit()">
+    <ion-grid class="ion-margin-top">
+
+      <ion-row color="primary" justify-content-center class="s-bar ">
+
+        <ion-col size-md="1" size-lg="1" size-xl="1" class="ion-padding-top"></ion-col>
+
+
+        <ion-col size-sm="12" size-xs="12" size-md="8" size-lg="7" size-xl="7" class="padding-none">
+          <ion-row>
+            <ion-col size-sm="4" size-xs="4" size-md="4" size-lg="4" size-xl="4">
+              <p>Step 1</p>
+            </ion-col>
+            <ion-col size-sm="4" size-xs="4" size-md="4" size-lg="4" size-xl="4">
+              <p>Step 2</p>
+            </ion-col>
+            <ion-col size-sm="4" size-xs="4" size-md="4" size-lg="4" size-xl="4">
+              <p>Step 3</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12"
+              style="border-bottom: 1px solid purple; border-top:1px solid purple ;">
+              <h4>Bookinng Details</h4>
+            </ion-col>
+            <ion-col size-sm="4" size-xs="4" size-md="4" size-lg="4" size-xl="4">
+              <p>test</p>
+              <p>test</p>
+              <p>test</p>
+            </ion-col>
+            <ion-col size-sm="4" size-xs="4" size-md="4" size-lg="4" size-xl="4">
+              <p>test</p>
+            </ion-col>
+            <ion-col size-sm="4" size-xs="4" size-md="4" size-lg="4" size-xl="4">
+              <p>test</p>
+              <p>test</p>
+              <p>test</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
+            <ion-row>
+              <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12"
+                style="border-bottom: 1px solid purple; border-top:1px solid purple ;">
+                <h4>Passenger Information</h4>
+              </ion-col>
+            </ion-row>
+            <ion-row formArrayName="pax_arr" *ngFor="let item of pax_all_obj.get('pax_arr').controls; let i = index;">
+              <ion-col [formGroupName]="i" size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
+                <ion-row>
+
+
+                  <ion-col size-sm="12" size-xs="12" size-md="3" size-lg="3" size-xl="3">
+                    <input type="text" formControlName="pas_name" placeholder="Name">
+                  </ion-col>
+
+                  <ion-col size-sm="12" size-xs="12" size-md="2" size-lg="2" size-xl="2">
+                    <input type="text" formControlName="pas_age" placeholder="Age" (keyup)="ageVal($event)">
+
+                  </ion-col>
+
+                  <ion-col size-sm="12" size-xs="12" size-md="2" size-lg="2" size-xl="2">
+                    <input type="text" formControlName="pas_gender" placeholder="Gender">
+                  </ion-col>
+
+                  <ion-col size-sm="12" size-xs="12" size-md="2" size-lg="2" size-xl="2">
+                    <input type="text" formControlName="pas_country" placeholder="India">
+                  </ion-col>
+
+
+                  <ion-col size-sm="12" size-xs="12" size-md="3" size-lg="3" size-xl="3">
+                    <select formControlName="pas_id">
+
+                      <option *ngFor="let x of id_card">{{x.value}}</option>
+
+                    </select>
+
+                  </ion-col>
+
+                  <ion-col size-sm="12" size-xs="12" size-md="3" size-lg="3" size-xl="3">
+                    <input type="text" formControlName="pas_id_no" placeholder="Id number">
+                  </ion-col>
+
+                  <!-- CHILD BERTH FULL FARE CHECKBOX -->
+                  <ion-col size-sm="12" size-xs="12" size-md="2" size-lg="2" size-xl="2" *ngIf="opt_chd_bth">
+                    <input type="checkbox" formControlName="pas_opt_chk"> <label>Opt Child Berth</label>
+                  </ion-col>
+
+                  <ion-col size-sm="12" size-xs="12" size-md="6" size-lg="4" size-xl="3" *ngIf="i>'0'">
+                    <p class="span-btn" (click)="removeRow(i)">
+                      Remove
+                    </p>
+                  </ion-col>
+
+                </ion-row>
+
+
+              </ion-col>
+            </ion-row>
+            <ion-row>
+
+              <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12" *ngIf="add_pass_show">
+                <ion-text (click)="addItem()">Add Passsenger {{ind+1}} <ion-icon name="add-circle-outline"></ion-icon>
+                </ion-text>
+              </ion-col>
+            </ion-row>
+
+
+
+            <!-- Passenger Address -->
+            <ion-row>
+              <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12"
+                style="border-bottom: 1px solid purple; border-top:1px solid purple ;">
+                <h4>Address</h4>
+              </ion-col>
+              <ion-col size-sm="12" size-xs="12" size-md="3" size-lg="3" size-xl="3">
+                <input type="text" formControlName="address" placeholder="Address">
+              </ion-col>
+              <ion-col size-sm="12" size-xs="12" size-md="3" size-lg="3" size-xl="3">
+                <input type="text" formControlName="street" placeholder="Street">
+              </ion-col>
+              <ion-col size-sm="12" size-xs="12" size-md="3" size-lg="3" size-xl="3">
+                <input type="text" formControlName="colony" placeholder="Colony">
+              </ion-col>
+              <ion-col size-sm="12" size-xs="12" size-md="3" size-lg="3" size-xl="3">
+                <input type="text" formControlName="pincode" placeholder="Pincode">
+              </ion-col>
+              <ion-col size-sm="12" size-xs="12" size-md="3" size-lg="3" size-xl="3">
+                <input type="text" formControlName="state" placeholder="State">
+              </ion-col>
+              <ion-col size-sm="12" size-xs="12" size-md="3" size-lg="3" size-xl="3">
+                <input type="text" formControlName="city" placeholder="City">
+              </ion-col>
+              <ion-col size-sm="12" size-xs="12" size-md="3" size-lg="3" size-xl="3">
+                <input type="text" formControlName="post_office" placeholder="Post office">
+              </ion-col>
+            </ion-row>
+
+
+
+            <!-- Contact info -->
+            <ion-row>
+              <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12"
+                style="border-bottom: 1px solid purple;border-top:1px solid purple ;">
+                <h4>Contact info</h4>
+              </ion-col>
+              <ion-col size-sm="12" size-xs="12" size-md="6" size-lg="6" size-xl="6">
+                <input type="text" formControlName="mobile" placeholder="Mobile no.">
+              </ion-col>
+            </ion-row>
+
+
+            <!-- Verify your IRCTC Login Id -->
+            <ion-row>
+              <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12"
+                style="border-bottom: 1px solid purple;border-top:1px solid purple ;">
+                <h4>Verify your IRCTC Login Id</h4>
+              </ion-col>
+              <ion-col size-sm="12" size-xs="12" size-md="6" size-lg="6" size-xl="6">
+                <input type="text" formControlName="irctc_id" placeholder=" Verify your IRCTC Login Id">
+              </ion-col>
+            </ion-row>
+
+
+
+
+            <!-- Add GST Details -->
+            <ion-row>
+              <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12"
+                style="border-bottom: 1px solid purple;border-top:1px solid purple ;">
+                <h4>Add GST Details</h4>
+              </ion-col>
+              <ion-col size-sm="12" size-xs="12" size-md="6" size-lg="6" size-xl="6">
+                <input type="text" formControlName="gst_no" placeholder="Add GST Details">
+              </ion-col>
+            </ion-row>
+
+
+
+
+            <!-- Other Preferences -->
+            <ion-row class="pt-5">
+              <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12"
+                style="border-bottom: 1px solid purple;border-top:1px solid purple ;">
+                <h4>Other Preferences</h4>
+              </ion-col>
+              <ion-col size-sm="12" size-xs="12" size-md="6" size-lg="6" size-xl="6">
+                <input type="checkbox" formControlName="auto_upgradation"><label>Consider for Auto
+                  Upgradation</label><br>
+                <input type="text" formControlName="auto_upgradation"
+                  placeholder="Prefered Coach (e.g. S1, S2, B1, D1)">
+              </ion-col>
+
+              <ion-col size-sm="12" size-xs="12" size-md="6" size-lg="6" size-xl="6">
+                <input type="checkbox" formControlName="book_only"><label>Book only if confirm berths are
+                  allotted</label><br>
+                <input type="text" formControlName="auto_upgradation">
+              </ion-col>
+
+            </ion-row>
+
+
+
+
+            <!-- Travel Insurance (Incl. of GST) -->
+            <ion-row class="mt-5">
+              <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12"
+                style="border-bottom: 1px solid purple;border-top:1px solid purple ;">
+                <h4>Travel Insurance (Incl. of GST)</h4>
+              </ion-col>
+              <ion-col size-sm="12" size-xs="12" size-md="6" size-lg="6" size-xl="6">
+                <input type="radio" formControlName="travel_insurance"><label> Yes, I accept the terms &
+                  conditions</label>
+              </ion-col>
+
+              <ion-col size-sm="12" size-xs="12" size-md="6" size-lg="6" size-xl="6">
+                <input type="radio" formControlName="travel_insurance"><label> No, I don't want travel insurance</label>
+              </ion-col>
+            </ion-row>
+
+
+
+
+
+            <!-- Terms and Conditions -->
+            <ion-row class="mt-5">
+              <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12"
+                style="border-bottom: 1px solid purple;border-top:1px solid purple ;">
+                <h4>Terms and Conditions</h4>
+              </ion-col>
+              <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
+                <input type="checkbox" formControlName="t_and_c"><label>Yes, I accept the Kafila Hospitality and Travel
+                  Pvt. Ltd. terms & conditions</label>
+              </ion-col>
+            </ion-row>
+
+
+
+          </ion-col>
+
+
+
+
+          <ion-col size-sm="12" size-xs="12" size-md="12" size-lg="12" size-xl="12">
+            <ion-row>
+              <ion-col size-md="4" size-lg="4" size-xl="4"></ion-col>
+              <ion-col size-sm="12" size-xs="12" size-md="4" size-lg="4" size-xl="4">
+                <button class="submit-btn" type="submit" (click)="onSubmit()">
+                  <span class="material-icons">search</span> Save
+                </button>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+
+
+        </ion-col>
+
+
+
+        <ion-col size-md="1" size-lg="1" size-xl="1" class="ion-padding-top"></ion-col>
+
+
+        <!-- Side Option for fare summary and boarding -->
+        <ion-col size-md="1" size-lg="2" size-xl="2" class="ion-padding-top">
+          <ion-row>
+            <ion-col size-md="12" size-lg="12" size-xl="12" style="border: 1px solid red; height: 200px;">
+              Fare Summary
+              <p>test</p>
+              <p>test</p>
+              <p>test</p>
+            </ion-col>
+
+            <ion-col size-md="12" size-lg="12" size-xl="12" style="border: 1px solid red; margin-top: 20px;">
+              <select formControlName="boarding">
+                <option *ngFor="let x of id_card">{{x.value}}</option>
+              </select>
+
+            </ion-col>
+          </ion-row>
+        </ion-col>
+
+      </ion-row>
+
+    </ion-grid>
+  </form>
+</ion-content>

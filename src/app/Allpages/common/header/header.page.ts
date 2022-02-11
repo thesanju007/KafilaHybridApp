@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TestService } from '../../../Services/test.service'
+import { CommonService } from 'src/app/Services/common.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.page.html',
@@ -7,9 +7,9 @@ import { TestService } from '../../../Services/test.service'
 })
 export class HeaderPage implements OnInit {
 
-  constructor(private tService: TestService) { }
+  constructor(private common_service:CommonService) { }
   ngOnInit() {}
   Menu(){
-    this.tService.sendClickEvent();
+    this.common_service.sendClickEvent();
   }
 }
